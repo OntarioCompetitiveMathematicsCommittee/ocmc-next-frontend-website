@@ -26,9 +26,6 @@ import ProctorSignup from '../components/features/auth/ProctorSignup';
 
 export default function Home() {
   return (
-    <div>
-      <h1 className='text-6xl text-red-500'>hello</h1>
-    </div>
-      
+      <Public />      
   )
 }
