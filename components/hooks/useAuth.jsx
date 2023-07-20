@@ -1,3 +1,5 @@
+"use client"
+
 import { useSelector } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 import { selectCurrentToken } from '../features/auth/authSlice';
