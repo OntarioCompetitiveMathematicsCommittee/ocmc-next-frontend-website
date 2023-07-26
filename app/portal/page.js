@@ -1,6 +1,6 @@
 "use client"
 
-import useAuth from '../../components/hooks/useAuth'
+import useAuth from '@components/hooks/useAuth'
 
 const Portal = () => {
     const { first_name, last_name, highest_status } = useAuth();

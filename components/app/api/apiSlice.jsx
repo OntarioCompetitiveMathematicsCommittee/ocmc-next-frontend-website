@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { setCredentials } from '../../features/auth/authSlice';
+import { setCredentials } from '@components/features/auth/authSlice';
 
 const apiBaseUrl = (process.env.NODE_ENV === 'production' ? 'https://ocmc-api.onrender.com/' : 'http://localhost:3500/')
 

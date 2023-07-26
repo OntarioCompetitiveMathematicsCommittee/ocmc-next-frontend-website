@@ -2,11 +2,11 @@
 //signup-J5bQD8F9u3Z2
 
 import { useRef, useState, useEffect } from "react"
-import { useRegisterMutation } from "../../components/features/auth/authApiSlice"
+import { useRegisterMutation } from "@components/features/auth/authApiSlice"
 import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { SCHOOLS } from '../../components/config/schools'
+import { SCHOOLS } from '@components/config/schools'
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;

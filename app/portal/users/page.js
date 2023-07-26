@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from 'react';
-import { useGetUsersQuery } from '../../../components/features/users/usersApiSlice';
-import User from '../../../components/features/users/User';
+import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
+import User from '@components/features/users/User';
 
 const UsersList = () => {
   const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {

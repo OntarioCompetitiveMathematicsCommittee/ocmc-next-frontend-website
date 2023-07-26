@@ -4,10 +4,10 @@ import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
-import { setCredentials } from '../../components/features/auth/authSlice'
-import { useLoginMutation } from '../../components/features/auth/authApiSlice'
+import { setCredentials } from '@components/features/auth/authSlice'
+import { useLoginMutation } from '@components/features/auth/authApiSlice'
 
-import usePersist from '../../components/hooks/usePersist'
+import usePersist from '@components/hooks/usePersist'
 
 const Login = () => {
     const userRef = useRef();

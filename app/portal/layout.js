@@ -1,5 +1,5 @@
-import PortalHeader from '../../components/components/PortalHeader'
-import PortalFooter from '../../components/components/PortalFooter'
+import PortalHeader from '@components/components/PortalHeader'
+import PortalFooter from '@components/components/PortalFooter'
 
 const PortalLayout = ({ children }) => {
   return (
