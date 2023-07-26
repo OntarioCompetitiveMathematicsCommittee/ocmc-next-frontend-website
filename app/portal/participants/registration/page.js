@@ -1,9 +1,11 @@
-import { useGetContestsQuery } from "../contestsApiSlice"
-import ContestRegistrationForm from "./ContestRegistrationForm"
-import useAuth from "../../../hooks/useAuth"
+"use client";
+
+import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
+import ContestRegistrationForm from "@components/features/contests/participants/ContestRegistrationForm";
+import useAuth from "@components/hooks/useAuth";
 
 const ContestRegistrationList = () => {
-	const { id } = useAuth()
+	const { id } = useAuth();
 
 	const { data: contests, isLoading, isSuccess, isError, error } = useGetContestsQuery(undefined, { refetchOnMountOrArgChange: true });
 
