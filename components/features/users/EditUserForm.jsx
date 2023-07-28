@@ -143,7 +143,7 @@ const EditUserForm = ({ user, editingAll }) => {
         if (confirmDelete) {
             await deleteUser({ id: user.id });
             router.replace(submitRouter);
-            }
+        }
     }
 
     let canSave;
