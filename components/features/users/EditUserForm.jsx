@@ -97,7 +97,7 @@ const EditUserForm = ({ user, editingAll }) => {
             if (isNumber) setValidGrade(grade >= 1 && grade <= 12);
             else setValidGrade(false);
         }
-    }, [grade]);
+    }, [grade, isAdmin, user.roles]);
 
     const onUsernameChanged = e => setUsername(e.target.value);
     const onFirstnameChanged = e => setFirstname(e.target.value);
@@ -171,7 +171,7 @@ const EditUserForm = ({ user, editingAll }) => {
                     <h2>Success!</h2>
                     <p>User <strong><em>{username}</em></strong> has been successfully updated.</p>
 
-                    <button onClick={() => navigate(submitRoute)}> {rerouteText} </button>
+                    <button onClick={() => router.replace(submitRoute)}> {rerouteText} </button>
                 </section>
             </div>
         )
