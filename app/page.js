@@ -1,7 +1,12 @@
 import Public from '@components/components/Public';
 
 export default function Home() {
-  return (
-      <Public />      
-  )
+
+    //uncomment Public to see the login button
+    return (
+        // <Public />   
+        <>
+            
+        </>   
+    )
 }
