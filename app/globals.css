@@ -10,8 +10,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Syne', 'sans-serif';
+    background-color: '#F9FAFB';
+    color: black;
 }
-
+/* 
 html {
     font-family: 'Roboto Mono', monospace;
     font-size: 18px;
@@ -224,7 +227,7 @@ tr:hover {
     background-color: #444;
 }
 
-/* Navbar Styles */
+
 header {
     background-color: #222;
     padding: 1rem;
@@ -298,4 +301,5 @@ input[type="checkbox"]:disabled:before {
 
 label[for="display"] {
     margin-top: 1rem;
-}
+} 
+*/
