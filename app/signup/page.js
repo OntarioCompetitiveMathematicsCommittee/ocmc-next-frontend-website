@@ -5,7 +5,7 @@ import { useRegisterMutation } from "@components/features/auth/authApiSlice"
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { SCHOOLS } from '@components/config/schools' 
+import { SCHOOLS } from '@config/schools' 
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;

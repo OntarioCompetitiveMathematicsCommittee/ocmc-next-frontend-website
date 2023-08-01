@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('/assets/ocmc-bg.svg')",
+        'hero-pattern': "url('/assets/ocmc-bg2.svg')",
       },
       colors: {
         brandGreen: {
@@ -55,6 +55,15 @@ module.exports = {
           800: '#111827',
           900: '#030712',
         }
+      },
+      animation: {
+        scroll: 'scroll 20s linear infinite',
+      },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       }, 
     },
   },
