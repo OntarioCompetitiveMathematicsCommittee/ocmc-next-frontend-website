@@ -138,7 +138,7 @@ const SignupPage = () => {
         )
     } else {
         content = (
-            <section>
+            <section className="">
                 <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
                 <h1>OCMC User Registration</h1>
                 <form onSubmit={onSaveUserClicked}>

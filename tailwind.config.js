@@ -46,7 +46,7 @@ module.exports = {
         },
         brandNeutral: {
           100: '#F9FAFB',
-          200: '#E5E7EB',
+          200: '#F0F1F2',
           300: '#9CA3AF',
           400: '#6B7280',
           500: '#4B5563',
