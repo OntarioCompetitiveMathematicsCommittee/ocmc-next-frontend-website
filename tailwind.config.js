@@ -13,7 +13,7 @@ module.exports = {
       colors: {
         brandGreen: {
           100: '#E0FFFD',
-          200: 'A8FFF9',
+          200: '#A8FFF9',
           300: '#70FFF6',
           400: '#38FFF2',
           500: '#21D9D0',

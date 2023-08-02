@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { h1Styles, h2Styles, h3Styles } from '@config/textStyles'
 
+import NavbarPlaceholder from '@components/NavbarPlaceholder'
 import Navbar from '@components/Navbar'
 import Hero from '@components/homepage/Hero'
 import Sponsors from '@components/homepage/Sponsors'
@@ -39,6 +40,7 @@ export default function Home() {
     return (
         <>
             <div className='w-screen h-screen flex flex-col'>
+                <NavbarPlaceholder/>
                 <Navbar/>
                 <Hero/>
             </div>  

@@ -13,6 +13,8 @@ import loginLogo from '@public/assets/login-logo.svg'
 
 import Image from 'next/image'
 
+import Navbar from '@components/Navbar'
+
 const Login = () => {
     const userRef = useRef();
 	const errRef = useRef();
@@ -45,7 +47,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			const { accessToken } = await login({ username, password }).unwrap();
-			dispatch(setCredentials({ accessToken }));
+			// dispatch(setCredentials({ accessToken }));
 			setUsername('');
 			setPassword('');
 		} catch (err) {
@@ -57,31 +59,28 @@ const Login = () => {
 		}
 	}
 
-	if (isLoading) return <p>Loading...</p>
+	// if (isLoading) return <p>Loading...</p>
 
 	const canLogin = username && password;
 
 	const content = (
-		<section className="bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
-			flex flex-col items-center justify-center lg:justify-between">
+		<section className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
+			flex flex-col md:flex-row items-center justify-center lg:justify-between">
 			<header className='flex justify-center items-center w-1/2'>
 				<div className='flex flex-col items-center'>
-					<h1 className='text-[min(40rem, 5vw)] font-bold'>Log in.</h1>
+					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
 					<Image className='w-[25vw] hidden md:block' src={loginLogo} alt="login"/>
 				</div>
-				
 			</header>
 
 			<main className='flex flex-col items-center justify-center w-1/2'>
 				<div className='flex flex-col'>
-					<p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-
 					<form onSubmit={handleLogin} className='flex flex-col gap-5'>
 
 						<div className='flex flex-col rounded-sm'>
 							<label htmlFor="username text-brandNeutral-800">Username</label>
 							<input
-								className='w-[90vw] md:w-[30rem] h-14 bg-brandNeutral-200 px-4'
+								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
 								type="text"
 								id="username"
 								name="username"
@@ -95,7 +94,7 @@ const Login = () => {
 						<div className='flex flex-col rounded-sm'>
 							<label htmlFor="password text-brandNeutral-800">Password</label>
 							<input
-								className='w-[90vw] md:w-[30rem] h-14 bg-brandNeutral-200 px-4'
+								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
 								type="password"
 								id="password"
 								name="password"
@@ -104,6 +103,8 @@ const Login = () => {
 								placeholder='Enter Password'
 							/>
 						</div>
+						<p ref={errRef} className={"text-red-900 transition-all opacity-0 h-0 -translate-y-3 " 
+							+ (errMsg && "opacity-100 h-full translate-y-0")} aria-live="assertive">* {errMsg}</p>
 						
 						<label htmlFor="persist">
 							<input
@@ -115,7 +116,7 @@ const Login = () => {
 							/>
 							<p className='inline ml-1'>Remember Me</p>
 						</label>
-						<button className='w-[90vw] md:w-[30rem] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm' type="submit" disabled={!canLogin}>
+						<button className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm' type="submit" disabled={!canLogin}>
 							Login
 						</button>
 
@@ -128,6 +129,7 @@ const Login = () => {
 
 	return (
 		<div className="Login">
+			<Navbar/>
 			{content}
 		</div>
 	)

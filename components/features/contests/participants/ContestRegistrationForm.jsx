@@ -37,37 +37,18 @@ const ContestRegistrationForm = ({ userId, contestId }) => {
         ? <p style={{'color': 'green'}}>You are registered for this contest!</p>
         : <p style={{'color': 'red'}}>You are not registered for this contest.</p>;
 
-    if (isLoading) {
-        return (
-            <>
-                <section>
-                    <form onSubmit={(e) => e.preventDefault()}>
-                        <h2>Contest Name: {name}</h2>
-                        <p>Contest Year: {year}</p>
-                        <p>Contest Description:<br /> {description}</p>
-                        <p>Out of: {max_score}</p>
-                        <button disabled>{buttonText} Loading...</button>
-                    </form>
-                </section>
-                <br />
-            </>
-        )
-    }
 
     return (
-        <>
-            <section>
-                <form onSubmit={handleSignup}>
-                    <h2>Contest Name: {name}</h2>
-                    <p>Contest Year: {year}</p>
-                    <p>Contest Description:<br /> {description}</p>
-                    <p>Out of: {max_score}</p>
-                    {registeredText}
-                    <button type="submit">{buttonText}</button>
-                </form>
-            </section>
-            <br />
-        </>
+        <form className={"flex w-4/5 max-w-3xl px-12 py-6 rounded-xl justify-between items-center shadow-sm " 
+            + (isRegistered ? "bg-emerald-100" : "bg-brandBlue-100")} onSubmit={handleSignup}>
+            <div className="flex flex-col">
+                <p className={"text-xl "  + (isRegistered ? "bg-emerald-100 text-emerald-700" : "bg-brandBlue-100 text-brandBlue-700")}>{year}</p>
+                <h2 className="text-3xl">{name}</h2>
+                <p>{description}</p>
+            </div>
+            <button className={"w-1/3 px-4 h-full py-2 rounded-full text-white text-2xl " 
+                + (isRegistered ? "bg-emerald-800" : "bg-brandBlue-800")} type="submit">{buttonText}</button>
+        </form>
     );
 }
 

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { store } from '@components/app/store';
 import { ReduxWrapper } from '@components/ReduxWrapper';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
