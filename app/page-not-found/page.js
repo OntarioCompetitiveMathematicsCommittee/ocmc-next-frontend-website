@@ -1,4 +1,4 @@
-
+// display 404 error message
 const Missing404 = () => {
 	return (
 		<div>
