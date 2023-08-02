@@ -5,7 +5,9 @@ import { useRegisterMutation } from "@components/features/auth/authApiSlice"
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { SCHOOLS } from '@components/config/schools' 
+import { SCHOOLS } from '@config/schools' 
+
+import Navbar from "@components/Navbar"
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -138,7 +140,7 @@ const SignupPage = () => {
         )
     } else {
         content = (
-            <section>
+            <section className="">
                 <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
                 <h1>OCMC User Registration</h1>
                 <form onSubmit={onSaveUserClicked}>
@@ -336,6 +338,7 @@ const SignupPage = () => {
 
     return (
         <div className="Signup">
+            <Navbar/>
             {content}
         </div>
     )

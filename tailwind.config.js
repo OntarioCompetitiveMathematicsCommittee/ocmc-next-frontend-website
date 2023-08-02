@@ -8,14 +8,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-pattern': "url('/assets/ocmc-bg2.svg')",
       },
       colors: {
         brandGreen: {
           100: '#E0FFFD',
-          200: 'A8FFF9',
+          200: '#A8FFF9',
           300: '#70FFF6',
           400: '#38FFF2',
           500: '#21D9D0',
@@ -48,7 +46,7 @@ module.exports = {
         },
         brandNeutral: {
           100: '#F9FAFB',
-          200: '#E5E7EB',
+          200: '#F0F1F2',
           300: '#9CA3AF',
           400: '#6B7280',
           500: '#4B5563',
@@ -57,6 +55,15 @@ module.exports = {
           800: '#111827',
           900: '#030712',
         }
+      },
+      animation: {
+        scroll: 'scroll 20s linear infinite',
+      },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       }, 
     },
   },

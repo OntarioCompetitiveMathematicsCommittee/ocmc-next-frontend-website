@@ -19,15 +19,14 @@ const ContestRegistrationList = () => {
 		const { ids } = contests;
 		if (ids?.length === 0) return <p>No contests available for registration</p>;
 
-		const signupContent = ids.map((contestId) => (
-			<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} />
-		));
-
 		content = (
 			<>
 				<h1>Contests Registration</h1>
-				<br />
-				{ signupContent }
+				<div className="flex flex-col items-center w-full gap-8">
+					{ids.map((contestId) => (
+						<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} />
+					))}
+				</div>
 			</>
 		);
 	}

@@ -9,6 +9,12 @@ import { useLoginMutation } from '@components/features/auth/authApiSlice'
 
 import usePersist from '@components/hooks/usePersist'
 
+import loginLogo from '@public/assets/login-logo.svg'
+
+import Image from 'next/image'
+
+import Navbar from '@components/Navbar'
+
 const Login = () => {
     const userRef = useRef();
 	const errRef = useRef();
@@ -41,7 +47,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			const { accessToken } = await login({ username, password }).unwrap();
-			dispatch(setCredentials({ accessToken }));
+			// dispatch(setCredentials({ accessToken }));
 			setUsername('');
 			setPassword('');
 		} catch (err) {
@@ -53,64 +59,77 @@ const Login = () => {
 		}
 	}
 
-	if (isLoading) return <p>Loading...</p>
+	// if (isLoading) return <p>Loading...</p>
 
 	const canLogin = username && password;
 
 	const content = (
-		<section>
-			<header>
-				<h1>OCMC User Login</h1>
+		<section className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
+			flex flex-col md:flex-row items-center justify-center lg:justify-between">
+			<header className='flex justify-center items-center w-1/2'>
+				<div className='flex flex-col items-center'>
+					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
+					<Image className='w-[25vw] hidden md:block' src={loginLogo} alt="login"/>
+				</div>
 			</header>
 
-			<main>
-				<p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+			<main className='flex flex-col items-center justify-center w-1/2'>
+				<div className='flex flex-col'>
+					<form onSubmit={handleLogin} className='flex flex-col gap-5'>
 
-				<form onSubmit={handleLogin}>
+						<div className='flex flex-col rounded-sm'>
+							<label htmlFor="username text-brandNeutral-800">Username</label>
+							<input
+								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
+								type="text"
+								id="username"
+								name="username"
+								ref={userRef}
+								value={username}
+								onChange={e => setUsername(e.target.value)}
+								placeholder='Enter Username'
+							/>
+						</div>
+						
+						<div className='flex flex-col rounded-sm'>
+							<label htmlFor="password text-brandNeutral-800">Password</label>
+							<input
+								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
+								type="password"
+								id="password"
+								name="password"
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+								placeholder='Enter Password'
+							/>
+						</div>
+						<p ref={errRef} className={"text-red-900 transition-all opacity-0 h-0 -translate-y-3 " 
+							+ (errMsg && "opacity-100 h-full translate-y-0")} aria-live="assertive">* {errMsg}</p>
+						
+						<label htmlFor="persist">
+							<input
+								type="checkbox"
+								id="persist"
+								name="persist"
+								checked={persist}
+								onChange={handleToggle}
+							/>
+							<p className='inline ml-1'>Remember Me</p>
+						</label>
+						<button className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm' type="submit" disabled={!canLogin}>
+							Login
+						</button>
 
-					<label htmlFor="username">Username</label>
-					<input
-						type="text"
-						id="username"
-						name="username"
-						ref={userRef}
-						value={username}
-						onChange={e => setUsername(e.target.value)}
-					/>
-
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						id="password"
-						name="password"
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-					/>
-
-					<button type="submit" disabled={!canLogin}>Login</button>
-
-					<label htmlFor="persist">
-					<input
-						type="checkbox"
-						id="persist"
-						name="persist"
-						checked={persist}
-						onChange={handleToggle}
-					/>
-					Keep me logged in
-					</label>
-
-				</form>
+					</form>
+					<p className='mt-2'>Dont have an account? <Link href="/signup" className='text-blue-500 underline'>Register</Link>!</p>
+				</div>
 			</main>
-
-			<footer>
-				<p>Dont have an account? Signup <Link href="/signup">here</Link>!</p>
-			</footer>
 		</section>
 	)
 
 	return (
 		<div className="Login">
+			<Navbar/>
 			{content}
 		</div>
 	)

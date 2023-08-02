@@ -1,5 +1,5 @@
 import RequireAuth from '@components/RequireAuth'
-import { ROLES } from '@components/config/roles'
+import { ROLES } from '@config/roles'
 
 const PostsLayout = ({ children }) => {
     return (
