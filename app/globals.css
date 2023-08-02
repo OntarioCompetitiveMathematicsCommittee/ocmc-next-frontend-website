@@ -10,17 +10,32 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Syne', 'sans-serif';
+    background-color: '#F9FAFB';
+    color: black;
+
 }
 
+*::-webkit-scrollbar {
+    display: none;
+  }
+  
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+html {
+    overflow-x: hidden;
+}
+
+
+
+/* 
 html {
     font-family: 'Roboto Mono', monospace;
     font-size: 18px;
     color: #fff;
-}
-
-body {
-    min-height: 100vh;
-    background-color: #282c34;
 }
 
 .Signup {
@@ -41,6 +56,21 @@ body {
     padding: 1rem;
 }
 
+body {
+    min-height: 100vh;
+    background-color: #282c34;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+
+
 section {
     width: 100%;
     max-width: 420px;
@@ -52,14 +82,6 @@ section {
     background-color: #222;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
 }
 
 a,
@@ -224,7 +246,7 @@ tr:hover {
     background-color: #444;
 }
 
-/* Navbar Styles */
+
 header {
     background-color: #222;
     padding: 1rem;
@@ -298,4 +320,5 @@ input[type="checkbox"]:disabled:before {
 
 label[for="display"] {
     margin-top: 1rem;
-}
+} 
+*/
