@@ -18,9 +18,9 @@ const PortalLayout = ({ children }) => {
                     <Prefetch>
                         <div className='flex flex-col h-screen'>
                             <PortalNav />
-                            <div className='flex gap-12 flex-1'>
+                            <div className='flex flex-1'>
                                 <PortalHeader />
-                                <div className='flex-1'>
+                                <div className='flex-1 bg-brandNeutral-100 bg-[url("/assets/portal-bg.svg")] bg-cover'>
                                     {children}
                                 </div>
                             </div>
