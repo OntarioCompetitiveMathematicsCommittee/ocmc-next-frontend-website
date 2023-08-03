@@ -60,8 +60,8 @@ const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
         }
 
         return (
-            <tr>
-                <td>{user.username}</td>
+            <tr className="bg-white border-2">
+                <td className="p-4">{user.username}</td>
                 <td>{user.first_name}</td>
                 <td>{user.last_name}</td>
                 <td>{user.email}</td>

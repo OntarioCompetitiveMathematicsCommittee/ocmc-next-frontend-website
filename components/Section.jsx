@@ -15,7 +15,7 @@ const Section = ({ buttonText, buttonPath, buttonColour, buttonHover, colour, im
                         {text}
                     </h3>
                     {buttonText && 
-                        <Link className={'text-white py-2 px-6 rounded-md text-md lg:text-xl mt-2 transition-all ' + buttonColour + " " + buttonHover} href={buttonPath}>
+                        <Link className={'text-white py-3 px-8 rounded-md text-md lg:text-xl mt-2 transition-all ' + buttonColour + " " + buttonHover} href={buttonPath}>
                             {buttonText}
                         </Link>
                     }

@@ -1,9 +1,8 @@
 "use client"
 
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 
 import PortalElement from '@components/PortalElement';
@@ -21,7 +20,10 @@ import user from '@public/assets/dashboard-icons/user.svg'
 import users from '@public/assets/dashboard-icons/users.svg'
 
 const PortalHeader = () => {
-    const { isAdmin, isExecutive, isProctor, isParticipant } = useAuth();
+
+    const [page, setPage] = useState('dashboard');
+
+    const { isAdmin, isExecutive, isProctor, isParticipant, highest_status} = useAuth();
 
     const router = useRouter();
 
@@ -39,82 +41,103 @@ const PortalHeader = () => {
     if (isLoading) return <p>Logging Out...</p>
 
     if (isError) return <p>Unable to Logout: {error.data?.message}</p>
+
     const header = (
-        <nav className=''>
-            <ul className='flex flex-col justify-between w-80 h-full bg-brandNeutral-200 px-4'>
-                <div className='flex flex-col gap-4 pt-2'>
-                    <PortalElement 
-                        icon={dashboard} 
-                        name={"Dashboard"} 
-                        path="/portal"
-                    />
+        <>
+            <nav className='h-full'>
+                <ul className='flex flex-col justify-between w-80 h-full bg-brandNeutral-200 p-4'>
+                    <div className='flex flex-col gap-4 pt-2'>
+                        <PortalElement 
+                            selected={page === '/portal'}
+                            setPage={setPage}
+                            icon={dashboard} 
+                            name={"Dashboard"} 
+                            path="/portal"
+                        />
 
-                    {isAdmin && 
-                        <PortalElement 
-                            icon={users} 
-                            name={"Users List"} 
-                            path="/portal/users"
-                        />}
-                    {(isAdmin || isExecutive) && 
-                        <PortalElement 
-                            icon={posts} 
-                            name={"Posts List"} 
-                            path="/portal/posts"
-                        />}
-                    {(isAdmin || isExecutive) && 
-                        <PortalElement 
-                            icon={contests} 
-                            name={"Contests List"} 
-                            path="/portal/contests"
-                        />}
+                        {isAdmin && 
+                            <PortalElement 
+                                selected={page === '/portal/users'}
+                                setPage={setPage}
+                                icon={users} 
+                                name={"Users List"} 
+                                path="/portal/users"
+                            />}
+                        {(isAdmin || isExecutive) && 
+                            <PortalElement 
+                                selected={page === '/portal/posts'}
+                                setPage={setPage}
+                                icon={posts} 
+                                name={"Posts List"} 
+                                path="/portal/posts"
+                            />}
+                        {(isAdmin || isExecutive) && 
+                            <PortalElement 
+                                selected={page === '/portal/contests'}
+                                setPage={setPage}
+                                icon={contests} 
+                                name={"Contests List"} 
+                                path="/portal/contests"
+                            />}
 
-                    {isParticipant && 
-                        <PortalElement 
-                            icon={scores} 
-                            name={"View Scores"} 
-                            path="/portal/participants/results"
-                        />}
-                    
+                        {isParticipant && 
+                            <PortalElement 
+                                selected={page === '/portal/participants/results'}
+                                setPage={setPage}
+                                icon={scores} 
+                                name={"View Scores"} 
+                                path="/portal/participants/results"
+                            />}
+                        
 
-                    {isParticipant && 
-                        <PortalElement 
-                            icon={contestRegistration} 
-                            name={"Contest Registration"} 
-                            path="/portal/participants/registration"
-                        />}
+                        {isParticipant && 
+                            <PortalElement 
+                                selected={page === '/portal/participants/registration'}
+                                setPage={setPage}
+                                icon={contestRegistration} 
+                                name={"Contest Registration"} 
+                                path="/portal/participants/registration"
+                            />}
 
-                    {isProctor && 
-                        <PortalElement 
-                        icon={todos} 
-                        name={"Proctor Todo"} 
-                        path="/portal/proctors/todos"
-                    />}
+                        {isProctor && 
+                            <PortalElement 
+                                selected={page === '/portal/proctors/todos'}
+                                setPage={setPage}
+                                icon={todos} 
+                                name={"Proctor Todo"} 
+                                path="/portal/proctors/todos"
+                            />}
 
-                    {isProctor && 
+                        {isProctor && 
+                            <PortalElement
+                                selected={page === '/portal/proctors/school-users'}
+                                setPage={setPage}
+                                icon={schools}
+                                name={"Schools Participants"}
+                                path="/portal/proctors/school-users"
+                            />}
+                        
                         <PortalElement
-                            icon={schools}
-                            name={"Schools Participants"}
-                            path="/portal/proctors/schoolsUsers"
-                        />}
+                            selected={page === '/portal/edit-self'}
+                            setPage={setPage}
+                            icon={user}
+                            name={"Edit Account"}
+                            path="/portal/edit-self"
+                        />
+                    </div>
                     
-                    <PortalElement
-                        icon={user}
-                        name={"Edit Account"}
-                        path="/portal/edit-self"
-                    />
-                </div>
-                
-                <div>
-                    <PortalElement
-                        icon={logout}
-                        name={"Logout"}
-                        path="/"
-                        onClick={handleLogout}
-                    />
-                    <PortalFooter/>
-                </div>
-            </ul>
-        </nav>
+                    <div>
+                        <PortalElement
+                            icon={logout}
+                            name={"Logout"}
+                            path="/"
+                            onClick={handleLogout}
+                        />
+                        <PortalFooter/>
+                    </div>
+                </ul>
+            </nav>
+        </>
     )
 
     return header;
