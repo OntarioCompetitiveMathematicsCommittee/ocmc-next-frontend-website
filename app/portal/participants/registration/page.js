@@ -1,24 +1,32 @@
 "use client";
 
+// import required modules and components
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 import ContestRegistrationForm from "@components/features/contests/participants/ContestRegistrationForm";
 import useAuth from "@components/hooks/useAuth";
 
+// display a list of contests available for registration
 const ContestRegistrationList = () => {
+	// get user id
 	const { id } = useAuth();
 
+	// get contests available for registration
 	const { data: contests, isLoading, isSuccess, isError, error } = useGetContestsQuery(undefined, { refetchOnMountOrArgChange: true });
 
 	let content;
 
+	// page loading
 	if (isLoading) content = <p>Loading...</p>;
 
+	// display error if one occurs
 	if (isError) content = <p>{error.error}</p>;
 
 	if (isSuccess) {
 		const { ids } = contests;
+		// display a message if there are no contests available for registraction
 		if (ids?.length === 0) return <p>No contests available for registration</p>;
 
+		// otherwise render list of contest registration forms
 		content = (
 			<>
 				<h1>Contests Registration</h1>
