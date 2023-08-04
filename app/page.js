@@ -85,7 +85,7 @@ export default function Home() {
                 <Image className='w-full' src={Wave3} alt="divider"/>
             </div>
             <section className='flex items-center mt-48 flex-col gap-24 p-16 w-screen'>
-                <h1 className={h1Styles}>Meet Our Team</h1>
+                <h1 className={h1Styles + " text-center"}>Meet Our Team</h1>
                 <div className='flex w-screen justify-center p-4'>
                     <div className='flex justify-center flex-wrap max-w-[90rem] gap-24 w-full'>
                         <ExecPod 
