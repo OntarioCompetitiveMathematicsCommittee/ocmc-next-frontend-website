@@ -5,6 +5,8 @@ import { useGetContestsQuery } from '@components/features/contests/contestsApiSl
 import Contest from '@components/features/contests/Contest'
 import { useState } from 'react'
 
+import TableHead from '@components/TableHead'
+
 const ContestsList = () => {
 	const { data: contests, isLoading, isSuccess, isError, error } = useGetContestsQuery(undefined, {
 		pollingInterval: 60000,
@@ -28,38 +30,29 @@ const ContestsList = () => {
 			? ids.map((contestId) => <Contest key={contestId} contestId={contestId} searchQuery={searchQuery} />) : null;
 
 		content = (
-			<>
-				<br />
-				<h1>Contests List</h1>
+			<div className='w-full h-full flex flex-col py-24 items-center gap-24 overflow-scroll'>
+				<div className='text-center flex flex-col gap-2 items-center'>
+					<h1 className={"text-5xl font-bold"}>Contest List</h1>
+					<Link className='w-64 py-2 px-2 rounded-md bg-brandBlue-500 text-white flex justify-center' href="/portal/contests/new">
+						<button>Create New Contest</button>
+					</Link>
+				</div>
 
-				<Link href="/portal/contests/new"><button>Create New Contest</button></Link>
-				<br/><br/>
-
-				<input
-					type="text"
-					placeholder="Search Contests..."
-					value={searchQuery}
-					onChange={(e) => setSearchQuery(e.target.value)}
-				/>
-				<br/><br/>
+				<div className='flex flex-col w-4/5 gap-4'>
+					<input
+						className="w-64 py-2 px-2 rounded-md border-2 "
+						type="text"
+						value={searchQuery}
+						onChange={e => setSearchQuery(e.target.value)}
+						placeholder="Search Contests..."
+					/>
 				
-				<table>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Year</th>
-							<th>Description</th>
-							<th>Max Score</th>
-							<th>Signups Active</th>
-							<th>Number of Signups</th>
-							<th>Contest Created</th>
-							<th>Last Updated</th>
-							<th>Edit</th>
-						</tr>
-					</thead>
-					<tbody>{tableContent}</tbody>
-				</table>
-			</>
+					<table>
+						<TableHead headings={["Name", "Year", "Description", "Max Score", "Signups Active", "# of Signups", "Edit"]}/>
+						<tbody>{tableContent}</tbody>
+					</table>
+				</div>
+			</div>
 		);
 	}
 

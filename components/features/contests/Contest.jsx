@@ -21,15 +21,15 @@ const Contest = ({ contestId, searchQuery }) => {
         const handleEdit = () => router.push("/portal/contests/" + contestId);
 
         return (
-            <tr>
-                <td>{contest.name}</td>
+            <tr className="bg-white border-2">
+                <td className="p-4">{contest.name}</td>
                 <td>{contest.year}</td>
                 <td>{contest.description}</td>
                 <td>{contest.max_score}</td>
                 <td>{contest.signups_active ? "Yes" : "No"}</td>
                 <td>{contest.signup_ids.length}</td>
-                <td>{created}</td>
-                <td>{updated}</td>
+                {/* <td>{created}</td>
+                <td>{updated}</td> */}
                 <td>
                     <button onClick={handleEdit}>Edit</button>
                 </td>
