@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { navLinks } from '@config/nav'
+import HamburgerMenu from '@components/HamburgerMenu'
 
 import Logo from '@public/assets/logo.svg'
 
@@ -26,7 +27,9 @@ const Navbar = () => {
                         <h1>OCMC</h1>
                     </Link>
                     <div className='flex items-center'>
-                        <ul className='gap-12 items-center hidden md:flex'>
+                        <ul className={"whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-all duration-500 " +
+                            " md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start " 
+                            + (navOpen ? "translate-x-0" : "translate-x-[100%]")}>
                             {Object.keys(navLinks).map((key, index) => (
                                 <li className='relative group w-auto' key={key}>
                                     <Link href={key}>{navLinks[key]}</Link>
@@ -44,11 +47,7 @@ const Navbar = () => {
                             </Link>
                             
                         </ul>
-                        <button onClick={handleNavToggle}>
-                            <svg className='h-6 w-6 md:hidden' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </button>
+                        <HamburgerMenu navOpen={navOpen} handleNavToggle={handleNavToggle}/>
                     </div>
                 </div>
             </nav>
