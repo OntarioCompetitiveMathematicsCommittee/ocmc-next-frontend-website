@@ -16,7 +16,7 @@ const PortalNav = () => {
                     <div className='w-80'>
                         <Link href="/" className='flex items-center text-2xl font-medium gap-2'>
                             <Image className='h-16 w-16' src={Logo} alt="OCMC Logo" />
-                            <h1 className='text-3xl'>OCMC</h1>
+                            <h1 className='text-3xl hidden lg:block'>OCMC</h1>
                         </Link>
                     </div> 
                     <h1 className='text-3xl'>Welcome, {first_name}</h1>
