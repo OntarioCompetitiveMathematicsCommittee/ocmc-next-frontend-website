@@ -41,7 +41,7 @@ const NewPost = () => {
     // creating a new post
     const onCreatePostClicked = async (e) => {
         e.preventDefault();
-        alert(canSubmit) // window pops up to confirm
+        alert(canSubmit) // popup
 
         // submit/publish post
         if (canSubmit) await addNewPost({ author_id, title, content });
