@@ -6,8 +6,7 @@ import { useGetUsersQuery, selectUserById } from '@components/features/users/use
 import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserDisplay'
 import useAuth from '@components/hooks/useAuth'
 
-import { h1Styles } from '@config/textStyles'
-
+import TableHead from '@components/TableHead'
 
 const ProctorUsersList = () => {
 	const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {
@@ -47,15 +46,7 @@ const ProctorUsersList = () => {
 						placeholder="Search Students..."
 					/>
 					<table className='table-auto border-spacing-10'>
-						<thead className='text-xl font-bold'>
-							<tr>
-								<th className='text-brandBlue-900'>Username</th>
-								<th className='text-brandBlue-900'>First Name</th>
-								<th className='text-brandBlue-900'>Last Name</th>
-								<th className='text-brandBlue-900'>Email</th>
-								<th className='text-brandBlue-900'>Reset Password</th>
-							</tr>
-						</thead>
+						<TableHead headings={["Username", "First Name", "Last Name", "Email", "Reset Password"]}/>
 						<tbody className='text-xl'>{tableContent}</tbody>
 					</table>
 				</div>

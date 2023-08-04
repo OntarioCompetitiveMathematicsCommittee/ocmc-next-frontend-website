@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
 import User from '@components/features/users/User';
 
+import Link from 'next/link';
+
+import TableHead from '@components/TableHead';
+
 const UsersList = () => {
   const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {
     pollingInterval: 60000,
@@ -23,35 +27,29 @@ const UsersList = () => {
     const { ids } = users;
 
     const tableContent = ids?.map(userId => <User key={userId} userId={userId} searchQuery={searchQuery} />);
-
+  
     content = (
-      <>
-        <br />
-        <h1>Users List</h1> <br />
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          placeholder="Search Users..."
-        />
-        <br /><br />
-        <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>School</th>
-              <th>Email</th>
-              <th>Roles</th>
-              <th>Edit</th>
-              <th>Reset Password</th>
-            </tr>
-          </thead>
-          <tbody>{tableContent}</tbody>
-        </table>
-      </>
-    );
+      <div className='w-full h-full flex flex-col py-24 items-center gap-24 overflow-scroll'>
+				<div className='text-center flex flex-col gap-2 items-center'>
+          <h1 className={"text-5xl font-bold"}>Users List</h1>
+        </div>
+
+        <div className='flex flex-col w-4/5 gap-4'>
+					<input
+						className="w-64 py-2 px-2 rounded-md border-2 "
+						type="text"
+						value={searchQuery}
+						onChange={e => setSearchQuery(e.target.value)}
+						placeholder="Search Users..."
+					/>
+        
+          <table>
+            <TableHead headings={["Username", "First Name", "Last Name", "School", "Email", "Roles", "Edit", "Reset Password"]}/>
+            <tbody>{tableContent}</tbody>
+          </table>
+        </div>
+      </div>
+    )
   }
 
   return content;

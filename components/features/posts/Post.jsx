@@ -31,13 +31,13 @@ const Post = ({ postId, searchQuery }) => {
         const handleEdit = () => router.push("/portal/posts/" + postId);
 
         return (
-            <tr>
-                <td>{post.title}</td>
+            <tr className="bg-white border-2">
+                <td className="p-4">{post.title}</td>
                 <td>{truncatedContent}</td>
                 <td>{author}</td>
                 <td>{post.display ? "Yes" : "No"}</td>
                 <td>{created}</td>
-                <td>{updated}</td>
+                {/* <td>{updated}</td> */}
                 <td>
                     <button onClick={handleEdit}>Edit</button>
                 </td>
