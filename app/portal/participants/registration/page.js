@@ -28,14 +28,11 @@ const ContestRegistrationList = () => {
 
 		// otherwise render list of contest registration forms
 		content = (
-			<>
-				<h1>Contests Registration</h1>
-				<div className="flex flex-col items-center w-full gap-8">
-					{ids.map((contestId) => (
-						<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} />
-					))}
-				</div>
-			</>
+			<div className="flex flex-col items-center w-full gap-8 py-12">
+				{ids.map((contestId) => (
+					<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} />
+				))}
+			</div>
 		);
 	}
 

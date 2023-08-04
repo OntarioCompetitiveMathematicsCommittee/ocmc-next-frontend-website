@@ -18,12 +18,13 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='flex justify-center w-full bg-brandNeutral-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60 py-2 px-4 fixed top-0 left-0 z-50'>
+            <nav className='flex justify-center w-full bg-brandNeutral-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60 
+                py-2 px-4 fixed top-0 left-0 z-50 shadow-sm'>
                 <div className='max-w-[90rem] w-full flex justify-between items-center'>
-                    <div className='flex items-center text-2xl font-medium gap-2'>
+                    <Link className='flex items-center text-2xl font-medium gap-2' href='/'>
                         <Image className='h-12 w-12' src={Logo} alt="OCMC Logo" />
                         <h1>OCMC</h1>
-                    </div>
+                    </Link>
                     <div className='flex items-center'>
                         <ul className='gap-12 items-center hidden md:flex'>
                             {Object.keys(navLinks).map((key, index) => (
@@ -32,14 +33,15 @@ const Navbar = () => {
                                     <span className='w-0 h-[2px] bg-brandNeutral-600 absolute bottom-[2px] left-0 transition-all group-hover:w-full'></span>
                                 </li>
                             ))}
-                            <li className='rounded-md cursor-pointer border-2 box-border px-6 py-1 transition-all group 
+
+                            <Link className='rounded-md cursor-pointer border-2 box-border px-6 py-1 transition-all group 
                                 hover:bg-gradient-to-br from-brandBlue-500 to-brandGreen-600' 
-                                style={{borderImage: "linear-gradient(45deg, #2182DB, #05A69E) 1"}}>
-                                <Link className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-brandBlue-500 
-                                    to-brandGreen-600 transition-all group-hover:text-white' href='/signup'>
+                                style={{borderImage: "linear-gradient(45deg, #2182DB, #05A69E) 1"}} href='/signup'>
+                                <div className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-brandBlue-500 
+                                    to-brandGreen-600 transition-all group-hover:text-white'>
                                     Register
-                                </Link>
-                            </li>
+                                </div>
+                            </Link>
                             
                         </ul>
                         <button onClick={handleNavToggle}>

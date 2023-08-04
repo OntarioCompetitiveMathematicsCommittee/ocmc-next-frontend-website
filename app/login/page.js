@@ -82,7 +82,7 @@ const Login = () => {
 			<header className='flex justify-center items-center w-1/2'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
-					<Image className='w-[25vw] hidden md:block' src={loginLogo} alt="login"/>
+					<Image className='w-[max(20rem,25vw)] hidden md:block' src={loginLogo} alt="login"/>
 				</div>
 			</header>
 
