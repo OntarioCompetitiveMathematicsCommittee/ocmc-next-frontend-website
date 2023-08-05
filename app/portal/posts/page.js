@@ -40,7 +40,7 @@ const PostsList = () => {
       <div className='w-full h-full flex flex-col py-24 items-center gap-24 overflow-scroll'>
 				<div className='text-center flex flex-col gap-2 items-center'>
           {/** title */}
-          <h1 className={"text-5xl font-bold"}>Posts List</h1>
+          <h1 className={"text-5xl font-bold text-brandBlue-900"}>Posts List</h1>
           {/** button linked to create new post page */}
           <Link className='w-64 py-2 px-2 rounded-md bg-brandBlue-500 text-white flex justify-center' href="/portal/posts/new">
             <button>Create New Post</button>
