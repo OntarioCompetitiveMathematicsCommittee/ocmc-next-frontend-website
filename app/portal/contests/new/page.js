@@ -46,16 +46,17 @@ const NewContest = () => {
 
   // styling
   const content = (
-    <section>
+    <section className="h-full w-full flex flex-col justify-center items-center gap-8">
       {/* display error message if there is an error */}
       <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
-      <h1>New Contest</h1>
+      <h1 className="text-5xl font-bold text-brandBlue-900">New Contest</h1>
 
-      <form onSubmit={onCreateContestClicked}>
+      <form onSubmit={onCreateContestClicked} className="flex flex-col gap-4">
         {/** input field for contest name */}
-        <label htmlFor="name">Name:</label>
+        <label className="text-xl text-brandBlue-900" htmlFor="name">Name:</label>
         <input
+          className="w-96 border-2"
           type="text"
           id="name"
           name="name"
@@ -64,8 +65,9 @@ const NewContest = () => {
         />
 
         {/** input field for contest year */}
-        <label htmlFor="year">Year:</label>
+        <label className="text-xl text-brandBlue-900" htmlFor="year">Year:</label>
         <input
+          className="w-96 border-2"
           type="text"
           id="year"
           name="year"
@@ -74,8 +76,9 @@ const NewContest = () => {
         />
 
         {/** textbox for contest description */}
-        <label htmlFor="description">Description:</label>
+        <label className="text-xl text-brandBlue-900" htmlFor="description">Description:</label>
         <textarea
+          className="w-96 border-2"
           id="description"
           name="description"
           value={description}
@@ -85,6 +88,7 @@ const NewContest = () => {
         {/** input field for contest max score */}
         <label htmlFor="max_score">Max Score:</label>
         <input
+          className="w-96 border-2"
           type="number"
           id="max_score"
           name="max_score"
@@ -93,7 +97,7 @@ const NewContest = () => {
         />
 
         {/** submit button */}
-        <button type="submit" disabled={!canSubmit}>Save Contest</button>
+        <button className="text-xl w-96 bg-brandBlue-500 rounded-md py-2 text-white" type="submit" disabled={!canSubmit}>Save Contest</button>
       </form>
     </section>
   );
