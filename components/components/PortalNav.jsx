@@ -19,7 +19,7 @@ import todos from '@public/assets/dashboard-icons/todos.svg'
 import user from '@public/assets/dashboard-icons/user.svg'
 import users from '@public/assets/dashboard-icons/users.svg'
 
-const PortalHeader = () => {
+const PortalNav = () => {
 
     const [page, setPage] = useState('dashboard');
 
@@ -143,4 +143,4 @@ const PortalHeader = () => {
     return header;
 }
 
-export default PortalHeader
+export default PortalNav

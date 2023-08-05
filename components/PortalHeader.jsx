@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 import Logo from '@public/assets/logo.svg'
 
-const PortalNav = () => {
+const PortalHeader = () => {
 
     const { first_name, last_name, highest_status } = useAuth();
     return (
@@ -26,4 +26,4 @@ const PortalNav = () => {
     )
 }
 
-export default PortalNav
+export default PortalHeader
