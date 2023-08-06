@@ -24,10 +24,8 @@ const PortalLayout = ({ children }) => {
                             {/** header */}
                             <PortalHeader />
                             <div className='flex flex-1'>
-                                {/** navbar/menu */}
                                 <PortalNav />
-                                {/** portal content */}
-                                <div className='flex-1 bg-brandNeutral-100 bg-[url("/assets/portal-bg.svg")] bg-cover'>
+                                <div className='flex-1 bg-brandNeutral-100 bg-[url("/assets/portal-bg.svg")] bg-cover static'>
                                     {children}
                                 </div>
                             </div>
