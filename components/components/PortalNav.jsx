@@ -1,12 +1,12 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice';
 import { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
+import Image from 'next/image'
 
 import PortalElement from '@components/PortalElement';
-import PortalFooter from '@components/components/PortalFooter'
 
 import contestRegistration from '@public/assets/dashboard-icons/contest-registration.svg'
 import contests from '@public/assets/dashboard-icons/contests.svg'
@@ -21,17 +21,23 @@ import users from '@public/assets/dashboard-icons/users.svg'
 
 const PortalNav = () => {
 
-    const [page, setPage] = useState('dashboard');
+
+    const [page, setPage] = useState('');
 
     const { isAdmin, isExecutive, isProctor, isParticipant, highest_status} = useAuth();
 
     const router = useRouter();
+    const pathname = usePathname();
 
     const [sendLogout, { isLoading, isSuccess, isError, error }] = useSendLogoutMutation();
 
     useEffect(() => {
         if (isSuccess) router.replace('/');;
     }, [isSuccess, router]);
+
+    useEffect(() => {
+        setPage(pathname)
+    }, [pathname]);
 
     const handleLogout = () => {
         sendLogout();
@@ -44,8 +50,8 @@ const PortalNav = () => {
 
     const header = (
         <>
-            <nav className='h-full'>
-                <ul className='flex flex-col justify-between w-80 h-full bg-brandNeutral-200 p-4'>
+            <div className='w-80 p-4'></div>
+                <nav className='flex flex-col justify-between w-80 bg-brandNeutral-200 p-4 h-full fixed top-0 pt-24'>
                     <div className='flex flex-col gap-4 pt-2'>
                         <PortalElement 
                             selected={page === '/portal'}
@@ -125,17 +131,10 @@ const PortalNav = () => {
                             path="/portal/edit-self"
                         />
                     </div>
-                    
-                    <div>
-                        <PortalElement
-                            icon={logout}
-                            name={"Logout"}
-                            path="/"
-                            onClick={handleLogout}
-                        />
-                        <PortalFooter/>
-                    </div>
-                </ul>
+                    <button className='p-2 flex gap-2 w-full rounded-md ' onClick={handleLogout}>
+                        <Image src={logout} alt={'logout button'}/>
+                        <h1>Logout</h1>
+                    </button>
             </nav>
         </>
     )
