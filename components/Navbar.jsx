@@ -27,8 +27,8 @@ const Navbar = () => {
                         <h1>OCMC</h1>
                     </Link>
                     <div className='flex items-center'>
-                        <ul className={"whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-all duration-500 " +
-                            " md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start " 
+                        <ul className={"whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-transform duration-500 " +
+                            " md:duration-0 md:transition-none md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start " 
                             + (navOpen ? "translate-x-0" : "translate-x-[100%]")}>
                             {Object.keys(navLinks).map((key, index) => (
                                 <li className='relative group w-auto' key={key}>

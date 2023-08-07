@@ -39,7 +39,7 @@ export default function Home() {
 
     return (
         <>
-            <div className='w-screen h-screen flex flex-col'>
+            <div className='w-screen h-[calc(100vh-2rem)] flex flex-col'>
                 <NavbarPlaceholder/>
                 <Navbar/>
                 <Hero/>
