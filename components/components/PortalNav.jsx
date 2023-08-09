@@ -1,10 +1,10 @@
 "use client"
 
 import { useRouter, usePathname } from 'next/navigation'
+import Image from 'next/image'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice';
 import { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
-import Image from 'next/image'
 
 import PortalElement from '@components/PortalElement';
 
