@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='flex justify-center w-full bg-brandNeutral-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60 
+            <nav className='flex justify-center w-full bg-brandNeutral-200 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60 
                 py-2 px-4 fixed top-0 left-0 z-50 shadow-sm'>
                 <div className='max-w-[90rem] w-full flex justify-between items-center'>
                     <Link className='flex items-center text-2xl font-medium gap-2' href='/'>
@@ -27,8 +27,8 @@ const Navbar = () => {
                         <h1>OCMC</h1>
                     </Link>
                     <div className='flex items-center'>
-                        <ul className={"whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-all duration-500 " +
-                            " md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start " 
+                        <ul className={"whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-transform duration-500 " +
+                            " md:duration-0 md:transition-none md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start " 
                             + (navOpen ? "translate-x-0" : "translate-x-[100%]")}>
                             {Object.keys(navLinks).map((key, index) => (
                                 <li className='relative group w-auto' key={key}>
