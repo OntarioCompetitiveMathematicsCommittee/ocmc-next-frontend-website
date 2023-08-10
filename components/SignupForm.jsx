@@ -214,7 +214,7 @@ const SignupForm = () => {
                                 onBlur={() => setMatchPasswordFocus(false)}
                             />
                         </div>
-                        <button disabled={!canSave} type='submit' className='bg-gradient-to-r from-green-400 to-blue-400 text-white font-medium px-8 py-2 rounded-full'>SIGN IN</button>
+                        <button disabled={!canSave} type='submit' className='bg-gradient-to-br from-brandGreen-500 to-brandBlue-500 text-white font-medium px-8 py-2 rounded-full'>SIGN IN</button>
                     </form>
                 </section>
             </>
