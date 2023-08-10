@@ -134,7 +134,7 @@ const SignupPage = () => {
                 <h1>User {username} successfully created!</h1>
                 <br/>
                 <p>
-                    Click <Link href="/login">here</Link> to log in.
+                    Click <Link href="/auth/login">here</Link> to log in.
                 </p>
             </section>
         )
@@ -329,7 +329,7 @@ const SignupPage = () => {
                 <p>
                     Already registered?<br />
                     <span className="line">
-                        <Link href="/login">Log In</Link>
+                        <Link href="/auth/login">Log In</Link>
                     </span>
                 </p>
             </section>

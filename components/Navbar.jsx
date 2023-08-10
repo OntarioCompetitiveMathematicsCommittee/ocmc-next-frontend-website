@@ -39,7 +39,7 @@ const Navbar = () => {
 
                             <Link className='rounded-md cursor-pointer border-2 box-border px-6 py-1 transition-all group 
                                 hover:bg-gradient-to-br from-brandBlue-500 to-brandGreen-600' 
-                                style={{borderImage: "linear-gradient(45deg, #2182DB, #05A69E) 1"}} href='/signup'>
+                                style={{borderImage: "linear-gradient(45deg, #2182DB, #05A69E) 1"}} href='/auth/signup'>
                                 <div className='font-medium text-transparent bg-clip-text bg-gradient-to-r from-brandBlue-500 
                                     to-brandGreen-600 transition-all group-hover:text-white'>
                                     Register
