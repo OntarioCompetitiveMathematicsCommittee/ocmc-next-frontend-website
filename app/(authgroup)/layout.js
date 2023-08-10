@@ -41,7 +41,7 @@ const LoginRegister = ({children}) => {
                             <SignupForm/>
                         </div>
                     </div>
-                    <div className={'w-1/2 bg-gradient-to-br from-brandGreen-600 to-brandBlue-500 rounded-lg flex flex-col justify-center items-center text-white transition-all '
+                    <div className={'w-1/2 bg-gradient-to-br from-brandGreen-500 to-brandBlue-500 rounded-lg flex flex-col justify-center items-center text-white transition-all '
                         + 'overflow-hidden duration-1000 relative ' + (formState === 'Register' && '-translate-x-full')}>
                         {/* login side text */}
                         <div className={"w-full flex items-center flex-col absolute transition-all duration-1000 "
