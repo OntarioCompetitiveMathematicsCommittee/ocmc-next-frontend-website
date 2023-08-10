@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import { useAddNewPostMutation } from "@components/features/posts/postsApiSlice"
 import useAuth from "@components/hooks/useAuth";
 
+import BackButton from "@components/elements/BackButton"
+
 const NewPost = () => {
     // get user id
     const { id } = useAuth();
@@ -51,8 +53,9 @@ const NewPost = () => {
     let errmsg;
     if (isError) errmsg = error.error;
 
-    const page_content = (
-        <section className="h-full w-full flex flex-col justify-center items-center gap-8">
+    return (
+        <section className="h-full w-full flex flex-col justify-center items-center gap-8 pb-32 relative">
+            <BackButton path={'/portal/posts'}/>
             {/** display error message if there is one */}
             <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
@@ -85,11 +88,6 @@ const NewPost = () => {
                 <button className="text-xl w-96 bg-brandBlue-500 rounded-md py-2 text-white" type="submit" disabled={!canSubmit}>Save Post</button>
             </form>
         </section>
-    )
-
-    // render
-    return (
-        page_content
     )
 }
 
