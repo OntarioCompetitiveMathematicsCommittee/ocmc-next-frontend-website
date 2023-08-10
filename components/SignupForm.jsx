@@ -132,7 +132,7 @@ const SignupForm = () => {
                 <h1>User {username} successfully created!</h1>
                 <br/>
                 <p>
-                    Click <Link href="/login">here</Link> to log in.
+                    Click <Link href="/auth/login">here</Link> to log in.
                 </p>
             </section>
         )

@@ -5,7 +5,7 @@ const Public = () => {
     <div>
       <h1>Homepage</h1>
 
-      <Link href="/login">Login</Link>
+      <Link href="/auth/login">Login</Link>
     </div>
   )
 }

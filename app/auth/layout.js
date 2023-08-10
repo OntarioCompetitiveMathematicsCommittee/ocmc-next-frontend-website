@@ -52,7 +52,7 @@ const LoginRegister = ({children}) => {
                             <p className={'max-w-xs text-center text-gray-100 font-[Montserrat]'}>
                                 {loginSideText}
                             </p>
-                            <Link href="/signup" onClick={changeForm} className='border border-white text-white font-medium px-8 py-2 m-4 rounded-full'>
+                            <Link href="/auth/signup" onClick={changeForm} className='border border-white text-white font-medium px-8 py-2 m-4 rounded-full'>
                                 {loginSideButton}
                             </Link>
                         </div>
@@ -66,7 +66,7 @@ const LoginRegister = ({children}) => {
                             <p className={'max-w-xs text-center text-gray-100 font-[Montserrat]'}>
                                 {registerSideText}
                             </p>
-                            <Link href="/login" onClick={changeForm} className='border border-white text-white font-medium px-8 py-2 m-4 rounded-full'>
+                            <Link href="/auth/login" onClick={changeForm} className='border border-white text-white font-medium px-8 py-2 m-4 rounded-full'>
                                 {registerSideButton}
                             </Link>
                         </div>
