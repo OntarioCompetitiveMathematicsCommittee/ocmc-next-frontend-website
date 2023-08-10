@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAddNewContestMutation } from "@components/features/contests/contestsApiSlice";
 
+import BackButton from "@components/elements/BackButton";
+
 const NewContest = () => {
   // reference to error message element
   const errRef = useRef(null);
@@ -45,8 +47,9 @@ const NewContest = () => {
   if (isError) errmsg = error.error;
 
   // styling
-  const content = (
-    <section className="h-full w-full flex flex-col justify-center items-center gap-8">
+  return (
+    <section className="h-full w-full flex flex-col justify-center items-center gap-8 relative pb-32">
+      <BackButton path={"/portal/contests"} />
       {/* display error message if there is an error */}
       <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
@@ -100,13 +103,6 @@ const NewContest = () => {
         <button className="text-xl w-96 bg-brandBlue-500 rounded-md py-2 text-white" type="submit" disabled={!canSubmit}>Save Contest</button>
       </form>
     </section>
-  );
-
-  // render
-  return (
-    <div>
-        {content}
-    </div>
   )
 }
 
