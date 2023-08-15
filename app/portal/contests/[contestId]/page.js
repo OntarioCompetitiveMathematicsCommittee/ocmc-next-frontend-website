@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 // importing required modules and components
 import { useParams } from 'next/navigation';
@@ -7,16 +7,20 @@ import { selectContestById } from '@components/features/contests/contestsApiSlic
 import EditContestForm from '@components/features/contests/EditContestForm';
 
 const EditContest = () => {
-    // get contestid from url
-    const params = useParams();
-    const id = params.contestId;
+	// get contestid from url
+	const params = useParams();
+	const id = params.contestId;
 
-    // select contest from state using id
-    const contest = useSelector(state => selectContestById(state, id));
+	// select contest from state using id
+	const contest = useSelector((state) => selectContestById(state, id));
 
-    // render if contest data is available
-    const content = contest ? <EditContestForm contest={contest} id={id} /> : <p>Loading...</p>
-    return content;
-}
+	// render if contest data is available
+	const content = contest ? (
+		<EditContestForm contest={contest} id={id} />
+	) : (
+		<p>Loading...</p>
+	);
+	return content;
+};
 
-export default EditContest
+export default EditContest;
