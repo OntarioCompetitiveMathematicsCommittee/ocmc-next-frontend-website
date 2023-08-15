@@ -1,24 +1,24 @@
-"use client"
+'use client';
 
 // importing required modules and components
-import { useRef, useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useDispatch } from 'react-redux'
-import { setCredentials } from '@components/features/auth/authSlice'
-import { useLoginMutation } from '@components/features/auth/authApiSlice'
+import { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '@components/features/auth/authSlice';
+import { useLoginMutation } from '@components/features/auth/authApiSlice';
 
-import usePersist from '@components/hooks/usePersist'
+import usePersist from '@components/hooks/usePersist';
 
-import loginLogo from '@public/assets/login-logo.svg'
+import loginLogo from '@public/assets/login-logo.svg';
 
-import Image from 'next/image'
+import Image from 'next/image';
 
-import Navbar from '@components/Navbar'
+import Navbar from '@components/Navbar';
 
 const Login = () => {
 	// sets focus on components at appropriate times
-    const userRef = useRef();
+	const userRef = useRef();
 	const errRef = useRef();
 
 	const [username, setUsername] = useState('');
@@ -31,10 +31,11 @@ const Login = () => {
 	const dispatch = useDispatch();
 
 	// toggle for 'keep me logged' in checkbox
-	const handleToggle = () => setPersist(prev => !prev);
-	
-	// handles login 
-	const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation();
+	const handleToggle = () => setPersist((prev) => !prev);
+
+	// handles login
+	const [login, { isLoading, isSuccess, isError, error }] =
+		useLoginMutation();
 
 	// focuses on username input field when component loads
 	useEffect(() => {
@@ -45,7 +46,7 @@ const Login = () => {
 	useEffect(() => {
 		setErrMsg('');
 	}, [username, password]);
-	
+
 	// redirects user to /portal page (home) after successful login
 	useEffect(() => {
 		if (isSuccess) router.replace('/portal');
@@ -55,7 +56,10 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			// send login request + get access token
-			const { accessToken } = await login({ username, password }).unwrap();
+			const { accessToken } = await login({
+				username,
+				password,
+			}).unwrap();
 			dispatch(setCredentials({ accessToken }));
 			// set local use state in login back to empty string
 			setUsername('');
@@ -63,13 +67,15 @@ const Login = () => {
 		} catch (err) {
 			// handle different errors
 			if (!err.status) setErrMsg('No server response');
-			else if (err.status === 400) setErrMsg('Missing username or password');
-			else if (err.status === 401) setErrMsg('Invalid username or password');
+			else if (err.status === 400)
+				setErrMsg('Missing username or password');
+			else if (err.status === 401)
+				setErrMsg('Invalid username or password');
 			else setErrMsg(err.data?.message);
 			// focus on error message
 			errRef.current.focus();
 		}
-	}
+	};
 
 	// if (isLoading) return <p>Loading...</p>
 
@@ -77,84 +83,111 @@ const Login = () => {
 	const canLogin = username && password;
 
 	const content = (
-		<section className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
+		<section
+			className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
 			flex flex-col md:flex-row items-center justify-center lg:justify-between">
 			<header className='flex justify-center items-center w-1/2'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
-					<Image className='w-[max(20rem,25vw)] hidden md:block' src={loginLogo} alt="login"/>
+					<Image
+						className='w-[max(20rem,25vw)] hidden md:block'
+						src={loginLogo}
+						alt='login'
+					/>
 				</div>
 			</header>
 
 			<main className='flex flex-col items-center justify-center w-1/2'>
 				<div className='flex flex-col'>
-					<form onSubmit={handleLogin} className='flex flex-col gap-5'>
-
-            {/* username input field */}
+					<form
+						onSubmit={handleLogin}
+						className='flex flex-col gap-5'>
+						{/* username input field */}
 						<div className='flex flex-col rounded-sm'>
-							<label htmlFor="username text-brandNeutral-800">Username</label>
+							<label htmlFor='username text-brandNeutral-800'>
+								Username
+							</label>
 							<input
 								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
-								type="text"
-								id="username"
-								name="username"
+								type='text'
+								id='username'
+								name='username'
 								ref={userRef}
 								value={username}
-								onChange={e => setUsername(e.target.value)}
+								onChange={(e) => setUsername(e.target.value)}
 								placeholder='Enter Username'
 							/>
 						</div>
-						
-            {/* password input field */}
+
+						{/* password input field */}
 						<div className='flex flex-col rounded-sm'>
-							<label htmlFor="password text-brandNeutral-800">Password</label>
+							<label htmlFor='password text-brandNeutral-800'>
+								Password
+							</label>
 							<input
 								className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm'
-								type="password"
-								id="password"
-								name="password"
+								type='password'
+								id='password'
+								name='password'
 								value={password}
-								onChange={e => setPassword(e.target.value)}
+								onChange={(e) => setPassword(e.target.value)}
 								placeholder='Enter Password'
 							/>
 						</div>
 
-            {/* display error message if there is one */}
-						<p ref={errRef} className={"text-red-900 transition-all opacity-0 h-0 -translate-y-3 " 
-							+ (errMsg && "opacity-100 h-full translate-y-0")} aria-live="assertive">* {errMsg}</p>
-						
-            {/* Keep me logged in checkbox */}
-						<label htmlFor="persist">
+						{/* display error message if there is one */}
+						<p
+							ref={errRef}
+							className={
+								'text-red-900 transition-all opacity-0 h-0 -translate-y-3 ' +
+								(errMsg && 'opacity-100 h-full translate-y-0')
+							}
+							aria-live='assertive'>
+							* {errMsg}
+						</p>
+
+						{/* Keep me logged in checkbox */}
+						<label htmlFor='persist'>
 							<input
-								type="checkbox"
-								id="persist"
-								name="persist"
+								type='checkbox'
+								id='persist'
+								name='persist'
 								checked={persist}
 								onChange={handleToggle}
 							/>
 							<p className='inline ml-1'>Remember Me</p>
 						</label>
 
-            {/* login/submit button */}
-						<button className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm' type="submit" disabled={!canLogin}>
+						{/* login/submit button */}
+						<button
+							className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm'
+							type='submit'
+							disabled={!canLogin}>
 							Login
 						</button>
-
 					</form>
-          {/* link to signup page */}
-					<p className='mt-2'>Dont have an account? <Link href="/auth/signup" className='text-blue-500 underline'>Register</Link>!</p>
+					{/* link to signup page */}
+					<p className='mt-2'>
+						Dont have an account?{' '}
+						<Link
+							href='/signup'
+							className='text-blue-500 underline'>
+							Register
+						</Link>
+						!
+					</p>
 				</div>
 			</main>
 		</section>
-	)
+	);
 
 	// render
 	return (
-		<div className="Login">
-			<Navbar/>
+		<div className='Login'>
+			<Navbar />
 			{content}
 		</div>
-	)
-}
+	);
+};
 
-export default Login
+export default Login;

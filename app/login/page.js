@@ -85,8 +85,7 @@ const Login = () => {
 	const content = (
 		<section
 			className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
-			flex flex-col md:flex-row items-center justify-center lg:justify-between"
-		>
+			flex flex-col md:flex-row items-center justify-center lg:justify-between">
 			<header className='flex items-center justify-center w-1/2'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
@@ -102,11 +101,12 @@ const Login = () => {
 				<div className='flex flex-col'>
 					<form
 						onSubmit={handleLogin}
-						className='flex flex-col gap-5'
-					>
+						className='flex flex-col gap-5'>
 						{/* username input field */}
 						<div className='flex flex-col rounded-sm'>
-							<label htmlFor='username text-brandNeutral-800'>
+							<label
+								htmlFor='username'
+								className='text-brandNeutral-800'>
 								Username
 							</label>
 							<input
@@ -123,7 +123,9 @@ const Login = () => {
 
 						{/* password input field */}
 						<div className='flex flex-col rounded-sm'>
-							<label htmlFor='password text-brandNeutral-800'>
+							<label
+								htmlFor='password'
+								className='text-brandNeutral-800'>
 								Password
 							</label>
 							<input
@@ -144,8 +146,7 @@ const Login = () => {
 								'text-red-900 transition-all opacity-0 h-0 -translate-y-3 ' +
 								(errMsg && 'opacity-100 h-full translate-y-0')
 							}
-							aria-live='assertive'
-						>
+							aria-live='assertive'>
 							* {errMsg}
 						</p>
 
@@ -165,8 +166,7 @@ const Login = () => {
 						<button
 							className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm'
 							type='submit'
-							disabled={!canLogin}
-						>
+							disabled={!canLogin}>
 							Login
 						</button>
 					</form>
@@ -175,8 +175,7 @@ const Login = () => {
 						Dont have an account?{' '}
 						<Link
 							href='/signup'
-							className='text-blue-500 underline'
-						>
+							className='text-blue-500 underline'>
 							Register
 						</Link>
 						!
