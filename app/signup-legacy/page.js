@@ -134,13 +134,13 @@ const SignupPage = () => {
                 <h1>User {username} successfully created!</h1>
                 <br/>
                 <p>
-                    Click <Link href="/login">here</Link> to log in.
+                    Click <Link href="/auth/login">here</Link> to log in.
                 </p>
             </section>
         )
     } else {
         content = (
-            <section className="">
+            <section className="pt-32">
                 <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
                 <h1>OCMC User Registration</h1>
                 <form onSubmit={onSaveUserClicked}>
@@ -329,7 +329,7 @@ const SignupPage = () => {
                 <p>
                     Already registered?<br />
                     <span className="line">
-                        <Link href="/login">Log In</Link>
+                        <Link href="/auth/login">Log In</Link>
                     </span>
                 </p>
             </section>

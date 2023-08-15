@@ -41,8 +41,8 @@ const PersistLogin = ({ children }) => {
     let content;
     if (!persist && token) content = children;
     else if (isLoading) content = <p>Loading...</p>;
-    // else if (!persist && !token) content = <p className="errmsg"> Unauthorized <Link href="/login">Please Login Again</Link></p>;
-    else if (isError) content = <p className="errmsg">{error.data?.message} <Link href="/login">Please Login Again 2</Link></p>;
+    // else if (!persist && !token) content = <p className="errmsg"> Unauthorized <Link href="/auth/login">Please Login Again</Link></p>;
+    else if (isError) content = <p className="errmsg">{error.data?.message} <Link href="/auth/login">Please Login Again 2</Link></p>;
     else if (isSuccess && trueSuccess) content = children;
     else if (token && isUninitialized) content = children;
 

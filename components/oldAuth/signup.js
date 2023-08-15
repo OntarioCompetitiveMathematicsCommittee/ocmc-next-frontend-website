@@ -1,19 +1,19 @@
 "use client"
-//signup-J5bQD8F9u3Z2
 
 import { useRef, useState, useEffect } from "react"
 import { useRegisterMutation } from "@components/features/auth/authApiSlice"
-import Link from "next/link"
+import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import { SCHOOLS } from '@config/schools'
+import { SCHOOLS } from '@config/schools' 
 
 import Navbar from "@components/Navbar"
+
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-const ProctorSignup = () => {
+const SignupPage = () => {
     const userRef = useRef();
     const errRef = useRef();
 
@@ -44,6 +44,10 @@ const ProctorSignup = () => {
     const [validEmail, setValidEmail] = useState(false)
     const [emailFocus, setEmailFocus] = useState(false)
 
+    const [grade, setGrade] = useState('')
+    const [validGrade, setValidGrade] = useState(false)
+    const [gradeFocus, setGradeFocus] = useState(false)
+
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
     const [passwordFocus, setPasswordFocus] = useState(false)
@@ -52,11 +56,7 @@ const ProctorSignup = () => {
     const [validMatchPassword, setValidMatchPassword] = useState(false)
     const [matchPasswordFocus, setMatchPasswordFocus] = useState(false)
 
-    const [registrationPasscode, setRegistrationPasscode] = useState('')
-
-    const [errMsg, setErrMsg] = useState('')
-
-    const roles = ["Proctor"]
+    const roles = ["Participant"]
 
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
@@ -84,6 +84,12 @@ const ProctorSignup = () => {
         setValidEmail(emailRegex.test(email));
     }, [email]);
 
+    useEffect(() => {
+        const isNumber = /^\d+$/.test(grade);
+        if(isNumber) setValidGrade(grade >= 1 && grade <= 12);
+        else setValidGrade(false);
+    }, [grade]);
+
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
     const onMatchPasswordChanged = e => setMatchPassword(e.target.value)
@@ -91,17 +97,12 @@ const ProctorSignup = () => {
     const onLastnameChanged = e => setLastname(e.target.value)
     const onSchoolChanged = e => setSchool(e.target.value)
     const onEmailChanged = e => setEmail(e.target.value)
-    const onRegistrationPasscodeChanged = e => setRegistrationPasscode(e.target.value)
+    const onGradeChanged = e => setGrade(e.target.value)
 
-    const canSave = [roles.length, validUsername, validPassword, validMatchPassword, validFirstname, validLastname, validSchool, validEmail].every(Boolean) && !isLoading
+    const canSave = [roles.length, validUsername, validPassword, validMatchPassword, validFirstname, validLastname, validSchool, validEmail, validGrade].every(Boolean) && !isLoading
 
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
-        if (registrationPasscode !== process.env.REACT_APP_PROCTOR_PASSKEY) {
-            errRef.current.focus();
-            setErrMsg("Invalid registration passcode. Please contact the OCMC Executive Team at placeholder@gmail.com to recieve a passkey.");
-            return;
-        }
         if (canSave) {
             await register({
                 username: username,
@@ -111,17 +112,18 @@ const ProctorSignup = () => {
                 last_name: lastname,
                 school: school,
                 email: email,
-                grade: -1
+                grade: grade
             })
         }
     }
 
+    let errmsg;
     if (isError) {
         window.scrollTo(0, 0);
         if (error.status === 409) {
-            setErrMsg("Username already exists. Please choose another.");
+            errmsg = <>Username is already taken. Please choose another.</>
         } else {
-            setErrMsg("An error occurred. Please try again.");
+            errmsg = <>An error occurred. Please try again later.</>
         }
     }
 
@@ -129,7 +131,7 @@ const ProctorSignup = () => {
     if (isSuccess) {
         content = (
             <section>
-                <h1>Proctor {username} successfully registered!</h1>
+                <h1>User {username} successfully created!</h1>
                 <br/>
                 <p>
                     Click <Link href="/auth/login">here</Link> to log in.
@@ -138,9 +140,9 @@ const ProctorSignup = () => {
         )
     } else {
         content = (
-            <section>
-                <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <h1>Proctor Registration</h1>
+            <section className="">
+                <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
+                <h1>OCMC User Registration</h1>
                 <form onSubmit={onSaveUserClicked}>
                     <label htmlFor="username">
                         Username:
@@ -235,6 +237,27 @@ const ProctorSignup = () => {
                         You must select a school.
                     </p>
 
+                    <label htmlFor="grade">
+                        Grade:
+                        <FontAwesomeIcon icon={faCheck} className={validGrade ? "valid" : "hide"} />
+                        <FontAwesomeIcon icon={faTimes} className={validGrade || !grade ? "hide" : "invalid"} />
+                    </label>
+                    <input
+                        type="text"
+                        id="grade"
+                        onChange={onGradeChanged}
+                        value={grade}
+                        required
+                        aria-invalid={validGrade ? "false" : "true"}
+                        aria-describedby="gradenote"
+                        onFocus={() => setGradeFocus(true)}
+                        onBlur={() => setGradeFocus(false)}
+                    />
+                    <p id="gradenote" className={gradeFocus && !validGrade ? "instructions" : "offscreen"}>
+                        <FontAwesomeIcon icon={faInfoCircle} />
+                        Must be valid grade between 1 and 12, with no spaces.
+                    </p>
+
                     <label htmlFor="email">
                         Email:
                         <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
@@ -301,18 +324,6 @@ const ProctorSignup = () => {
                         Must match the first password input field.
                     </p>
 
-                    <label htmlFor="registration_passcode" style={{'color': 'lightblue'}}>
-                        Proctor Registration Passcode:
-                    </label>
-                    <input
-                        type="password"
-                        id="registration_passcode"
-                        onChange={onRegistrationPasscodeChanged}
-                        value={registrationPasscode}
-                        required
-                        aria-describedby="passcodenote"
-                    />
-
                     <button disabled={!canSave}>Sign Up</button>
                 </form>
                 <p>
@@ -333,4 +344,4 @@ const ProctorSignup = () => {
     )
 }
 
-export default ProctorSignup
+export default SignupPage

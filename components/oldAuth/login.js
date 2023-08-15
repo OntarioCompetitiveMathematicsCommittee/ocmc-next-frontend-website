@@ -142,7 +142,7 @@ const Login = () => {
 
 					</form>
           {/* link to signup page */}
-					<p className='mt-2'>Dont have an account? <Link href="/signup" className='text-blue-500 underline'>Register</Link>!</p>
+					<p className='mt-2'>Dont have an account? <Link href="/auth/signup" className='text-blue-500 underline'>Register</Link>!</p>
 				</div>
 			</main>
 		</section>
