@@ -1,0 +1,76 @@
+'use client';
+
+import Navbar from '@components/Navbar';
+
+// import required modules and components
+import { useState } from 'react';
+import { useGetPostsQuery } from '@components/features/posts/postsApiSlice';
+import Link from 'next/link';
+import PublicPost from '@components/features/posts/PublicPost';
+
+import TableHead from '@components/TableHead';
+
+const PublicPosts = () => {
+	// fetch list of posts
+	const {
+		data: posts,
+		isLoading,
+		isSuccess,
+		isError,
+		error,
+	} = useGetPostsQuery(undefined, {
+		pollingInterval: 60000,
+		refetchOnFocus: true,
+		refetchOnMountOrArgChange: true,
+	});
+
+	// state of search query input
+	const [searchQuery, setSearchQuery] = useState('');
+
+	let content;
+
+	// display error message
+	if (isError) content = <p>{error.error}</p>;
+
+	// render list of posts
+	if (isSuccess) {
+		const { ids } = posts;
+
+
+		content = (
+			<div className='flex flex-col items-center w-screen h-full gap-24 px-4 py-24 overflow-scroll'>
+				<div className='flex flex-col items-center w-full max-w-5xl gap-8 text-center'>
+					{/** title */}
+					<h1 className={'text-5xl font-bold text-brandBlue-900'}>
+						OCMC Announcments
+					</h1>
+				
+
+					{/** search query input field */}
+					<div className='flex flex-col w-full gap-4'>
+						{
+							ids?.length
+							? ids.map((postId) => (
+									<PublicPost
+										key={postId}
+										postId={postId}
+										searchQuery={searchQuery}
+									/>
+							  ))
+							: null
+						}
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	return (
+		<>
+			<Navbar />
+			{content}
+		</>
+	);
+};
+
+export default PublicPosts;
