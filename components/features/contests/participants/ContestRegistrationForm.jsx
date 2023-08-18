@@ -39,14 +39,14 @@ const ContestRegistrationForm = ({ userId, contestId }) => {
 
 
     return (
-        <form className={"flex w-4/5 max-w-3xl px-12 py-6 rounded-xl justify-between items-center shadow-sm " 
+        <form className={"flex w-4/5 max-w-3xl px-12 py-6 rounded-xl justify-between items-start md:items-center shadow-sm flex-col md:flex-row gap-2 md:gap-0 " 
             + (isRegistered ? "bg-emerald-100 border-2 border-emerald-200" : "bg-brandBlue-100 border-2 border-brandBlue-200")} onSubmit={handleSignup}>
             <div className="flex flex-col">
                 <p className={"text-xl "  + (isRegistered ? "bg-emerald-100 text-emerald-700" : "bg-brandBlue-100 text-brandBlue-700")}>{year}</p>
                 <h2 className="text-3xl">{name}</h2>
                 <p>{description}</p>
             </div>
-            <button className={"w-1/3 px-4 h-full py-2 rounded-full text-white text-2xl " 
+            <button className={"w-auto px-8 h-full py-2 rounded-full text-white text-2xl " 
                 + (isRegistered ? "bg-emerald-800" : "bg-brandBlue-800")} type="submit">{buttonText}</button>
         </form>
     );

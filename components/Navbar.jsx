@@ -60,10 +60,12 @@ const Navbar = () => {
 								</div>
 							</Link>
 						</ul>
-						<HamburgerMenu
-							navOpen={navOpen}
-							handleNavToggle={handleNavToggle}
-						/>
+						<div className='md:hidden'>
+							<HamburgerMenu
+								navOpen={navOpen}
+								handleNavToggle={handleNavToggle}
+							/>
+						</div>
 					</div>
 				</div>
 			</nav>
