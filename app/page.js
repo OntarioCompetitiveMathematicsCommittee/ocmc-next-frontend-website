@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { h1Styles, h2Styles, h3Styles } from '@config/textStyles'
-
 import NavbarPlaceholder from '@components/NavbarPlaceholder'
 import Navbar from '@components/Navbar'
 import Hero from '@components/homepage/Hero'
@@ -51,7 +49,7 @@ export default function Home() {
                 text="Creators can gain independence through a decentralised digital currency system that is
                     dependent on growing and engaging with the community and also their star power."
             />
-            <div className='mt-48 w-screen h-auto'>
+            <div className='w-screen h-auto mt-48'>
                 <Image className='w-full' src={Wave1} alt="divider"/>
             </div>
             <Section
@@ -84,9 +82,9 @@ export default function Home() {
             <div>
                 <Image className='w-full' src={Wave3} alt="divider"/>
             </div>
-            <section className='flex items-center mt-48 flex-col gap-24 p-16 w-screen'>
-                <h1 className={h1Styles + " text-center"}>Meet Our Team</h1>
-                <div className='flex w-screen justify-center p-4'>
+            <section className='flex flex-col items-center w-screen gap-24 p-16 mt-48'>
+                <h1 className={"homeh1 text-center"}>Meet Our Team</h1>
+                <div className='flex justify-center w-screen p-4'>
                     <div className='flex justify-center flex-wrap max-w-[90rem] gap-24 w-full'>
                         <ExecPod 
                             image={directors.Elaine}

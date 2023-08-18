@@ -54,19 +54,19 @@ const NewPost = () => {
     if (isError) errmsg = error.error;
 
     return (
-        <section className="h-full w-full flex flex-col justify-center items-center gap-8 pb-32 relative">
+        <section className="relative flex flex-col items-center justify-center w-full h-full gap-8 pb-32">
             <BackButton path={'/portal/posts'}/>
             {/** display error message if there is one */}
             <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
-            <h1 className="text-5xl font-bold text-brandBlue-900">New Post</h1>
+            <h1 className="portalh2">New Post</h1>
 
             <form onSubmit={onCreatePostClicked} className="flex flex-col gap-4">
 
                 {/** title input field */}
                 <label className="text-xl text-brandBlue-900" htmlFor="title">Title:</label>
                 <input
-                    className="w-96 border-2"
+                    className="border-2 w-96"
                     type="text"
                     id="title"
                     name="title"
@@ -77,7 +77,7 @@ const NewPost = () => {
                 {/** content textbox */}
                 <label className="text-xl text-brandBlue-900" htmlFor="content">Content:</label>
                 <textarea
-                    className="w-96 border-2"
+                    className="border-2 w-96"
                     id="content"
                     name="content"
                     value={content}
@@ -85,7 +85,7 @@ const NewPost = () => {
                 />
 
                 {/** submit button is disabled if submission requirements are not met */}
-                <button className="text-xl w-96 bg-brandBlue-500 rounded-md py-2 text-white" type="submit" disabled={!canSubmit}>Save Post</button>
+                <button className="py-2 text-xl text-white rounded-md w-96 bg-brandBlue-500" type="submit" disabled={!canSubmit}>Save Post</button>
             </form>
         </section>
     )
