@@ -41,7 +41,7 @@ const Post = ({ postId, searchQuery }) => {
                 </div>
                 <button className='flex flex-col gap-2' onClick={() => {setExpanded(prev => !prev)}}>
                     <h1 className='text-2xl font-bold text-left font-[Montserrat] max-w-2xl'>{post.title}</h1>
-                    <p className='text-left text-gray-500 text-md font-[Montserrat] max-w-2xl'>{expanded ? truncatedContent : post.content}</p>
+                    <p className='text-left text-gray-500 text-md font-[Montserrat] max-w-2xl'>{expanded ? post.content : truncatedContent}</p>
                 </button>
             </div>
         )
