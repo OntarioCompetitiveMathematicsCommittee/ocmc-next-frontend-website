@@ -1,13 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 const Public = () => {
-  return (
-    <div>
-      <h1>Homepage</h1>
+	return (
+		<div>
+			<h1>Homepage</h1>
 
-      <Link href="/auth/login">Login</Link>
-    </div>
-  )
-}
+			<Link href='/login'>Login</Link>
+		</div>
+	);
+};
 
-export default Public
+export default Public;
