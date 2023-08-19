@@ -50,8 +50,8 @@ const PortalNav = () => {
 
     const header = (
         <>
-            <div className='w-80 p-4'></div>
-                <nav className='flex flex-col justify-between w-80 bg-brandNeutral-200 p-4 h-full fixed top-0 pt-24'>
+            <div className='p-4 w-80'></div>
+                <nav className='fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-80 bg-brandNeutral-200'>
                     <div className='flex flex-col gap-4 pt-2'>
                         <PortalElement 
                             selected={page === '/portal'}
@@ -77,6 +77,23 @@ const PortalNav = () => {
                                 name={"Posts List"} 
                                 path="/portal/posts"
                             />}
+                        {(isParticipant) && 
+                            <PortalElement 
+                                selected={page === '/portal/participants/posts'}
+                                setPage={setPage}
+                                icon={posts} 
+                                name={"Announcements"} 
+                                path='/portal/participants/posts'
+                            />}
+                        {(isProctor) && 
+                            <PortalElement 
+                                selected={page === '/portal/proctors/posts'}
+                                setPage={setPage}
+                                icon={posts} 
+                                name={"Announcements"} 
+                                path='/portal/proctors/posts'
+                            />}
+                        
                         {(isAdmin || isExecutive) && 
                             <PortalElement 
                                 selected={page === '/portal/contests'}
@@ -131,7 +148,7 @@ const PortalNav = () => {
                             path="/portal/edit-self"
                         />
                     </div>
-                    <button className='p-2 flex gap-2 w-full rounded-md ' onClick={handleLogout}>
+                    <button className='flex w-full gap-2 p-2 rounded-md ' onClick={handleLogout}>
                         <Image src={logout} alt={'logout button'}/>
                         <h1>Logout</h1>
                     </button>
