@@ -32,8 +32,9 @@ const Footer = () => {
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
         // if (canSubmit) await addNewContest({ name, year, description, max_score });
-      };
-
+    };
+    
+    const canSubmit = email && message;
 	// // handles login
 	// const [login, { isLoading, isSuccess, isError, error }] =
 	// 	useLoginMutation();
@@ -73,7 +74,7 @@ const Footer = () => {
                     Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ 
                 </h1>
             </div>
-            <div className='bg-brandBlue-800 h-[503px] md:h-[403px] flex flex-col'>
+            <div className='bg-brandBlue-800 h-[510px] md:h-[435px] flex flex-col'>
                 <div className='flex flex-col lg:flex-row'>
                     <div className='ml-auto mr-auto mt-5 md:ml-5 lg:mt-[43px] lg:ml-[55px]'>
                         <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-brandNeutral-100'>Keep in Touch</h1>
@@ -116,14 +117,17 @@ const Footer = () => {
                                 </div>
                             </div>
                         </form>
+                        <div className='flex justify-center mt-3 md:mt-5 lg:mt-8'>
+                            <button className="text-xl text-white rounded-md disabled:bg-brandBlue-800 hover:bg-brandBlue-700 w-72 bg-brandBlue-600" type="submit" disabled={!canSubmit}>Send Message</button>
+                        </div>
                     </div>
                     <div className='ml-auto mr-auto mt-5 lg:mt-[27px] lg:mr-[70px] lg:ml-auto w-fit flex flex-row gap-x-10 lg:flex-col lg:gap-y-6'>
                         <Image src={linkedin} alt="linkedin"/>
                         <Image src={facebook} alt="facebook"/>
-                        <Image src={instagram} alt="instagram"/> {/** cannot find a pretty insta logo */}
+                        <Image src={instagram} alt="instagram"/>
                     </div>
                 </div>
-                <div class="ml-auto mr-auto mt-5 md:mt-8 lg:ml-14 lg:mt-[60px]">
+                <div class="ml-auto mr-auto mt-3 md:mt-5 lg:ml-14 lg:mt-[30px]">
                     <h1 className="text-sm text-brandNeutral-100">© 2023 Ontario Competitive Mathematics Committee.</h1>
                 </div>
             </div>
