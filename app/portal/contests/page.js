@@ -37,12 +37,12 @@ const ContestsList = () => {
 			? ids.map((contestId) => <Contest key={contestId} contestId={contestId} searchQuery={searchQuery} />) : null;
 
 		content = (
-			<div className='w-full h-full flex flex-col py-24 items-center gap-24 overflow-scroll'>
-				<div className='text-center flex flex-col gap-2 items-center'>
+			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
+				<div className='flex flex-col items-center gap-2 text-center'>
 					{/** title */}
-					<h1 className={"text-5xl font-bold"}>Contest List</h1>
+					<h1 className="portalh2">Contest List</h1>
 					{/** button is linked to new contest page */}
-					<Link className='w-64 py-2 px-2 rounded-md bg-brandBlue-500 text-white flex justify-center' href="/portal/contests/new">
+					<Link className='flex justify-center w-64 px-2 py-2 text-white rounded-md bg-brandBlue-500' href="/portal/contests/new">
 						<button>Create New Contest</button>
 					</Link>
 				</div>
@@ -50,7 +50,7 @@ const ContestsList = () => {
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** search input to filter contests */}
 					<input
-						className="w-64 py-2 px-2 rounded-md border-2 "
+						className="w-64 px-2 py-2 border-2 rounded-md "
 						type="text"
 						value={searchQuery}
 						onChange={e => setSearchQuery(e.target.value)}

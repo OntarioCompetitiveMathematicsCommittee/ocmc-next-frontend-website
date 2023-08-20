@@ -2,7 +2,7 @@
 const HamburgerMenu = ({handleNavToggle, navOpen}) => {
 
     return (
-        <button className="relative flex overflow-hidden items-center justify-center md:hidden" onClick={handleNavToggle}>
+        <button className="relative flex items-center justify-center overflow-hidden" onClick={handleNavToggle}>
             <div className="flex flex-col justify-center gap-[6px] w-[24px] h-[24px] transform transition-all duration-300 origin-center overflow-hidden">
                 <div className={"bg-black h-[2px] w-7 transform transition-all duration-300 origin-left "  + (navOpen && "translate-x-10")}></div>
                 <div className={"bg-black h-[2px] w-7 rounded transform transition-all duration-300 delay-75 " + (navOpen && "translate-x-10")}></div>

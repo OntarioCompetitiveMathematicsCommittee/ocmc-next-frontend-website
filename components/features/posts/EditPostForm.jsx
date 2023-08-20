@@ -4,6 +4,8 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUpdatePostMutation, useDeletePostMutation } from './postsApiSlice';
 
+import BackButton from '@components/elements/BackButton';
+
 const EditPostForm = ({ post, id }) => {
 	const errRef = useRef(null);
 
@@ -44,42 +46,51 @@ const EditPostForm = ({ post, id }) => {
 	else if (isDeleteError) errmsg = deleteError.error;
 
 	const page_content = (
-		<section>
+		<section className="relative flex flex-col items-center justify-center w-full h-full gap-8 pb-32">
+			<BackButton path="/portal/posts"/>
 			<p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
-			<h1>Edit Post</h1>
+			<h1 className="portalh2">Edit Post</h1>
 
-			<form onSubmit={onUpdatePostClicked}>
-				<label htmlFor="title">Title:</label>
-				<input
-					type="text"
-					id="title"
-					name="title"
-					value={title}
-					onChange={handleTitleChange}
-				/>
+			<form onSubmit={onUpdatePostClicked} className="flex flex-col items-center gap-4">
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="title">Title:</label>
+					<input
+						className="border-2 w-96"
+						type="text"
+						id="title"
+						name="title"
+						value={title}
+						onChange={handleTitleChange}
+					/>
+				</div>
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="content">Content:</label>
+					<textarea
+						className="h-64 border-2 w-96"
+						id="content"
+						name="content"
+						value={content}
+						onChange={handleContentChange}
+					/>
+				</div>
 
-				<label htmlFor="content">Content:</label>
-				<textarea
-					id="content"
-					name="content"
-					value={content}
-					onChange={handleContentChange}
-				/>
+				<div className='flex items-center justify-start w-full gap-1'>
+					<label className="text-xl text-brandBlue-900" htmlFor="display">Display:</label>
+					<input
+						className="w-4 h-4 border-2 accent-brandBlue-600"
+						type="checkbox"
+						id="display"
+						name="display"
+						checked={display}
+						onChange={handleDisplayChange}
+					/>
+				</div>
 
-				<label htmlFor="display">Display:</label>
-				<input
-					type="checkbox"
-					id="display"
-					name="display"
-					checked={display}
-					onChange={handleDisplayChange}
-				/>
-
-				<button type="submit" disabled={!canSubmit}>Update Post</button>
+				<button type="submit" disabled={!canSubmit} className='flex justify-center w-64 px-2 py-2 text-white rounded-md bg-brandBlue-500'>Update Post</button>
 			</form>
 
-			<button onClick={onDeletePostClicked} disabled={isDeleting} className="delete-button">Delete Post</button>
+			<button onClick={onDeletePostClicked} disabled={isDeleting} className='flex justify-center w-64 px-2 py-2 text-white bg-red-500 rounded-md'>Delete Post</button>
 		</section>
 	);
 

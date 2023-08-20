@@ -39,7 +39,7 @@ const PostsFeed = () => {
 			<div className='flex flex-col items-center w-screen h-full gap-24 px-4 py-24 overflow-scroll'>
 				<div className='flex flex-col items-center w-full max-w-5xl gap-8 text-center'>
 					{/** title */}
-					<h1 className={'text-5xl font-bold text-brandBlue-900'}>
+					<h1 className="portalh2">
 						OCMC Announcments
 					</h1>
 				

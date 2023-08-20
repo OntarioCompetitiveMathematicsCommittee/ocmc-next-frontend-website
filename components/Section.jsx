@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { h1Styles, h3Styles } from '@config/textStyles';
-
 const Section = ({
 	buttonText,
 	buttonPath,
@@ -21,10 +19,10 @@ const Section = ({
 			}>
 			<div className='flex flex-col items-center pt-40 pb-2 lg:flex-row lg:justify-center w-full max-w-[100rem]'>
 				<div className='flex flex-col items-center w-full max-w-2xl gap-2 px-4 text-center lg:text-left lg:items-start'>
-					<h1 className={h1Styles + (colour && ' text-white')}>
+					<h1 className={"homeh1 " + (colour && ' text-white')}>
 						{title}
 					</h1>
-					<h3 className={h3Styles + (colour && ' text-white')}>
+					<h3 className={"homeh3 " + (colour && ' text-white')}>
 						{text}
 					</h3>
 					{buttonText && (
