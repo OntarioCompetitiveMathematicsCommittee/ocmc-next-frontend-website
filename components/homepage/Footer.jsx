@@ -74,7 +74,7 @@ const Footer = () => {
                     Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ Contact Us ~ 
                 </h1>
             </div>
-            <div className='bg-brandBlue-800 h-[510px] md:h-[435px] flex flex-col'>
+            <div className='bg-brandBlue-800 h-[535px] md:h-[435px] flex flex-col'>
                 <div className='flex flex-col lg:flex-row'>
                     <div className='ml-auto mr-auto mt-5 md:ml-5 lg:mt-[43px] lg:ml-[55px]'>
                         <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-brandNeutral-100'>Keep in Touch</h1>
@@ -103,22 +103,24 @@ const Footer = () => {
                                     placeholder="examplemail@example.com"
                                     onChange={(e) => setEmail(e.target.value)}
 	    						/>
-                                <div className='mt-1 text-lg leading-[3rem] font-[Montserrat] md:text-xl lg:text-[27px] max-w-[60rem]'>
-                                    <div className='flex flex-row'>
-                                        <h1 className='text-brandYellow-500'>General&nbsp;Inquiries</h1>
-                                        <h1 className='text-brandNeutral-100'>:&nbsp;ontariocmc@gmail.com</h1>
-                                    </div>
-                                </div>
-                                <div className='mt-[-20px] md:mt-3 text-lg leading-[3rem] font-[Montserrat] md:text-xl lg:text-[27px] max-w-[60rem]'>
-                                <div className='flex flex-row'>
-                                        <h1 className='text-brandYellow-500'>Test Day Inquiries</h1>
-                                        <h1 className='text-brandNeutral-100'>: (647)-936-1124</h1>
-                                    </div>
+                                <div className='flex justify-center mt-3'>
+                                    <button className="text-xl text-white rounded-md disabled:bg-brandBlue-800 hover:bg-brandBlue-700 w-72 bg-brandBlue-600" type="submit" disabled={!canSubmit}>Send Message</button>
                                 </div>
                             </div>
                         </form>
-                        <div className='flex justify-center mt-3 md:mt-5 lg:mt-8'>
-                            <button className="text-xl text-white rounded-md disabled:bg-brandBlue-800 hover:bg-brandBlue-700 w-72 bg-brandBlue-600" type="submit" disabled={!canSubmit}>Send Message</button>
+                        <div className="flex flex-col md:flex-row md:gap-x-8 md:mt-8 ">
+                            <div className='flex justify-center text-lg md:text-[20px] leading-[3rem] font-[Montserrat] lg:text-[25px] w-[431px]'>
+                                <div className='flex flex-row'>
+                                    <h1 className='text-brandYellow-500'>General&nbsp;Inquiries</h1>
+                                    <h1 className='text-brandNeutral-100'>:&nbsp;ontariocmc@gmail.com</h1>
+                                </div>
+                            </div>
+                            <div className='flex justify-center text-lg md:text-[20px] leading-[3rem] font-[Montserrat] lg:text-[25px] w-[431px]'>
+                                <div className='flex flex-row'>
+                                    <h1 className='text-brandYellow-500'>Test Day Inquiries</h1>
+                                    <h1 className='text-brandNeutral-100'>: (647)-936-1124</h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='ml-auto mr-auto mt-5 lg:mt-[27px] lg:mr-[70px] lg:ml-auto w-fit flex flex-row gap-x-10 lg:flex-col lg:gap-y-6'>
