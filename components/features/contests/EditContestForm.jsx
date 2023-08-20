@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useUpdateContestMutation, useDeleteContestMutation } from './contestsApiSlice'
 
+import BackButton from '@components/elements/BackButton'
+
 const EditContestForm = ({ contest, id }) => {
 	const errRef = useRef(null)
 
@@ -49,61 +51,69 @@ const EditContestForm = ({ contest, id }) => {
 	else if (isDeleteError) errmsg = deleteError.error
 
 	const content = (
-		<section>
+		<section className="relative flex flex-col items-center justify-center w-full h-full gap-8 pb-32">
+			<BackButton path={'/portal/contests'}/>
 			<p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
 
-			<h1>Edit Contest</h1>
+			<h1 className="portalh2">Edit Contest</h1>
 
-			<form onSubmit={onUpdateContestClicked}>
-				<label htmlFor="name">Name:</label>
-				<input
-					type="text"
-					id="name"
-					name="name"
-					value={name}
-					onChange={handleNameChange}
-				/>
+			<form onSubmit={onUpdateContestClicked} className="flex flex-col items-center gap-4">
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="name">Name:</label>
+					<input className="border-2 w-96"
+						type="text"
+						id="name"
+						name="name"
+						value={name}
+						onChange={handleNameChange}
+					/>
+				</div>
+				
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="year">Year:</label>
+					<input className="border-2 w-96"
+						type="text"
+						id="year"
+						name="year"
+						value={year}
+						onChange={handleYearChange}
+					/>
+				</div>
 
-				<label htmlFor="year">Year:</label>
-				<input
-					type="text"
-					id="year"
-					name="year"
-					value={year}
-					onChange={handleYearChange}
-				/>
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="description">Description:</label>
+					<textarea
+						className="h-32 border-2 w-96"
+						id="description"
+						name="description"
+						value={description}
+						onChange={handleDescriptionChange}
+					/>
+				</div>
+				<div className='flex flex-col gap-2'>
+					<label className="text-xl text-brandBlue-900" htmlFor="max_score">Max Score:</label>
+					<input className="border-2 w-96"
+						type="number"
+						id="max_score"
+						name="max_score"
+						value={max_score}
+						onChange={handleMaxScoreChange}
+					/>
+				</div>
 
-				<label htmlFor="description">Description:</label>
-				<textarea
-					id="description"
-					name="description"
-					value={description}
-					onChange={handleDescriptionChange}
-				/>
-
-				<label htmlFor="max_score">Max Score:</label>
-				<input
-					type="number"
-					id="max_score"
-					name="max_score"
-					value={max_score}
-					onChange={handleMaxScoreChange}
-				/>
-
-				<label htmlFor="signups_active">Signups Active:</label>
-				<input
-					type="checkbox"
-					id="signups_active"
-					name="signups_active"
-					checked={signups_active}
-					onChange={handleSignupsActiveChange}
-				/>
-
-				<button type="submit" disabled={!canSubmit}>Update Contest</button>
+				<div className='flex items-center justify-start w-full gap-1'>
+					<label className="text-xl text-brandBlue-900" htmlFor="signups_active">Signups Active:</label>
+					<input className="w-4 h-4 border-2 accent-brandBlue-600"
+						type="checkbox"
+						id="signups_active"
+						name="signups_active"
+						checked={signups_active}
+						onChange={handleSignupsActiveChange}
+					/>
+				</div>
+				<button type="submit" disabled={!canSubmit} className='flex justify-center w-64 px-2 py-2 text-white rounded-md bg-brandBlue-500'>Update Contest</button>
 			</form>
-
-			<button onClick={onDeleteContestClicked} disabled={isDeleting} className="delete-button">Delete Contest</button>
-
+			<button onClick={onDeleteContestClicked} disabled={isDeleting} className='flex justify-center w-64 px-2 py-2 text-white bg-red-500 rounded-md'>Delete Contest</button>
 		</section>
 	)
 

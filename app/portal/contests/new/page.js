@@ -81,7 +81,7 @@ const NewContest = () => {
         {/** textbox for contest description */}
         <label className="text-xl text-brandBlue-900" htmlFor="description">Description:</label>
         <textarea
-          className="border-2 w-96"
+          className="h-32 border-2 w-96"
           id="description"
           name="description"
           value={description}

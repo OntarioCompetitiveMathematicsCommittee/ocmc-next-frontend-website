@@ -77,7 +77,7 @@ const NewPost = () => {
                 {/** content textbox */}
                 <label className="text-xl text-brandBlue-900" htmlFor="content">Content:</label>
                 <textarea
-                    className="border-2 w-96"
+                    className="h-64 border-2 w-96"
                     id="content"
                     name="content"
                     value={content}
