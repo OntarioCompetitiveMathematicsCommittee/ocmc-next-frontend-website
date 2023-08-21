@@ -34,8 +34,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         }),
 
         getUsersByContest: builder.mutation({
-            query: ({contest_id}) => ({
-                url: `/users/contests/${contest_id}`,
+            query: ({contest_id, school}) => ({
+                url: `/users/contests/${contest_id}/${school}`,
                 method: 'GET',
             }),
             invalidatesTags: [{ type: 'User', id: 'CONTEST' }]

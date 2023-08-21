@@ -11,8 +11,7 @@ import TableHead from '@components/TableHead'
 
 const ProctorUsersList = () => {
 	// fetch list of users/participants
-	const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery({
-		contest_id: "6494e8d8383c89a925ffdc9a", 
+	const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {
 		pollingInterval: 60000,
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true,
