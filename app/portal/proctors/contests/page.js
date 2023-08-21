@@ -30,18 +30,13 @@ const Contests = () => {
 	// display error
 	if (isError) content = <p>{error.error}</p>
 
-	// render list of participants
+	// render list of contest participants
 	if (isSuccess) {
-		// const { ids } = users;
-
-		// // list of participants based on their ids
-		// const tableContent = ids?.map(userId => <ProctorUserDisplay key={userId} userId={userId} school={proctor.school} />);
 	
 		content = (
 			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
-				{/** title with proctor school name */}
 				<div className='text-center'>
-					<h1 className={"text-5xl"}>Registered Participants for</h1>
+					<h1 className={"text-5xl"}>Student Involved In:</h1>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
