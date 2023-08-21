@@ -33,6 +33,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             }
         }),
 
+        getUsersByContest: builder.mutation({
+            query: ({contest_id}) => ({
+                url: `/users/contests/${contest_id}`,
+                method: 'GET',
+            }),
+            invalidatesTags: [{ type: 'User', id: 'CONTEST' }]
+        }),
+
         addNewUser: builder.mutation({
             query: initialUserData => ({
                 url: '/users',
@@ -74,6 +82,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
 export const { 
     useGetUsersQuery,
+    useGetUsersByContestMutation,
     useAddNewUserMutation,
     useUpdateUserMutation,
     useUpdateUserContestsMutation,
