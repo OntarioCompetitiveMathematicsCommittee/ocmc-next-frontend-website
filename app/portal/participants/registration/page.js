@@ -8,7 +8,7 @@ import useAuth from "@components/hooks/useAuth";
 // display a list of contests available for registration
 const ContestRegistrationList = () => {
 	// get user id
-	const { id } = useAuth();
+	const { id, username } = useAuth();
 
 	// get contests available for registration
 	const { data: contests, isLoading, isSuccess, isError, error } = useGetContestsQuery(undefined, { refetchOnMountOrArgChange: true });
@@ -30,7 +30,7 @@ const ContestRegistrationList = () => {
 		content = (
 			<div className="flex flex-col items-center w-full gap-8 py-12">
 				{ids.map((contestId) => (
-					<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} />
+					<ContestRegistrationForm key={contestId} userId={id} contestId={contestId} username={username}/>
 				))}
 			</div>
 		);

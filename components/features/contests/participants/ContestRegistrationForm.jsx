@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { selectContestById, useUpdateContestSignupsMutation } from "../contestsApiSlice";
+import { useUpdateUserContestsMutation } from "@components/features/users/usersApiSlice";
 import { useSelector } from "react-redux";
 
-const ContestRegistrationForm = ({ userId, contestId }) => {
+const ContestRegistrationForm = ({ userId, contestId, username }) => {
     const contest = useSelector((state) => selectContestById(state, contestId));
     const { name, year, description, max_score, signups_active, signup_ids } = contest;
 
@@ -12,6 +13,7 @@ const ContestRegistrationForm = ({ userId, contestId }) => {
     const [isRegistered, setIsRegistered] = useState(signup_ids.includes(userId));
 
     const [updateContestSignups, { isLoading, isSuccess, isError, error }] = useUpdateContestSignupsMutation();
+    const [updateUserContests, { isLoading: isUserLoading, isSuccess: isUserSuccess, isError: isUserError, error: userError }] = useUpdateUserContestsMutation();
 
     useEffect(() => {
         if (isError) alert(error.error);
@@ -29,6 +31,7 @@ const ContestRegistrationForm = ({ userId, contestId }) => {
         e.preventDefault();
         const type = isRegistered ? "remove" : "add";
         await updateContestSignups({ id: contestId, participant_id: userId, type });
+        await updateUserContests({ username, contest_id: contestId, score:-1, type })
     }
 
     if (!signups_active) return null;
