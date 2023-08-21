@@ -6,6 +6,7 @@ import Navbar from '@components/Navbar'
 import Hero from '@components/homepage/Hero'
 import Sponsors from '@components/homepage/Sponsors'
 import Section from '@components/Section'
+import Footer from '@components/homepage/Footer'
 
 import Mission from '@public/assets/mission.svg'
 import Contest from '@public/assets/omc.svg'
@@ -138,6 +139,7 @@ export default function Home() {
                 </div>
             </section>
             <div className='h-48'></div>
+            <Footer></Footer>
         </>
     )
 }
