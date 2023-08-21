@@ -22,12 +22,10 @@ const ViewSelfContestScores = () => {
 
 	if (isSuccess) {
 		// display contest data for user
-		return currUser.contest_data.map((contest) => (
-			<>
+		return currUser.contest_data.map((contest, index) => (
+			<div className="" key={index}>
 				<ContestDisplay id={contest.contest_id} score={contest.score} />
-				<br />
-				<br />
-			</>
+			</div>
 		));
 	}
 
