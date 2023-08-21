@@ -1,25 +1,30 @@
 "use client"
 
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import { useGetUsersByContestMutation } from '@components/features/users/usersApiSlice'
+import { useGetUsersByContestMutation, selectUserById } from '@components/features/users/usersApiSlice'
+import useAuth from '@components/hooks/useAuth'
 
-import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserDisplay'
 import TableHead from '@components/TableHead'
 
 const Contests = () => {
     const [yoyoyo, {isLoading, isSuccess, isError, error}] = useGetUsersByContestMutation();
     const [users, setUsers] = useState([]);
-    
+
+    const proctor_id = useAuth().id;
+	const proctor = useSelector((state) => selectUserById(state, proctor_id));
+
     const fetchData = async () => {
-        const users = await yoyoyo({contest_id: "6494e8d8383c89a925ffdc9a"});
+        const users = await yoyoyo({contest_id: "6494e8d8383c89a925ffdc9a", school: proctor.school});
         setUsers(users);
-        console.log(users);
     }
 
     useEffect(() => {
-        fetchData()
-    }, [])
+        if (proctor){
+            fetchData()
+        }
+    }, [proctor, yoyoyo])
 
     let content;
     let userScore
@@ -36,7 +41,8 @@ const Contests = () => {
 		content = (
 			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
 				<div className='text-center'>
-					<h1 className={"text-5xl"}>Student Involved In:</h1>
+					<h1 className={"text-5xl"}>{"CONTEST"} Score</h1>
+                    <h2 className={"portalh2 text-brandBlue-900"}>{proctor?.school}</h2>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
