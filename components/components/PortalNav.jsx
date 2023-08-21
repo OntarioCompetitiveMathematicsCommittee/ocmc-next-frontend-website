@@ -22,8 +22,6 @@ import user from '@public/assets/dashboard-icons/user.svg'
 import users from '@public/assets/dashboard-icons/users.svg'
 
 const PortalNav = () => {
-
-
     const [page, setPage] = useState('');
     const [navOpen, setNavOpen] = useState(false);
 
@@ -58,14 +56,14 @@ const PortalNav = () => {
 
     const header = (
         <>
-            <button onClick={handleNavToggle} className='fixed z-10 p-4 border-2 rounded-full bg-brandNeutral-200 bottom-4 right-4'>
+            <div onClick={handleNavToggle} className='fixed z-10 flex p-4 border-2 rounded-full bg-brandNeutral-200 bottom-4 right-4 lg:hidden'>
                 <div className='pointer-events-none'>
                     <HamburgerMenu
                         navOpen={navOpen}
                         handleNavToggle={handleNavToggle}
                     />
                 </div>
-            </button>
+            </div>
             
             <div className='absolute p-4 pointer-events-none lg:static w-80'></div>
             <nav className={'fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-80 bg-brandNeutral-200 lg:translate-x-0 transition-transform duration-500 ' 
