@@ -10,7 +10,6 @@ import { useLoginMutation } from '@components/features/auth/authApiSlice';
 import usePersist from '@components/hooks/usePersist';
 
 import Image from 'next/image'
-import { h1Styles, h2Styles, h3Styles } from '@config/textStyles'
 
 import linkedin from '@public/assets/socials/linkedin.svg'
 import facebook from '@public/assets/socials/facebook.svg'
@@ -78,12 +77,14 @@ const Footer = () => {
                 <div className='flex flex-col lg:flex-row'>
                     <div className='ml-auto mr-auto mt-5 md:ml-5 lg:mt-[43px] lg:ml-[55px]'>
                         <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-brandNeutral-100'>Keep in Touch</h1>
-                        <form onSubmit={onContactUsSubmit} className='flex flex-col md:flex-row lg:mt-3 gap-x-1 md:gap-x-8'>
+                        <form onSubmit={onContactUsSubmit} className='flex flex-col gap-5 md:flex-row lg:mt-3'>
                             {/** message field */}
                             <div className='flex flex-col'>
-                                <h1 className='text-md md:text-[15px] leading-[3rem] font-[Montserrat] lg:text-[20px] max-w-[60rem] text-brandNeutral-100'>Message</h1> {/** change sizing for different screens */}
+                                <h1 className='text-md md:text-md leading-[3rem] font-[Montserrat] lg:text-xl max-w-[60rem] text-brandNeutral-100'>
+                                    Message
+                                </h1> {/** change sizing for different screens */}
                                 <textarea
-                                    className=" w-[431px] h-[100px] md:h-[126px] bg-brandNeutral-100 px-1 rounded-lg border-2 font-[Montserrat]"
+                                    className=" w-[431px] h-[100px] md:h-[126px] bg-brandNeutral-100 px-2 rounded-lg border-2 font-[Montserrat] py-1"
                                     id="message"
                                     name="message"
                                     value={message}
@@ -93,18 +94,22 @@ const Footer = () => {
                             </div>
 
                             {/** email field + ocmc contact info */}
-                            <div className='flex flex-col gap-y-1 md:gap-y-5'>
-                                <h1 className='text-md leading-[3rem] font-[Montserrat] md:text-[15px] lg:text-[20px] max-w-[60rem] text-brandNeutral-100'>Your Email</h1>
+                            <div className='flex flex-col items-start gap-5'>
+                                <h1 className='text-md leading-[3rem] font-[Montserrat] md:text-md lg:text-xl max-w-[60rem] text-brandNeutral-100'>
+                                    Your Email
+                                </h1>
                                 <input
-                                    className="mt-[-12px] w-[431px] h-[37px] bg-brandNeutral-100 px-2 py-1 border-2 rounded-2xl font-[Montserrat]"
+                                    className="mt-[-12px] w-[431px] h-[37px] bg-brandNeutral-100 px-2 py-1 border-2 rounded-lg font-[Montserrat]"
                                     id="email"
                                     type="text"
                                     value={email}
                                     placeholder="examplemail@example.com"
                                     onChange={(e) => setEmail(e.target.value)}
 	    						/>
-                                <div className='flex justify-center mt-3'>
-                                    <button className="text-xl text-white rounded-md disabled:bg-brandBlue-800 hover:bg-brandBlue-700 w-72 bg-brandBlue-600" type="submit" disabled={!canSubmit}>Send Message</button>
+                                <div className='flex justify-center'>
+                                    <button className="px-24 py-2 text-xl text-white rounded-lg disabled:bg-brandBlue-800 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={!canSubmit}>
+                                        Send Message
+                                    </button>
                                 </div>
                             </div>
                         </form>
