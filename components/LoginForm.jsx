@@ -71,16 +71,16 @@ const LoginForm = () => {
 
     return (
         <>
-            <h1 className="text-3xl font-bold mb-3">
+            <h1 className="mb-3 text-3xl font-bold">
                 Login
             </h1>
-            <div className="flex flex-col w-full items-center gap-2">
-                <form onSubmit={handleLogin} className='w-full flex flex-col gap-3 items-center'>
+            <div className="flex flex-col items-center w-full gap-2">
+                <form onSubmit={handleLogin} className='flex flex-col items-center w-full gap-3'>
                     {/* username field */}
                     <div className='flex flex-col w-3/4'>
                         <label htmlFor="username">Username</label>
                         <input
-                            className='bg-gray-100 border border-gray-200 rounded-md text-sm py-2 px-4 w-full'
+                            className='w-full px-4 py-2 text-sm bg-gray-100 border border-gray-200 rounded-md'
                             type="text"
                             id="username"
                             name="username"
@@ -95,7 +95,7 @@ const LoginForm = () => {
                     <div className='flex flex-col w-3/4'>
                         <label htmlFor="password text-brandNeutral-800">Password</label>
                         <input
-                            className='bg-gray-100 border border-gray-200 rounded-md text-sm py-2 px-4 w-full'
+                            className='w-full px-4 py-2 text-sm bg-gray-100 border border-gray-200 rounded-md'
                             type="password"
                             id="password"
                             name="password"
@@ -122,7 +122,7 @@ const LoginForm = () => {
                             <p className='inline ml-1'>Remember Me</p>
                         </label>
                     </div>
-                    <button type='submit' className='bg-gradient-to-br from-brandGreen-500 to-brandBlue-500 text-white font-medium px-8 py-2 rounded-full'>SIGN IN</button>
+                    <button type='submit' className='px-8 py-2 font-medium text-white rounded-full bg-gradient-to-br from-brandGreen-500 to-brandBlue-500'>SIGN IN</button>
                 </form>
             </div>
         </>

@@ -140,7 +140,6 @@ const SignupPage = () => {
 				validGrade,
 			]);
 			if (canSave) {
-				console.log('hihi');
 				await register({
 					username: username,
 					password: password,
