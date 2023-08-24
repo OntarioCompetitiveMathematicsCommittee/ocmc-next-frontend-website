@@ -33,13 +33,34 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             }
         }),
 
-        getUsersByContest: builder.mutation({
+        getUsersByContest: builder.query({
             query: ({contest_id, school}) => ({
                 url: `/users/contests/${contest_id}/${school}`,
                 method: 'GET',
             }),
-            invalidatesTags: [{ type: 'User', id: 'CONTEST' }]
+            validStatus: (response, result) => {
+                return response.status === 200 && !result.isError;
+            },
+            keepUnusedDataFor: 60,
+            providesTags: (result, error, arg) => {
+                if (result?.ids) {
+                    return [
+                        { type: 'Users', id: 'CONTESTLIST' },
+                        ...result.ids.map((id) => ({ type: 'User', id }))
+                    ]
+                } else {
+                    return [{ type: 'Users', id: 'CONTESTLIST' }]
+                }
+            }
         }),
+
+        // getUsersByContest: builder.mutation({
+        //     query: ({contest_id, school}) => ({
+        //         url: `/users/contests/${contest_id}/${school}`,
+        //         method: 'GET',
+        //     }),
+        //     invalidatesTags: [{ type: 'User', id: 'CONTEST' }]
+        // }),
 
         addNewUser: builder.mutation({
             query: initialUserData => ({
@@ -82,7 +103,8 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
 export const { 
     useGetUsersQuery,
-    useGetUsersByContestMutation,
+    // useGetUsersByContestMutation,
+    useGetUsersByContestQuery,
     useAddNewUserMutation,
     useUpdateUserMutation,
     useUpdateUserContestsMutation,

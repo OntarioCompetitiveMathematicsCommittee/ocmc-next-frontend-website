@@ -118,6 +118,14 @@ const PortalNav = () => {
                             name={"Contests List"} 
                             path="/portal/contests"
                         />}
+                    {(isProctor) && 
+                        <PortalElement 
+                            selected={page === '/portal/proctors/contests'}
+                            setPage={setPage}
+                            icon={contests} 
+                            name={"View Contests"} 
+                            path="/portal/proctors/contests"
+                        />}
 
                     {isParticipant && 
                         <PortalElement 

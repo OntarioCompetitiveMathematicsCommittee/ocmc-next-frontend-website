@@ -16,7 +16,7 @@ const Contest = ({ contestId }) => {
 
         return (
             <tr className="bg-white border-2">
-                <td className="p-4">{contest.name}</td>
+                <td className="py-4 pl-4">{contest.name}</td>
                 <td>{contest.year}</td>
                 <td>{contest.description}</td>
                 <td>{contest.max_score}</td>
@@ -25,7 +25,7 @@ const Contest = ({ contestId }) => {
                 {/* <td>{created}</td>
                 <td>{updated}</td> */}
                 <td>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleEdit} className='px-6 py-1 text-white bg-blue-500 rounded-md'>Edit</button>
                 </td>
             </tr>
         )

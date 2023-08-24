@@ -134,7 +134,7 @@ const Footer = () => {
                         <Image src={instagram} alt="instagram"/>
                     </div>
                 </div>
-                <div class="ml-auto mr-auto mt-3 md:mt-5 lg:ml-14 lg:mt-[30px]">
+                <div className="ml-auto mr-auto mt-3 md:mt-5 lg:ml-14 lg:mt-[30px]">
                     <h1 className="text-sm text-brandNeutral-100">© 2023 Ontario Competitive Mathematics Committee.</h1>
                 </div>
             </div>

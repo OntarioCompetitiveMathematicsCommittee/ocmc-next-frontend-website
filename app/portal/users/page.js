@@ -5,8 +5,6 @@ import { useState } from 'react';
 import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
 import User from '@components/features/users/User';
 
-import Link from 'next/link';
-
 import TableHead from '@components/TableHead';
 
 const UsersList = () => {
@@ -54,8 +52,8 @@ const UsersList = () => {
         
           {/** table ot display list of users */}
           <table>
-            <TableHead headings={["Username", "First Name", "Last Name", "School", "Email", "Roles", "Edit", "Reset Password"]}/>
-            <tbody>{tableContent}</tbody>
+            <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Password", "View"]}/>
+            <tbody className='text-md'>{tableContent}</tbody>
           </table>
         </div>
       </div>

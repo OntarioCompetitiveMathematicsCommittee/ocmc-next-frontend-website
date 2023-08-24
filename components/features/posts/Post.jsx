@@ -32,14 +32,14 @@ const Post = ({ postId, searchQuery }) => {
 
         return (
             <tr className="bg-white border-2">
-                <td className="p-4">{post.title}</td>
+                <td className="py-4 pl-4">{post.title}</td>
                 <td>{truncatedContent}</td>
                 <td>{author}</td>
                 <td>{post.display ? "Yes" : "No"}</td>
                 <td>{created}</td>
                 {/* <td>{updated}</td> */}
                 <td>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleEdit} className='px-6 py-1 text-white bg-blue-500 rounded-md'>Edit</button>
                 </td>
             </tr>
         )

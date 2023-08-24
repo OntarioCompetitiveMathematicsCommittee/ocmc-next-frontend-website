@@ -1,15 +1,18 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useSelector } from 'react-redux'
 import { selectUserById, useUpdateUserMutation } from './usersApiSlice'
+
+import Link from 'next/link'
 
 const User = ({ userId, searchQuery }) => {
     const [tempPwd, setTempPwd] = useState("");
 
     const user = useSelector((state) => selectUserById(state, userId));
     const router = useRouter();
+    const pathname = usePathname();
 
     const [updateUser, {
         isLoading,
@@ -64,17 +67,19 @@ const User = ({ userId, searchQuery }) => {
 
         return (
             <tr className="bg-white border-2">
-                <td className="p-4">{user.username}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
+                <td className="py-4 pl-4">{user.username}</td>
+                <td>{user.first_name} {user.last_name}</td>
                 <td>{user.school}</td>
                 <td>{user.email}</td>
                 <td>{userRolesString}</td>
                 <td>
-                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={handleEdit} className='px-6 py-1 text-white bg-blue-500 rounded-md'>Edit</button>
                 </td>
                 <td>
-                    <button className="pwd-reset" onClick={(e) => handlePwdReset(e)}>Reset Password</button>
+                    <button className="px-6 py-1 text-white bg-red-500 rounded-md" onClick={(e) => handlePwdReset(e)}>Reset</button>
+                </td>
+                <td>
+                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"users/view/" + userId}>View</Link>
                 </td>
             </tr>
         )

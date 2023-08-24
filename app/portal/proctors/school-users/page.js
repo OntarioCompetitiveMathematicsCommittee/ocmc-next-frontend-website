@@ -43,7 +43,7 @@ const ProctorUsersList = () => {
 			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
 				{/** title with proctor school name */}
 				<div className='text-center'>
-					<h1 className={"text-5xl"}>Registered Participants for</h1>
+					<h1 className={"portalh2 font-normal"}>Registered Participants for</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{proctor.school}</h2>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
@@ -57,8 +57,8 @@ const ProctorUsersList = () => {
 					/>
 					{/** table to display list of registered participants under the proctor */}
 					<table className='table-auto border-spacing-10'>
-						<TableHead headings={["Username", "First Name", "Last Name", "Email", "Reset Password"]}/>
-						<tbody className='text-xl'>{tableContent}</tbody>
+						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Password", "View"]}/>
+						<tbody className='text-md'>{tableContent}</tbody>
 					</table>
 				</div>
 			</div>

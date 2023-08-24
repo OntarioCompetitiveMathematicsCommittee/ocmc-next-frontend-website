@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { selectUserById, useUpdateUserMutation } from "../usersApiSlice"
 
+import Link from "next/link"
+
 const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
     const [tempPwd, setTempPwd] = useState("");
 
@@ -61,12 +63,15 @@ const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
 
         return (
             <tr className="bg-white border-2">
-                <td className="p-4">{user.username}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
+                <td className="py-4 pl-4">{user.username}</td>
+                <td>{user.first_name} {user.last_name}</td>
+                <td>{user.grade}</td>
                 <td>{user.email}</td>
                 <td>
-                    <button className="pwd-reset" onClick={(e) => handlePwdReset(e)}>Reset Password</button>
+                    <button className="px-6 py-1 text-white bg-red-500 rounded-md" onClick={(e) => handlePwdReset(e)}>Reset</button>
+                </td>
+                <td>
+                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"school-users/view/" + userId}>View</Link>
                 </td>
             </tr>
         );
