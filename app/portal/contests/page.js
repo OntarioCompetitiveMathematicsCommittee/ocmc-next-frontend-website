@@ -59,7 +59,7 @@ const ContestsList = () => {
 				
 					{/** table to display list of contests */}
 					<table>
-						<TableHead headings={["Name", "Year", "Description", "Max Score", "Signups Active", "# of Signups", "Edit"]}/>
+						<TableHead headings={["Name", "Year", "Description", "Max Score", "Active", "# of Signups", "Edit"]}/>
 						<tbody className='text-md'>{tableContent}</tbody>
 					</table>
 				</div>
