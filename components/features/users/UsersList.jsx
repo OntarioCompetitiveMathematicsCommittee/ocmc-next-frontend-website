@@ -36,19 +36,8 @@ const UsersList = () => {
         />
         <br /><br />
         <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>School</th>
-              <th>Email</th>
-              <th>Roles</th>
-              <th>Edit</th>
-              <th>Reset Password</th>
-            </tr>
-          </thead>
-          <tbody>{tableContent}</tbody>
+          <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Password", "View"]}/>
+          <tbody className='text-md'>{tableContent}</tbody>
         </table>
       </>
     );

@@ -60,7 +60,7 @@ const PostsList = () => {
           {/** table to display list of posts */}
           <table>
             <TableHead headings={["Title", "Content", "Description", "Visible", "Date Posted", "Edit"]}/>
-            <tbody>{tableContent}</tbody>
+            <tbody className='text-md'>{tableContent}</tbody>
           </table>
         </div>
       </div>

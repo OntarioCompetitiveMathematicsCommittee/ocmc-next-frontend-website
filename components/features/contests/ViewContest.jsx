@@ -16,14 +16,14 @@ const Contest = ({ contestId }) => {
 
         return (
             <tr className="bg-white border-2">
-                <td className="p-4">{contest.name}</td>
+                <td className="py-4 pl-4">{contest.name}</td>
                 <td>{contest.year}</td>
                 <td>{contest.description}</td>
                 <td>{contest.max_score}</td>
                 <td>{contest.signups_active ? "Yes" : "No"}</td>
                 <td>{contest.signup_ids.length}</td>
                 <td>
-                    <Link href={"/portal/proctors/contests/" + contestId}>View</Link>
+                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"/portal/proctors/contests/" + contestId}>View</Link>
                 </td>
             </tr>
         )
