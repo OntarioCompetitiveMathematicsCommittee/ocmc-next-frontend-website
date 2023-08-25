@@ -2,11 +2,12 @@
 
 // importing required modules and components
 import { useSelector } from "react-redux";
-import { useGetUsersQuery, selectUserById } from "@components/features/users/usersApiSlice";
+import { useGetUsersQuery, useUpdateUserContestsMutation, selectUserById } from "@components/features/users/usersApiSlice";
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
 
-import TableHead from "@components/TableHead";
+import TableHead from "@components/portal/TableHead";
+import BackButton from "@components/elements/BackButton";
 
 const ViewUserContestScores = ({ id }) => {
 
@@ -15,16 +16,19 @@ const ViewUserContestScores = ({ id }) => {
 		pollingInterval: 60000,
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
-	})
+	}) 
+	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestsMutation()
 
 	// get current user using id
 	const currUser = useSelector((state) => selectUserById(state, id));
 
+	const updateScore = (currScore, currContestId) => {
+		console.log(currScore, currUser.username, contestId)
+        updateUserContests({username: currUser.username, contest_id: currContestId, score: currScore, type: "update"})
+    }
+
 	// page loading
 	if (isUserLoading || isContestLoading ) return <p>Loading...</p>;
-
-	// user has no contest data, display this message
-	if (currUser.contest_data.length === 0) return <p>No contests to display</p>;
 
 	let contestId;
 
@@ -32,6 +36,7 @@ const ViewUserContestScores = ({ id }) => {
 		// display contest data for user
 		return (
 			<div className='relative flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
+				<BackButton path="/portal/users"/>
 				<div className='text-center'>
 					<h1 className={"portalh2 font-normal"}>Past Contest Scores</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{currUser.first_name} {currUser.last_name}</h2>
@@ -41,11 +46,12 @@ const ViewUserContestScores = ({ id }) => {
 					<table className='table-auto border-spacing-10'>
 						<TableHead headings={["Contest", "Year", "Score"]}/>
 						<tbody className='text-md'>
-							{currUser.contest_data.map((contest, index) => {
+							{currUser.contest_data.length !== 0 &&
+							currUser.contest_data.map((contest, index) => {
 								contestId = contest.contest_id;
 								return (
 									<tr className="bg-white border-2" key={index}>
-										<ContestDisplay id={contestId} score={contest.score} index maxScore={contests.entities[contestId].max_score}/>
+										<ContestDisplay id={contestId} score={contest.score} index maxScore={contests.entities[contestId].max_score} updateScore={updateScore}/>
 									</tr>
 								)
 							})}

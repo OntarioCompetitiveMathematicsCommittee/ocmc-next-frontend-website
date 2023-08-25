@@ -1,6 +1,6 @@
 
-import PostsFeed from '@components/PostsFeed';
-import Navbar from '@components/Navbar';
+import PostsFeed from '@components/portal/PostsFeed';
+import Navbar from '@components/elements/Navbar';
 
 const PublicPosts = () => {
 

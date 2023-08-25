@@ -1,12 +1,12 @@
 "use client";
 
 // import required modules and components
-import PortalNav from '@components/components/PortalNav'
+import PortalNav from '@components/portal/PortalNav'
 import PersistLogin from '@components/PersistLogin';
 import Prefetch from '@components/Prefetch'
 import RequireAuth from '@components/RequireAuth';
 
-import PortalHeader from '@components/PortalHeader'
+import PortalHeader from '@components/portal/PortalHeader'
 
 import { ROLES } from '@config/roles'
 

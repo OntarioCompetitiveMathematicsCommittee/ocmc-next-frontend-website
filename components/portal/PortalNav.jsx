@@ -6,9 +6,9 @@ import { useSendLogoutMutation } from '../features/auth/authApiSlice';
 import { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 
-import HamburgerMenu from '@components/HamburgerMenu';
+import HamburgerMenu from '@components/elements/HamburgerMenu';
 
-import PortalElement from '@components/PortalElement';
+import PortalElement from '@components/portal/PortalElement';
 
 import contestRegistration from '@public/assets/dashboard-icons/contest-registration.svg'
 import contests from '@public/assets/dashboard-icons/contests.svg'

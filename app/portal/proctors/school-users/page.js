@@ -7,7 +7,7 @@ import { useGetUsersQuery, selectUserById } from '@components/features/users/use
 import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserDisplay'
 import useAuth from '@components/hooks/useAuth'
 
-import TableHead from '@components/TableHead'
+import TableHead from '@components/portal/TableHead'
 
 const ProctorUsersList = () => {
 	// fetch list of users/participants

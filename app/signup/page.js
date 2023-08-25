@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { SCHOOLS } from '@config/schools';
 
-import Navbar from '@components/Navbar';
+import Navbar from '@components/elements/Navbar';
 
 import loginLogo from '@public/assets/login-logo.svg';
 

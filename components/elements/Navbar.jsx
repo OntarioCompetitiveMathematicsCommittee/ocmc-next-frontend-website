@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { navLinks } from '@config/nav';
-import HamburgerMenu from '@components/HamburgerMenu';
+import HamburgerMenu from '@components/elements/HamburgerMenu';
 
 import Logo from '@public/assets/logo.svg';
 

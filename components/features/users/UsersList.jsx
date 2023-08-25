@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useGetUsersQuery } from './usersApiSlice';
 import User from './User';
 
+import TableHead from '@components/portal/TableHead';
+
 const UsersList = () => {
   const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {
     pollingInterval: 60000,

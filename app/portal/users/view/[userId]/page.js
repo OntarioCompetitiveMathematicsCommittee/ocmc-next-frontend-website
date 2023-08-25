@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 
-import ViewUserContestScores from '@components/ViewUserContestScores';
+import ViewUserContestScores from '@components/portal/ViewUserContestScores';
 
 const ViewUser = () => {
     // get user id
