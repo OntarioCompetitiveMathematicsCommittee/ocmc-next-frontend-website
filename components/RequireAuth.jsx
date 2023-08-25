@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from 'next/navigation'
-import useAuth from '@components/hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 import PageNotFound from '@components/PageNotFound'
 
 const RequireAuth = ({ allowedRoles, children }) => {

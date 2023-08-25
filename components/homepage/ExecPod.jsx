@@ -2,14 +2,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position }) => {
-  return (
-    <div className={'flex flex-col items-center gap-2 justify-center w-80 md:90 lg:w-96 rounded-full p-4 pb-12 '+ bgColour} >
-        <Image className='rounded-full' src={image} alt="yes"/>
-        <h2 className={"text-[1.6rem] font-black " + textColour}>{firstName + " " + lastName}</h2>
-        <h3 className='text-lg font-medium'>{position}</h3>
-        <Link className={'underline ' + textColour} href="">More {firstName} &rarr;</Link>
-    </div>
-  )
+    return (
+        <div className={`flex items-center gap-6 justify-center rounded-xl p-3 w-[90vw] max-w-md md:flex-col md:p-4 md:w-auto md:gap-2 ${bgColour}`} >
+            <Image className='w-32 rounded-xl md:w-64' src={image} alt="yes"/>
+            <div className='flex flex-col items-start justify-center gap-2 md:items-center'>
+                <h2 className={`text-[1.6rem] font-bold ${textColour}`}>
+                    {firstName + " " + lastName}
+                </h2>
+                <h3 className='text-md font-regular'>
+                    {position}
+                </h3>
+                <Link className={`underline ${textColour}`} href="">
+                    More {firstName} &rarr;
+                </Link>
+            </div>
+        </div>
+    )
 }
 
 export default ExecPod

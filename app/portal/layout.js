@@ -25,8 +25,10 @@ const PortalLayout = ({ children }) => {
                             <PortalHeader />
                             <div className='flex flex-1'>
                                 <PortalNav />
-                                <div className='flex-1 bg-brandNeutral-100 bg-[url("/assets/portal-bg.svg")] bg-cover static'>
-                                    {children}
+                                <div className='flex-1 bg-brandNeutral-100 bg-[url("/assets/portal-bg.svg")] bg-cover h-[calc(100vh-85px)] static overflow-hidden'>
+                                    <div className='w-full h-full mb-32 overflow-hidden'>
+                                        {children}
+                                    </div>
                                 </div>
                             </div>
                         </div>

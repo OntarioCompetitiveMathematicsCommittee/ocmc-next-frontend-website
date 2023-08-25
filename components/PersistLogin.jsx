@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useRefreshMutation } from '@components/features/auth/authApiSlice';
-import usePersist from '@components/hooks/usePersist';
+import usePersist from '@hooks/usePersist';
 import { useSelector } from 'react-redux';
 import { selectCurrentToken } from '@components/features/auth/authSlice';
 

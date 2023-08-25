@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { useGetUsersQuery, selectUserById } from "../../users/usersApiSlice"
-import useAuth from "../../../hooks/useAuth"
+import useAuth from "../../../../hooks/useAuth"
 import ContestDisplay from "./ContestDisplay"
 
 const ViewSelfContestScores = () => {

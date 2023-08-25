@@ -4,6 +4,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faCheck,
@@ -13,6 +14,7 @@ import {
 import { SCHOOLS } from '@config/schools';
 
 import Navbar from '@components/elements/Navbar';
+import loginLogo from '@public/assets/auth-graphic.svg';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -53,6 +55,8 @@ const ProctorSignup = () => {
 	const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
 
 	const [registrationPasscode, setRegistrationPasscode] = useState('');
+
+	const [stage, setStage] = useState(0);
 
 	const [errMsg, setErrMsg] = useState('');
 
@@ -106,26 +110,45 @@ const ProctorSignup = () => {
 			validEmail,
 		].every(Boolean) && !isLoading;
 
+	const canMoveOn =
+		[
+			roles.length,
+			validUsername,
+			validPassword,
+			validMatchPassword,
+			validEmail,
+		].every(Boolean) && !isLoading;
+
 	const onSaveUserClicked = async (e) => {
 		e.preventDefault();
-		if (registrationPasscode !== process.env.REACT_APP_PROCTOR_PASSKEY) {
-			errRef.current.focus();
-			setErrMsg(
-				'Invalid registration passcode. Please contact the OCMC Executive Team at placeholder@gmail.com to recieve a passkey.'
-			);
-			return;
-		}
-		if (canSave) {
-			await register({
-				username: username,
-				password: password,
-				roles: roles,
-				first_name: firstname,
-				last_name: lastname,
-				school: school,
-				email: email,
-				grade: -1,
-			});
+
+		if (stage === 1) {
+			console.log(registrationPasscode, process.env.NEXT_PUBLIC_REACT_APP_PROCTOR_PASSKEY)
+			if (registrationPasscode !== process.env.NEXT_PUBLIC_REACT_APP_PROCTOR_PASSKEY) {
+				// errRef.current.focus();
+				setErrMsg(
+					'Invalid registration passcode. Please contact the OCMC Executive Team at placeholder@gmail.com to recieve a passkey.'
+				);
+				return;
+			}
+			console.log("working2")
+			if (canSave) {
+				await register({
+					username: username,
+					password: password,
+					roles: roles,
+					first_name: firstname,
+					last_name: lastname,
+					school: school,
+					email: email,
+					grade: -1,
+				});
+				console.log("what is happening")
+			}
+		} else {
+			if (canMoveOn) {
+				setStage(stage + 1);
+			}
 		}
 	};
 
@@ -138,42 +161,18 @@ const ProctorSignup = () => {
 		}
 	}
 
-	let content;
-	if (isSuccess) {
-		content = (
-			<section>
-				<h1>Proctor {username} successfully registered!</h1>
-				<br />
-				<p>
-					Click <Link href='/login'>here</Link> to log in.
-				</p>
-			</section>
-		);
-	} else {
-		content = (
-			<section>
-				<p
-					ref={errRef}
-					className={errMsg ? 'errmsg' : 'offscreen'}
-					aria-live='assertive'>
-					{errMsg}
-				</p>
-				<h1>Proctor Registration</h1>
-				<form onSubmit={onSaveUserClicked}>
-					<label htmlFor='username'>
+	const formPages = [];
+
+	formPages[0] = (
+		<div className='flex flex-col'>
+			<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
+				{/* username input field */}
+				<div className='flex flex-col rounded-sm'>
+					<label htmlFor='username' className='text-brandNeutral-800'>
 						Username:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validUsername ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validUsername || !username ? 'hide' : 'invalid'
-							}
-						/>
 					</label>
 					<input
+						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
 						type='text'
 						id='username'
 						ref={userRef}
@@ -191,145 +190,22 @@ const ProctorSignup = () => {
 						className={
 							usernameFocus && username && !validUsername
 								? 'instructions'
-								: 'offscreen'
+								: 'hidden'
 						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
 						4 to 24 characters.
 						<br />
 						Must begin with a letter.
 						<br />
 						Letters, numbers, underscores, hyphens allowed.
 					</p>
+				</div>
 
-					<label htmlFor='firstname'>
-						First Name:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validFirstname ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validFirstname || !firstname
-									? 'hide'
-									: 'invalid'
-							}
-						/>
-					</label>
-					<input
-						type='text'
-						id='firstname'
-						onChange={onFirstnameChanged}
-						value={firstname}
-						required
-						aria-invalid={validFirstname ? 'false' : 'true'}
-						aria-describedby='firstnote'
-						onFocus={() => setFirstnameFocus(true)}
-						onBlur={() => setFirstnameFocus(false)}
-					/>
-					<p
-						id='firstnote'
-						className={
-							firstnameFocus && !validFirstname
-								? 'instructions'
-								: 'offscreen'
-						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
-						You must enter a first name.
-					</p>
-
-					<label htmlFor='lastname'>
-						Last Name:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validLastname ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validLastname || !lastname ? 'hide' : 'invalid'
-							}
-						/>
-					</label>
-					<input
-						type='text'
-						id='lastname'
-						onChange={onLastnameChanged}
-						value={lastname}
-						required
-						aria-invalid={validLastname ? 'false' : 'true'}
-						aria-describedby='lastnote'
-						onFocus={() => setLastnameFocus(true)}
-						onBlur={() => setLastnameFocus(false)}
-					/>
-					<p
-						id='lastnote'
-						className={
-							lastnameFocus && !validLastname
-								? 'instructions'
-								: 'offscreen'
-						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
-						You must enter a last name.
-					</p>
-
-					<label htmlFor='school'>
-						School:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validSchool ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validSchool || !school ? 'hide' : 'invalid'
-							}
-						/>
-					</label>
-					<select
-						id='school'
-						onChange={onSchoolChanged}
-						value={school}
-						required
-						aria-invalid={validSchool ? 'false' : 'true'}
-						aria-describedby='schoolnote'
-						onFocus={() => setSchoolFocus(true)}
-						onBlur={() => setSchoolFocus(false)}
-						className='select-school'>
-						<option value='' disabled hidden>
-							Select a school
-						</option>
-						{SCHOOLS.map((school, index) => (
-							<option key={index} value={school}>
-								{school}
-							</option>
-						))}
-					</select>
-					<p
-						id='schoolnote'
-						className={
-							schoolFocus && !validSchool
-								? 'instructions'
-								: 'offscreen'
-						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
-						You must select a school.
-					</p>
-
-					<label htmlFor='email'>
+				<div className='flex flex-col rounded-sm'>
+					<label htmlFor='email' className='text-brandNeutral-800'>
 						Email:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validEmail ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validEmail || !email ? 'hide' : 'invalid'
-							}
-						/>
 					</label>
 					<input
+						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
 						type='text'
 						id='email'
 						onChange={onEmailChanged}
@@ -345,26 +221,18 @@ const ProctorSignup = () => {
 						className={
 							emailFocus && !validEmail
 								? 'instructions'
-								: 'offscreen'
+								: 'hidden'
 						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
 						Must be a valid email address.
 					</p>
-
-					<label htmlFor='password'>
+				</div>
+				{/* password input field */}
+				<div className='flex flex-col rounded-sm'>
+					<label htmlFor='password' className='text-brandNeutral-800'>
 						Password:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={validPassword ? 'valid' : 'hide'}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validPassword || !password ? 'hide' : 'invalid'
-							}
-						/>
 					</label>
 					<input
+						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
 						type='password'
 						id='password'
 						onChange={onPasswordChanged}
@@ -380,9 +248,8 @@ const ProctorSignup = () => {
 						className={
 							passwordFocus && !validPassword
 								? 'instructions'
-								: 'offscreen'
+								: 'hidden'
 						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
 						8 to 24 characters.
 						<br />
 						Must include uppercase and lowercase letters, a number
@@ -395,27 +262,15 @@ const ProctorSignup = () => {
 						<span aria-label='dollar sign'>$</span>{' '}
 						<span aria-label='percent'>%</span>
 					</p>
-
-					<label htmlFor='confirm_pwd'>
+				</div>
+				<div className='flex flex-col rounded-sm'>
+					<label
+						htmlFor='confirm_pwd'
+						className='text-brandNeutral-800'>
 						Confirm Password:
-						<FontAwesomeIcon
-							icon={faCheck}
-							className={
-								validMatchPassword && matchPassword
-									? 'valid'
-									: 'hide'
-							}
-						/>
-						<FontAwesomeIcon
-							icon={faTimes}
-							className={
-								validMatchPassword || !matchPassword
-									? 'hide'
-									: 'invalid'
-							}
-						/>
 					</label>
 					<input
+						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
 						type='password'
 						id='confirm_pwd'
 						onChange={onMatchPasswordChanged}
@@ -431,35 +286,178 @@ const ProctorSignup = () => {
 						className={
 							matchPasswordFocus && !validMatchPassword
 								? 'instructions'
-								: 'offscreen'
+								: 'hidden'
 						}>
-						<FontAwesomeIcon icon={faInfoCircle} />
 						Must match the first password input field.
 					</p>
+				</div>
 
-					<label
-						htmlFor='registration_passcode'
-						style={{ color: 'lightblue' }}>
-						Proctor Registration Passcode:
-					</label>
-					<input
-						type='password'
-						id='registration_passcode'
-						onChange={onRegistrationPasscodeChanged}
-						value={registrationPasscode}
-						required
-						aria-describedby='passcodenote'
-					/>
+				{/* continue/submit button */}
+				<button
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 border-2 rounded-lg font-medium font-[Montserrat]'
+					type='submit'>
+					Continue
+				</button>
+			</form>
+			{/* link to signup page */}
+			<p className='mt-2'>
+				Already have an account?{' '}
+				<Link href='/login' className='text-blue-500 underline'>
+					Sign In!
+				</Link>
+			</p>
+		</div>
+	);
 
-					<button disabled={!canSave}>Sign Up</button>
-				</form>
-				<p>
-					Already registered?
-					<br />
-					<span className='line'>
-						<Link href='/login'>Log In</Link>
-					</span>
+	formPages[1] = (
+		<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
+			{/* username input field */}
+			<div className='flex flex-col rounded-sm'>
+				<label htmlFor='firstname' className='text-brandNeutral-800'>
+					First Name:
+				</label>
+				<input
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					type='text'
+					id='firstname'
+					onChange={onFirstnameChanged}
+					value={firstname}
+					required
+					aria-invalid={validFirstname ? 'false' : 'true'}
+					aria-describedby='firstnote'
+					onFocus={() => setFirstnameFocus(true)}
+					onBlur={() => setFirstnameFocus(false)}
+				/>
+				<p
+					id='firstnote'
+					className={
+						firstnameFocus && !validFirstname
+							? 'instructions'
+							: 'hidden'
+					}>
+					You must enter a first name.
 				</p>
+			</div>
+
+			<div className='flex flex-col rounded-sm'>
+				<label htmlFor='lastname' className='text-brandNeutral-800'>
+					Last Name:
+				</label>
+				<input
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					type='text'
+					id='lastname'
+					onChange={onLastnameChanged}
+					value={lastname}
+					required
+					aria-invalid={validLastname ? 'false' : 'true'}
+					aria-describedby='lastnote'
+					onFocus={() => setLastnameFocus(true)}
+					onBlur={() => setLastnameFocus(false)}
+				/>
+				<p
+					id='lastnote'
+					className={
+						lastnameFocus && !validLastname
+							? 'instructions'
+							: 'hidden'
+					}>
+					You must enter a last name.
+				</p>
+			</div>
+			{/* password input field */}
+			<div className='flex flex-col rounded-sm'>
+				<label htmlFor='school' className='text-brandNeutral-800'>
+					School:
+				</label>
+				<select
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+					id='school'
+					onChange={onSchoolChanged}
+					value={school}
+					required
+					aria-invalid={validSchool ? 'false' : 'true'}
+					aria-describedby='schoolnote'
+					onFocus={() => setSchoolFocus(true)}
+					onBlur={() => setSchoolFocus(false)}>
+					<option value='' disabled hidden>
+						Select a school
+					</option>
+					{SCHOOLS.map((school, index) => (
+						<option key={index} value={school}>
+							{school}
+						</option>
+					))}
+				</select>
+				<p
+					id='schoolnote'
+					className={
+						schoolFocus && !validSchool ? 'instructions' : 'hidden'
+					}>
+					<FontAwesomeIcon icon={faInfoCircle} />
+					You must select a school.
+				</p>
+			</div>
+			<div className='flex flex-col rounded-sm'>
+				<label
+					className='text-brandNeutral-800'
+					htmlFor='registration_passcode'>
+					Proctor Registration Passcode:
+				</label>
+				<input
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+					type='password'
+					id='registration_passcode'
+					onChange={onRegistrationPasscodeChanged}
+					value={registrationPasscode}
+					required
+					aria-describedby='passcodenote'
+				/>
+
+			</div>
+
+			{/* continue/submit button */}
+			<button
+				className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white rounded-lg font-medium font-[Montserrat]'
+				type='submit'>
+				Sign Up
+			</button>
+		</form>
+	);
+
+	let content;
+
+	if (isSuccess) {
+		content = (
+			<section>
+				<h1>User {username} successfully created!</h1>
+				<br />
+				<p>
+					Click <Link href='/login'>here</Link> to log in.
+				</p>
+			</section>
+		);
+	} else {
+		content = (
+			<section
+				className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
+				flex flex-col md:flex-row items-center justify-center lg:justify-between">
+				<header className='flex items-center justify-center w-1/2'>
+					<div className='flex flex-col items-center'>
+						<h1 className='text-[max(5vw,3rem)] font-bold'>
+							Register.
+						</h1>
+						<Image
+							className='w-[max(20rem,25vw)] hidden md:block'
+							src={loginLogo}
+							alt='login'
+						/>
+					</div>
+				</header>
+
+				<main className='flex flex-col items-center justify-center w-1/2'>
+					{formPages[stage]}
+				</main>
 			</section>
 		);
 	}

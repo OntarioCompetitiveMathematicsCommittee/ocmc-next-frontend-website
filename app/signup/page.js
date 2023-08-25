@@ -128,17 +128,6 @@ const SignupPage = () => {
 	const onSaveUserClicked = async (e) => {
 		e.preventDefault();
 		if (stage === 1) {
-			console.log([
-				roles.length,
-				validUsername,
-				validPassword,
-				validMatchPassword,
-				validFirstname,
-				validLastname,
-				validSchool,
-				validEmail,
-				validGrade,
-			]);
 			if (canSave) {
 				await register({
 					username: username,

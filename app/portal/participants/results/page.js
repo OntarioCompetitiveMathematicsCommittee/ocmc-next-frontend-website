@@ -1,6 +1,6 @@
 "use client";
 
-import useAuth from '@components/hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 import ViewUserContestScores from '@components/portal/ViewUserContestScores'
 
 const ViewSelfContestScores = () => {

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useGetUsersQuery, selectUserById } from '@components/features/users/usersApiSlice'
 import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserDisplay'
-import useAuth from '@components/hooks/useAuth'
+import useAuth from '@hooks/useAuth'
 
 import TableHead from '@components/portal/TableHead'
 
