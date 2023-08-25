@@ -6,7 +6,7 @@ import { useGetPostsQuery } from '@components/features/posts/postsApiSlice';
 import Link from 'next/link';
 import PublicPost from '@components/features/posts/PublicPost';
 
-import TableHead from '@components/TableHead';
+import TableHead from '@components/portal/TableHead';
 
 const PostsFeed = () => {
 	// fetch list of posts

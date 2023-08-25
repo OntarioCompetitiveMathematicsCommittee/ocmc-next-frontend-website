@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import NavbarPlaceholder from '@components/NavbarPlaceholder'
-import Navbar from '@components/Navbar'
+import NavbarPlaceholder from '@components/elements/NavbarPlaceholder'
+import Navbar from '@components/elements/Navbar'
 import Hero from '@components/homepage/Hero'
 import Sponsors from '@components/homepage/Sponsors'
-import Section from '@components/Section'
+import Section from '@components/homepage/Section'
 import Footer from '@components/homepage/Footer'
 
 import Mission from '@public/assets/mission.svg'
@@ -23,7 +23,7 @@ import Oliver from '@public/assets/directors/Oliver.png'
 import Elaine from '@public/assets/directors/Elaine.png'
 import Jacob from '@public/assets/directors/Jacob.png'
 
-import ExecPod from '@components/ExecPod'
+import ExecPod from '@components/homepage/ExecPod'
 
 export default function Home() {
 

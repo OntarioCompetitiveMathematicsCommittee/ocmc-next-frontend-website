@@ -6,7 +6,7 @@ import { useGetContestsQuery } from '@components/features/contests/contestsApiSl
 import Contest from '@components/features/contests/Contest'
 import { useState } from 'react'
 
-import TableHead from '@components/TableHead'
+import TableHead from '@components/portal/TableHead'
 
 const ContestsList = () => {
 	// fetch list of contests

@@ -14,7 +14,7 @@ import loginLogo from '@public/assets/login-logo.svg';
 
 import Image from 'next/image';
 
-import Navbar from '@components/Navbar';
+import Navbar from '@components/elements/Navbar';
 
 const Login = () => {
 	// sets focus on components at appropriate times

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
 import User from '@components/features/users/User';
 
-import TableHead from '@components/TableHead';
+import TableHead from '@components/portal/TableHead';
 
 const UsersList = () => {
   // fetch list of users

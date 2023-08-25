@@ -1,4 +1,4 @@
-import PostsFeed from '@components/PostsFeed';
+import PostsFeed from '@components/portal/PostsFeed';
 
 const ParticipantPosts = () => {
     return (
