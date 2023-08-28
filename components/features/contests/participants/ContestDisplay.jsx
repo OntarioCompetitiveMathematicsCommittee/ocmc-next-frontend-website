@@ -4,7 +4,7 @@ import { useGetContestsQuery, selectContestById } from "../contestsApiSlice"
 import { useSelector } from "react-redux"
 import { useState } from 'react'
 
-const ContestDisplay = ({ id, score, maxScore, updateScor, isAdmin }) => {
+const ContestDisplay = ({ id, score, maxScore, updateScore, isAdmin }) => {
     const [initialScore, setInitialScore] = useState(score)
     const [currScore, setCurrScore] = useState(score)
 

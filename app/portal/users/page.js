@@ -1,13 +1,17 @@
 "use client"
 
 // import required modules/components
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import useDraggableScroll from '@hooks/useDraggableScroll';
 import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
 import User from '@components/features/users/User';
 
 import TableHead from '@components/portal/TableHead';
 
 const UsersList = () => {
+   const ref = useRef(null);
+   const {onMouseDown} = useDraggableScroll(ref)
+
    // fetch list of users
    const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery(undefined, {
       pollingInterval: 60000,
@@ -51,11 +55,12 @@ const UsersList = () => {
                      />
             
                {/** table ot display list of users */}
-               <table>
-                  <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Password", "View"]}/>
-                  <tbody className='text-md'>{tableContent}</tbody>
-               </table>
-               
+               <div className='w-full overflow-x-scroll' ref={ref} onMouseDown={onMouseDown}>
+                  <table className='min-w-[81rem] w-full'>
+                     <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Password", "View"]}/>
+                     <tbody className='text-md'>{tableContent}</tbody>
+                  </table>
+               </div>
             </div>
          </div>
       )
