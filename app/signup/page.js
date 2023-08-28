@@ -138,6 +138,7 @@ const SignupPage = () => {
 					school: school,
 					email: email,
 					grade: grade,
+					active: false
 				});
 			}
 		} else {

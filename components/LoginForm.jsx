@@ -30,6 +30,8 @@ const LoginForm = () => {
     // handles login 
     const [login, { isLoading, isSuccess, isError, error }] = useLoginMutation();
 
+    let active = true;
+
     // focuses on username input field when component loads
     useEffect(() => {
         userRef.current.focus();
@@ -59,7 +61,10 @@ const LoginForm = () => {
             if (!err.status) setErrMsg('No server response');
             else if (err.status === 400) setErrMsg('Missing username or password');
             else if (err.status === 401) setErrMsg('Invalid username or password');
-            else setErrMsg(err.data?.message);
+            else {
+                setErrMsg(err.data?.message);
+                if(err.status == 403) active = false;
+            }
             // focus on error message
             errRef.current.focus();
         }
