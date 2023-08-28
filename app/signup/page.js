@@ -13,6 +13,7 @@ import {
 import { SCHOOLS } from '@config/schools';
 
 import Navbar from '@components/elements/Navbar';
+import NavbarPlaceholder from "@components/elements/NavbarPlaceholder"
 
 import loginLogo from '@public/assets/login-logo.svg';
 
@@ -444,7 +445,7 @@ const SignupPage = () => {
 	} else {
 		content = (
 			<section
-				className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
+				className="md:bg-[url('/assets/auth-graphic.svg')] h-full w-screen bg-left-top bg-no-repeat bg-cover 
 				flex flex-col md:flex-row items-center justify-center lg:justify-between">
 				<header className='flex items-center justify-center w-1/2'>
 					<div className='flex flex-col items-center'>
@@ -467,8 +468,9 @@ const SignupPage = () => {
 	}
 
 	return (
-		<div className='Signup'>
+		<div className='flex flex-col h-screen'>
 			<Navbar />
+			<NavbarPlaceholder/>
 			{content}
 		</div>
 	);

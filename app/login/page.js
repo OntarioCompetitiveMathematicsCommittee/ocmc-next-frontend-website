@@ -15,6 +15,7 @@ import loginLogo from '@public/assets/login-logo.svg';
 import Image from 'next/image';
 
 import Navbar from '@components/elements/Navbar';
+import NavbarPlaceholder from '@components/elements/NavbarPlaceholder';
 
 const Login = () => {
 	// sets focus on components at appropriate times
@@ -187,8 +188,9 @@ const Login = () => {
 
 	// render
 	return (
-		<div className='Login'>
+		<div className='flex flex-col h-screen'>
 			<Navbar />
+			<NavbarPlaceholder/>
 			{content}
 		</div>
 	);
