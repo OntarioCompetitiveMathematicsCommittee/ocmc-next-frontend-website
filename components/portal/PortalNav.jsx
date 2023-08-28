@@ -4,7 +4,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice';
 import { useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 import HamburgerMenu from '@components/elements/HamburgerMenu';
 
@@ -65,8 +65,8 @@ const PortalNav = () => {
                 </div>
             </div>
             
-            <div className='absolute p-4 pointer-events-none lg:static w-80'></div>
-            <nav className={'fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-80 bg-brandNeutral-200 lg:translate-x-0 transition-transform duration-500 ' 
+            <div className='absolute p-4 pointer-events-none w-72 lg:static'></div>
+            <nav className={'fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-72 bg-brandNeutral-200 lg:translate-x-0 transition-transform duration-500 ' 
                 + (navOpen ? 'translate-x-0' : '-translate-x-full')}>
                 <div className='flex flex-col gap-4 pt-2'>
                     <PortalElement 
@@ -172,7 +172,7 @@ const PortalNav = () => {
                         path="/portal/edit-self"
                     />
                 </div>
-                <button className='flex w-full gap-2 p-2 rounded-md ' onClick={handleLogout}>
+                <button className='flex w-full gap-2 p-2 rounded-md' onClick={handleLogout}>
                     <Image src={logout} alt={'logout button'}/>
                     <h1>Logout</h1>
                 </button>

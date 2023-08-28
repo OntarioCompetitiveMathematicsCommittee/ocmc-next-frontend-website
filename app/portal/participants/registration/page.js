@@ -3,7 +3,7 @@
 // import required modules and components
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 import ContestRegistrationForm from "@components/features/contests/participants/ContestRegistrationForm";
-import useAuth from "@components/hooks/useAuth";
+import useAuth from "@hooks/useAuth";
 
 // display a list of contests available for registration
 const ContestRegistrationList = () => {

@@ -8,6 +8,8 @@ import Sponsors from '@components/homepage/Sponsors'
 import Section from '@components/homepage/Section'
 import Footer from '@components/homepage/Footer'
 
+import { directors } from '@config/team'
+
 import Mission from '@public/assets/mission.svg'
 import Contest from '@public/assets/omc.svg'
 import Camp from '@public/assets/camp.svg'
@@ -16,29 +18,14 @@ import Wave1 from '@public/assets/wave-transition-1.svg'
 import Wave2 from '@public/assets/wave-transition-2.svg'
 import Wave3 from '@public/assets/wave-transition-3.svg'
 
-import Atticus from '@public/assets/directors/Atticus.png'
-import Daniel from '@public/assets/directors/Daniel.png'
-import Jia from '@public/assets/directors/Jia.png'
-import Oliver from '@public/assets/directors/Oliver.png'
-import Elaine from '@public/assets/directors/Elaine.png'
-import Jacob from '@public/assets/directors/Jacob.png'
 
 import ExecPod from '@components/homepage/ExecPod'
 
 export default function Home() {
 
-    const directors = {
-        Atticus: Atticus,
-        Daniel: Daniel,
-        Jia: Jia,
-        Oliver: Oliver,
-        Elaine: Elaine,
-        Jacob: Jacob,
-    }
-
     return (
-        <>
-            <div className='w-screen h-[calc(100vh-2rem)] flex flex-col'>
+        <div className='overflow-x-hidden'>
+            <div className='flex flex-col w-screen h-screen'>
                 <NavbarPlaceholder/>
                 <Navbar/>
                 <Hero/>
@@ -140,6 +127,6 @@ export default function Home() {
             </section>
             <div className='h-48'></div>
             <Footer></Footer>
-        </>
+        </div>
     )
 }

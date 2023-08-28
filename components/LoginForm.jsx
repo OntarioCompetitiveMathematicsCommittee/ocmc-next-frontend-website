@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from '@components/features/auth/authSlice'
 import { useLoginMutation } from '@components/features/auth/authApiSlice'
 
-import usePersist from '@components/hooks/usePersist'
+import usePersist from '@hooks/usePersist'
 
 const LoginForm = () => {
     // sets focus on components at appropriate times

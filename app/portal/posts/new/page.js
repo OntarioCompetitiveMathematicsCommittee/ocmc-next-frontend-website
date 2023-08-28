@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from 'next/navigation'
 import { useAddNewPostMutation } from "@components/features/posts/postsApiSlice"
-import useAuth from "@components/hooks/useAuth";
+import useAuth from "@hooks/useAuth";
 
 import BackButton from "@components/elements/BackButton"
 

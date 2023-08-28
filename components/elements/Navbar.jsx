@@ -19,7 +19,7 @@ const Navbar = () => {
 	return (
 		<>
 			<nav
-				className='fixed top-0 left-0 z-50 flex justify-center w-full px-4 py-2 shadow-sm bg-brandNeutral-200 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60'>
+				className='fixed top-0 left-0 z-50 flex justify-center w-screen px-4 py-2 shadow-sm bg-brandNeutral-200 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-60'>
 				<div className='max-w-[90rem] w-full flex justify-between items-center'>
 					<Link
 						className='flex items-center gap-2 text-2xl font-medium'

@@ -4,7 +4,7 @@ import { useGetContestsQuery, selectContestById } from "../contestsApiSlice"
 import { useSelector } from "react-redux"
 import { useState } from 'react'
 
-const ContestDisplay = ({ id, score, maxScore, updateScore }) => {
+const ContestDisplay = ({ id, score, maxScore, updateScor, isAdmin }) => {
     const [initialScore, setInitialScore] = useState(score)
     const [currScore, setCurrScore] = useState(score)
 
@@ -29,17 +29,25 @@ const ContestDisplay = ({ id, score, maxScore, updateScore }) => {
                 <td>{year}</td>
                 <td className="flex items-center justify-center gap-4 h-14">
                     <div>
-                        <input className="inline w-12 text-right bg-brandNeutral-200" 
-                            type="number" 
-                            value={currScore} 
-                            onChange={changeCurrScore}/>
+                        {isAdmin ? 
+                            <input className="inline w-12 text-right bg-brandNeutral-200" 
+                                type="number" 
+                                value={currScore} 
+                                onChange={changeCurrScore}
+                            /> :
+                            <p className="inline w-12 text-right">{currScore}</p>
+                        }
                         /{maxScore}
                     </div>
-                    <button onClick={updateCurrScore} 
-                        className={"inline px-6 py-1 text-white bg-blue-500 rounded-md " 
-                        + (initialScore == currScore && "hidden")}>
-                        Change
-                    </button>
+                    {
+                        isAdmin &&
+                        <button onClick={updateCurrScore} 
+                            className={"inline px-6 py-1 text-white bg-blue-500 rounded-md " 
+                            + (initialScore == currScore && "hidden")}>
+                            Change
+                        </button>
+                    }
+                    
                 </td>
             </>
         );

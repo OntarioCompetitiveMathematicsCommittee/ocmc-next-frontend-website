@@ -4,13 +4,14 @@
 import { useSelector } from "react-redux";
 import { useGetUsersQuery, useUpdateUserContestsMutation, selectUserById } from "@components/features/users/usersApiSlice";
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
+import useAuth from "@hooks/useAuth";
+import { roles } from "@config/roles";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
 
 import TableHead from "@components/portal/TableHead";
 import BackButton from "@components/elements/BackButton";
 
 const ViewUserContestScores = ({ id }) => {
-
 	const { isSuccess: isUserSuccess, isLoading: isUserLoading } = useGetUsersQuery(); // Fetch all users
 	const { data: contests, isLoading: isContestLoading, isSuccess: isContestSuccess } = useGetContestsQuery(undefined, {
 		pollingInterval: 60000,
@@ -18,6 +19,7 @@ const ViewUserContestScores = ({ id }) => {
 		refetchOnMountOrArgChange: true
 	}) 
 	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestsMutation()
+	const { isAdmin, isProctor } = useAuth();
 
 	// get current user using id
 	const currUser = useSelector((state) => selectUserById(state, id));
@@ -36,7 +38,10 @@ const ViewUserContestScores = ({ id }) => {
 		// display contest data for user
 		return (
 			<div className='relative flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
-				<BackButton path="/portal/users"/>
+				{isAdmin &&
+					<BackButton path="/portal/proctors/school-users"/>}
+				{isProctor &&
+					<BackButton path="/portal/users"/>}
 				<div className='text-center'>
 					<h1 className={"portalh2 font-normal"}>Past Contest Scores</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{currUser.first_name} {currUser.last_name}</h2>
@@ -51,7 +56,7 @@ const ViewUserContestScores = ({ id }) => {
 								contestId = contest.contest_id;
 								return (
 									<tr className="bg-white border-2" key={index}>
-										<ContestDisplay id={contestId} score={contest.score} index maxScore={contests.entities[contestId].max_score} updateScore={updateScore}/>
+										<ContestDisplay id={contestId} score={contest.score} index maxScore={contests.entities[contestId].max_score} updateScore={updateScore} isAdmin={isAdmin}/>
 									</tr>
 								)
 							})}

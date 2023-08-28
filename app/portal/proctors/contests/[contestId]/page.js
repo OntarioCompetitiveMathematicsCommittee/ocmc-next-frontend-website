@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'next/navigation'
 
 import { useGetUsersByContestQuery, selectUserById } from '@components/features/users/usersApiSlice'
-import useAuth from '@components/hooks/useAuth'
+import useAuth from '@hooks/useAuth'
 
 import TableHead from '@components/portal/TableHead'
 import BackButton from '@components/elements/BackButton'

@@ -3,7 +3,7 @@
 // import required modules and components
 import { useSelector } from 'react-redux';
 import { selectUserById } from '@components/features/users/usersApiSlice';
-import useAuth from '@components/hooks/useAuth';
+import useAuth from '@hooks/useAuth';
 
 import EditUserForm from '@components/features/users/EditUserForm';
 
