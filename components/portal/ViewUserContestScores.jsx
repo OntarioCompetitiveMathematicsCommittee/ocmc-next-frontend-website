@@ -39,9 +39,9 @@ const ViewUserContestScores = ({ id }) => {
 		return (
 			<div className='relative flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
 				{isAdmin &&
-					<BackButton path="/portal/proctors/school-users"/>}
-				{isProctor &&
 					<BackButton path="/portal/users"/>}
+				{isProctor &&
+					<BackButton path="/portal/proctors/school-users"/>}
 				<div className='text-center'>
 					<h1 className={"portalh2 font-normal"}>Past Contest Scores</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{currUser.first_name} {currUser.last_name}</h2>

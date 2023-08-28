@@ -33,15 +33,18 @@
 
 }
 
-*::-webkit-scrollbar {
-    display: none;
-  }
-  
-* {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-
 html {
     overflow-x: hidden;
 }
+
+.scrollable-container {
+    @apply relative w-full overflow-x-scroll whitespace-nowrap;
+  }
+  
+  .scrollbar-handle {
+    @apply absolute top-0 z-10 w-8 h-40 bg-black cursor-pointer right-2 bg-opacity-60;
+  }
+  
+  .scrollbar-handle:active {
+    @apply cursor-grabbing;
+  }
