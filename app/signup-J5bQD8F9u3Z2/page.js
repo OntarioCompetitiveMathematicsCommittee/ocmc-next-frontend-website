@@ -142,8 +142,8 @@ const ProctorSignup = () => {
 					school: school,
 					email: email,
 					grade: -1,
+					active: false
 				});
-				console.log("what is happening")
 			}
 		} else {
 			if (canMoveOn) {
