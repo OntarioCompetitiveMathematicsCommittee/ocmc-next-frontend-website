@@ -8,6 +8,7 @@ import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserD
 import useAuth from '@hooks/useAuth'
 
 import TableHead from '@components/portal/TableHead'
+import TableWrapper from '@components/portal/TableWrapper'
 
 const ProctorUsersList = () => {
 	// fetch list of users/participants
@@ -56,10 +57,10 @@ const ProctorUsersList = () => {
 						placeholder="Search Students..."
 					/>
 					{/** table to display list of registered participants under the proctor */}
-					<table className='table-auto border-spacing-10'>
+					<TableWrapper className='table-auto border-spacing-10'>
 						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Password", "View"]}/>
 						<tbody className='text-md'>{tableContent}</tbody>
-					</table>
+					</TableWrapper>
 				</div>
 			</div>
 		);

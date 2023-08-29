@@ -27,6 +27,9 @@ const Contest = ({ contestId }) => {
                 <td>
                     <button onClick={handleEdit} className='px-6 py-1 text-white bg-blue-500 rounded-md'>Edit</button>
                 </td>
+                <td>
+                    <button onClick={() => {}} className='px-6 py-1 text-white bg-green-500 rounded-md'>Input</button>
+                </td>
             </tr>
         )
     } else return null;

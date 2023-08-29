@@ -6,6 +6,7 @@ import ViewContest from '@components/features/contests/ViewContest'
 import { useState } from 'react'
 
 import TableHead from '@components/portal/TableHead'
+import TableWrapper from '@components/portal/TableWrapper'
 
 const ContestsList = () => {
 
@@ -41,10 +42,10 @@ const ContestsList = () => {
 
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of contests */}
-					<table>
+					<TableWrapper>
 						<TableHead headings={["Name", "Year", "Description", "Max Score", "Signups Active", "# of Signups", "View"]}/>
 						<tbody className='text-md'>{tableContent}</tbody>
-					</table>
+					</TableWrapper>
 				</div>
 			</div>
 		);

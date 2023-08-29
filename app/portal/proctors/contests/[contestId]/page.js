@@ -8,6 +8,7 @@ import { useGetUsersByContestQuery, selectUserById } from '@components/features/
 import useAuth from '@hooks/useAuth'
 
 import TableHead from '@components/portal/TableHead'
+import TableWrapper from '@components/portal/TableWrapper'
 import BackButton from '@components/elements/BackButton'
 
 const Contests = () => {
@@ -42,7 +43,7 @@ const Contests = () => {
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
-					<table className='table-auto border-spacing-10'>
+					<TableWrapper className='table-auto border-spacing-10'>
 						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Score"]}/>
 						<tbody className='text-xl'>
                             {
@@ -58,7 +59,7 @@ const Contests = () => {
                                 </tr>
                                 )})}
                         </tbody>
-					</table>
+					</TableWrapper>
 				</div>
 			</div>
 		);

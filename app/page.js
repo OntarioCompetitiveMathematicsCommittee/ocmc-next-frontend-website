@@ -24,7 +24,7 @@ import ExecPod from '@components/homepage/ExecPod'
 export default function Home() {
 
     return (
-        <div className='overflow-x-hidden'>
+        <div className='overflow-hidden'>
             <div className='flex flex-col w-screen h-screen'>
                 <NavbarPlaceholder/>
                 <Navbar/>
