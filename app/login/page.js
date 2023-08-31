@@ -72,6 +72,7 @@ const Login = () => {
 				setErrMsg('Missing username or password');
 			else if (err.status === 401)
 				setErrMsg('Invalid username or password');
+			else if (err.status === 403) setErrMsg('Please verify your email first!');
 			else setErrMsg(err.data?.message);
 			// focus on error message
 			errRef.current.focus();
