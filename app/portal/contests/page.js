@@ -7,6 +7,7 @@ import Contest from '@components/features/contests/Contest'
 import { useState } from 'react'
 
 import TableHead from '@components/portal/TableHead'
+import TableWrapper from '@components/portal/TableWrapper'
 
 const ContestsList = () => {
 	// fetch list of contests
@@ -58,10 +59,10 @@ const ContestsList = () => {
 					/>
 				
 					{/** table to display list of contests */}
-					<table>
-						<TableHead headings={["Name", "Year", "Description", "Max Score", "Active", "# of Signups", "Edit"]}/>
+					<TableWrapper>
+						<TableHead headings={["Name", "Year", "Description", "Max Score", "Active", "# of Signups", "Edit", "Scores"]}/>
 						<tbody className='text-md'>{tableContent}</tbody>
-					</table>
+					</TableWrapper>
 				</div>
 			</div>
 		);

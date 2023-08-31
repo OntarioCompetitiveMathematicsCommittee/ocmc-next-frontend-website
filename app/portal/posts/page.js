@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Post from '@components/features/posts/Post'
 
 import TableHead from '@components/portal/TableHead'
+import TableWrapper from '@components/portal/TableWrapper'
 
 const PostsList = () => {
   // fetch list of posts
@@ -58,10 +59,10 @@ const PostsList = () => {
 					/>
 
           {/** table to display list of posts */}
-          <table>
+          <TableWrapper>
             <TableHead headings={["Title", "Content", "Description", "Visible", "Date Posted", "Edit"]}/>
             <tbody className='text-md'>{tableContent}</tbody>
-          </table>
+          </TableWrapper>
         </div>
       </div>
     )

@@ -9,6 +9,7 @@ import { roles } from "@config/roles";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
 
 import TableHead from "@components/portal/TableHead";
+import TableWrapper from "@components/portal/TableWrapper";
 import BackButton from "@components/elements/BackButton";
 
 const ViewUserContestScores = ({ id }) => {
