@@ -19,6 +19,7 @@ import loginLogo from '@public/assets/login-logo.svg';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 const SignupPage = () => {
 	const userRef = useRef();
@@ -29,35 +30,27 @@ const SignupPage = () => {
 
 	const [username, setUsername] = useState('');
 	const [validUsername, setValidUsername] = useState(false);
-	const [usernameFocus, setUsernameFocus] = useState(false);
 
 	const [firstname, setFirstname] = useState('');
 	const [validFirstname, setValidFirstname] = useState(false);
-	const [firstnameFocus, setFirstnameFocus] = useState(false);
 
 	const [lastname, setLastname] = useState('');
 	const [validLastname, setValidLastname] = useState(false);
-	const [lastnameFocus, setLastnameFocus] = useState(false);
 
 	const [school, setSchool] = useState('');
 	const [validSchool, setValidSchool] = useState(false);
-	const [schoolFocus, setSchoolFocus] = useState(false);
 
 	const [email, setEmail] = useState('');
 	const [validEmail, setValidEmail] = useState(false);
-	const [emailFocus, setEmailFocus] = useState(false);
 
 	const [grade, setGrade] = useState('');
 	const [validGrade, setValidGrade] = useState(false);
-	const [gradeFocus, setGradeFocus] = useState(false);
 
 	const [password, setPassword] = useState('');
 	const [validPassword, setValidPassword] = useState(false);
-	const [passwordFocus, setPasswordFocus] = useState(false);
 
 	const [matchPassword, setMatchPassword] = useState('');
 	const [validMatchPassword, setValidMatchPassword] = useState(false);
-	const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
 
 	const [stage, setStage] = useState(0);
 
@@ -85,8 +78,7 @@ const SignupPage = () => {
 	}, [school]);
 
 	useEffect(() => {
-		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-		setValidEmail(emailRegex.test(email));
+		setValidEmail(EMAIL_REGEX.test(email));
 	}, [email]);
 
 	useEffect(() => {
@@ -180,21 +172,18 @@ const SignupPage = () => {
 						required
 						aria-invalid={validUsername ? 'false' : 'true'}
 						aria-describedby='uidnote'
-						onFocus={() => setUsernameFocus(true)}
-						onBlur={() => setUsernameFocus(false)}
 					/>
 					<p
 						id='uidnote'
 						className={
-							usernameFocus && username && !validUsername
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!username || validUsername) && 'hidden')
 						}>
-						4 to 24 characters.
+						4 to 24 characters
 						<br />
-						Must begin with a letter.
+						Must begin with a letter
 						<br />
-						Letters, numbers, underscores, hyphens allowed.
+						Only certain symbols allowed
 					</p>
 				</div>
 
@@ -211,15 +200,12 @@ const SignupPage = () => {
 						required
 						aria-invalid={validEmail ? 'false' : 'true'}
 						aria-describedby='emailnote'
-						onFocus={() => setEmailFocus(true)}
-						onBlur={() => setEmailFocus(false)}
 					/>
 					<p
 						id='emailnote'
 						className={
-							emailFocus && !validEmail
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!email || validEmail) && 'hidden')
 						}>
 						Must be a valid email address.
 					</p>
@@ -238,15 +224,12 @@ const SignupPage = () => {
 						required
 						aria-invalid={validPassword ? 'false' : 'true'}
 						aria-describedby='pwdnote'
-						onFocus={() => setPasswordFocus(true)}
-						onBlur={() => setPasswordFocus(false)}
 					/>
 					<p
 						id='pwdnote'
 						className={
-							passwordFocus && !validPassword
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!password || validPassword) && 'hidden')
 						}>
 						8 to 24 characters.
 						<br />
@@ -276,15 +259,12 @@ const SignupPage = () => {
 						required
 						aria-invalid={validMatchPassword ? 'false' : 'true'}
 						aria-describedby='confirmnote'
-						onFocus={() => setMatchPasswordFocus(true)}
-						onBlur={() => setMatchPasswordFocus(false)}
 					/>
 					<p
 						id='confirmnote'
 						className={
-							matchPasswordFocus && !validMatchPassword
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!matchPassword || validMatchPassword) && 'hidden')
 						}>
 						Must match the first password input field.
 					</p>
@@ -323,15 +303,12 @@ const SignupPage = () => {
 					required
 					aria-invalid={validFirstname ? 'false' : 'true'}
 					aria-describedby='firstnote'
-					onFocus={() => setFirstnameFocus(true)}
-					onBlur={() => setFirstnameFocus(false)}
 				/>
 				<p
 					id='firstnote'
 					className={
-						firstnameFocus && !validFirstname
-							? 'instructions'
-							: 'hidden'
+						"text-red-600 text-sm " +
+						((!firstname || validFirstname) && 'hidden')
 					}>
 					You must enter a first name.
 				</p>
@@ -350,15 +327,12 @@ const SignupPage = () => {
 					required
 					aria-invalid={validLastname ? 'false' : 'true'}
 					aria-describedby='lastnote'
-					onFocus={() => setLastnameFocus(true)}
-					onBlur={() => setLastnameFocus(false)}
 				/>
 				<p
 					id='lastnote'
 					className={
-						lastnameFocus && !validLastname
-							? 'instructions'
-							: 'hidden'
+						"text-red-600 text-sm " +
+						((!lastname || validLastname) && 'hidden')
 					}>
 					You must enter a last name.
 				</p>
@@ -376,8 +350,7 @@ const SignupPage = () => {
 					required
 					aria-invalid={validSchool ? 'false' : 'true'}
 					aria-describedby='schoolnote'
-					onFocus={() => setSchoolFocus(true)}
-					onBlur={() => setSchoolFocus(false)}>
+					>
 					<option value='' disabled hidden>
 						Select a school
 					</option>
@@ -390,9 +363,9 @@ const SignupPage = () => {
 				<p
 					id='schoolnote'
 					className={
-						schoolFocus && !validSchool ? 'instructions' : 'hidden'
+						"text-red-600 text-sm " +
+						((!school || validSchool) && 'hidden')
 					}>
-					<FontAwesomeIcon icon={faInfoCircle} />
 					You must select a school.
 				</p>
 			</div>
@@ -409,24 +382,32 @@ const SignupPage = () => {
 					required
 					aria-invalid={validGrade ? 'false' : 'true'}
 					aria-describedby='gradenote'
-					onFocus={() => setGradeFocus(true)}
-					onBlur={() => setGradeFocus(false)}
 				/>
 				<p
 					id='gradenote'
 					className={
-						gradeFocus && !validGrade ? 'instructions' : 'hidden'
+						"text-red-600 text-sm " +
+						((!grade || validGrade) && 'hidden')
 					}>
 					Must be valid grade between 1 and 12, with no spaces.
 				</p>
 			</div>
 
 			{/* continue/submit button */}
-			<button
-				className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white rounded-lg font-medium font-[Montserrat]'
-				type='submit'>
-				Sign Up
-			</button>
+			<div className='flex gap-2 w-[90vw] md:w-[min(30rem,45vw)]'>
+				<button
+					className='flex-1 h-14 border-2 rounded-lg font-medium font-[Montserrat]'
+					type='button'
+					onClick={() => {setStage(0)}}>
+					Back
+				</button>
+				<button
+					className='flex-1 h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white rounded-lg font-medium font-[Montserrat]'
+					type='submit'>
+					Sign Up
+				</button>
+			</div>
+			
 		</form>
 	);
 
@@ -446,7 +427,7 @@ const SignupPage = () => {
 		content = (
 			<section
 				className="md:bg-[url('/assets/auth-graphic.svg')] h-full w-screen bg-left-top bg-no-repeat bg-cover 
-				flex flex-col md:flex-row items-center justify-center lg:justify-between">
+				flex flex-col md:flex-row items-center justify-center lg:justify-between py-8 flex-1">
 				<header className='flex items-center justify-center w-1/2'>
 					<div className='flex flex-col items-center'>
 						<h1 className='text-[max(5vw,3rem)] font-bold'>
@@ -468,7 +449,7 @@ const SignupPage = () => {
 	}
 
 	return (
-		<div className='flex flex-col h-screen'>
+		<div className='flex flex-col min-h-screen'>
 			<Navbar />
 			<NavbarPlaceholder/>
 			{content}

@@ -87,7 +87,7 @@ const Login = () => {
 	const content = (
 		<section
 			className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
-			flex flex-col md:flex-row items-center justify-center lg:justify-between">
+			flex flex-col md:flex-row items-center justify-center lg:justify-between py-8 flex-1">
 			<header className='flex items-center justify-center w-1/2'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-[max(5vw,3rem)] font-bold'>Log in.</h1>
@@ -189,7 +189,7 @@ const Login = () => {
 
 	// render
 	return (
-		<div className='flex flex-col h-screen'>
+		<div className='flex flex-col min-h-screen'>
 			<Navbar />
 			<NavbarPlaceholder/>
 			{content}

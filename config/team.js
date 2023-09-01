@@ -33,3 +33,116 @@ export const directors = {
     Charles: Charles,
     Manasva: Manasva
 }
+
+export const team = [
+    {
+        image: Elaine,
+        firstName: "Elaine",
+        lastName: "Li",
+        position: "Director of Operations",
+    },
+    {
+        image: Atticus,
+        firstName: "Atticus",
+        lastName: "Zhang",
+        position: "Director of Operations",
+    },
+    {
+        image: Jia,
+        firstName: "Jia",
+        lastName: "Huang",
+        position: "Director of Technology",
+    },
+    {
+        image: Oliver,
+        firstName: "Oliver",
+        lastName: "Mao",
+        position: "Director of Mathematics",
+    },
+    {
+        image: Jacob,
+        firstName: "Jacob",
+        lastName: "Yan",
+        position: "Director of Mathematics",
+    },
+    {
+        image: Daniel,
+        firstName: "Daniel",
+        lastName: "Chen",
+        position: "Director of Mathematics",
+    },
+    {
+        image: Aidan,
+        firstName: "Aidan",
+        lastName: "Zhang",
+        position: "Deputy Director of Mathematics",
+    },
+    {
+        image: Manasva,
+        firstName: "Manasva",
+        lastName: "Katyal",
+        position: "Executive of Technology",
+        link: "https://www.linkedin.com/in/manasva-katyal"
+    },
+    {
+        image: Oscar,
+        firstName: "Oscar",
+        lastName: "Zhou",
+        position: "Executive of Mathematics",
+    },
+    {
+        image: Michael,
+        firstName: "Michael",
+        lastName: "Hollander",
+        position: "Executive of Operations",
+    },
+    {
+        image: Jason,
+        firstName: "Jason",
+        lastName: "Sun",
+        position: "Executive of Mathematics",
+    },
+    {
+        image: Yanzi,
+        firstName: "Yanzi",
+        lastName: "Guo",
+        position: "Executive of Technology",
+    },
+    {
+        image: MichaelL,
+        firstName: "Michael",
+        lastName: "Li",
+        position: "Executive of Mathematics",
+    },
+    {
+        image: Shanna,
+        firstName: "Shanna",
+        lastName: "Xiao",
+        position: "Executive of Mathematics",
+    },
+    {
+        image: Claire,
+        firstName: "Claire",
+        lastName: "Liu",
+        position: "Executive of Finance",
+    },
+    {
+        image: Charles,
+        firstName: "Charles",
+        lastName: "Ran",
+        position: "Executive of Mathematics",
+        link: "https://polarity.sh/"
+    }
+]
+
+export const teamBg = [
+    "bg-brandYellow-500",
+    "bg-brandGreen-500",
+    "bg-brandBlue-500",
+]
+
+export const teamText = [
+    "text-brandYellow-900",
+    "text-brandGreen-900",
+    "text-brandBlue-900",
+]
