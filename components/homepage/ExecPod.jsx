@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position }) => {
+const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, link }) => {
     return (
         <div className={`flex items-center gap-6 justify-start md:justify-center rounded-xl p-3 w-[90vw] max-w-md md:flex-col md:p-4 md:w-auto md:gap-2 ${bgColour}`} >
             <Image className='w-32 rounded-xl md:w-64' src={image} alt="yes"/>
@@ -12,9 +12,9 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position })
                 <h3 className='text-md font-regular'>
                     {position}
                 </h3>
-                <Link className={`underline ${textColour}`} href="">
+                <a className={`underline ${textColour}`} href={link ? link : "/"} target="_blank">
                     More {firstName} &rarr;
-                </Link>
+                </a>
             </div>
         </div>
     )

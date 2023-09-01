@@ -9,6 +9,11 @@ import Michael from '@public/assets/directors/Michael.png'
 import Oscar from '@public/assets/directors/Oscar.png'
 import Jason from '@public/assets/directors/Jason.png'
 import Yanzi from '@public/assets/directors/Yanzi.png'
+import MichaelL from '@public/assets/directors/MichaelL.png'
+import Shanna from '@public/assets/directors/Shanna.png'
+import Claire from '@public/assets/directors/Claire.png'
+import Charles from '@public/assets/directors/Charles.png'
+import Manasva from '@public/assets/directors/Manasva.png'
 
 export const directors = {
     Atticus: Atticus,
@@ -21,5 +26,10 @@ export const directors = {
     Michael: Michael,
     Oscar: Oscar,
     Jason: Jason,
-    Yanzi: Yanzi
+    Yanzi: Yanzi,
+    MichaelL: MichaelL,
+    Shanna: Shanna,
+    Claire: Claire,
+    Charles: Charles,
+    Manasva: Manasva
 }

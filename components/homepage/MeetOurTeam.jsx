@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { directors } from '@config/team'
 import ExecPod from '@components/homepage/ExecPod'
 
@@ -56,6 +55,15 @@ const MeetOurTeam = () => {
                     bgColour="bg-brandYellow-500"
                     textColour="text-brandYellow-900"
                 />
+                <ExecPod
+                    image={directors.Manasva}
+                    firstName="Manasva"
+                    lastName="Katyal"
+                    position="Executive of Technology"
+                    bgColour="bg-brandBlue-500"
+                    textColour="text-brandBlue-900"
+                    link="https://www.linkedin.com/in/manasva-katyal-4171b525a/"
+                />
                 <ExecPod 
                     image={directors.Oscar}
                     firstName="Oscar"
@@ -96,6 +104,41 @@ const MeetOurTeam = () => {
                     bgColour="bg-brandBlue-500"
                     textColour="text-brandBlue-900"
                 />
+                <ExecPod 
+                    image={directors.MichaelL}
+                    firstName="Michael"
+                    lastName="Li"
+                    position="Executive of Mathematics"
+                    bgColour="bg-brandYellow-500"
+                    textColour="text-brandYellow-900"
+                />
+                <ExecPod
+                    image={directors.Shanna}
+                    firstName="Shanna"
+                    lastName="Xiao"
+                    position="Deputy Director of Mathematics"
+                    bgColour="bg-brandGreen-500"
+                    textColour="text-brandGreen-900"
+                />
+                <ExecPod
+                    image={directors.Claire}
+                    firstName="Claire"
+                    lastName="Liu"
+                    position="Executive of Finance"
+                    bgColour="bg-brandBlue-500"
+                    textColour="text-brandBlue-900"
+                />
+                <ExecPod
+                    image={directors.Charles}
+                    firstName="Charles"
+                    lastName="Ran"
+                    position="Executive of Mathematics"
+                    bgColour="bg-brandYellow-500"
+                    textColour="text-brandYellow-900"
+                    link="https://polarity.sh/"
+                />
+
+                
             </div>
         </div>
     </section>
