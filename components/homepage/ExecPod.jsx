@@ -12,9 +12,12 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
                 <h3 className='text-md font-regular'>
                     {position}
                 </h3>
-                <a className={`underline ${textColour}`} href={link ? link : "/"} target="_blank">
-                    More {firstName} &rarr;
-                </a>
+                {
+                    link &&
+                    <a className={`underline ${textColour}`} href={link} target="_blank">
+                        More {firstName} &rarr;
+                    </a>
+                }
             </div>
         </div>
     )
