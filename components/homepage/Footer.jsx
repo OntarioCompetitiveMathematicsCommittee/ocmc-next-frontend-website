@@ -1,13 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '@components/features/auth/authSlice';
-import { useLoginMutation } from '@components/features/auth/authApiSlice';
-
-import usePersist from '@hooks/usePersist';
+import { useState } from 'react';
 
 import Image from 'next/image'
 
@@ -16,52 +9,15 @@ import facebook from '@public/assets/socials/facebook.svg'
 import instagram from '@public/assets/socials/instagram.svg'
 
 const Footer = () => {
-    // sets focus on components at appropriate times
-	const userRef = useRef();
-	const errRef = useRef();
-
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
-	const [errMsg, setErrMsg] = useState('');
-
-	const router = useRouter();
-	// for dispatching actions
-	const dispatch = useDispatch();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
-        // if (canSubmit) await addNewContest({ name, year, description, max_score });
     };
     
     const canSubmit = email && message;
-	// // handles login
-	// const [login, { isLoading, isSuccess, isError, error }] =
-	// 	useLoginMutation();
-
-	// const handleLogin = async (e) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		// send login request + get access token
-	// 		const { accessToken } = await login({
-	// 			username,
-	// 			password,
-	// 		}).unwrap();
-	// 		dispatch(setCredentials({ accessToken }));
-	// 		// set local use state in login back to empty string
-	// 		setUsername('');
-	// 		setPassword('');
-	// 	} catch (err) {
-	// 		// handle different errors
-	// 		if (!err.status) setErrMsg('No server response');
-	// 		else if (err.status === 400)
-	// 			setErrMsg('Missing username or password');
-	// 		else if (err.status === 401)
-	// 			setErrMsg('Invalid username or password');
-	// 		else setErrMsg(err.data?.message);
-	// 		// focus on error message
-	// 		errRef.current.focus();
-	// 	}
-	// };
+	
     return (
         <section className=''>
             {/** marquee is buggy */}
