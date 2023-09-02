@@ -105,7 +105,7 @@ const Login = () => {
 						onSubmit={handleLogin}
 						className='flex flex-col gap-5'>
 						{/* username input field */}
-						<div className='flex flex-col rounded-sm'>
+						<div className='flex flex-col'>
 							<label
 								htmlFor='username'
 								className='text-brandNeutral-800'>
@@ -124,7 +124,7 @@ const Login = () => {
 						</div>
 
 						{/* password input field */}
-						<div className='flex flex-col rounded-sm'>
+						<div className='flex flex-col'>
 							<label
 								htmlFor='password'
 								className='text-brandNeutral-800'>
@@ -166,7 +166,8 @@ const Login = () => {
 
 						{/* login/submit button */}
 						<button
-							className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm'
+							className='w-[90vw] md:w-[min(30rem,45vw)] h-14 text-white font-medium font-[Montserrat] rounded-sm
+							bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
 							type='submit'
 							disabled={!canLogin}>
 							Login

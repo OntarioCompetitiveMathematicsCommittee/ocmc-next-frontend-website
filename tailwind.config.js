@@ -65,6 +65,13 @@ module.exports = {
           '100%': { transform: 'translateX(-100%)' },
         },
       }, 
+      backgroundSize: {
+        'size-200': '200% 200%',
+      },
+      backgroundPosition: {
+          'pos-0': '0% 0%',
+          'pos-100': '100% 100%',
+      },
     },
   },
   plugins: [],
