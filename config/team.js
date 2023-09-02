@@ -14,25 +14,7 @@ import Shanna from '@public/assets/directors/Shanna.png'
 import Claire from '@public/assets/directors/Claire.png'
 import Charles from '@public/assets/directors/Charles.png'
 import Manasva from '@public/assets/directors/Manasva.png'
-
-export const directors = {
-    Atticus: Atticus,
-    Daniel: Daniel,
-    Jia: Jia,
-    Oliver: Oliver,
-    Elaine: Elaine,
-    Jacob: Jacob,
-    Aidan: Aidan,
-    Michael: Michael,
-    Oscar: Oscar,
-    Jason: Jason,
-    Yanzi: Yanzi,
-    MichaelL: MichaelL,
-    Shanna: Shanna,
-    Claire: Claire,
-    Charles: Charles,
-    Manasva: Manasva
-}
+import Minglun from '@public/assets/directors/Minglun.png'
 
 export const team = [
     {
@@ -40,18 +22,28 @@ export const team = [
         firstName: "Elaine",
         lastName: "Li",
         position: "Director of Operations",
+        link: "https://www.linkedin.com/in/elaine-li-236a3a1b5/"
     },
     {
         image: Atticus,
         firstName: "Atticus",
         lastName: "Zhang",
         position: "Director of Operations",
+        link: "https://www.linkedin.com/in/atticus-zhang-70708626a/"
     },
     {
         image: Jia,
         firstName: "Jia",
         lastName: "Huang",
         position: "Director of Technology",
+        link: "https://www.linkedin.com/in/yi-jia-huang/"
+    },
+    {
+        image: Minglun,
+        firstName: "Minglun",
+        lastName: "Shao",
+        position: "Best Director",
+        link: "https://www.linkedin.com/in/minglun-shao"
     },
     {
         image: Oliver,
@@ -64,18 +56,21 @@ export const team = [
         firstName: "Jacob",
         lastName: "Yan",
         position: "Director of Mathematics",
+        link: "https://www.linkedin.com/in/jacob-yan-3a33b0230/"
     },
     {
         image: Daniel,
         firstName: "Daniel",
         lastName: "Chen",
         position: "Director of Mathematics",
+        link: "https://www.linkedin.com/in/daniel-chen-0b1b3a1b5/"
     },
     {
         image: Aidan,
         firstName: "Aidan",
         lastName: "Zhang",
         position: "Deputy Director of Mathematics",
+        link: "https://www.linkedin.com/in/aidanzhang06/"
     },
     {
         image: Manasva,
@@ -125,6 +120,7 @@ export const team = [
         firstName: "Claire",
         lastName: "Liu",
         position: "Executive of Finance",
+        link: "www.linkedin.com/in/claire-liu-abb37228b"
     },
     {
         image: Charles,

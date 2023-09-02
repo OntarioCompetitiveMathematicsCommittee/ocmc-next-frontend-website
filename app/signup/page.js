@@ -4,12 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	faCheck,
-	faTimes,
-	faInfoCircle,
-} from '@fortawesome/free-solid-svg-icons';
 import { SCHOOLS } from '@config/schools';
 
 import Navbar from '@components/elements/Navbar';
@@ -157,12 +151,13 @@ const SignupPage = () => {
 		<div className='flex flex-col'>
 			<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
 				{/* username input field */}
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col '>
 					<label htmlFor='username' className='text-brandNeutral-800'>
 						Username:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+						placeholder='example123'
 						type='text'
 						id='username'
 						ref={userRef}
@@ -187,12 +182,13 @@ const SignupPage = () => {
 					</p>
 				</div>
 
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col '>
 					<label htmlFor='email' className='text-brandNeutral-800'>
 						Email:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+						placeholder='example@email.com'
 						type='text'
 						id='email'
 						onChange={onEmailChanged}
@@ -211,12 +207,13 @@ const SignupPage = () => {
 					</p>
 				</div>
 				{/* password input field */}
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col '>
 					<label htmlFor='password' className='text-brandNeutral-800'>
 						Password:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+						placeholder='Example123!'
 						type='password'
 						id='password'
 						onChange={onPasswordChanged}
@@ -244,7 +241,7 @@ const SignupPage = () => {
 						<span aria-label='percent'>%</span>
 					</p>
 				</div>
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col '>
 					<label
 						htmlFor='confirm_pwd'
 						className='text-brandNeutral-800'>
@@ -252,6 +249,7 @@ const SignupPage = () => {
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+						placeholder='Example123!'
 						type='password'
 						id='confirm_pwd'
 						onChange={onMatchPasswordChanged}
@@ -272,7 +270,7 @@ const SignupPage = () => {
 
 				{/* continue/submit button */}
 				<button
-					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 border-2 rounded-lg font-medium font-[Montserrat]'
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 border-2 rounded-sm font-medium font-[Montserrat] hover:bg-brandNeutral-200 transition-colors'
 					type='submit'>
 					Continue
 				</button>
@@ -290,12 +288,13 @@ const SignupPage = () => {
 	formPages[1] = (
 		<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
 			{/* username input field */}
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col '>
 				<label htmlFor='firstname' className='text-brandNeutral-800'>
 					First Name:
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					placeholder='John'
 					type='text'
 					id='firstname'
 					onChange={onFirstnameChanged}
@@ -314,12 +313,13 @@ const SignupPage = () => {
 				</p>
 			</div>
 
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col '>
 				<label htmlFor='lastname' className='text-brandNeutral-800'>
 					Last Name:
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					placeholder='Doe'
 					type='text'
 					id='lastname'
 					onChange={onLastnameChanged}
@@ -338,7 +338,7 @@ const SignupPage = () => {
 				</p>
 			</div>
 			{/* password input field */}
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col '>
 				<label htmlFor='school' className='text-brandNeutral-800'>
 					School:
 				</label>
@@ -369,12 +369,13 @@ const SignupPage = () => {
 					You must select a school.
 				</p>
 			</div>
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col '>
 				<label htmlFor='grade' className='text-brandNeutral-800'>
 					Grade:
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+					placeholder='ex: 5,9,11,12'
 					type='text'
 					id='grade'
 					onChange={onGradeChanged}
@@ -396,13 +397,14 @@ const SignupPage = () => {
 			{/* continue/submit button */}
 			<div className='flex gap-2 w-[90vw] md:w-[min(30rem,45vw)]'>
 				<button
-					className='flex-1 h-14 border-2 rounded-lg font-medium font-[Montserrat]'
+					className='flex-1 h-14 border-2 rounded-sm font-medium font-[Montserrat]'
 					type='button'
 					onClick={() => {setStage(0)}}>
 					Back
 				</button>
 				<button
-					className='flex-1 h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white rounded-lg font-medium font-[Montserrat]'
+					className='flex-1 h-14 text-white rounded-sm font-medium font-[Montserrat]
+					bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
 					type='submit'>
 					Sign Up
 				</button>
@@ -415,11 +417,12 @@ const SignupPage = () => {
 
 	if (isSuccess) {
 		content = (
-			<section>
-				<h1>User {username} successfully created!</h1>
-				<br />
-				<p>
-					Click <Link href='/login'>here</Link> to log in.
+			<section className="flex flex-col items-center flex-1 w-screen gap-6 text-center pt-36 md:bg-[url('/assets/auth-graphic.svg')] bg-left-top bg-no-repeat bg-cover ">
+				<h1 className='portalh2'>User {username} successfully created!</h1>
+				<p className='text-xl'>
+					Please check your email for a verification link
+					<br />
+					Click <Link href='/login' className='text-blue-600 underline'>here</Link> to redirect to log in.
 				</p>
 			</section>
 		);

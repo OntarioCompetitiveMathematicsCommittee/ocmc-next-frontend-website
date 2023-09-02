@@ -5,16 +5,11 @@ import { useRef, useState, useEffect } from 'react';
 import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
 import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	faCheck,
-	faTimes,
-	faInfoCircle,
-} from '@fortawesome/free-solid-svg-icons';
 import { SCHOOLS } from '@config/schools';
 
 import Navbar from '@components/elements/Navbar';
-import loginLogo from '@public/assets/auth-graphic.svg';
+import NavbarPlaceholder from '@components/elements/NavbarPlaceholder';
+import loginLogo from '@public/assets/login-logo.svg';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -28,31 +23,24 @@ const ProctorSignup = () => {
 
 	const [username, setUsername] = useState('');
 	const [validUsername, setValidUsername] = useState(false);
-	const [usernameFocus, setUsernameFocus] = useState(false);
 
 	const [firstname, setFirstname] = useState('');
 	const [validFirstname, setValidFirstname] = useState(false);
-	const [firstnameFocus, setFirstnameFocus] = useState(false);
 
 	const [lastname, setLastname] = useState('');
 	const [validLastname, setValidLastname] = useState(false);
-	const [lastnameFocus, setLastnameFocus] = useState(false);
 
 	const [school, setSchool] = useState('');
 	const [validSchool, setValidSchool] = useState(false);
-	const [schoolFocus, setSchoolFocus] = useState(false);
 
 	const [email, setEmail] = useState('');
 	const [validEmail, setValidEmail] = useState(false);
-	const [emailFocus, setEmailFocus] = useState(false);
 
 	const [password, setPassword] = useState('');
 	const [validPassword, setValidPassword] = useState(false);
-	const [passwordFocus, setPasswordFocus] = useState(false);
 
 	const [matchPassword, setMatchPassword] = useState('');
 	const [validMatchPassword, setValidMatchPassword] = useState(false);
-	const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
 
 	const [registrationPasscode, setRegistrationPasscode] = useState('');
 
@@ -167,12 +155,13 @@ const ProctorSignup = () => {
 		<div className='flex flex-col'>
 			<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
 				{/* username input field */}
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col'>
 					<label htmlFor='username' className='text-brandNeutral-800'>
 						Username:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+						placeholder='example123'
 						type='text'
 						id='username'
 						ref={userRef}
@@ -182,15 +171,12 @@ const ProctorSignup = () => {
 						required
 						aria-invalid={validUsername ? 'false' : 'true'}
 						aria-describedby='uidnote'
-						onFocus={() => setUsernameFocus(true)}
-						onBlur={() => setUsernameFocus(false)}
 					/>
 					<p
 						id='uidnote'
 						className={
-							usernameFocus && username && !validUsername
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!username || validUsername) && 'hidden')
 						}>
 						4 to 24 characters.
 						<br />
@@ -200,12 +186,13 @@ const ProctorSignup = () => {
 					</p>
 				</div>
 
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col'>
 					<label htmlFor='email' className='text-brandNeutral-800'>
 						Email:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+						placeholder='example@email.com'
 						type='text'
 						id='email'
 						onChange={onEmailChanged}
@@ -213,26 +200,24 @@ const ProctorSignup = () => {
 						required
 						aria-invalid={validEmail ? 'false' : 'true'}
 						aria-describedby='emailnote'
-						onFocus={() => setEmailFocus(true)}
-						onBlur={() => setEmailFocus(false)}
 					/>
 					<p
 						id='emailnote'
 						className={
-							emailFocus && !validEmail
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!email || validEmail) && 'hidden')
 						}>
 						Must be a valid email address.
 					</p>
 				</div>
 				{/* password input field */}
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col'>
 					<label htmlFor='password' className='text-brandNeutral-800'>
 						Password:
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+						placeholder='Example123!'
 						type='password'
 						id='password'
 						onChange={onPasswordChanged}
@@ -240,15 +225,12 @@ const ProctorSignup = () => {
 						required
 						aria-invalid={validPassword ? 'false' : 'true'}
 						aria-describedby='pwdnote'
-						onFocus={() => setPasswordFocus(true)}
-						onBlur={() => setPasswordFocus(false)}
 					/>
 					<p
 						id='pwdnote'
 						className={
-							passwordFocus && !validPassword
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!password || validPassword) && 'hidden')
 						}>
 						8 to 24 characters.
 						<br />
@@ -263,7 +245,7 @@ const ProctorSignup = () => {
 						<span aria-label='percent'>%</span>
 					</p>
 				</div>
-				<div className='flex flex-col rounded-sm'>
+				<div className='flex flex-col'>
 					<label
 						htmlFor='confirm_pwd'
 						className='text-brandNeutral-800'>
@@ -271,6 +253,7 @@ const ProctorSignup = () => {
 					</label>
 					<input
 						className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+						placeholder='Example123!'
 						type='password'
 						id='confirm_pwd'
 						onChange={onMatchPasswordChanged}
@@ -278,15 +261,12 @@ const ProctorSignup = () => {
 						required
 						aria-invalid={validMatchPassword ? 'false' : 'true'}
 						aria-describedby='confirmnote'
-						onFocus={() => setMatchPasswordFocus(true)}
-						onBlur={() => setMatchPasswordFocus(false)}
 					/>
 					<p
 						id='confirmnote'
 						className={
-							matchPasswordFocus && !validMatchPassword
-								? 'instructions'
-								: 'hidden'
+							"text-red-600 text-sm " +
+							((!matchPassword || validMatchPassword) && 'hidden')
 						}>
 						Must match the first password input field.
 					</p>
@@ -294,7 +274,7 @@ const ProctorSignup = () => {
 
 				{/* continue/submit button */}
 				<button
-					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 border-2 rounded-lg font-medium font-[Montserrat]'
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 border-2 rounded-sm font-medium font-[Montserrat] hover:bg-brandNeutral-200 transition-colors'
 					type='submit'>
 					Continue
 				</button>
@@ -312,12 +292,13 @@ const ProctorSignup = () => {
 	formPages[1] = (
 		<form onSubmit={onSaveUserClicked} className='flex flex-col gap-5'>
 			{/* username input field */}
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col'>
 				<label htmlFor='firstname' className='text-brandNeutral-800'>
 					First Name:
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					placeholder='John'
 					type='text'
 					id='firstname'
 					onChange={onFirstnameChanged}
@@ -325,26 +306,24 @@ const ProctorSignup = () => {
 					required
 					aria-invalid={validFirstname ? 'false' : 'true'}
 					aria-describedby='firstnote'
-					onFocus={() => setFirstnameFocus(true)}
-					onBlur={() => setFirstnameFocus(false)}
 				/>
 				<p
 					id='firstnote'
 					className={
-						firstnameFocus && !validFirstname
-							? 'instructions'
-							: 'hidden'
+						"text-red-600 text-sm " +
+						((!firstname || validFirstname) && 'hidden')
 					}>
 					You must enter a first name.
 				</p>
 			</div>
 
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col'>
 				<label htmlFor='lastname' className='text-brandNeutral-800'>
 					Last Name:
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 shadow-sm px-4 text-lg'
+					placeholder='Doe'
 					type='text'
 					id='lastname'
 					onChange={onLastnameChanged}
@@ -352,21 +331,18 @@ const ProctorSignup = () => {
 					required
 					aria-invalid={validLastname ? 'false' : 'true'}
 					aria-describedby='lastnote'
-					onFocus={() => setLastnameFocus(true)}
-					onBlur={() => setLastnameFocus(false)}
 				/>
 				<p
 					id='lastnote'
 					className={
-						lastnameFocus && !validLastname
-							? 'instructions'
-							: 'hidden'
+						"text-red-600 text-sm " +
+						((!lastname || validLastname) && 'hidden')
 					}>
 					You must enter a last name.
 				</p>
 			</div>
 			{/* password input field */}
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col'>
 				<label htmlFor='school' className='text-brandNeutral-800'>
 					School:
 				</label>
@@ -378,8 +354,7 @@ const ProctorSignup = () => {
 					required
 					aria-invalid={validSchool ? 'false' : 'true'}
 					aria-describedby='schoolnote'
-					onFocus={() => setSchoolFocus(true)}
-					onBlur={() => setSchoolFocus(false)}>
+					>
 					<option value='' disabled hidden>
 						Select a school
 					</option>
@@ -392,13 +367,13 @@ const ProctorSignup = () => {
 				<p
 					id='schoolnote'
 					className={
-						schoolFocus && !validSchool ? 'instructions' : 'hidden'
+						"text-red-600 text-sm " +
+						((!school || validSchool) && 'hidden')
 					}>
-					<FontAwesomeIcon icon={faInfoCircle} />
 					You must select a school.
 				</p>
 			</div>
-			<div className='flex flex-col rounded-sm'>
+			<div className='flex flex-col'>
 				<label
 					className='text-brandNeutral-800'
 					htmlFor='registration_passcode'>
@@ -406,6 +381,7 @@ const ProctorSignup = () => {
 				</label>
 				<input
 					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-brandNeutral-200 px-4 shadow-sm text-lg'
+					placeholder='From Admin'
 					type='password'
 					id='registration_passcode'
 					onChange={onRegistrationPasscodeChanged}
@@ -418,7 +394,8 @@ const ProctorSignup = () => {
 
 			{/* continue/submit button */}
 			<button
-				className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white rounded-lg font-medium font-[Montserrat]'
+				className='w-[90vw] md:w-[min(30rem,45vw)] h-14 text-white rounded-sm font-medium font-[Montserrat]
+				bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
 				type='submit'>
 				Sign Up
 			</button>
@@ -429,11 +406,12 @@ const ProctorSignup = () => {
 
 	if (isSuccess) {
 		content = (
-			<section>
-				<h1>User {username} successfully created!</h1>
-				<br />
-				<p>
-					Click <Link href='/login'>here</Link> to log in.
+			<section className="flex flex-col items-center flex-1 w-screen gap-6 text-center pt-36 md:bg-[url('/assets/auth-graphic.svg')] bg-left-top bg-no-repeat bg-cover ">
+				<h1 className='portalh2'>User {username} successfully created!</h1>
+				<p className='text-xl'>
+					Please check your email for a verification link
+					<br />
+					Click <Link href='/login' className='text-blue-600 underline'>here</Link> to redirect to log in.
 				</p>
 			</section>
 		);
@@ -441,7 +419,7 @@ const ProctorSignup = () => {
 		content = (
 			<section
 				className="md:bg-[url('/assets/auth-graphic.svg')] h-screen w-screen bg-left-top bg-no-repeat bg-cover 
-				flex flex-col md:flex-row items-center justify-center lg:justify-between">
+				flex flex-col md:flex-row items-center justify-center lg:justify-between  py-8 flex-1">
 				<header className='flex items-center justify-center w-1/2'>
 					<div className='flex flex-col items-center'>
 						<h1 className='text-[max(5vw,3rem)] font-bold'>
@@ -463,8 +441,9 @@ const ProctorSignup = () => {
 	}
 
 	return (
-		<div className='Signup'>
+		<div className='flex flex-col min-h-screen'>
 			<Navbar />
+			<NavbarPlaceholder/>
 			{content}
 		</div>
 	);

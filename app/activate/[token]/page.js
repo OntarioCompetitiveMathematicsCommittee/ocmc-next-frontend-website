@@ -30,7 +30,8 @@ const VerifyPage = () => {
             <form
                 onSubmit={handleActivate}>
                 <button
-					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 bg-gradient-to-br from-brandBlue-600 to-brandGreen-600 text-white font-medium font-[Montserrat] rounded-sm'
+					className='w-[90vw] md:w-[min(30rem,45vw)] h-14 text-white font-medium font-[Montserrat] rounded-md
+                    bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
 					type='submit'>
 					Activate!
 				</button>
