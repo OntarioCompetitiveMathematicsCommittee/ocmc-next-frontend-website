@@ -15,8 +15,8 @@ const MeetOurTeam = () => {
                             firstName={exec.firstName}
                             lastName={exec.lastName}
                             position={exec.position}
-                            bgColour={teamBg[index % 3]}
-                            textColour={teamText[index % 3]}
+                            bgColour={teamBg[(index + 1) % 3]}
+                            textColour={teamText[(index + 1) % 3]}
                             link={exec.link}
                         />
                     ))
