@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import Link from 'next/link'
 import Image from 'next/image'
 
 import linkedin from '@public/assets/socials/linkedin.svg'
@@ -94,9 +95,15 @@ const Footer = () => {
                     </div>
                     {/** needs to link to the accounts */}
                     <div className='flex flex-row mt-5 lg:mr-16 lg:ml-auto w-fit gap-x-10 lg:flex-col lg:gap-y-6'>
-                        <Image src={linkedin} alt="linkedin"/>
-                        <Image src={facebook} alt="facebook"/>
-                        <Image src={instagram} alt="instagram"/>
+                        <Link href='https://www.linkedin.com/company/ontario-competitive-mathematics-committee/'>
+                            <Image src={linkedin} alt="linkedin"/>
+                        </Link>
+                        <Link href='https://www.facebook.com/profile.php?id=100092223956604'>
+                            <Image src={facebook} alt="facebook"/>
+                        </Link>
+                        <Link href='https://www.instagram.com/ontariocmc'>
+                            <Image src={instagram} alt="instagram"/>
+                        </Link>
                     </div>
                 </div>
                 <div className="mt-8 ml-auto mr-auto lg:ml-14 lg:mt-8">
