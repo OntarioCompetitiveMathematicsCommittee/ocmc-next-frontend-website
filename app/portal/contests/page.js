@@ -43,7 +43,7 @@ const ContestsList = () => {
 					{/** title */}
 					<h1 className="portalh2">Contest List</h1>
 					{/** button is linked to new contest page */}
-					<Link className='flex justify-center w-64 px-2 py-2 text-white rounded-md bg-brandBlue-500' href="/portal/contests/new">
+					<Link className='flex justify-center w-64 px-2 py-2 text-white transition-colors rounded-md bg-brandBlue-500 hover:bg-brandBlue-600' href="/portal/contests/new">
 						<button>Create New Contest</button>
 					</Link>
 				</div>
@@ -60,7 +60,7 @@ const ContestsList = () => {
 				
 					{/** table to display list of contests */}
 					<TableWrapper>
-						<TableHead headings={["Name", "Year", "Description", "Max Score", "Active", "# of Signups", "Edit", "Scores"]}/>
+						<TableHead headings={["Name", "Year", "Description", "Max Score", "Active", "# of Signups", "Edit", "Scores", "View"]}/>
 						<tbody className='text-md'>{tableContent}</tbody>
 					</TableWrapper>
 				</div>

@@ -1,25 +1,27 @@
 "use client"
 
-import { useSelector } from 'react-redux'
 import { useParams } from 'next/navigation'
 
-import { useGetUsersByContestQuery, selectUserById } from '@components/features/users/usersApiSlice'
+import { useGetUsersByContestQuery, useUpdateUserContestsMutation } from '@components/features/users/usersApiSlice'
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
+
+
 import useAuth from '@hooks/useAuth'
 
 import TableHead from '@components/portal/TableHead'
 import TableWrapper from '@components/portal/TableWrapper'
 import BackButton from '@components/elements/BackButton'
 
-import ViewContestUserScores from '@components/portal/ViewContestUserScores'
+import ViewContestUserScores from '@components/portal/ViewContestUserScores';
 
 const Contests = () => {
     const params = useParams();
     const contest_id = params.contestId;
-    const proctor_id = useAuth().id;
-	const proctor = useSelector((state) => selectUserById(state, proctor_id));
+    
+    const [updateUserContests ] = useUpdateUserContestsMutation()
+	const { isAdmin } = useAuth();
 
-    const {data:users, isLoading, isSuccess, isError, error} = useGetUsersByContestQuery({contest_id, school: proctor.school}, {
+    const {data:users, isLoading, isSuccess, isError, error} = useGetUsersByContestQuery({contest_id, school: "all"}, {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
@@ -30,30 +32,32 @@ const Contests = () => {
 		refetchOnMountOrArgChange: true
 	}) 
 
+    const updateScore = (currScore, currContestId, username) => {
+        updateUserContests({username, contest_id: currContestId, score: currScore, type: "update"})
+    }
+
     let content;
-    let userScore
 
 	// display error
 	if (isError) content = <p>{error.error}</p>
 
 	// render list of contest participants
-	if (isSuccess) {
+	if (isSuccess && isContestSuccess) {
 		content = (
 			<div className='relative flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
-                <BackButton path={"/portal/proctors/contests"}/>
+                <BackButton path={"/portal/contests"}/>
 				<div className='text-center'>
-					<h1 className={"portalh2 font-normal"}>{contests.entities[contest_id].name} Score</h1>
-                    <h2 className={"portalh2 text-brandBlue-900"}>{proctor?.school}</h2>
+					<h1 className={"portalh2 font-normal"}>{contests.entities[contest_id].name} Scores</h1>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
 					<TableWrapper className='table-auto border-spacing-10'>
-						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Score"]}/>
+						<TableHead headings={["Username", "Full Name", "School", "Grade", "Email", "Score"]}/>
 						<tbody className='text-xl'>
                             {
-                            users?.map((user, index) =>(
-                                <ViewContestUserScores user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score}/>
-                            ))}
+                            users?.map((user, index) => {
+                                return <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score} updateScore={updateScore} isAdmin={isAdmin}/>;
+                            })}
                         </tbody>
 					</TableWrapper>
 				</div>

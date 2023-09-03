@@ -66,7 +66,8 @@ const NewPost = () => {
                 {/** title input field */}
                 <label className="text-xl text-brandBlue-900" htmlFor="title">Title:</label>
                 <input
-                    className="border-2 w-96"
+                    className="px-2 py-1 border-2 rounded-md w-96"
+                    placeholder="Post Title"
                     type="text"
                     id="title"
                     name="title"
@@ -77,7 +78,8 @@ const NewPost = () => {
                 {/** content textbox */}
                 <label className="text-xl text-brandBlue-900" htmlFor="content">Content:</label>
                 <textarea
-                    className="h-64 border-2 w-96"
+                    className="h-64 px-2 py-1 border-2 rounded-md w-96"
+                    placeholder="This is what I want to say..."
                     id="content"
                     name="content"
                     value={content}
@@ -85,7 +87,11 @@ const NewPost = () => {
                 />
 
                 {/** submit button is disabled if submission requirements are not met */}
-                <button className="py-2 text-xl text-white rounded-md w-96 bg-brandBlue-500" type="submit" disabled={!canSubmit}>Save Post</button>
+                <button className={"py-2 text-xl transition-colors rounded-md w-96 " + 
+                    (canSubmit ? "text-white bg-brandBlue-500 hover:bg-brandBlue-600" : "border-2 bg-brandNeutral-100")}  
+                    type="submit" disabled={!canSubmit}>
+                    Save Post
+                </button>
             </form>
         </section>
     )

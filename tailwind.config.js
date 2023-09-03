@@ -69,11 +69,11 @@ module.exports = {
         'size-200': '200% 200%',
       },
       backgroundPosition: {
-          'pos-0': '0% 0%',
-          'pos-100': '100% 100%',
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%',
       },
     },
   },
-  safelist: [{pattern : /bg-(green|blue|yellow)-(100|200|300|400|500|600|700|800|900)/,}],
+  safelist: [{pattern : /bg-brand(Green|Blue|Yellow)-(100|200|300|400|500|600|700|800|900)/,}],
   plugins: [],
 }
