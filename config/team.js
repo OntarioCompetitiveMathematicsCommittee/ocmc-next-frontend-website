@@ -102,6 +102,7 @@ export const team = [
         firstName: "Yanzi",
         lastName: "Guo",
         position: "Executive of Technology",
+        link: "https://www.linkedin.com/in/yanzig/",
     },
     {
         image: MichaelL,
