@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             <MeetOurTeam/>
             <div className='h-48'></div>
-            <Footer></Footer>
+            <Footer/>
         </div>
     )
 }
