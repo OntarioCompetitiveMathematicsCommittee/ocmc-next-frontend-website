@@ -5,105 +5,93 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAddNewContestMutation } from "@components/features/contests/contestsApiSlice";
 
-import BackButton from "@components/elements/BackButton";
+import CreateEditLayout from "@components/features/CreateEditLayout";
 
 const NewContest = () => {
-  // reference to error message element
-  const errRef = useRef(null);
+    // reference to error message element
+    const errRef = useRef(null);
 
-  // mutation function for adding a new contest
-  const [addNewContest, { isLoading, isSuccess, isError, error }] = useAddNewContestMutation();
+    // mutation function for adding a new contest
+    const [addNewContest, { isLoading, isSuccess, isError, error }] = useAddNewContestMutation();
 
-  const router = useRouter();
+    const router = useRouter();
 
-  // state variables for contest details
-  const [name, setName] = useState("");
-  const [year, setYear] = useState("");
-  const [description, setDescription] = useState("");
-  const [max_score, setMaxScore] = useState("");
+    // state variables for contest details
+    const [name, setName] = useState("");
+    const [year, setYear] = useState("");
+    const [description, setDescription] = useState("");
+    const [max_score, setMaxScore] = useState("");
 
-  // event handlers that update state variables when input fields change
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleYearChange = (e) => setYear(e.target.value);
-  const handleDescriptionChange = (e) => setDescription(e.target.value);
-  const handleMaxScoreChange = (e) => setMaxScore(e.target.value);
+    // event handlers that update state variables when input fields change
+    const handleNameChange = (e) => setName(e.target.value);
+    const handleYearChange = (e) => setYear(e.target.value);
+    const handleDescriptionChange = (e) => setDescription(e.target.value);
+    const handleMaxScoreChange = (e) => setMaxScore(e.target.value);
 
-  // form can be submitted if all fields have values and are not in loading state
-  const canSubmit = [name, year, description, max_score].every(Boolean) && !isLoading;
+    // form can be submitted if all fields have values and are not in loading state
+    const canSubmit = [name, year, description, max_score].every(Boolean) && !isLoading;
 
-  // redirects to contest page after successful contest creation
-  useEffect(() => {
-    if (isSuccess) router.push("/portal/contests");
-  }, [isSuccess, router]);
+    // redirects to contest page after successful contest creation
+    useEffect(() => {
+        if (isSuccess) router.push("/portal/contests");
+    }, [isSuccess, router]);
 
-  // handles form submission
-  const onCreateContestClicked = async (e) => {
-    e.preventDefault();
-    if (canSubmit) await addNewContest({ name, year, description, max_score });
-  };
+    // handles form submission
+    const onCreateContestClicked = async (e) => {
+        e.preventDefault();
+        if (canSubmit) await addNewContest({ name, year, description, max_score });
+    };
 
-  // error message handling
-  let errmsg;
-  if (isError) errmsg = error.error;
+    // error message handling
+    let errmsg;
+    if (isError) errmsg = error.error;
 
-  // styling
-  return (
-    <section className="relative flex flex-col items-center justify-center w-full h-full gap-8 pb-32">
-      <BackButton path={"/portal/contests"} />
-      {/* display error message if there is an error */}
-      <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
+    const fields = [
+        {
+            label: "Name:",
+            placeholder: "Contest Name",
+            type: "text",
+            id: "name",
+            value: name,
+            onChange: handleNameChange,
+        },
+        {
+            label: "Year:",
+            placeholder: "ex. 2024, 2011, etc.",
+            type: "number",
+            id: "year",
+            value: year,
+            onChange: handleYearChange,
+        },
+        {
+            label: "Description:",
+            placeholder: "This contest is about...",
+            type: "textarea",
+            id: "description",
+            value: description,
+            onChange: handleDescriptionChange,
+        },
+        {
+            label: "Max Score:",
+            placeholder: "ex. 100, 200, etc.",
+            type: "number",
+            id: "max_score",
+            value: max_score,
+            onChange: handleMaxScoreChange,
+        },
+    ]
 
-      <h1 className="portalh2">New Contest</h1>
+    const buttons = [
+        {
+            type: "submit",
+            disabled: !canSubmit,
+            text: "Save Contest",
+            color: "bg-brandBlue-500 hover:bg-brandBlue-600",
+        }
+    ]
 
-      <form onSubmit={onCreateContestClicked} className="flex flex-col gap-4">
-        {/** input field for contest name */}
-        <label className="text-xl text-brandBlue-900" htmlFor="name">Name:</label>
-        <input
-          className="border-2 w-96"
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-        />
-
-        {/** input field for contest year */}
-        <label className="text-xl text-brandBlue-900" htmlFor="year">Year:</label>
-        <input
-          className="border-2 w-96"
-          type="text"
-          id="year"
-          name="year"
-          value={year}
-          onChange={handleYearChange}
-        />
-
-        {/** textbox for contest description */}
-        <label className="text-xl text-brandBlue-900" htmlFor="description">Description:</label>
-        <textarea
-          className="h-32 border-2 w-96"
-          id="description"
-          name="description"
-          value={description}
-          onChange={handleDescriptionChange}
-        />
-
-        {/** input field for contest max score */}
-        <label htmlFor="max_score">Max Score:</label>
-        <input
-          className="border-2 w-96"
-          type="number"
-          id="max_score"
-          name="max_score"
-          value={max_score}
-          onChange={handleMaxScoreChange}
-        />
-
-        {/** submit button */}
-        <button className="py-2 text-xl text-white rounded-md w-96 bg-brandBlue-500" type="submit" disabled={!canSubmit}>Save Contest</button>
-      </form>
-    </section>
-  )
+    // styling
+    return <CreateEditLayout title="New Contest" fields={fields} buttons={buttons} backPath={"/portal/contests"} onSubmit={onCreateContestClicked} isError={isError} error={errmsg} errRef={errRef}/>
 }
 
 export default NewContest;

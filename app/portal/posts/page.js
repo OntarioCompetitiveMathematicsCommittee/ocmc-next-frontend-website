@@ -43,7 +43,7 @@ const PostsList = () => {
           {/** title */}
           <h1 className="portalh2">Posts List</h1>
           {/** button linked to create new post page */}
-          <Link className='flex justify-center w-64 px-2 py-2 text-white rounded-md bg-brandBlue-500' href="/portal/posts/new">
+          <Link className='flex justify-center w-64 px-2 py-2 text-white transition-colors rounded-md bg-brandBlue-500 hover:bg-brandBlue-600' href="/portal/posts/new">
             <button>Create New Post</button>
           </Link>
         </div>

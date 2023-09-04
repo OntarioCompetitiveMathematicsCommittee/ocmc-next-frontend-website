@@ -79,8 +79,6 @@ const Login = () => {
 		}
 	};
 
-	// if (isLoading) return <p>Loading...</p>
-
 	// ensure user has entered both username and password to continue
 	const canLogin = username && password;
 

@@ -66,7 +66,7 @@ const PortalNav = () => {
             </div>
             
             <div className='absolute p-4 pointer-events-none w-72 lg:static'></div>
-            <nav className={'fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-72 bg-brandNeutral-200 lg:translate-x-0 transition-transform duration-500 ' 
+            <nav className={'fixed top-0 flex flex-col justify-between h-full p-4 pt-24 w-72 bg-brandNeutral-200 lg:translate-x-0 transition-transform duration-500 z-20 ' 
                 + (navOpen ? 'translate-x-0' : '-translate-x-full')}>
                 <div className='flex flex-col gap-4 pt-2'>
                     <PortalElement 

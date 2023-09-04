@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAddNewPostMutation } from "@components/features/posts/postsApiSlice"
 import useAuth from "@hooks/useAuth";
 
-import BackButton from "@components/elements/BackButton"
+import CreateEditLayout from "@components/features/CreateEditLayout";
 
 const NewPost = () => {
     // get user id
@@ -53,42 +53,35 @@ const NewPost = () => {
     let errmsg;
     if (isError) errmsg = error.error;
 
-    return (
-        <section className="relative flex flex-col items-center justify-center w-full h-full gap-8 pb-32">
-            <BackButton path={'/portal/posts'}/>
-            {/** display error message if there is one */}
-            <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
+    const fields = [
+        {
+            label: "Title:",
+            placeholder: "Post Title",
+            type: "text",
+            id: "title",
+            value: title,
+            onChange: handleTitleChange,
+        },
+        {
+            label: "Content:",
+            placeholder: "This is what I want to say...",
+            type: "textarea",
+            id: "content",
+            value: content,
+            onChange: handleContentChange,
+        },
+    ];
 
-            <h1 className="portalh2">New Post</h1>
+    const buttons = [
+        {
+            text: "Save Post",
+            type: "submit",
+            disabled: !canSubmit,
+            color : "bg-brandBlue-500 hover:bg-brandBlue-600",
+        },
+    ];
 
-            <form onSubmit={onCreatePostClicked} className="flex flex-col gap-4">
-
-                {/** title input field */}
-                <label className="text-xl text-brandBlue-900" htmlFor="title">Title:</label>
-                <input
-                    className="border-2 w-96"
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={title}
-                    onChange={handleTitleChange}
-                />
-
-                {/** content textbox */}
-                <label className="text-xl text-brandBlue-900" htmlFor="content">Content:</label>
-                <textarea
-                    className="h-64 border-2 w-96"
-                    id="content"
-                    name="content"
-                    value={content}
-                    onChange={handleContentChange}
-                />
-
-                {/** submit button is disabled if submission requirements are not met */}
-                <button className="py-2 text-xl text-white rounded-md w-96 bg-brandBlue-500" type="submit" disabled={!canSubmit}>Save Post</button>
-            </form>
-        </section>
-    )
+    return <CreateEditLayout title="New Post" fields={fields} buttons={buttons} backPath="/portal/posts" onSubmit={onCreatePostClicked} isError={isError} error={errmsg} errRef={errRef}/>
 }
 
 export default NewPost
