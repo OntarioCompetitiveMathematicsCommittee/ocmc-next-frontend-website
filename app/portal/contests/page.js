@@ -23,9 +23,6 @@ const ContestsList = () => {
 
 	let content;
 
-	// page loading
-	if (isLoading) content = <p>Loading...</p>;
-
 	// display error message
 	if (isError) content = <p>{error.error}</p>;
 

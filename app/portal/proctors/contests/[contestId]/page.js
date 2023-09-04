@@ -19,25 +19,26 @@ const Contests = () => {
     const proctor_id = useAuth().id;
 	const proctor = useSelector((state) => selectUserById(state, proctor_id));
 
-    const {data:users, isLoading, isSuccess, isError, error} = useGetUsersByContestQuery({contest_id, school: proctor.school}, {
+    // get list of users registered under the proctor taking this contest
+    const {data:users, isLoading, isSuccess, isError, error} = useGetUsersByContestQuery({contest_id, school: proctor?.school}, {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     });
-    const { data: contests, isLoading: isContestLoading, isSuccess: isContestSuccess } = useGetContestsQuery(undefined, {
+    // get contest all info
+    const { data: contests, isLoading: isContestLoading, isSuccess: isContestSuccess, isError: isContestError } = useGetContestsQuery(undefined, {
 		pollingInterval: 60000,
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
 	}) 
 
     let content;
-    let userScore
 
 	// display error
-	if (isError) content = <p>{error.error}</p>
+	if (isError || isContestError) content = <p>{error.error}</p>
 
 	// render list of contest participants
-	if (isSuccess) {
+	if (isSuccess && isContestSuccess) {
 		content = (
 			<div className='relative flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
                 <BackButton path={"/portal/proctors/contests"}/>
@@ -52,7 +53,7 @@ const Contests = () => {
 						<tbody className='text-xl'>
                             {
                             users?.map((user, index) =>(
-                                <ViewContestUserScores user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score}/>
+                                <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score}/>
                             ))}
                         </tbody>
 					</TableWrapper>

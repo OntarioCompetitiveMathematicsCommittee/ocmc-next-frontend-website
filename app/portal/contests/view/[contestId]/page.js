@@ -18,9 +18,6 @@ const Contests = () => {
     const params = useParams();
     const contest_id = params.contestId;
     
-    const [updateUserContests ] = useUpdateUserContestsMutation()
-	const { isAdmin } = useAuth();
-
     const {data:users, isLoading, isSuccess, isError, error} = useGetUsersByContestQuery({contest_id, school: "all"}, {
         pollingInterval: 60000,
         refetchOnFocus: true,
@@ -31,6 +28,10 @@ const Contests = () => {
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
 	}) 
+    console.log(contests)
+
+    const [updateUserContests ] = useUpdateUserContestsMutation()
+	const { isAdmin } = useAuth();
 
     const updateScore = (currScore, currContestId, username) => {
         updateUserContests({username, contest_id: currContestId, score: currScore, type: "update"})

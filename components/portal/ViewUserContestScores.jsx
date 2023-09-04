@@ -8,6 +8,7 @@ import useAuth from "@hooks/useAuth";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
 
 import TableHead from "@components/portal/TableHead";
+import TableWrapper from "./TableWrapper";
 import BackButton from "@components/elements/BackButton";
 
 const ViewUserContestScores = ({ id }) => {
