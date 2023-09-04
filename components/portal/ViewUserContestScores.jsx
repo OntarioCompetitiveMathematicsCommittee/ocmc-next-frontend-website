@@ -5,11 +5,10 @@ import { useSelector } from "react-redux";
 import { useGetUsersQuery, useUpdateUserContestsMutation, selectUserById } from "@components/features/users/usersApiSlice";
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 import useAuth from "@hooks/useAuth";
-import { roles } from "@config/roles";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
 
 import TableHead from "@components/portal/TableHead";
-import TableWrapper from "@components/portal/TableWrapper";
+import TableWrapper from "./TableWrapper";
 import BackButton from "@components/elements/BackButton";
 
 const ViewUserContestScores = ({ id }) => {
@@ -26,7 +25,6 @@ const ViewUserContestScores = ({ id }) => {
 	const currUser = useSelector((state) => selectUserById(state, id));
 
 	const updateScore = (currScore, currContestId) => {
-		console.log(currScore, currUser.username, contestId)
         updateUserContests({username: currUser.username, contest_id: currContestId, score: currScore, type: "update"})
     }
 
