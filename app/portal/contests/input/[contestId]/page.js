@@ -59,10 +59,11 @@ const EditContest = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		let res;
+		let postErrors = {};
 		Object.keys(updates).map(async (update) => {
 			res = await updateUserContests({username: update, contest_id: id, score: updates[update], type: "update"});
 			if (res.error){
-				setErrors({...errors, [update]: res.error.data.message});
+				setErrors((prev) => ({...prev, [update]: res.error.data.message}));
 			}
 		});
 	};
