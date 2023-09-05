@@ -121,7 +121,7 @@ export const team = [
         firstName: "Claire",
         lastName: "Liu",
         position: "Executive of Finance",
-        link: "www.linkedin.com/in/claire-liu-abb37228b"
+        link: "https://www.linkedin.com/in/claire-liu-abb37228b"
     },
     {
         image: Charles,
