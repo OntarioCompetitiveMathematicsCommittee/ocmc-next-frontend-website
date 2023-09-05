@@ -14,8 +14,8 @@ const Footer = () => {
 
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
-    const [ disabled, setDisabled] = useState(false);
-    const [ label, setLabel ] = useState('Send Message');
+    // const [ disabled, setDisabled] = useState(false);
+    // const [ label, setLabel ] = useState('Send Message');
     
     const [send, { isLoading, isSuccess, isError, error }] =
         useSendMutation();
@@ -32,12 +32,12 @@ const Footer = () => {
             setMessage('');
             setEmail('');
     
-            setDisabled(true);
-            setLabel('Sent!');
-            setTimeout(() => {
-                setDisabled(false);
-                setLabel('Send Message');
-            }, 15*1000); // 15 sec
+            // setDisabled(true);
+            // setLabel('Sent!');
+            // setTimeout(() => {
+            //     setDisabled(false);
+            //     setLabel('Send Message');
+            // }, 15*1000); // 15 sec
         } catch (err) {
             // handle different errors
 			if (!err.status) setErrMsg('No server response');
@@ -45,7 +45,8 @@ const Footer = () => {
         }
     };
     
-    const cannotSubmit = !email || !message || disabled;
+    const cannotSubmit = !email || !message;
+    // const cannotSubmit = !email || !message || disabled;
 	
     return (
         <section className=''>
@@ -93,7 +94,7 @@ const Footer = () => {
 	    						/>
                                 <div className='flex justify-center mt-auto mb-auto'>
                                     <button className="py-2 text-xl text-white rounded-lg w-96 disabled:bg-brandBlue-700 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={cannotSubmit}>
-                                        {label}
+                                        Send Message
                                     </button>
                                 </div>
                             </div>
