@@ -8,8 +8,15 @@ export const emailApiSlice = apiSlice.injectEndpoints({
                 method: 'PATCH', 
                 body: { token }
             })
+        }),
+        send: builder.mutation({
+            query: ({ email, message }) => ({
+                url: '/',
+                method: 'POST',
+                body: {email, message }
+            })
         })
     })
 });
 
-export const { useActivateMutation } = emailApiSlice;
+export const { useActivateMutation, useSendMutation } = emailApiSlice;
