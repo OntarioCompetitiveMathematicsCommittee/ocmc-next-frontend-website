@@ -7,7 +7,10 @@ const PublicPosts = () => {
 	return (
 		<>
 			<Navbar />
-			<PostsFeed/>
+			<div className='bg-[url("/assets/portal-bg.svg")] bg-cover h-full w-full fixed'></div>
+			<div className='fixed w-full h-full'>
+				<PostsFeed/>
+			</div>
 		</>
 	);
 };

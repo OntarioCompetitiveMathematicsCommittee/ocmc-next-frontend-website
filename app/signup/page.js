@@ -17,7 +17,6 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 const SignupPage = () => {
 	const userRef = useRef();
-	const errRef = useRef();
 
 	const [register, { isLoading, isSuccess, isError, error }] =
 		useRegisterMutation();
@@ -393,6 +392,9 @@ const SignupPage = () => {
 					Must be valid grade between 1 and 12, with no spaces.
 				</p>
 			</div>
+
+			{/* error message if applicable */}
+			{errmsg && <p className='w-[90vw] md:w-[min(30rem,45vw)] text-red-600 text-regular'>{errmsg}</p>}
 
 			{/* continue/submit button */}
 			<div className='flex gap-2 w-[90vw] md:w-[min(30rem,45vw)]'>

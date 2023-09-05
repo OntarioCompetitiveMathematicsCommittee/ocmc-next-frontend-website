@@ -34,8 +34,8 @@ const PostsFeed = () => {
 
 
 		content = (
-			<div className='flex flex-col items-center h-full gap-24 px-4 py-24 overflow-scroll'>
-				<div className='flex flex-col items-center w-full max-w-5xl gap-8 text-center'>
+			<div className='flex flex-col items-center h-full gap-24 px-4 py-24 pt-32 overflow-scroll'>
+				<div className='flex flex-col items-center w-full max-w-5xl gap-12 text-center'>
 					{/** title */}
 					<h1 className="portalh2">
 						OCMC Announcments
@@ -63,7 +63,9 @@ const PostsFeed = () => {
 
 	return (
 		<>
-			{content}
+			<div className='w-full h-full'>
+				{content}
+			</div>
 		</>
 	);
 };
