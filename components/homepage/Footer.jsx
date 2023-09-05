@@ -24,7 +24,7 @@ const Footer = () => {
         e.preventDefault();
         try {
             // send email
-            const sent = await send({
+            await send({
                 email,
                 message
             });
