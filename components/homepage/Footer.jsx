@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSendMutation } from '@components/features/email/emailApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,19 +14,26 @@ const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
 
+    const [send, { isLoading, isSuccess, isError, error }] =
+        useSendMutation();
+
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
         try {
             // send email
-
-            setMessage('');
-            setEmail('');         
+            await send({
+                email,
+                message
+            });
         } catch (err) {
-
+            // handle different errors
+			if (!err.status) setErrMsg('No server response');
+			else console.log(err);
         }
     };
     
-    const canSubmit = email && message;
+    const cannotSubmit = !email || !message;
+    // const cannotSubmit = !email || !message || disabled;
 	
     return (
         <section className=''>
@@ -72,7 +80,7 @@ const Footer = () => {
                                     onChange={(e) => setEmail(e.target.value)}
 	    						/>
                                 <div className='flex justify-center mt-auto mb-auto'>
-                                    <button className="py-2 text-xl text-white rounded-lg w-96 disabled:bg-brandBlue-700 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={!canSubmit}>
+                                    <button className="py-2 text-xl text-white rounded-lg w-96 disabled:bg-brandBlue-700 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={cannotSubmit}>
                                         Send Message
                                     </button>
                                 </div>
