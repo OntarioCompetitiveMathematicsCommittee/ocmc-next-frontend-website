@@ -33,31 +33,24 @@ const EditUserForm = ({ user, editingAll }) => {
 
     const [username, setUsername] = useState(user.username)
     const [validUsername, setValidUsername] = useState(false)
-    const [usernameFocus, setUsernameFocus] = useState(false)
 
     const [firstname, setFirstname] = useState(user.first_name)
     const [validFirstname, setValidFirstname] = useState(false)
-    const [firstnameFocus, setFirstnameFocus] = useState(false)
 
     const [lastname, setLastname] = useState(user.last_name)
     const [validLastname, setValidLastname] = useState(false)
-    const [lastnameFocus, setLastnameFocus] = useState(false)
 
     const [school, setSchool] = useState(user.school)
     const [validSchool, setValidSchool] = useState(false)
-    const [schoolFocus, setSchoolFocus] = useState(false)
 
     const [email, setEmail] = useState(user.email)
     const [validEmail, setValidEmail] = useState(false)
-    const [emailFocus, setEmailFocus] = useState(false)
 
     const [grade, setGrade] = useState(user.grade)
     const [validGrade, setValidGrade] = useState(false)
-    const [gradeFocus, setGradeFocus] = useState(false)
 
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
-    const [passwordFocus, setPasswordFocus] = useState(false)
 
     const [roles, setRoles] = useState(user.roles);
 
@@ -166,202 +159,207 @@ const EditUserForm = ({ user, editingAll }) => {
     if (isSuccess) {
         window.scrollTo(0, 0);
         return (
-            <div className="success">
-                <section>
-                    <h2>Success!</h2>
-                    <p>User <strong><em>{username}</em></strong> has been successfully updated.</p>
-
+            <section className="flex flex-col items-center flex-1 w-full gap-6 text-center pt-36 ">
+                <h1 className='portalh2'>User {username} successfully updated.</h1>
+                <p className='text-2xl text-blue-600 underline'>
                     <button onClick={() => router.replace(submitRoute)}> {rerouteText} </button>
-                </section>
-            </div>
+                </p>
+            </section>
         )
     }
 
-    const content = (
-        <section>
-            <p ref={errRef} className={isError ? "errmsg" : "offscreen"} aria-live="assertive">{errmsg}</p>
-            <form onSubmit={e => e.preventDefault()}>
-                <h2>Edit User Data</h2>
+    return (
+        <section className='flex flex-col items-center w-full h-full gap-4 py-8 pt-24 overflow-y-scroll text-center'>
 
-                <label htmlFor="username">
-                    Username:
-                    <FontAwesomeIcon icon={faCheck} className={validUsername ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validUsername || !username ? "hide" : "invalid"} />
-                </label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={onUsernameChanged}
-                    onFocus={() => setUsernameFocus(true)}
-                    onBlur={() => setUsernameFocus(false)}
-                    className={usernameFocus ? (validUsername ? "valid" : "invalid") : ""}
-                    aria-invalid={!validUsername}
-                    aria-describedby="username-err"
-                    required
-                />
-                <p id="uidnote" className={usernameFocus && username && !validUsername ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    4 to 24 characters.<br />
-                    Must begin with a letter.<br />
-                    Letters, numbers, underscores, hyphens allowed.
-                </p>
+			<h2 className='portalh2'>Edit User Data</h2>
 
-                <label htmlFor="firstname">
-                    First Name:
-                    <FontAwesomeIcon icon={faCheck} className={validFirstname ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validFirstname || !firstname ? "hide" : "invalid"} />
-                </label>
-                <input
-                    type="text"
-                    id="firstname"
-                    name="firstname"
-                    value={firstname}
-                    onChange={onFirstnameChanged}
-                    onFocus={() => setFirstnameFocus(true)}
-                    onBlur={() => setFirstnameFocus(false)}
-                    className={firstnameFocus ? (validFirstname ? "valid" : "invalid") : ""}
-                    aria-invalid={!validFirstname}
-                    aria-describedby="firstname-err"
-                    required
-                />
-                <p id="firstnote" className={firstnameFocus && !validFirstname ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    You must enter a first name.
-                </p>
-
-                <label htmlFor="lastname">
-                    Last Name:
-                    <FontAwesomeIcon icon={faCheck} className={validLastname ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validLastname || !lastname ? "hide" : "invalid"} />
-                </label>
-                <input
-                    type="text"
-                    id="lastname"
-                    name="lastname"
-                    value={lastname}
-                    onChange={onLastnameChanged}
-                    onFocus={() => setLastnameFocus(true)}
-                    onBlur={() => setLastnameFocus(false)}
-                    className={lastnameFocus ? (validLastname ? "valid" : "invalid") : ""}
-                    aria-invalid={!validLastname}
-                    aria-describedby="lastname-err"
-                    required
-                />
-                <p id="lastnote" className={lastnameFocus && !validLastname ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    You must enter a last name.
-                </p>
-
-                {
-                    ((!user.roles.includes('Proctor')) || isAdmin) &&
-                    <>
-                        <label htmlFor="school">
-                            School:
-                            <FontAwesomeIcon icon={faCheck} className={validSchool ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validSchool || !school ? "hide" : "invalid"} />
-                        </label>
-                        <select
-                            id="school"
-                            onChange={onSchoolChanged}
-                            value={school}
-                            required
-                            aria-invalid={validSchool ? "false" : "true"}
-                            aria-describedby="schoolnote"
-                            onFocus={() => setSchoolFocus(true)}
-                            onBlur={() => setSchoolFocus(false)}
-                            className="select-school"
-                        >
-                            <option value="" disabled hidden>Select a school</option>
-                            {SCHOOLS.map((school, index) => (
-                                <option key={index} value={school}>{school}</option>
-                            ))}
-                        </select>
-                        <p id="schoolnote" className={schoolFocus && !validSchool ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            You must select a school.
-                        </p>
-
-                        <label htmlFor="grade">
-                            Grade:
-                            <FontAwesomeIcon icon={faCheck} className={validGrade ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validGrade || !grade ? "hide" : "invalid"} />
+            <form onSubmit={e => e.preventDefault()} className='flex flex-col gap-4 text-left'>
+                <div className='flex flex-col gap-2'>
+                    <label className="text-xl text-brandBlue-900" htmlFor="username">
+                        Username:
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={username}
+                        onChange={onUsernameChanged}
+                        className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                        aria-invalid={!validUsername}
+                        aria-describedby="username-err"
+                        required
+                    />
+                    <p id="uidnote" 
+                        className={
+                            "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                            (validUsername && 'hidden')
+                        }>
+                        4 to 24 characters.<br />
+                        Must begin with a letter.<br />
+                        Letters, numbers, underscores, hyphens allowed.
+                    </p>
+                </div>
+                <div className='flex flex-col gap-4 md:gap-2 md:flex-row'>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xl text-brandBlue-900" htmlFor="firstname">
+                            First Name:
                         </label>
                         <input
                             type="text"
-                            id="grade"
-                            name="grade"
-                            value={grade}
-                            onChange={onGradeChanged}
-                            onFocus={() => setGradeFocus(true)}
-                            onBlur={() => setGradeFocus(false)}
-                            className={gradeFocus ? (validGrade ? "valid" : "invalid") : ""}
-                            aria-invalid={!validGrade}
-                            aria-describedby="grade-err"
+                            id="firstname"
+                            name="firstname"
+                            value={firstname}
+                            onChange={onFirstnameChanged}
+                            className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                            aria-invalid={!validFirstname}
+                            aria-describedby="firstname-err"
                             required
                         />
-                        <p id="gradenote" className={gradeFocus && !validGrade ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Must be valid grade between 1 and 12, with no spaces.
+                        <p id="firstnote"
+                            className={
+                                "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                (validFirstname && 'hidden')
+                            }>
+                            You must enter a first name.
                         </p>
-                    </>
-                }
+                    </div>
 
-                <label htmlFor="email">
-                    Email:
-                    <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
-                    <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
-                </label>
-                <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={onEmailChanged}
-                    onFocus={() => setEmailFocus(true)}
-                    onBlur={() => setEmailFocus(false)}
-                    className={emailFocus ? (validEmail ? "valid" : "invalid") : ""}
-                    aria-invalid={!validEmail}
-                    aria-describedby="email-err"
-                    required
-                />
-                <p id="emailnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                    You must enter a valid email address.
-                </p>
-
-                {
-                    !editingAll &&
-                    <>
-                        <label htmlFor="password">
-                            Password (Leave Empty to Keep Current):
-                            <FontAwesomeIcon icon={faCheck} className={validPassword ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validPassword || !password ? "hide" : "invalid"} />
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xl text-brandBlue-900" htmlFor="lastname">
+                            Last Name:
                         </label>
                         <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={onPasswordChanged}
-                            onFocus={() => setPasswordFocus(true)}
-                            onBlur={() => setPasswordFocus(false)}
-                            className={passwordFocus ? (validPassword ? "valid" : "invalid") : ""}
-                            aria-invalid={!validPassword}
-                            aria-describedby="password-err"
+                            type="text"
+                            id="lastname"
+                            name="lastname"
+                            value={lastname}
+                            onChange={onLastnameChanged}
+                            className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                            aria-invalid={!validLastname}
+                            aria-describedby="lastname-err"
+                            required
                         />
-                        <p id="passwordnote" className={passwordFocus && !validPassword ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                        <p id="lastnote"
+                            className={
+                                "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                (validLastname && 'hidden')
+                            }>
+                            You must enter a last name.
                         </p>
-                    </>
+                    </div>
+                </div>
+                
+
+                {
+                    ((!user.roles.includes('Proctor')) || isAdmin) &&
+                    <div className='flex flex-col gap-4 md:gap-2 md:flex-row'>
+                        <div className='flex flex-col gap-2'>
+                            <label className="text-xl text-brandBlue-900" htmlFor="school">
+                                School:
+                            </label>
+                            <select
+                                id="school"
+                                onChange={onSchoolChanged}
+                                value={school}
+                                required
+                                aria-invalid={validSchool ? "false" : "true"}
+                                aria-describedby="schoolnote"
+                                className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                            >
+                                <option value="" disabled hidden>Select a school</option>
+                                {SCHOOLS.map((school, index) => (
+                                    <option key={index} value={school}>{school}</option>
+                                ))}
+                            </select>
+                            <p id="schoolnote" 
+                                className={
+                                    "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                    (validSchool && 'hidden')
+                                }>
+                                You must select a school.
+                            </p>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <label className="text-xl text-brandBlue-900" htmlFor="grade">
+                                Grade:
+                            </label>
+                            <input
+                                type="number"
+                                id="grade"
+                                name="grade"
+                                value={grade}
+                                onChange={onGradeChanged}
+                                className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                                aria-invalid={!validGrade}
+                                aria-describedby="grade-err"
+                                required
+                            />
+                            <p id="gradenote"
+                                className={
+                                    "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                    (validGrade && 'hidden')
+                                }>
+                                Must be valid grade between 1 and 12, with no spaces.
+                            </p>
+                        </div>
+                    </div>
                 }
+                <div className='flex flex-col gap-4 md:gap-2 md:flex-row'>
+                    <div className='flex flex-col gap-2'>
+                        <label className="text-xl text-brandBlue-900" htmlFor="email">
+                            Email:
+                        </label>
+                        <input
+                            type="text"
+                            id="email"
+                            name="email"
+                            value={email}
+                            onChange={onEmailChanged}
+                            className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                            aria-invalid={!validEmail}
+                            aria-describedby="email-err"
+                            required
+                        />
+                        <p id="emailnote" 
+                            className={
+                                "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                (validEmail && 'hidden')
+                            }>
+                            You must enter a valid email address.
+                        </p>
+                    </div>
+                    {
+                        !editingAll &&
+                        <div className='flex flex-col gap-2'>
+                            <label className="text-xl text-brandBlue-900" htmlFor="password">
+                                Password (Leave Empty to Keep Current):
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={onPasswordChanged}
+                                className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
+                                aria-invalid={!validPassword}
+                                aria-describedby="password-err"
+                                autoComplete="new-password"
+                            />
+                            <p id="passwordnote" 
+                                className={
+                                    "text-red-600 text-sm w-[min(24rem,80vw)] " +
+                                    ((!password || validPassword) && 'hidden')
+                                }>
+                                8 to 24 characters.<br />
+                                Must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+                            </p>
+                        </div>
+                    }
+                </div>
 
                 {isAdmin && editingAll &&
                     <>
-                        <label htmlFor="roles">
+                        <label className="text-xl text-brandBlue-900" htmlFor="roles">
                             Roles:
                         </label>
                         <select
@@ -369,8 +367,7 @@ const EditUserForm = ({ user, editingAll }) => {
                             onChange={onRolesChanged}
                             value={roles}
                             required
-                            className="select-roles"
-                            multiple
+                            className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)]"
                         >
                             <option value="Participant">Participant</option>
                             <option value="Proctor">Proctor</option>
@@ -380,20 +377,29 @@ const EditUserForm = ({ user, editingAll }) => {
                     </>
                 }
 
-                <button onClick={onSaveUserClicked} disabled={!canSave}>Save Changes</button>
-            </form>
+                <p ref={errRef} className={isError ? "errmsg" : "hidden"} aria-live="assertive">{errmsg}</p>
 
-            {
-                (isAdmin && editingAll) &&
-                <button onClick={onDeleteUserClicked} className="delete-button">
-                    <FontAwesomeIcon icon={faTrashCan} />
-                    Delete User
-                </button>
-            }
+                <div className='flex flex-col gap-4 md:gap-2 md:flex-row'>
+                    <button onClick={onSaveUserClicked} disabled={!canSave} type="submit"
+                        className={'flex justify-center px-2 py-2 text-xl transition-colors rounded-md w-[min(24rem,80vw)] ' +
+                        (!canSave ? "border-2 bg-brandNeutral-100" : ("text-white bg-brandBlue-500 hover:bg-brandBlue-600"))}>
+                        Save Changes
+                    </button>
+                    {
+                        (isAdmin && editingAll) &&
+                        <button onClick={onDeleteUserClicked} type="button"
+                            className='flex justify-center items-center gap-2 px-2 py-2 text-xl transition-colors rounded-md w-[min(24rem,80vw)] text-white bg-red-500 hover:bg-red-600'>
+                            <svg className='w-6 h-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#ffffff">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                            </svg>
+                            Delete User
+                        </button>
+                    }
+                </div>
+                
+            </form>
         </section>
     )
-
-    return <div className="edit-user">{content}</div>
 }
 
 export default EditUserForm

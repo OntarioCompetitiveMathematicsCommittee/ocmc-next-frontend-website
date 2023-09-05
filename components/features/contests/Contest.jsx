@@ -24,7 +24,7 @@ const Contest = ({ contestId }) => {
                     <Link href={"/portal/contests/" + contestId} className='px-6 py-2 text-white transition-colors rounded-md bg-brandBlue-500 hover:bg-brandBlue-600'>Edit</Link>
                 </td>
                 <td>
-                    <Link href="" className='px-6 py-2 text-white transition-colors rounded-md bg-brandYellow-500 hover:bg-brandYellow-600'>Input</Link>
+                    <Link href={"/portal/contests/input/" + contestId} className='px-6 py-2 text-white transition-colors rounded-md bg-brandYellow-500 hover:bg-brandYellow-600'>Input</Link>
                 </td>
                 <td>
                     <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"/portal/contests/view/" + contestId}>View</Link>
