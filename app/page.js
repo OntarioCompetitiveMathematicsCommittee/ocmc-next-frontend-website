@@ -29,41 +29,42 @@ export default function Home() {
             <Section 
                 image={Mission} 
                 title="Our Mission" 
-                text="Creators can gain independence through a decentralised digital currency system that is
-                    dependent on growing and engaging with the community and also their star power."
+                text="The Ontario Competitive Math Committee is dedicated to nurturing a love for mathematics and fostering the 
+                intellectual growth of students wordlwide. Our mission is to provide engaging math contests, workshops, 
+                and summer camps that empower young mathematical minds."
             />
             <div className='w-screen h-auto mt-48'>
                 <Image className='w-full' src={Wave1} alt="divider"/>
             </div>
             <Section
-                buttonText="Math Contests"
+                buttonText="More Information >"
                 buttonPath="/"
                 buttonColour={'bg-brandGreen-500'}
                 buttonHover={'hover:bg-brandGreen-600'}
                 colour={'bg-brandBlue-500'}
                 image={Contest}
-                title="Ontario Math Contest"
-                text="Creators can gain independence through a decentralised digital currency system that is
-                    dependent on growing and engaging with the community and also their star power."
+                title="Onatrio Math Competition"
+                text="We conduct math contests in Ontario to inspire a lasting passion for mathematics, foster critical thinking skills, 
+                and recognize young talent in problem-solving."
                 isPadding={true}
             />
             <div className='bg-brandBlue-500'>
-                <Image className='w-full' src={Wave2} alt="divider"/>
+                <Image className='w-full scale-[1.1]' src={Wave2} alt="divider"/>
             </div>
             <Section
-                buttonText={"Summer Camps"}
+                buttonText={"View Options >"}
                 buttonPath={"/"}
                 buttonColour={'bg-brandNeutral-400'}
                 buttonHover={'hover:bg-brandNeutral-500'}
                 colour={'bg-brandBlue-400'}
                 image={Camp}
                 title="Online Summer Camps"
-                text="Creators can gain independence through a decentralised digital currency system that is
-                    dependent on growing and engaging with the community and also their star power."
+                text="We organize math summer camps that immerse students in the world of mathematics, igniting a love for the subject,
+                 enhancing critical thinking abilities, and providing a supportive environment for young problem solvers to thrive."
                 isPadding={true}
             />
             <div>
-                <Image className='w-full' src={Wave3} alt="divider"/>
+                <Image className='w-full -translate-y-[1px]' src={Wave3} alt="divider"/>
             </div>
             <MeetOurTeam/>
             <div className='h-48'></div>

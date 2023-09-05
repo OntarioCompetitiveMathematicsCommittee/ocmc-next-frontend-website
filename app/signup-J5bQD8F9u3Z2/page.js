@@ -16,7 +16,6 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const ProctorSignup = () => {
 	const userRef = useRef();
-	const errRef = useRef();
 
 	const [register, { isLoading, isSuccess, isError, error }] =
 		useRegisterMutation();
@@ -111,15 +110,12 @@ const ProctorSignup = () => {
 		e.preventDefault();
 
 		if (stage === 1) {
-			console.log(registrationPasscode, process.env.NEXT_PUBLIC_REACT_APP_PROCTOR_PASSKEY)
 			if (registrationPasscode !== process.env.NEXT_PUBLIC_REACT_APP_PROCTOR_PASSKEY) {
-				// errRef.current.focus();
 				setErrMsg(
-					'Invalid registration passcode. Please contact the OCMC Executive Team at placeholder@gmail.com to recieve a passkey.'
+					'Invalid registration passcode. Please contact the OCMC Executive Team at ontariocmc@gmail.com to recieve a passkey.'
 				);
 				return;
 			}
-			console.log("working2")
 			if (canSave) {
 				await register({
 					username: username,
@@ -391,14 +387,25 @@ const ProctorSignup = () => {
 				/>
 
 			</div>
+			
+			{/* error message if applicable */}
+			{errMsg && <p className='w-[90vw] md:w-[min(30rem,45vw)] text-red-600 text-regular'>{errMsg}</p>}
 
 			{/* continue/submit button */}
-			<button
-				className='w-[90vw] md:w-[min(30rem,45vw)] h-14 text-white rounded-sm font-medium font-[Montserrat]
-				bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
-				type='submit'>
-				Sign Up
-			</button>
+			<div className='flex gap-2 w-[90vw] md:w-[min(30rem,45vw)]'>
+				<button
+					className='flex-1 h-14 border-2 rounded-sm font-medium font-[Montserrat]'
+					type='button'
+					onClick={() => {setStage(0)}}>
+					Back
+				</button>
+				<button
+					className='flex-1 h-14 text-white rounded-sm font-medium font-[Montserrat]
+					bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
+					type='submit'>
+					Sign Up
+				</button>
+			</div>
 		</form>
 	);
 
