@@ -6,7 +6,7 @@ export const emailApiSlice = apiSlice.injectEndpoints({
             query: ({ token }) => ({
                 url: `/activate/${token}`,
                 method: 'PATCH', 
-                body: { token }
+                body: { token } 
             })
         }),
         send: builder.mutation({

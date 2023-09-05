@@ -39,13 +39,9 @@ const Footer = () => {
                 setLabel('Send Message');
             }, 15*1000); // 15 sec
         } catch (err) {
-            setMessage(`LOL L BOZO L L L L L L`);
-            // setMessage('URBAD');
-            // // handle different errors
-			// if (!err.status) setErrMsg('No server response');
-			// else console.log(err);
-			// // focus on error message
-			// errRef.current.focus();
+            // handle different errors
+			if (!err.status) setErrMsg('No server response');
+			else console.log(err);
         }
     };
     
