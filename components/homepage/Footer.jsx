@@ -14,7 +14,7 @@ const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
 
-    const send = useSendMutation();
+    // const send = useSendMutation();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
