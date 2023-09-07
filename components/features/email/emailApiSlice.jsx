@@ -11,7 +11,7 @@ export const emailApiSlice = apiSlice.injectEndpoints({
         }),
         send: builder.mutation({
             query: ({ email, message }) => ({
-                url: '/',
+                url: '/send',
                 method: 'POST',
                 body: {email, message }
             })
