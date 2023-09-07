@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSendMutation } from '@components/features/email/emailApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -12,6 +13,8 @@ import instagram from '@public/assets/socials/instagram.svg'
 const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
+
+    // const send = useSendMutation();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
