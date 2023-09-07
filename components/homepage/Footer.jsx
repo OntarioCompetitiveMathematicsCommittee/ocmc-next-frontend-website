@@ -6,15 +6,13 @@ import { useSendMutation } from '@components/features/email/emailApiSlice';
 import Link from 'next/link'
 import Image from 'next/image'
 
-import linkedin from '@public/assets/socials/linkedin.svg'
-import facebook from '@public/assets/socials/facebook.svg'
-import instagram from '@public/assets/socials/instagram.svg'
+import linkedin from '@public/assets/socials/linkedin.svg';
+import facebook from '@public/assets/socials/facebook.svg';
+import instagram from '@public/assets/socials/instagram.svg';
 
 const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
-
-    // const send = useSendMutation();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
