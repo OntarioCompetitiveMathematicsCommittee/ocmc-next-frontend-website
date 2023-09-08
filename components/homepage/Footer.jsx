@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSendMutation } from '@components/features/email/emailApiSlice';
+import { useLoginMutation } from '@components/features/auth/authApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,6 +14,9 @@ import instagram from '@public/assets/socials/instagram.svg';
 const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
+
+    const [login, { isLoading, isSuccess, isError, error }] =
+		useLoginMutation();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
