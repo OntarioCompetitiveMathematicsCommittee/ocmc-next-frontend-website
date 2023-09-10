@@ -17,13 +17,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 body: { ...signup_details }
             }),
         }),
-        activate: builder.mutation({
-            query: ({ token }) => ({
-                url: `/activate/${token}`,
-                method: 'PATCH', 
-                body: { token }
-            })
-        }),
         sendLogout: builder.mutation({
             query: () => ({
                 url: '/auth/logout',
@@ -59,4 +52,4 @@ export const authApiSlice = apiSlice.injectEndpoints({
     })
 });
 
-export const { useLoginMutation, useRegisterMutation, useActivateMutation, useSendLogoutMutation, useRefreshMutation } = authApiSlice;
+export const { useLoginMutation, useRegisterMutation, useSendLogoutMutation, useRefreshMutation } = authApiSlice;
