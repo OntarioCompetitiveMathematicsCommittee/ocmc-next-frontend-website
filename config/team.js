@@ -73,11 +73,30 @@ export const team = [
         link: "https://www.linkedin.com/in/aidanzhang06/"
     },
     {
+        image: Michael,
+        firstName: "Michael",
+        lastName: "Hollander",
+        position: "Executive of Operations",
+    },
+    {
+        image: Claire,
+        firstName: "Claire",
+        lastName: "Liu",
+        position: "Executive of Finance",
+        link: "www.linkedin.com/in/claire-liu-abb37228b"
+    },
+    {
         image: Manasva,
         firstName: "Manasva",
         lastName: "Katyal",
         position: "Executive of Technology",
         link: "https://www.linkedin.com/in/manasva-katyal"
+    },
+    {
+        image: Yanzi,
+        firstName: "Yanzi",
+        lastName: "Guo",
+        position: "Executive of Technology",
     },
     {
         image: Oscar,
@@ -86,23 +105,10 @@ export const team = [
         position: "Executive of Mathematics",
     },
     {
-        image: Michael,
-        firstName: "Michael",
-        lastName: "Hollander",
-        position: "Executive of Operations",
-    },
-    {
         image: Jason,
         firstName: "Jason",
         lastName: "Sun",
         position: "Executive of Mathematics",
-    },
-    {
-        image: Yanzi,
-        firstName: "Yanzi",
-        lastName: "Guo",
-        position: "Executive of Technology",
-        link: "https://www.linkedin.com/in/yanzig/",
     },
     {
         image: MichaelL,
@@ -115,13 +121,6 @@ export const team = [
         firstName: "Shanna",
         lastName: "Xiao",
         position: "Executive of Mathematics",
-    },
-    {
-        image: Claire,
-        firstName: "Claire",
-        lastName: "Liu",
-        position: "Executive of Finance",
-        link: "https://www.linkedin.com/in/claire-liu-abb37228b"
     },
     {
         image: Charles,

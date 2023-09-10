@@ -1,6 +1,6 @@
 export const navLinks = {
     '/': 'Home',
     '/events': 'Events',
-    '/posts': 'Posts',
+    '/posts': 'Announcements',
     '/contact': 'Contact Us',
 }

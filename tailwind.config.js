@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/assets/ocmc-bg2.svg')",
+        'contest-bg': "url('/assets/contest-bg.png')",
       },
       colors: {
         brandGreen: {

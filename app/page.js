@@ -37,13 +37,13 @@ export default function Home() {
                 <Image className='w-full' src={Wave1} alt="divider"/>
             </div>
             <Section
-                buttonText="More Information >"
-                buttonPath="/"
+                buttonText="More Information"
+                buttonPath="/math-contests"
                 buttonColour={'bg-brandGreen-500'}
                 buttonHover={'hover:bg-brandGreen-600'}
                 colour={'bg-brandBlue-500'}
                 image={Contest}
-                title="Onatrio Math Competition"
+                title="Ontario Math Competition"
                 text="We conduct math contests in Ontario to inspire a lasting passion for mathematics, foster critical thinking skills, 
                 and recognize young talent in problem-solving."
                 isPadding={true}
@@ -52,10 +52,10 @@ export default function Home() {
                 <Image className='w-full scale-[1.1]' src={Wave2} alt="divider"/>
             </div>
             <Section
-                buttonText={"View Options >"}
-                buttonPath={"/"}
-                buttonColour={'bg-brandNeutral-400'}
-                buttonHover={'hover:bg-brandNeutral-500'}
+                buttonText={"View Options"}
+                buttonPath={"/math-camps"}
+                buttonColour={'bg-brandGreen-500'}
+                buttonHover={'hover:bg-brandGreen-600'}
                 colour={'bg-brandBlue-400'}
                 image={Camp}
                 title="Online Summer Camps"

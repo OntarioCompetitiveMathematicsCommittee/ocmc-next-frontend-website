@@ -3,7 +3,7 @@ import logo from '@public/assets/logo.svg'
 
 const Loading = () => {
   return (
-    <div className='h-screen w-full justify-center items-center flex flex-col gap-2'>
+    <div className='h-full w-full justify-center items-center flex flex-col gap-2 pb-24'>
       <div className='animate-spin'>
         <Image src={logo} alt="logo" />
       </div>
