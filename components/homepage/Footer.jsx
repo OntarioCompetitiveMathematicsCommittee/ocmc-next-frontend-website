@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useSendMutation } from '@components/features/email/emailApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -22,7 +21,7 @@ const Footer = () => {
             setMessage('');
             setEmail('');         
         } catch (err) {
-
+            
         }
     };
     
