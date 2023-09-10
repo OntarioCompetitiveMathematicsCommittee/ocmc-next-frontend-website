@@ -19,7 +19,7 @@ const MathContests = () => {
         <>
             <Navbar/>
             <NavbarPlaceholder/>
-            <section className="w-screen text-center absolute top-0">
+            <section className="absolute top-0 w-screen text-center">
                 <div className={"bg-[url('/assets/omc.png')] bg-left-top bg-cover bg-no-repeat h-screen absolute w-screen transition-transform duration-500 " 
                     + (carousel ? "-translate-x-full" : "translate-x-0")}>
                     <button type="button" onClick={changeCarousel} className={"absolute top-[calc(100vh/2.2)] z-20 right-4"}>
@@ -27,16 +27,13 @@ const MathContests = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
                     </button>
-                    <div className="absolute top-0 left-0 bg-gray-300 bg-opacity-60 h-full w-full"></div>
-                    <div className="absolute flex flex-col items-center gap-8 w-full h-full justify-center">
+                    <div className="absolute top-0 left-0 w-full h-full bg-gray-300 bg-opacity-60"></div>
+                    <div className="absolute flex flex-col items-center justify-center w-full h-full gap-8">
                         <h1 className="homeh1">Ontario Mathematics Competition</h1>
                         <div className="flex flex-col gap-2">
-                            <p className="homeh3 font-medium">The Ontario Mathematics Competition (OMC) and Leibniz Mathematics Competition (LMC) are 25-question 
-                                multiple-choice contests similar in format to the American Mathematics Competition (AMC) and the Pascal, 
-                                Cayley, and Fermat (PCF) contests. The difficulty level is around that of AMC. Top scorers will compete 
-                                in the [I honestly don't know what this stands for] (OIME).
+                            <p className="font-medium homeh3">{"The Ontario Mathematics Competition (OMC) and Leibniz Mathematics Competition (LMC) are 25-question multiple-choice contests similar in format to the American Mathematics Competition (AMC) and the Pascal, Cayley, and Fermat (PCF) contests. The difficulty level is around that of AMC. Top scorers will compete in the [I honestly don't know what this stands for] (OIME)."}
                             </p>
-                            <p className="homeh3 underline">
+                            <p className="underline homeh3">
                                 Interested? Contact us at <span className="text-blue-600 underline"><Link href="/contact">ontariocmc@gmail.com</Link></span>
                             </p>
                         </div>
@@ -49,16 +46,16 @@ const MathContests = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
                     </button>
-                    <div className="absolute top-0 left-0 bg-gray-300 bg-opacity-60 h-full w-full"></div>
-                    <div className="absolute flex flex-col items-center gap-8 w-full h-full justify-center">
+                    <div className="absolute top-0 left-0 w-full h-full bg-gray-300 bg-opacity-60"></div>
+                    <div className="absolute flex flex-col items-center justify-center w-full h-full gap-8">
                         <h1 className="homeh1">Ontario Invitational Mathematics Examination</h1>
                         <div className="flex flex-col gap-2">
-                            <p className="homeh3 font-medium">
-                                The Ontario Invitational Mathematics Examination (OIME)^ is an invitational full-solution contest inspired by similar 
-                                invitational mathematics competitions. It has 10 questions, with difficulty ranging from early 
-                                AIME questions to mid-level Canadian Mathematical Olympiad (CMO) questions.
+                            <p className="font-medium homeh3">
+                                {"The Ontario Invitational Mathematics Examination (OIME)^ is an invitational full-solution contest inspired by similar " + 
+                                "invitational mathematics competitions. It has 10 questions, with difficulty ranging from early " + 
+                                "AIME questions to mid-level Canadian Mathematical Olympiad (CMO) questions."}
                             </p>
-                            <p className="homeh3 underline">
+                            <p className="underline homeh3">
                                 Interested? Contact us at <span className="text-blue-600 underline"><Link href="/contact">ontariocmc@gmail.com</Link></span>
                             </p>
                         </div>
