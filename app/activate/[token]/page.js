@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams } from 'next/navigation';
-import { useActivateMutation } from '@components/features/auth/authApiSlice';
+import { useActivateMutation } from '@components/features/email/emailApiSlice';
 
 const VerifyPage = () => {
     // get token from url
