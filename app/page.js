@@ -52,10 +52,6 @@ export default function Home() {
                 <Image className='w-full scale-[1.1]' src={Wave2} alt="divider"/>
             </div>
             <Section
-                buttonText={"View Options"}
-                buttonPath={"/math-camps"}
-                buttonColour={'bg-brandGreen-500'}
-                buttonHover={'hover:bg-brandGreen-600'}
                 colour={'bg-brandBlue-400'}
                 image={Camp}
                 title="Online Summer Camps"

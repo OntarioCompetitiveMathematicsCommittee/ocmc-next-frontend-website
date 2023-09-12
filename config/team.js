@@ -42,7 +42,7 @@ export const team = [
         image: Minglun,
         firstName: "Minglun",
         lastName: "Shao",
-        position: "Best Director",
+        position: "Director of Technology",
         link: "https://www.linkedin.com/in/minglun-shao"
     },
     {
