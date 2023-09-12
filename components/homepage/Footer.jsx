@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState } from 'react'
+import { useSendMutation } from '@components/features/email/emailApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -12,20 +13,38 @@ import instagram from '@public/assets/socials/instagram.svg';
 const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
+    const [ disabled, setDisabled] = useState(false);
+    const [ label, setLabel ] = useState('Send Message');
+
+    const [send, { isLoading, isSuccess, isError, error }] =
+        useSendMutation();
 
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
         try {
             // send email
-
-            setMessage('');
-            setEmail('');         
-        } catch (err) {
+            await send({
+                email,
+                message
+            });
             
+            setMessage('');
+            setEmail('');
+    
+            setDisabled(true);
+            setLabel('Sent!');
+            setTimeout(() => {
+                setDisabled(false);
+                setLabel('Send Message');
+            }, 15*1000); // 15 sec
+        } catch (err) {
+            // handle different errors
+			if (!err.status) setErrMsg('No server response');
+			else console.log(err);
         }
     };
     
-    const canSubmit = email && message;
+    const cannotSubmit = !email || !message || disabled;
 	
     return (
         <section className=''>
@@ -72,8 +91,8 @@ const Footer = () => {
                                     onChange={(e) => setEmail(e.target.value)}
 	    						/>
                                 <div className='flex justify-center mt-auto mb-auto'>
-                                    <button className="py-2 text-xl text-white rounded-lg w-96 disabled:bg-brandBlue-700 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={!canSubmit}>
-                                        Send Message
+                                    <button className="py-2 text-xl text-white rounded-lg w-96 disabled:bg-brandBlue-700 hover:bg-brandBlue-700 bg-brandBlue-600" type="submit" disabled={cannotSubmit}>
+                                        {label}
                                     </button>
                                 </div>
                             </div>
