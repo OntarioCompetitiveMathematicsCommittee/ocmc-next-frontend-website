@@ -13,7 +13,6 @@ const Error404 = () => {
                 <h1 className="portalh2">404 Error</h1>
                 <p className="text-xl text-brandBlue-900">Page not found. <Link className='text-blue-600 underline' href='/'>Return to Home &rarr;</Link></p>
             </div>
-            <Footer />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState } from 'react'
+import { useSendMutation } from '@components/features/email/emailApiSlice';
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,15 +14,21 @@ const Footer = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
 
+    const [send, { isLoading, isSuccess, isError, error }] =
+        useSendMutation();
+    
     const onContactUsSubmit = async (e) => {
         e.preventDefault();
         try {
             // send email
-
+            const sent = await send({
+                email,
+                message
+            });
             setMessage('');
             setEmail('');         
         } catch (err) {
-            
+            console.log("HILYBILY");
         }
     };
     
