@@ -12,7 +12,7 @@ const Post = ({ postId, searchQuery }) => {
 
     useGetUsersQuery();
     const user = useSelector((state) => selectUserById(state, post?.author_id));
-    const author = (user) ? `${user.first_name} ${user.last_name}` : "Author Unknown";
+    const author = (user) ? `${user.first_name} ${user.last_name}` : "OCMC";
 
     const router = useRouter();
 

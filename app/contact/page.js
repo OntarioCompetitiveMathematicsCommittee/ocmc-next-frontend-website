@@ -3,17 +3,10 @@
 import { useState } from 'react'
 import { useSendMutation } from '@components/features/email/emailApiSlice';
 
-import Link from 'next/link'
-import Image from 'next/image'
-
 import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from '@components/elements/NavbarPlaceholder';
 
-import linkedin from '@public/assets/socials/linkedin.svg';
-import facebook from '@public/assets/socials/facebook.svg';
-import instagram from '@public/assets/socials/instagram.svg';
-
-const Footer = () => {
+const Contact = () => {
 	const [message, setMessage] = useState('');
 	const [email, setEmail] = useState('');
     const [ disabled, setDisabled] = useState(false);
@@ -50,11 +43,11 @@ const Footer = () => {
     const cannotSubmit = !email || !message || disabled;
 	
     return (
-        <div className='flex flex-col w-screen h-screen'>
+        <div className='flex flex-col w-screen h-screen bg-[url("/assets/ocmc-bg.svg")] bg-right-top bg-cover bg-no-repeat '>
             <Navbar/>
             <NavbarPlaceholder/>
-            <section className=''>
-                <div className=' h-[40rem] md:h-[28rem] lg:h-[25rem] flex flex-col'>
+            <section className='flex w-full h-full justify-center items-center'>
+                <div className=' h-[40rem] md:h-[28rem] lg:h-[25rem] flex flex-col bg-brandNeutral-200 border-4 rounded-lg border-brandNeutral-300'>
                     <div className='flex flex-col items-center lg:flex-row'>
                         <div className='mt-5 w-96 md:w-[50rem] lg:mt-11 lg:ml-14'>
                             <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-black'>Keep in Touch</h1>
@@ -120,4 +113,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Contact

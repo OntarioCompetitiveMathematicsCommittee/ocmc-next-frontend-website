@@ -17,7 +17,7 @@ const Section = ({
 			className={
 				'flex justify-center w-full ' + colour + (isPadding && ' pb-40')
 			}>
-			<div className='flex flex-col items-center pt-40 pb-2 lg:flex-row lg:justify-center w-full max-w-[100rem]'>
+			<div className='flex flex-col items-center pt-40 pb-2 lg:flex-row gap-8 lg:justify-center w-full max-w-[100rem]'>
 				<div className='flex flex-col items-center w-full max-w-2xl gap-2 px-4 text-center lg:text-left lg:items-start'>
 					<h1 className={"homeh1 " + (colour && ' text-white')}>
 						{title}
