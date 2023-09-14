@@ -38,7 +38,7 @@ const PostsFeed = () => {
 				<div className='flex flex-col items-center w-full max-w-5xl gap-12 text-center'>
 					{/** title */}
 					<h1 className="portalh2">
-						OCMC Announcments
+						OCMC Announcements
 					</h1>
 				
 
