@@ -42,6 +42,7 @@ const MathContests = () => {
                             isPadding={true}
                         />
                     </div>
+                    <Footer />
                 </section>
             </div>
         </div>
