@@ -4,6 +4,7 @@ import { useState } from "react"
 
 import Navbar from "@components/elements/Navbar"
 import NavbarPlaceholder from "@components/elements/NavbarPlaceholder"
+import Footer from "@components/homepage/Footer"
 
 import Section from "@components/homepage/Section"
 
@@ -29,10 +30,10 @@ const MathContests = () => {
                             text="The Ontario Mathematics Competition (OMC) and Leibniz Mathematics Competition (LMC) are 
                                 25-question multiple-choice contests similar in format to the American Mathematics Competition 
                                 (AMC) and the Pascal, Cayley, and Fermat (PCF) contests. The difficulty level is around that of AMC. 
-                                Top scorers will compete in the OIME"
+                                Top scorers will compete in the OIME. This fall, the OMC will run between October 16th and October 20th. School registration closes September 29th."
                             isPadding={true}
                         />
-                        <p>Interested in writing the OMC? <Link href="/contact" className="my-2 text-lg underline text-brandBlue-600">Contact Us</Link></p>
+                        <p>Interested in writing the OMC? <Link href="/contact" className="my-2 text-lg underline text-brandBlue-600">Contact Us</Link> by September 29th</p>
                         <div className="w-screen border-b-2"></div>
                         <Section
                             image={oime}
