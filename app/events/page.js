@@ -8,8 +8,8 @@ const Events = () => {
 
     const upcomingEvents = [
         {
-            title: "Ontario Math Contest 2023",
-            date: "October 3, 2023",
+            title: "Ontario Mathematics Contest 2023",
+            date: "October 16-20, 2023",
             type: "In Person Contest",
         },
     ]
@@ -22,15 +22,15 @@ const Events = () => {
                     <NavbarPlaceholder/>
                     <section className="flex-1 w-full justify-start lg:justify-between max-w-[90rem] flex py-24 flex-col gap-8 lg:flex-row items-center lg:items-start text-center lg:text-left px-4">
                         <h1 className="homeh1 leading-[120%]">Upcoming <br /> Events</h1>
-                        <div className="flex-col gap-8 flex items-end ">
+                        <div className="flex flex-col items-end gap-8 ">
                             {upcomingEvents.map((event, index) => (
-                                <div key={index} className="flex flex-col lg:flex-row justify-start gap-2 lg:gap-6 items-center lg:items-start">
+                                <div key={index} className="flex flex-col items-center justify-start gap-2 lg:flex-row lg:gap-6 lg:items-start">
                                     <h2 className="text-2xl lg:text-3xl font-bold lg:max-w-[8rem] text-right">{event.date}</h2>
                                     <div className="flex-col bg-white bg-opacity-60 border-4 rounded-md border-brandNeutral-100 py-4 px-8 w-[min(32rem,90vw)]">
                                         <h2 className="text-lg text-brandYellow-500">{event.type}</h2>
-                                        <h1 className="text-2xl lg:text-3xl font-bold mb-4">{event.title}</h1>
-                                        <Link className='text-xl text-white bg-brandYellow-500 transition-colors rounded-md px-4 py-2 hover:bg-brandYellow-600' href="/contact">Contact Us</Link>
-                                        <p className='text-gray-500 mt-2'>Reach out to speak about participation</p>
+                                        <h1 className="mb-4 text-2xl font-bold lg:text-3xl">{event.title}</h1>
+                                        <Link className='px-4 py-2 text-xl text-white transition-colors rounded-md bg-brandYellow-500 hover:bg-brandYellow-600' href="/contact">Contact Us</Link>
+                                        <p className='mt-2 text-gray-500'>Reach out to speak about participation</p>
                                     </div>
                                     
                                 </div>

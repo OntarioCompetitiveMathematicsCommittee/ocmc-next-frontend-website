@@ -60,7 +60,7 @@ const Footer = () => {
             <div className='bg-brandBlue-800 h-[40rem] md:h-[28rem] lg:h-[25rem] flex flex-col'>
                 <div className='flex flex-col items-center lg:flex-row'>
                     <div className='mt-5 w-96 md:w-[50rem] lg:mt-11 lg:ml-14'>
-                        <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-brandNeutral-100'>Keep in Touch</h1>
+                        <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-brandNeutral-100'>Contact Us</h1>
                         <form onSubmit={onContactUsSubmit} className='flex flex-col gap-5 md:flex-row lg:mt-3'>
                             {/** message field */}
                             <div className='flex flex-col'>

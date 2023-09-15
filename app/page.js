@@ -29,7 +29,7 @@ export default function Home() {
             <Section 
                 image={Mission} 
                 title="Our Mission" 
-                text="The Ontario Competitive Math Committee is dedicated to nurturing a love for mathematics and fostering the 
+                text="The Ontario Competitive Mathematics Committee is dedicated to nurturing a love for mathematics and fostering the 
                 intellectual growth of students wordlwide. Our mission is to provide engaging math contests, workshops, 
                 and summer camps that empower young mathematical minds."
             />
@@ -43,7 +43,7 @@ export default function Home() {
                 buttonHover={'hover:bg-brandGreen-600'}
                 colour={'bg-brandBlue-500'}
                 image={Contest}
-                title="Ontario Math Competition"
+                title="Ontario Mathematics Competition"
                 text="We conduct math contests in Ontario to inspire a lasting passion for mathematics, foster critical thinking skills, 
                 and recognize young talent in problem-solving."
                 isPadding={true}
