@@ -21,7 +21,7 @@ export const team = [
         image: Elaine,
         firstName: "Elaine",
         lastName: "Li",
-        position: "Director of Operations",
+        position: "CFO",
         link: "https://www.linkedin.com/in/elaine-li-236a3a1b5/"
     },
     {
