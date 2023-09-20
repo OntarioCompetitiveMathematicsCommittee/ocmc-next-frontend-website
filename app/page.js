@@ -30,7 +30,7 @@ export default function Home() {
                 image={Mission} 
                 title="Our Mission" 
                 text="The Ontario Competitive Mathematics Committee is dedicated to nurturing a love for mathematics and fostering the 
-                intellectual growth of students wordlwide. Our mission is to provide engaging math contests, workshops, 
+                intellectual growth of students worldwide. Our mission is to provide engaging math contests, workshops, 
                 and summer camps that empower young mathematical minds."
             />
             <div className='w-screen h-auto mt-48'>
