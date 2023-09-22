@@ -6,9 +6,13 @@ export const SCHOOLS = [
     // 'Marc Garneau Collegiate Institute',
     // 'White Oaks Secondary School',
     // 'John Fraser Secondary School',
-
-    'St. Robert Catholic High School',
     'Bayview Secondary School',
+    'Iroquois Ridge High School',
+    'Markville Secondary School',
+    'St. Robert Catholic High School',
+    'The Woodlands Secondary School',
+    'White Oaks Secondary School',
+    
     // 'The Woodlands School - Secondary',
     // 'St. Theresa of Lisieux Catholic High School',
 ];
