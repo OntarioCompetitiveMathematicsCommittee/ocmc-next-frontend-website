@@ -7,6 +7,7 @@ export const SCHOOLS = [
     // 'White Oaks Secondary School',
     // 'John Fraser Secondary School',
     'Bayview Secondary School',
+    'GEMS Dubai American Academy',
     'Iroquois Ridge High School',
     'Markville Secondary School',
     'St. Robert Catholic High School',
