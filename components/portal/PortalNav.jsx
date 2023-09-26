@@ -160,7 +160,7 @@ const PortalNav = () => {
                             selected={page === '/portal/proctors/school-users'}
                             setPage={setPage}
                             icon={schools}
-                            name={"Schools Participants"}
+                            name={"Users List"}
                             path="/portal/proctors/school-users"
                         />}
                     

@@ -44,7 +44,7 @@ const ProctorUsersList = () => {
 			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
 				{/** title with proctor school name */}
 				<div className='text-center'>
-					<h1 className={"portalh2 font-normal"}>Registered Participants for</h1>
+					<h1 className={"portalh2 font-normal"}>Students from</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{proctor.school}</h2>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
