@@ -12,6 +12,7 @@ export const SCHOOLS = [
     'St. Robert Catholic High School',
     'St. Theresa of Lisieux CHS',
     'The Woodlands Secondary School',
+    'University of Toronto Schools',
     'White Oaks Secondary School',
     // 'Earl Haig Secondary School',
     // 'Branksome Hall',
