@@ -35,7 +35,7 @@ const Contests = () => {
 	}, [users])
 
     const [updateUserContests ] = useUpdateUserContestScoresMutation()
-	const { isAdmin } = useAuth();
+	const { isAdmin, isExecutive } = useAuth();
 
     const updateScore = (currScore, currContestId, username) => {
         updateUserContests({username, contest_id: currContestId, score: currScore, type: "update"})
@@ -61,7 +61,7 @@ const Contests = () => {
 						<tbody className='text-xl'>
                             {
                             users?.map((user, index) => {
-                                return <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score} updateScore={updateScore} isAdmin={isAdmin}/>;
+                                return <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score} updateScore={updateScore} isAdmin={isAdmin} isExecutive={isExecutive}/>;
                             })}
                         </tbody>
 					</TableWrapper>
