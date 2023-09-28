@@ -1,9 +1,8 @@
 export const SCHOOLS = [
     // 'Abbey Park High School',
-    // 'Oakville Trafalgar High School',
+    'Oakville Trafalgar High School',
     // 'Laurel Heights Secondary School',
     'Marc Garneau Collegiate Institute',
-    // 'Dr. Frank J. Hayden Secondary School',
     'John Fraser Secondary School',
     'Bayview Secondary School',
     'GEMS Dubai American Academy',
