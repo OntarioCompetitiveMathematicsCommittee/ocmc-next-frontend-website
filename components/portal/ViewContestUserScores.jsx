@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, maxScore}) => {
+const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, maxScore, isExecutive}) => {
     const userScore = user.contest_data.find(item => item.contest_id === contest_id).score;
     
     const [initialScore, setInitialScore] = useState(userScore)
@@ -21,7 +21,7 @@ const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, m
         <tr className="bg-white border-2" key={index}>
             <td className="py-4 pl-4">{user.username}</td>
             <td>{user.first_name} {user.last_name}</td>
-            {isAdmin && <td>{user.school}</td>}
+            {(isAdmin || isExecutive) && <td>{user.school}</td>}
             <td>{user.grade}</td>
             <td>{user.email}</td>
             <td className="flex items-center justify-center gap-4 h-14">
