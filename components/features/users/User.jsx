@@ -57,7 +57,9 @@ const User = ({ userId, searchQuery }) => {
         if (searchQuery !== "") {
             if (!user.username.toLowerCase().includes(searchQuery.toLowerCase())
                 && !user.first_name.toLowerCase().includes(searchQuery.toLowerCase())
-                && !user.last_name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                && !user.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+                && !user.school.toLowerCase().includes(searchQuery.toLowerCase())
+                && !user.email.toLowerCase().includes(searchQuery.toLowerCase())) {
                 return null;
             }
         }

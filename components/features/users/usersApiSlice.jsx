@@ -80,6 +80,15 @@ export const usersApiSlice = apiSlice.injectEndpoints({
             }),
             invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.username }]
         }),
+        
+        updateUserContestScores: builder.mutation({
+            query: ({ username, contest_id, score, type }) => ({
+                url: `/users/${username}`,
+                method: 'PATCH',
+                body: { contest_id, score, type }
+            }),
+            invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.username }]
+        }),
 
         deleteUser: builder.mutation({
             query: ({ id }) => ({
@@ -99,6 +108,7 @@ export const {
     useAddNewUserMutation,
     useUpdateUserMutation,
     useUpdateUserContestsMutation,
+    useUpdateUserContestScoresMutation,
     useDeleteUserMutation
 } = usersApiSlice;
 

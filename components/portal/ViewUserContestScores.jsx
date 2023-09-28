@@ -2,7 +2,7 @@
 
 // importing required modules and components
 import { useSelector } from "react-redux";
-import { useGetUsersQuery, useUpdateUserContestsMutation, selectUserById } from "@components/features/users/usersApiSlice";
+import { useGetUsersQuery, useUpdateUserContestScoresMutation, selectUserById } from "@components/features/users/usersApiSlice";
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 import useAuth from "@hooks/useAuth";
 import ContestDisplay from "@components/features/contests/participants/ContestDisplay";
@@ -18,7 +18,7 @@ const ViewUserContestScores = ({ id }) => {
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
 	}) 
-	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestsMutation()
+	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestScoresMutation()
 	const { isAdmin, isProctor } = useAuth();
 
 	// get current user using id
