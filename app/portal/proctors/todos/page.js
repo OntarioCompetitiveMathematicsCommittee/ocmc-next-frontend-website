@@ -7,7 +7,7 @@ const ProctorTodos = () => {
     // Load hard-coded items when component mounts
     const todos = [
         { id: 0, text: 'Announce upcoming events', completed: false },
-        { id: 1, text: 'Confirm LL students are registered', completed: false },
+        { id: 1, text: 'Confirm all participating students are registered', completed: false },
         { id: 2, text: 'Contact the OCMC to receive contest papers', completed: false },
         { id: 3, text: 'Send finshed contests back', completed: false },
     ];
