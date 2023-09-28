@@ -3,7 +3,7 @@
 // importing required modules and components
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { useUpdateUserContestsMutation } from '@components/features/users/usersApiSlice';
+import { useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice';
 
 import BackButton from '@components/elements/BackButton';
 
@@ -17,7 +17,7 @@ const EditContest = () => {
 	};
 
 	// get contestid from url
-	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestsMutation()
+	const [updateUserContests, { isSuccess: isUpdateSuccess} ] = useUpdateUserContestScoresMutation()
 	const params = useParams();
 	const id = params.contestId;
 

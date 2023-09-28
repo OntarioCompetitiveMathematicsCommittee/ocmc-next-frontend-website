@@ -1,8 +1,9 @@
 "use client"
 
+import { useEffect } from 'react';
 import { useParams } from 'next/navigation'
 
-import { useGetUsersByContestQuery, useUpdateUserContestsMutation } from '@components/features/users/usersApiSlice'
+import { useGetUsersByContestQuery, useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice'
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
 
 
@@ -28,9 +29,12 @@ const Contests = () => {
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
 	}) 
-    console.log(contests)
+    
+	useEffect(() => {
+		console.log(users)
+	}, [users])
 
-    const [updateUserContests ] = useUpdateUserContestsMutation()
+    const [updateUserContests ] = useUpdateUserContestScoresMutation()
 	const { isAdmin } = useAuth();
 
     const updateScore = (currScore, currContestId, username) => {
