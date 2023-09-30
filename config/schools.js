@@ -5,6 +5,7 @@ export const SCHOOLS = [
     'Marc Garneau Collegiate Institute',
     'John Fraser Secondary School',
     'Bayview Secondary School',
+    'École Secondaire Publique Louis-Riel',
     'GEMS Dubai American Academy',
     'Iroquois Ridge High School',
     'Markville Secondary School',
