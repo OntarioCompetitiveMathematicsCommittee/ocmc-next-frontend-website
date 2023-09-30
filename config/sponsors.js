@@ -32,14 +32,14 @@ export const sponsorList = [
         link: 'https://www.maplesoft.com/',
     },
     {
-        name: 'St. Robert Catholic High School',
-        image: stroberts,
-        link: 'https://stro.ycdsb.ca/',
+        name: 'TTMath',
+        image: ttmath,
+        link: 'http://www.ttmath.ca/en/',
     },
     {
-        name: 'Bayview Secondary School',
-        image: bayview,
-        link: 'http://www.yrdsb.ca/schools/bayview.ss/Pages/default.aspx',
+        name: 'aops',
+        image: aops,
+        link: 'https://artofproblemsolving.com/',
     },
     {
         name: 'Jane Street1',
@@ -52,13 +52,13 @@ export const sponsorList = [
         link: 'https://www.maplesoft.com/',
     },
     {
-        name: 'St. Robert Catholic High School1',
-        image: stroberts,
-        link: 'https://stro.ycdsb.ca/',
+        name: 'TTMath1',
+        image: ttmath,
+        link: 'http://www.ttmath.ca/en/',
     },
     {
-        name: 'Bayview Secondary School1',
-        image: bayview,
-        link: 'http://www.yrdsb.ca/schools/bayview.ss/Pages/default.aspx',
-    },
+        name: 'aops1',
+        image: aops,
+        link: 'https://artofproblemsolving.com/',
+    }
 ]
