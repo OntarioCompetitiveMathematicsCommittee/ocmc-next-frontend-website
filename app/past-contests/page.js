@@ -33,21 +33,21 @@ const PastContests = () => {
                                             alt="alt text"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            Spring '23 I
+                                            Spring &lsquo;23 I
                                         </a></td>
                                         <td className="py-4"><a className="p-5 md:px-10 lg:px-20"
                                             href="/past-contests/solutions/2023-spring-omc-I.pdf"
                                             alt="alt text"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            Spring '23 I
+                                            Spring &lsquo;23 I
                                         </a></td>
                                         <td className="py-4"><a className="p-5 md:px-10 lg:px-20"
                                             href="/past-contests/results/2023-spring-omc.pdf"
                                             alt="alt text"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            Spring '23
+                                            Spring &lsquo;23
                                         </a></td>
                                     </tr>
                                     <tr className="bg-brandNeutral-100">
@@ -56,14 +56,14 @@ const PastContests = () => {
                                             alt="alt text"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            Spring '23 II
+                                            Spring &lsquo;23 II
                                         </a></td>
                                         <td className="py-4"><a className="p-5 md:px-10 lg:px-20"
                                             href="/past-contests/solutions/2023-spring-omc-II.pdf"
                                             alt="alt text"
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                            Spring '23 II
+                                            Spring &lsquo;23 II
                                         </a></td>
                                         <td className="p-5 md:px-10 lg:px-20"></td>
                                     </tr>
