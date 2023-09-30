@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'nav-break': '1080px',
+      },
       backgroundImage: {
         'hero-pattern': "url('/assets/ocmc-bg2.svg')",
         'contest-bg': "url('/assets/contest-bg.png')",
@@ -59,12 +62,17 @@ module.exports = {
       },
       animation: {
         scroll: 'scroll 20s linear infinite',
+        'infinite-scroll': 'infinite-scroll 25s linear infinite',
       },
       keyframes: {
         scroll: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
       }, 
       backgroundSize: {
         'size-200': '200% 200%',

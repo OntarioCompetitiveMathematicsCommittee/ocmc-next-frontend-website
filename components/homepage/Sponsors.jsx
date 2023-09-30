@@ -4,25 +4,28 @@ import Image from 'next/image'
 import { sponsorList } from '@config/sponsors'
 
 const Sponsors = () => {
+
     return (
-        <div className='flex flex-col items-center gap-2'>
-            <section className='relative py-6 overflow-hidden bg-brandNeutral-200 whitespace-nowrap'>
-                <div className="inline-block w-auto animate-scroll bg-brandNeutral-200">
-                    {sponsorList.map((sponsor, index) => (
-                        <Link className='inline-block w-[150px] lg:w-[225px] md:w-[200px] text-center' href={sponsor.link} target="_blank" key={sponsor.name + "1"}>
+        <div
+            className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] py-6 bg-brandNeutral-200">
+            <ul x-ref="logos" className="flex items-center justify-center md:justify-start [&_li]:mx-8 md:[&_li]:mx-12 lg:[&_li]:mx-16 [&_img]:max-w-none animate-infinite-scroll">
+                {sponsorList.map((sponsor, index) => (
+                    <li className='inline-block mx-8 text-center md:mx-12 lg:mx-16' target="_blank" key={sponsor.name + "1"}>
+                        <Link href={sponsor.link}>
                             <Image className='inline-block w-auto h-16 mx-auto transition-all md:h-18 lg:h-20 grayscale hover:grayscale-0' src={sponsor.image} alt={sponsor.name}/>
                         </Link>
-                    ))}
-                </div>
-                <div className="inline-block w-auto animate-scroll bg-brandNeutral-200">
-                    {sponsorList.map((sponsor, index) => (
-                        <Link className='inline-block w-[150px] lg:w-[225px] md:w-[200px] text-center' href={sponsor.link} target="_blank" key={sponsor.name + "2"}>
+                    </li>
+                ))}
+            </ul>     
+            <ul x-ref="logos" className="flex items-center justify-center md:justify-start [&_li]:mx-8 md:[&_li]:mx-12 lg:[&_li]:mx-16 [&_img]:max-w-none animate-infinite-scroll">
+                {sponsorList.map((sponsor, index) => (
+                    <li className='inline-block mx-8 text-center md:mx-12 lg:mx-16' target="_blank" key={sponsor.name + "2"}>
+                        <Link href={sponsor.link}>
                             <Image className='inline-block w-auto h-16 mx-auto transition-all md:h-18 lg:h-20 grayscale hover:grayscale-0' src={sponsor.image} alt={sponsor.name}/>
                         </Link>
-                    ))}
-                </div>
-            </section>
-            {/* <p className='text-lg underline text-grandNeutral-500'>More Sponsors &rarr;</p> */}
+                    </li>
+                ))}
+            </ul>              
         </div>
     )
 }
