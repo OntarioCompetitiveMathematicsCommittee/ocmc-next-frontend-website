@@ -35,7 +35,7 @@ const Navbar = () => {
 						<ul
 							className={
 								'whitespace-nowrap gap-12 items-start p-16 flex flex-col fixed bg-brandNeutral-200 top-0 right-0 w-3/4 h-screen text-2xl border-4 transition-transform duration-500 ' +
-								' md:duration-0 md:transition-none md:flex-row md:border-0 md:translate-x-0 md:h-0 md:p-0 md:text-base md:bg-transparent md:static md:items-center md:justify-start ' +
+								' nav-break:duration-0 nav-break:transition-none nav-break:flex-row nav-break:border-0 nav-break:translate-x-0 nav-break:h-0 nav-break:p-0 nav-break:text-base nav-break:bg-transparent nav-break:static nav-break:items-center nav-break:justify-start ' +
 								(navOpen
 									? 'translate-x-0'
 									: 'translate-x-[100%]')
@@ -55,12 +55,12 @@ const Navbar = () => {
 								}}
 								href='/signup'>
 								<div
-									className='text-xl font-medium text-transparent transition-all md:text-base bg-clip-text bg-gradient-to-r from-brandBlue-500 to-brandGreen-600 group-hover:text-white'>
+									className='text-xl font-medium text-transparent transition-all nav-break:text-base bg-clip-text bg-gradient-to-r from-brandBlue-500 to-brandGreen-600 group-hover:text-white'>
 									Register
 								</div>
 							</Link>
 						</ul>
-						<div className='md:hidden'>
+						<div className='nav-break:hidden'>
 							<HamburgerMenu
 								navOpen={navOpen}
 								handleNavToggle={handleNavToggle}

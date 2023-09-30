@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'nav-break': '1080px',
+      },
       backgroundImage: {
         'hero-pattern': "url('/assets/ocmc-bg2.svg')",
         'contest-bg': "url('/assets/contest-bg.png')",
