@@ -37,9 +37,9 @@ export const sponsorList = [
         link: 'http://www.ttmath.ca/en/',
     },
     {
-        name: 'aops',
-        image: aops,
-        link: 'https://artofproblemsolving.com/',
+        name: 'wolfram',
+        image: wolfram,
+        link: 'https://www.wolframalpha.com/',
     },
     {
         name: 'Jane Street1',
@@ -57,8 +57,8 @@ export const sponsorList = [
         link: 'http://www.ttmath.ca/en/',
     },
     {
-        name: 'aops1',
-        image: aops,
-        link: 'https://artofproblemsolving.com/',
-    }
+        name: 'wolfram1',
+        image: wolfram,
+        link: 'https://www.wolframalpha.com/',
+    },
 ]
