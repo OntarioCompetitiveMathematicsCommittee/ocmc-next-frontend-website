@@ -19,6 +19,7 @@ const UsersList = () => {
    // search query state
    const [searchQuery, setSearchQuery] = useState('');
 
+
    let content;
 
    // page loading
@@ -43,6 +44,7 @@ const UsersList = () => {
 
             <div className='flex flex-col w-4/5 gap-4'>
                {/** search query input field */}
+                  <div>
                      <input
                         className="w-64 px-2 py-2 border-2 rounded-md "
                         type="text"
@@ -50,6 +52,9 @@ const UsersList = () => {
                         onChange={e => setSearchQuery(e.target.value)}
                         placeholder="Search Users..."
                      />
+                     {console.log(tableContent)}
+                  </div>
+                     
             
                {/** table ot display list of users */}
                <TableWrapper>

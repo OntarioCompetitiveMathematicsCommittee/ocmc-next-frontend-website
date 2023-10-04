@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'next/navigation'
 
 import { useGetUsersByContestQuery, useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice'
@@ -29,13 +29,11 @@ const Contests = () => {
 		refetchOnFocus: true,
 		refetchOnMountOrArgChange: true
 	}) 
-    
-	useEffect(() => {
-		console.log(users)
-	}, [users])
 
     const [updateUserContests ] = useUpdateUserContestScoresMutation()
 	const { isAdmin, isExecutive } = useAuth();
+
+	const [searchQuery, setSearchQuery] = useState("");
 
     const updateScore = (currScore, currContestId, username) => {
         updateUserContests({username, contest_id: currContestId, score: currScore, type: "update"})
@@ -56,12 +54,27 @@ const Contests = () => {
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
+					<input
+						className="w-64 px-2 py-2 border-2 rounded-md "
+						type="text"
+						value={searchQuery}
+						onChange={e => setSearchQuery(e.target.value)}
+						placeholder="Search Contests..."
+					/>
 					<TableWrapper className='table-auto border-spacing-10'>
 						<TableHead headings={["Username", "Full Name", "School", "Grade", "Email", "Score"]}/>
 						<tbody className='text-xl'>
                             {
                             users?.map((user, index) => {
-                                return <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score} updateScore={updateScore} isAdmin={isAdmin} isExecutive={isExecutive}/>;
+                                return <ViewContestUserScores 
+									key={index} 
+									user={user} 
+									index={index} 
+									contest_id={contest_id} 
+									maxScore={contests.entities[contest_id].max_score} 
+									updateScore={updateScore} 
+									isAdmin={isAdmin} isExecutive={isExecutive}
+									searchQuery={searchQuery}/>;
                             })}
                         </tbody>
 					</TableWrapper>
