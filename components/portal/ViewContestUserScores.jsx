@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, maxScore, isExecutive}) => {
+const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, maxScore, isExecutive, searchQuery}) => {
     const userScore = user.contest_data.find(item => item.contest_id === contest_id).score;
     
     const [initialScore, setInitialScore] = useState(userScore)
@@ -15,6 +15,16 @@ const ViewContestUserScores = ({user, index, contest_id, updateScore, isAdmin, m
     const updateCurrScore = () => {
         setInitialScore(currScore)
         updateScore(currScore, contest_id, user.username)
+    }
+
+    if (searchQuery !== "") {
+        if (!user.username.toLowerCase().includes(searchQuery.toLowerCase())
+            && !user.first_name.toLowerCase().includes(searchQuery.toLowerCase())
+            && !user.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+            && !user.school.toLowerCase().includes(searchQuery.toLowerCase())
+            && !user.email.toLowerCase().includes(searchQuery.toLowerCase())) {
+            return null;
+        }
     }
 
     return (
