@@ -2,6 +2,7 @@
 
 import { useSelector } from 'react-redux'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
 
 import { useGetUsersByContestQuery, selectUserById } from '@components/features/users/usersApiSlice'
 import { useGetContestsQuery } from "@components/features/contests/contestsApiSlice";
@@ -14,6 +15,8 @@ import BackButton from '@components/elements/BackButton'
 import ViewContestUserScores from '@components/portal/ViewContestUserScores'
 
 const Contests = () => {
+	const [searchQuery, setSearchQuery] = useState('');
+
     const params = useParams();
     const contest_id = params.contestId;
     const proctor_id = useAuth().id;
@@ -48,12 +51,19 @@ const Contests = () => {
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
+					<input
+						className="w-64 px-2 py-2 border-2 rounded-md "
+						type="text"
+						value={searchQuery}
+						onChange={e => setSearchQuery(e.target.value)}
+						placeholder="Search Contests..."
+					/>
 					<TableWrapper className='table-auto border-spacing-10'>
 						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Score"]}/>
 						<tbody className='text-xl'>
                             {
                             users?.map((user, index) =>(
-                                <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score}/>
+                                <ViewContestUserScores key={index} user={user} index={index} contest_id={contest_id} maxScore={contests.entities[contest_id].max_score} searchQuery={searchQuery}/>
                             ))}
                         </tbody>
 					</TableWrapper>
