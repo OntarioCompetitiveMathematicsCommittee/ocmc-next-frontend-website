@@ -138,7 +138,11 @@ const SignupPage = () => {
 	if (isError) {
 		window.scrollTo(0, 0);
 		if (error.status === 409) {
-			errmsg = <>Username is already taken. Please choose another.</>;
+			if (error.data.message.includes('Email')){
+				errmsg = <>Email is already in use. Please choose another.</>;
+			} else if (error.data.message.includes('Username')){
+				errmsg = <>Username is already taken. Please choose another.</>;
+			}
 		} else {
 			errmsg = <>An error occurred. Please try again later.</>;
 		}
