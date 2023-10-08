@@ -25,3 +25,35 @@ export const SCHOOLS = [
     // 'William Lyon Mackenzie Collegiate Institute',
     // 'St. Theresa of Lisieux Catholic High School',
 ];
+
+export const SCHOOL_REGION_LETTER = {
+    'Oakville Trafalgar High School': 'O',
+    'Marc Garneau Collegiate Institute': 'O',
+    'John Fraser Secondary School': 'O',
+    'Bayview Secondary School': 'O',
+    'École Secondaire Publique Louis-Riel': 'O',
+    'GEMS Dubai American Academy': 'I',
+    'Iroquois Ridge High School': 'O',
+    'Markville Secondary School': 'O',
+    'St. Robert Catholic High School': 'O',
+    'St. Theresa of Lisieux CHS': 'O',
+    'The Woodlands Secondary School': 'O',
+    'University of Toronto Schools': 'O',
+    'White Oaks Secondary School': 'O',
+};
+
+export const SCHOOL_NUMBER = {
+    'Oakville Trafalgar High School': '001',
+    'Marc Garneau Collegiate Institute': '002',
+    'John Fraser Secondary School': '003',
+    'Bayview Secondary School': '004',
+    'École Secondaire Publique Louis-Riel': '005',
+    'GEMS Dubai American Academy': '006',
+    'Iroquois Ridge High School': '007',
+    'Markville Secondary School': '008',
+    'St. Robert Catholic High School': '009',
+    'St. Theresa of Lisieux CHS': '010',
+    'The Woodlands Secondary School': '011',
+    'University of Toronto Schools': '012',
+    'White Oaks Secondary School': '013',
+};

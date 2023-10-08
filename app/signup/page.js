@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
 import Image from 'next/image';
-import { SCHOOLS } from '@config/schools';
+import { SCHOOLS, SCHOOL_NUMBER, SCHOOL_REGION_LETTER } from '@config/schools';
 
 import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from "@components/elements/NavbarPlaceholder"
@@ -18,8 +18,7 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const SignupPage = () => {
 	const userRef = useRef();
 
-	const [register, { isLoading, isSuccess, isError, error }] =
-		useRegisterMutation();
+	const [register, { isLoading, isSuccess, isError, error }] = useRegisterMutation();
 
 	const [username, setUsername] = useState('');
 	const [validUsername, setValidUsername] = useState(false);
@@ -121,6 +120,7 @@ const SignupPage = () => {
 					roles: roles,
 					first_name: firstname,
 					last_name: lastname,
+					code: SCHOOL_REGION_LETTER[school]+'-'+SCHOOL_NUMBER[school]+'-',
 					school: school,
 					email: email,
 					grade: grade,

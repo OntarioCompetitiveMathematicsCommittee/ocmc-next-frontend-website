@@ -3,6 +3,8 @@
 // import required modules/components
 import { useState } from 'react';
 import { useGetUsersQuery } from '@components/features/users/usersApiSlice';
+import { useUpdateUserMutation } from '@components/features/users/usersApiSlice';
+import { SCHOOLS, SCHOOL_NUMBER, SCHOOL_REGION_LETTER } from '@config/schools';
 import User from '@components/features/users/User';
 
 import TableHead from '@components/portal/TableHead';
@@ -15,6 +17,8 @@ const UsersList = () => {
       refetchOnFocus: true,
       refetchOnMountOrArgChange: true,
    });
+
+   const [updateUser, { isLoading: isUpdating, isSuccess: isUpdateSuccess, isError: isUpdateError, error: updateError }] = useUpdateUserMutation();
 
    // search query state
    const [searchQuery, setSearchQuery] = useState('');
@@ -37,6 +41,45 @@ const UsersList = () => {
   
       content = (
          <div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-auto'>
+            {/*<button onClick={async () => {
+               let curr_code_num = 0;
+               ids.map(async userId => {
+                  // get user
+                  const user = users.entities[userId];
+
+                  let code;
+                  if (user.roles.includes('Participant')) {
+                     curr_code_num = curr_code_num + 1;
+                     let code_num_str = curr_code_num.toString();
+                     if(code_num_str.length === 3) code_num_str = code_num_str;
+                     else if(code_num_str.length === 2) code_num_str = '0' + code_num_str;
+                     else if(code_num_str.length === 1) code_num_str = '00' + code_num_str;
+
+                     // get user's code
+                     code = SCHOOL_REGION_LETTER[user.school] + '-' + SCHOOL_NUMBER[user.school] + '-' + code_num_str;
+                  } else {
+                     code = 'N/A';
+                  }
+
+                  
+
+                  // update user's code
+                  const result = await updateUser({
+                        id: userId,
+                        username: user.username,
+                        roles: user.roles,
+                        first_name: user.first_name,
+                        last_name: user.last_name,
+                        code: code,
+                        school: user.school,
+                        email: user.email,
+                        grade: user.grade,
+                  });
+                  
+                  console.log(result);
+               })
+            }}>Set All Codes</button>*/}
+
             <div className='flex flex-col items-center gap-2 text-center'>
                {/** title */}
                <h1 className="portalh2">Users List</h1>
