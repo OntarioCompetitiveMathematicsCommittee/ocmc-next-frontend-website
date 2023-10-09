@@ -428,6 +428,8 @@ const SignupPage = () => {
 				<p className='text-xl'>
 					Please check your email for a verification link
 					<br />
+					Make sure to check your spam folder
+					<br />
 					Click <Link href='/login' className='text-blue-600 underline'>here</Link> to redirect to log in.
 				</p>
 			</section>
