@@ -101,7 +101,7 @@ const Footer = () => {
                             <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] w-96'>
                                 <div className='flex flex-row'>
                                     <h1 className='text-brandYellow-500'>General&nbsp;Inquiries</h1>
-                                    <h1 className='text-brandNeutral-100'>:&nbsp;ontariocmc@gmail.com</h1>
+                                    <h1 className='text-brandNeutral-100'>:&nbsp;general@ontariocmc.ca</h1>
                                 </div>
                             </div>
                             <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] w-96'>

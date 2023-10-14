@@ -112,7 +112,7 @@ const ProctorSignup = () => {
 		if (stage === 1) {
 			if (registrationPasscode !== process.env.NEXT_PUBLIC_REACT_APP_PROCTOR_PASSKEY) {
 				setErrMsg(
-					'Invalid registration passcode. Please contact the OCMC Executive Team at ontariocmc@gmail.com to receive a passkey.'
+					'Invalid registration passcode. Please contact the OCMC Executive Team at general@ontariocmc.ca to receive a passkey.'
 				);
 				return;
 			}
