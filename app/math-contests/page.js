@@ -33,6 +33,7 @@ const MathContests = () => {
                                 Top scorers will compete in the OIME. This fall, the OMC will run between October 16th and October 20th. School registration closes September 29th."
                             isPadding={true}
                         />
+                        <p>If you're interested in writing OMC, create an account and keep an eye out for when registrations open in August!</p>
                         <div className="w-screen border-b-2"></div>
                         <Section
                             image={oime}
