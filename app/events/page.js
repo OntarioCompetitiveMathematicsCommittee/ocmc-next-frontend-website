@@ -8,8 +8,8 @@ const Events = () => {
 
     const upcomingEvents = [
         {
-            title: "Ontario Mathematics Contest 2023",
-            date: "October 16-20, 2023",
+            title: "Ontario Invitational Mathematics Examination 2023",
+            date: "December 4-8, 2023",
             type: "In Person Contest",
         },
     ]
@@ -25,7 +25,7 @@ const Events = () => {
                         <div className="flex flex-col items-end gap-8 ">
                             {upcomingEvents.map((event, index) => (
                                 <div key={index} className="flex flex-col items-center justify-start gap-2 lg:flex-row lg:gap-6 lg:items-start">
-                                    <h2 className="text-2xl lg:text-3xl font-bold lg:max-w-[8rem] text-right">{event.date}</h2>
+                                    <h2 className="text-2xl lg:text-3xl font-bold lg:max-w-[11rem] text-right">{event.date}</h2>
                                     <div className="flex-col bg-white bg-opacity-60 border-4 rounded-md border-brandNeutral-100 py-4 px-8 w-[min(32rem,90vw)]">
                                         <h2 className="text-lg text-brandYellow-500">{event.type}</h2>
                                         <h1 className="mb-4 text-2xl font-bold lg:text-3xl">{event.title}</h1>
