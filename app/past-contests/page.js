@@ -41,7 +41,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/contests/2023-spring-omc-I.pdf'
-												alt='alt text'
+												alt='Spring 2023 I Contest'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Spring &lsquo;23 I
@@ -51,7 +51,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/solutions/2023-spring-omc-I.pdf'
-												alt='alt text'
+												alt='Spring 2023 I Solutions'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Spring &lsquo;23 I
@@ -61,7 +61,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/results/2023-spring-omc.pdf'
-												alt='alt text'
+												alt='Spring 2023 I Results'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Spring &lsquo;23
@@ -73,7 +73,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/contests/2023-spring-omc-II.pdf'
-												alt='alt text'
+												alt='Spring 2023 II Contest'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Spring &lsquo;23 II
@@ -83,7 +83,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/solutions/2023-spring-omc-II.pdf'
-												alt='alt text'
+												alt='Spring 2023 II Solutions'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Spring &lsquo;23 II
@@ -96,7 +96,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/contests/2023-fall-omc-I.pdf'
-												alt='alt text'
+												alt='Fall 2023 I Contest'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Fall &lsquo;23 I
@@ -106,7 +106,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/solutions/2023-fall-omc-I.pdf'
-												alt='alt text'
+												alt='Fall 2023 I Solutions'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Fall &lsquo;23 I
@@ -116,7 +116,7 @@ const PastContests = () => {
 											<a
 												className='p-5 md:px-10 lg:px-20'
 												href='/past-contests/results/2023-fall-omc.pdf'
-												alt='alt text'
+												alt='Fall 2023 I Results'
 												target='_blank'
 												rel='noopener noreferrer'>
 												Fall &lsquo;23 I
