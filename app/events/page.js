@@ -29,8 +29,8 @@ const Events = () => {
                                     <div className="flex-col bg-white bg-opacity-60 border-4 rounded-md border-brandNeutral-100 py-4 px-8 w-[min(32rem,90vw)]">
                                         <h2 className="text-lg text-brandYellow-500">{event.type}</h2>
                                         <h1 className="mb-4 text-2xl font-bold lg:text-3xl">{event.title}</h1>
-                                        <Link className='px-4 py-2 text-xl text-white transition-colors rounded-md bg-brandYellow-500 hover:bg-brandYellow-600' href="/contact">Contact Us</Link>
-                                        <p className='mt-2 text-gray-500'>Reach out to speak about participation</p>
+                                        <div className='inline-block px-4 py-2 text-xl text-white transition-colors rounded-md bg-brandYellow-500' href="/contact">Invite Only</div>
+                                        <p className='mt-2 text-gray-500'></p>
                                     </div>
                                     
                                 </div>

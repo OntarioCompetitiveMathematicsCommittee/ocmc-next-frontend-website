@@ -4,6 +4,8 @@ import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from '@components/elements/NavbarPlaceholder';
 import Footer from '@components/homepage/Footer';
 
+import PastContestRow from '@components/past-contests/PastContestRow';
+
 const PastContests = () => {
 	return (
 		<div className='flex flex-col'>
@@ -36,94 +38,9 @@ const PastContests = () => {
 									</tr>
 								</thead>
 								<tbody>
-									<tr className='bg-brandNeutral-100'>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/contests/2023-spring-omc-I.pdf'
-												alt='Spring 2023 I Contest'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Spring &lsquo;23 I
-											</a>
-										</td>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/solutions/2023-spring-omc-I.pdf'
-												alt='Spring 2023 I Solutions'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Spring &lsquo;23 I
-											</a>
-										</td>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/results/2023-spring-omc.pdf'
-												alt='Spring 2023 I Results'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Spring &lsquo;23
-											</a>
-										</td>
-									</tr>
-									<tr className='bg-brandNeutral-100'>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/contests/2023-spring-omc-II.pdf'
-												alt='Spring 2023 II Contest'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Spring &lsquo;23 II
-											</a>
-										</td>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/solutions/2023-spring-omc-II.pdf'
-												alt='Spring 2023 II Solutions'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Spring &lsquo;23 II
-											</a>
-										</td>
-										<td className='p-5 md:px-10 lg:px-20'></td>
-									</tr>
-									<tr className='bg-brandNeutral-100'>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/contests/2023-fall-omc-I.pdf'
-												alt='Fall 2023 I Contest'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Fall &lsquo;23 I
-											</a>
-										</td>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/solutions/2023-fall-omc-I.pdf'
-												alt='Fall 2023 I Solutions'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Fall &lsquo;23 I
-											</a>
-										</td>
-										<td className='py-4'>
-											<a
-												className='p-5 md:px-10 lg:px-20'
-												href='/past-contests/results/2023-fall-omc.pdf'
-												alt='Fall 2023 I Results'
-												target='_blank'
-												rel='noopener noreferrer'>
-												Fall &lsquo;23 I
-											</a>
-										</td>
-										<td className='p-5 md:px-10 lg:px-20'></td>
-									</tr>
+									<PastContestRow contestName="Spring &lsquo;23 I" PDFName="2023-spring-omc-I" hasContest={true} hasSolutions={true} hasResults={true}/>
+									<PastContestRow contestName="Spring &lsquo;23 II" PDFName="2023-spring-omc-II" hasContest={true} hasSolutions={true} hasResults={false}/>
+									<PastContestRow contestName="Fall &lsquo;23" PDFName="2023-fall-omc" hasContest={true} hasSolutions={true} hasResults={true}/>
 								</tbody>
 							</table>
 						</div>
