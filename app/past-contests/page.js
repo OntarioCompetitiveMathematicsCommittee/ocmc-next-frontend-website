@@ -41,6 +41,30 @@ const PastContests = () => {
 									<PastContestRow contestName="Spring &lsquo;23 I" PDFName="2023-spring-omc-I" hasContest={true} hasSolutions={true} hasResults={true}/>
 									<PastContestRow contestName="Spring &lsquo;23 II" PDFName="2023-spring-omc-II" hasContest={true} hasSolutions={true} hasResults={false}/>
 									<PastContestRow contestName="Fall &lsquo;23" PDFName="2023-fall-omc" hasContest={true} hasSolutions={true} hasResults={true}/>
+								</tbody>
+							</table>
+						</div>
+
+						<h1 className='mt-20 mb-10 font-medium text-black portalh2 sm:max-w-xl md:max-w-2xl'>
+							Ontario Invitational Mathematics Examination
+						</h1>
+
+						<div className='relative overflow-x-auto'>
+							<table className='text-sm text-left text-gray-100 mx-14 portalh2'>
+								<thead className='text-xs text-gray-700 uppercase bg-gray-200'>
+									<tr>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Contests
+										</th>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Solutions
+										</th>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Results
+										</th>
+									</tr>
+								</thead>
+								<tbody>
 									<PastContestRow contestName="OIME &lsquo;23" PDFName="2023-oime" hasContest={true} hasSolutions={false} hasResults={false}/>
 								</tbody>
 							</table>
