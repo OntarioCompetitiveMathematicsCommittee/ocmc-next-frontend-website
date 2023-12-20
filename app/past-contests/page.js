@@ -65,7 +65,7 @@ const PastContests = () => {
 									</tr>
 								</thead>
 								<tbody>
-									<PastContestRow contestName="OIME &lsquo;23" PDFName="2023-oime" hasContest={true} hasSolutions={false} hasResults={false}/>
+									<PastContestRow contestName="OIME &lsquo;23" PDFName="2023-oime" hasContest={true} hasSolutions={true} hasResults={false}/>
 								</tbody>
 							</table>
 						</div>
