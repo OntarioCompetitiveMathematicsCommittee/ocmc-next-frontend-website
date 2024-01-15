@@ -38,9 +38,27 @@ const PastContests = () => {
 									</tr>
 								</thead>
 								<tbody>
-									<PastContestRow contestName="Spring &lsquo;23 I" PDFName="2023-spring-omc-I" hasContest={true} hasSolutions={true} hasResults={true}/>
-									<PastContestRow contestName="Spring &lsquo;23 II" PDFName="2023-spring-omc-II" hasContest={true} hasSolutions={true} hasResults={false}/>
-									<PastContestRow contestName="Fall &lsquo;23" PDFName="2023-fall-omc" hasContest={true} hasSolutions={true} hasResults={true}/>
+									<PastContestRow
+										contestName='Spring &lsquo;23 I'
+										PDFName='2023-spring-omc-I'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={true}
+									/>
+									<PastContestRow
+										contestName='Spring &lsquo;23 II'
+										PDFName='2023-spring-omc-II'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
+									/>
+									<PastContestRow
+										contestName='Fall &lsquo;23'
+										PDFName='2023-fall-omc'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={true}
+									/>
 								</tbody>
 							</table>
 						</div>
@@ -65,7 +83,13 @@ const PastContests = () => {
 									</tr>
 								</thead>
 								<tbody>
-									<PastContestRow contestName="OIME &lsquo;23" PDFName="2023-oime" hasContest={true} hasSolutions={true} hasResults={false}/>
+									<PastContestRow
+										contestName='OIME &lsquo;23'
+										PDFName='2023-oime'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={true}
+									/>
 								</tbody>
 							</table>
 						</div>
