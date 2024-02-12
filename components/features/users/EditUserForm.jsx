@@ -175,6 +175,18 @@ const EditUserForm = ({ user, editingAll }) => {
 
             <form onSubmit={e => e.preventDefault()} className='flex flex-col gap-4 text-left'>
                 <div className='flex flex-col gap-2'>
+                    <label className="text-xl text-brandBlue-900" htmlFor="id">
+                        User ID:
+                    </label>
+                    <input
+                        type="text"
+                        id="id"
+                        name="id"
+                        value={user.code}
+                        className="px-2 py-1 border-2 rounded-md w-[min(24rem,80vw)] text-gray-500"
+                        readOnly
+                    />
+
                     <label className="text-xl text-brandBlue-900" htmlFor="username">
                         Username:
                     </label>
