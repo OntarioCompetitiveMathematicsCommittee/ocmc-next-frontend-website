@@ -54,13 +54,43 @@ const Contests = () => {
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
 					{/** table to display list of registered participants under the proctor */}
+					
 					<input
 						className="w-64 px-2 py-2 border-2 rounded-md "
 						type="text"
 						value={searchQuery}
 						onChange={e => setSearchQuery(e.target.value)}
-						placeholder="Search Contests..."
+						placeholder="Search Participants..."
 					/>
+
+					{(isAdmin || isExecutive) ? 
+					<button
+						className="w-64 px-2 py-2 border-2 rounded-md bg-blue-500 text-white"
+						onClick={() => {
+							const csv = users.map(user => {
+								return {
+									username: user.username,
+									full_name: user.first_name + " " + user.last_name,
+									school: user.school,
+									grade: user.grade,
+									email: user.email,
+									score: user.contest_data.find(item => item.contest_id === contest_id).score
+								}
+							})
+							const header = Object.keys(csv[0]).join(",");
+							const body = csv.map(row => Object.values(row).join(",")).join("\n");
+							const csvString = `${header}\n${body}`;
+							const blob = new Blob([csvString], { type: "text/csv" });
+							const url = URL.createObjectURL(blob);
+							const a = document.createElement("a");
+							a.href = url;
+							a.download = `${contests.entities[contest_id].name} Participants.csv`;
+							a.click();
+						}}
+					>
+						Download Participant Data
+					</button> : null}
+
 					<TableWrapper className='table-auto border-spacing-10'>
 						<TableHead headings={["Username", "Full Name", "School", "Grade", "Email", "Score"]}/>
 						<tbody className='text-xl'>
