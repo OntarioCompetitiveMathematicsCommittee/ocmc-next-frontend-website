@@ -10,6 +10,7 @@ import Section from "@components/homepage/Section"
 
 import omc from "@public/assets/omc.png"
 import oime from "@public/assets/oime.png"
+import tmc from "@public/assets/tmc.png"
 
 import Link from 'next/link'
 
@@ -39,6 +40,13 @@ const MathContests = () => {
                             image={oime}
                             title="Ontario Invitational Mathematics Examination"
                             text="The Ontario Invitational Mathematics Examination (OIME) is an invitational full-solution contest inspired by similar invitational mathematics competitions. It has 10 questions, with difficulty ranging from early AIME questions to mid-level Canadian Mathematical Olympiad (CMO) questions."
+                            isPadding={true}
+                        />
+                        <div className="w-screen border-b-2"></div>
+                        <Section
+                            image={tmc}
+                            title="Tesseract Mathematics Challenge"
+                            text="The Tesseract Mathematics Challenge (TMC) is a one-hour contest featuring five pairs of mid-to-late Euclid-difficulty short- and long-answer questions to be completed in one hour. The TMC will be held between March 4th and March 8th and school registration closes February 16th."
                             isPadding={true}
                         />
                     </div>

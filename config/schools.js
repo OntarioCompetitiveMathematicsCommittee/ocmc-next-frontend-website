@@ -14,6 +14,7 @@ export const SCHOOLS = [
     'The Woodlands Secondary School',
     'University of Toronto Schools',
     'White Oaks Secondary School',
+    'Bur Oak Secondary School',
     // 'Earl Haig Secondary School',
     // 'Branksome Hall',
     // 'Upper Canada College',
@@ -40,6 +41,7 @@ export const SCHOOL_REGION_LETTER = {
     'The Woodlands Secondary School': 'O',
     'University of Toronto Schools': 'O',
     'White Oaks Secondary School': 'O',
+    'Bur Oak Secondary School': 'O',
 };
 
 export const SCHOOL_NUMBER = {
@@ -56,4 +58,5 @@ export const SCHOOL_NUMBER = {
     'The Woodlands Secondary School': '011',
     'University of Toronto Schools': '012',
     'White Oaks Secondary School': '013',
+    'Bur Oak Secondary School': '014',
 };
