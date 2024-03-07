@@ -1,7 +1,5 @@
 export const SCHOOLS = [
-    // 'Abbey Park High School',
     'Oakville Trafalgar High School',
-    // 'Laurel Heights Secondary School',
     'Marc Garneau Collegiate Institute',
     'John Fraser Secondary School',
     'Bayview Secondary School',
@@ -15,16 +13,7 @@ export const SCHOOLS = [
     'University of Toronto Schools',
     'White Oaks Secondary School',
     'Bur Oak Secondary School',
-    // 'Earl Haig Secondary School',
-    // 'Branksome Hall',
-    // 'Upper Canada College',
-    // 'Unionville High School',
-    // 'Dr. Frank J. Hayden Secondary School',
-    // 'Shanghai Pinghe School',
-    // 'École Secondaire Publique Louis-Riel',
-    // 'Holy Trinity School',
-    // 'William Lyon Mackenzie Collegiate Institute',
-    // 'St. Theresa of Lisieux Catholic High School',
+    'Bluevale Collegiate Institute',
 ];
 
 export const SCHOOL_REGION_LETTER = {
@@ -42,6 +31,7 @@ export const SCHOOL_REGION_LETTER = {
     'University of Toronto Schools': 'O',
     'White Oaks Secondary School': 'O',
     'Bur Oak Secondary School': 'O',
+    'Bluevale Collegiate Institute': 'O',
 };
 
 export const SCHOOL_NUMBER = {
@@ -59,4 +49,5 @@ export const SCHOOL_NUMBER = {
     'University of Toronto Schools': '012',
     'White Oaks Secondary School': '013',
     'Bur Oak Secondary School': '014',
+    'Bluevale Collegiate Institute': '015',
 };
