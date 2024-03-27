@@ -116,7 +116,7 @@ const PastContests = () => {
 								<tbody>
 									<PastContestRow
 										contestName='TMC &lsquo;24'
-										PDFName='2024-TMC'
+										PDFName='2024-tmc'
 										hasContest={true}
 										hasSolutions={true}
 										hasResults={false}
