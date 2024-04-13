@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice';
+import { selectContestById, useUpdateContestSignupsMutation } from "@components/features/contests/contestsApiSlice";
 
 import BackButton from '@components/elements/BackButton';
 
