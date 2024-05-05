@@ -94,6 +94,37 @@ const PastContests = () => {
 							</table>
 						</div>
 
+						<h1 className='mt-20 mb-10 font-medium text-black portalh2 sm:max-w-xl md:max-w-2xl'>
+							Tesseract Mathematics Challenge
+						</h1>
+
+						<div className='relative overflow-x-auto'>
+							<table className='text-sm text-left text-gray-100 mx-14 portalh2'>
+								<thead className='text-xs text-gray-700 uppercase bg-gray-200'>
+									<tr>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Contests
+										</th>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Solutions
+										</th>
+										<th className='px-5 py-3 md:px-10 lg:px-20'>
+											Results
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<PastContestRow
+										contestName='TMC &lsquo;24'
+										PDFName='2024-tmc'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
+									/>
+								</tbody>
+							</table>
+						</div>
+
 						<div className='w-screen h-60'></div>
 					</div>
 					<Footer />

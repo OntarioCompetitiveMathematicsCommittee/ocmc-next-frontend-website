@@ -83,7 +83,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         
         updateUserContestScores: builder.mutation({
             query: ({ username, contest_id, score, type }) => ({
-                url: `/users/${username}`,
+                url: `/users/scores/${username}`,
                 method: 'PATCH',
                 body: { contest_id, score, type }
             }),
