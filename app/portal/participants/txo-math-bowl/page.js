@@ -9,7 +9,15 @@ import Trivia from '@/components/txo-math-bowl/games/Trivia';
 
 import GamesWrapper from '@/components/txo-math-bowl/GamesWrapper';
 
+import useAuth from '@hooks/useAuth';
+import { useSelector } from "react-redux"
+import { useGetUsersQuery, selectUserById } from "@components/features/users/usersApiSlice"
+
 const TxOMathBowl = () => {
+	const { id } = useAuth();
+	const { isSuccess, isLoading } = useGetUsersQuery(); // Fetch all users
+	const currUser = useSelector((state) => selectUserById(state, id));
+
 	const [game, setGame] = useState(0);
 
 	const games = [
@@ -39,21 +47,33 @@ const TxOMathBowl = () => {
 		setGame((prevGame) => (prevGame + 1) % games.length);
 	};
 
+	const registered = currUser.contest_data.find((contest) => contest.contest_id === '667fc6df604552c5babfb7fb');
+
+	if (isLoading) return <p>Loading...</p>;
+
+	if (isSuccess && registered) {
+		return (
+			<section className='flex flex-col items-center justify-center flex-1 w-full h-full'>
+				{/* remove this button on final prouct */}
+				<button
+					className='px-4 py-2 text-white bg-green-500'
+					onClick={changeGame}>
+					Change Game
+				</button>
+				{/* just duplicate GamesWrapper 4 times with hardcoded indices because the times for each game will not overlap anyways */}
+				<GamesWrapper
+					game={games[game].component}
+					startDate={games[game].startDate}
+					endDate={games[game].endDate}
+					maxTimePerQuestion={games[game].maxTimePerQuestion}
+				/>
+			</section>
+		);
+	}
+
 	return (
-		<section className='w-full flex-1 h-full flex flex-col justify-center items-center'>
-			{/* remove this button on final prouct */}
-			<button
-				className='px-4 py-2 bg-green-500 text-white'
-				onClick={changeGame}>
-				Change Game
-			</button>
-			{/* just duplicate GamesWrapper 4 times with hardcoded indices because the times for each game will not overlap anyways */}
-			<GamesWrapper
-				game={games[game].component}
-				startDate={games[game].startDate}
-				endDate={games[game].endDate}
-				maxTimePerQuestion={games[game].maxTimePerQuestion}
-			/>
+		<section className='flex flex-col items-center justify-center flex-1 w-full h-full'>
+			<p>You are not registered for this contest</p>
 		</section>
 	);
 };
