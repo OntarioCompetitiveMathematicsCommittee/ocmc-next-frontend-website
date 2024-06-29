@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import Chess from '@/components/txo-math-bowl/games/Chess';
-import Sudoku from '@/components/txo-math-bowl/games/sudoku';
+import Sudoku from '@/components/txo-math-bowl/games/Sudoku';
 import Math from '@/components/txo-math-bowl/games/Math';
 import Trivia from '@/components/txo-math-bowl/games/Trivia';
 
