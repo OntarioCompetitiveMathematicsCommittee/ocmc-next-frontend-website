@@ -13,6 +13,10 @@ const Sudoku = () => {
 	const router = useRouter();
 
 	useEffect(() => {
+		//set puzzleIndex to puzzleIndex stored in db
+	}, []);
+
+	useEffect(() => {
 		if (timeLeft <= 0) {
 			router.push('/finished');
 			return;
