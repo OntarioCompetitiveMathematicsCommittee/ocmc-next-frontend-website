@@ -3,15 +3,29 @@
 import { ChessPuzzle } from '@react-chess-tools/react-chess-puzzle';
 import { useEffect, useState } from 'react';
 
+import {
+	useUpdateTxoMutation,
+	useGetTxoByUserIdQuery,
+} from '@components/features/txo/txoApiSlice';
+
 import { boards } from '@/config/txo-math-bowl/boards';
 
-export default function Chess() {
+export default function Chess({ userId }) {
 	const [puzzleIndex, setPuzzleIndex] = useState(0);
+	const [score, setScore] = useState(0);
 	const [reload, setReload] = useState(false);
 
+	const {data: txoData} = useGetTxoByUserIdQuery(userId);
+	
+	const [updateTxo, { isLoading, isSuccess, isError, error }] =
+		useUpdateTxoMutation();
+
 	useEffect(() => {
-		//set puzzleIndex to puzzleIndex stored in db
-	}, []);
+		if (txoData?.entities){
+			setPuzzleIndex(Object.values(txoData?.entities)[0].chess_index);
+			setScore(Object.values(txoData?.entities)[0].chess_score);
+		}
+	}, [txoData]);
 
 	useEffect(() => {
 		setReload(true);
@@ -27,9 +41,14 @@ export default function Chess() {
 		}, 100);
 	};
 	const onSolveSubmit = () => {
-		console.log('SOLVED'); //hi manasva, this is where you do the sumbitty thing, I could not find out how to change the solve state in the dev console, so i'm going to assume the participants can't either(in a reasonable amount of time)
 		setTimeout(() => {
+			updateTxo({
+				user_id: userId,
+				chess_score: score + 1,
+				chess_index: puzzleIndex + 1,
+			});
 			setPuzzleIndex((prevIndex) => prevIndex + 1);
+			setScore((prevScore) => prevScore + 1);
 			setReload(true);
 			setTimeout(() => {
 				setReload(false);

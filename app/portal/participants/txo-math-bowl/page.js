@@ -10,8 +10,11 @@ import Trivia from '@/components/txo-math-bowl/games/Trivia';
 import GamesWrapper from '@/components/txo-math-bowl/GamesWrapper';
 
 import useAuth from '@hooks/useAuth';
-import { useSelector } from "react-redux"
-import { useGetUsersQuery, selectUserById } from "@components/features/users/usersApiSlice"
+import { useSelector } from 'react-redux';
+import {
+	useGetUsersQuery,
+	selectUserById,
+} from '@components/features/users/usersApiSlice';
 
 const TxOMathBowl = () => {
 	const { id } = useAuth();
@@ -22,24 +25,24 @@ const TxOMathBowl = () => {
 
 	const games = [
 		{
-			component: <Chess key='chess' maxTimePerQuestion={30000} />,
+			component: <Chess key='chess' userId={id}/>,
 			startDate: '2024-06-26T17:00', //change the start time to the contest start time
-			endDate: '2024-06-29T23:40', //change endtime
+			endDate: '2024-07-03T23:40', //change endtime
 		},
 		{
-			component: <Sudoku key='sudoku' maxTimePerQuestion={30000} />,
+			component: <Sudoku key='sudoku' userId={id}/>,
 			startDate: '2024-06-26T17:00', //change the start time to the contest start time
-			endDate: '2024-06-29T17:40', //change endtime
+			endDate: '2024-07-03T17:40', //change endtime
 		},
 		{
-			component: <Math key='math' maxTimePerQuestion={30000} />,
+			component: <Math key='math' userId={id} />,
 			startDate: '2024-06-26T17:00', //change the start time to the contest start time
-			endDate: '2024-06-29T17:40', //change endtime
+			endDate: '2024-07-03T17:40', //change endtime
 		},
 		{
-			component: <Trivia key='trivia' maxTimePerQuestion={30000} />,
+			component: <Trivia key='trivia' userId={id} />,
 			startDate: '2024-06-26T17:00', //change the start time to the contest start time
-			endDate: '2024-06-29T17:40', //change endtime
+			endDate: '2024-07-03T17:40', //change endtime
 		},
 	];
 
@@ -47,7 +50,9 @@ const TxOMathBowl = () => {
 		setGame((prevGame) => (prevGame + 1) % games.length);
 	};
 
-	const registered = currUser.contest_data.find((contest) => contest.contest_id === '667fc6df604552c5babfb7fb');
+	const registered = currUser?.contest_data.find(
+		(contest) => contest.contest_id === '667fc6df604552c5babfb7fb'
+	);
 
 	if (isLoading) return <p>Loading...</p>;
 
@@ -67,6 +72,30 @@ const TxOMathBowl = () => {
 					endDate={games[game].endDate}
 					maxTimePerQuestion={games[game].maxTimePerQuestion}
 				/>
+				{/* <GamesWrapper
+					game={games[0].component}
+					startDate={games[0].startDate}
+					endDate={games[0].endDate}
+					maxTimePerQuestion={games[0].maxTimePerQuestion}
+				/>
+				<GamesWrapper
+					game={games[1].component}
+					startDate={games[1].startDate}
+					endDate={games[1].endDate}
+					maxTimePerQuestion={games[1].maxTimePerQuestion}
+				/>
+				<GamesWrapper
+					game={games[2].component}
+					startDate={games[2].startDate}
+					endDate={games[2].endDate}
+					maxTimePerQuestion={games[2].maxTimePerQuestion}
+				/>
+				<GamesWrapper
+					game={games[3].component}
+					startDate={games[3].startDate}
+					endDate={games[3].endDate}
+					maxTimePerQuestion={games[3].maxTimePerQuestion}
+				/> */}
 			</section>
 		);
 	}

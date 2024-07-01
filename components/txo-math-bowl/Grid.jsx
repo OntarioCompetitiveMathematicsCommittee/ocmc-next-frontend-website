@@ -135,19 +135,6 @@ const SudokuGrid = ({
 					Next Puzzle
 				</button>
 			</div>
-			<div className='w-full mt-4'>
-				<h2 className='text-xl font-bold text-center'>
-					Completion Times
-				</h2>
-				<ul className='mt-2 list-disc list-inside'>
-					{completionTimes.map((time, index) => (
-						<li key={index} className='text-center'>
-							Puzzle {index + 1}: {Math.floor(time / 60)}:
-							{String(time % 60).padStart(2, '0')}
-						</li>
-					))}
-				</ul>
-			</div>
 		</div>
 	);
 };

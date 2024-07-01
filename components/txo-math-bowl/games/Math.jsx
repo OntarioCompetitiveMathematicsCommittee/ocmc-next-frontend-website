@@ -4,14 +4,39 @@ import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { problems } from '@/config/txo-math-bowl/math';
 
-const Home = () => {
-	const [currentProblemIndex, setCurrentProblemIndex] = useState(0);
+import {
+	useUpdateTxoMutation,
+	useGetTxoByUserIdQuery,
+} from '@components/features/txo/txoApiSlice';
+
+
+const Home = ({ userId }) => {
+	const [puzzleIndex, setPuzzleIndex] = useState(0);
+	const [score, setScore] = useState(0);
+
+	const {data: txoData} = useGetTxoByUserIdQuery(userId);
+	
+	const [updateTxo, { isLoading, isSuccess, isError, error }] =
+		useUpdateTxoMutation();
+
+	useEffect(() => {
+		if (txoData?.entities){
+			setPuzzleIndex(Object.values(txoData?.entities)[0].math_index);
+			setScore(Object.values(txoData?.entities)[0].math_score);
+		}
+	}, [txoData]);
 
 	const handleNext = () => {
-		setCurrentProblemIndex((prevIndex) => prevIndex + 1);
+		updateTxo({
+			user_id: userId,
+			math_score: score + 1,
+			math_index: puzzleIndex + 1,
+		});
+		setPuzzleIndex((prevIndex) => prevIndex + 1);
+		setScore((prevScore) => prevScore + 1);
 	};
 
-	const currentProblem = problems[currentProblemIndex];
+	const currentProblem = problems[puzzleIndex];
 
 	return (
 		<div className='flex-1 h-full flex justify-center items-center w-full'>
@@ -73,7 +98,7 @@ const Math = ({ problem, onNext }) => {
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 				placeholder='Enter factors in the format (x^2+3)(x^2-5)'
-				className={`text-black text-lg p-2 w-full max-w-md mb-4 border rounded ${inputBorderStyle}`}
+				className={`text-black text-lg p-2 w-full max-w-md mb-4 border rounded font-sans ${inputBorderStyle}`}
 			/>
 			<div className='flex space-x-4'>
 				<button

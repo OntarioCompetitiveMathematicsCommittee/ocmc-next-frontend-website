@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
 import { questionsArray } from '@/config/txo-math-bowl/trivia';
 
-const Trivia = () => {
+import {
+	useUpdateTxoMutation
+} from '@components/features/txo/txoApiSlice';
+
+const Trivia = ({ userId }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState('');
 	const [feedback, setFeedback] = useState('');
 	const [showFeedback, setShowFeedback] = useState(false);
 	const [timer, setTimer] = useState(null);
-
+	const [score, setScore] = useState(0);
+	
+	const [updateTxo, { isLoading, isSuccess, isError, error }] =
+		useUpdateTxoMutation();
+	
 	useEffect(() => {
 		setCurrentQuestion(
 			questionsArray[Math.floor(Math.random() * questionsArray.length)]
@@ -22,6 +30,11 @@ const Trivia = () => {
 	const handleAnswer = () => {
 		if (selectedAnswer === currentQuestion.answer) {
 			setFeedback('Correct!');
+			updateTxo({
+				user_id: userId,
+				trivia_score: score + 1,
+			});
+			setScore((prevScore) => prevScore + 1);
 		} else {
 			setFeedback('Incorrect!');
 		}
