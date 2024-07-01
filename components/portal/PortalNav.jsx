@@ -11,6 +11,7 @@ import HamburgerMenu from '@components/elements/HamburgerMenu';
 import PortalElement from '@components/portal/PortalElement';
 
 import contestRegistration from '@public/assets/dashboard-icons/contest-registration.svg'
+import txo from '@public/assets/dashboard-icons/txo.svg'
 import contests from '@public/assets/dashboard-icons/contests.svg'
 import dashboard from '@public/assets/dashboard-icons/dashboard.svg'
 import logout from '@public/assets/dashboard-icons/logout.svg'
@@ -145,6 +146,17 @@ const PortalNav = () => {
                             name={"Contest Registration"} 
                             path="/portal/participants/registration"
                         />}
+
+
+                    {isParticipant && 
+                        <PortalElement 
+                            selected={page === '/portal/participants/txo-math-bowl'}
+                            setPage={setPage}
+                            icon={txo} 
+                            name={"TxO Math Bowl"} 
+                            path="/portal/participants/txo-math-bowl"
+                        />}
+
 
                     {isProctor && 
                         <PortalElement 
