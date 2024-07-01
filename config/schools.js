@@ -14,6 +14,7 @@ export const SCHOOLS = [
     'White Oaks Secondary School',
     'Bur Oak Secondary School',
     'Bluevale Collegiate Institute',
+    'N/A',
 ];
 
 export const SCHOOL_REGION_LETTER = {
@@ -32,9 +33,11 @@ export const SCHOOL_REGION_LETTER = {
     'White Oaks Secondary School': 'O',
     'Bur Oak Secondary School': 'O',
     'Bluevale Collegiate Institute': 'O',
+    'N/A': 'N',
 };
 
 export const SCHOOL_NUMBER = {
+    'N/A': '000',
     'Oakville Trafalgar High School': '001',
     'Marc Garneau Collegiate Institute': '002',
     'John Fraser Secondary School': '003',
