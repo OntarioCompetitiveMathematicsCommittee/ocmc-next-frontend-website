@@ -39,7 +39,7 @@ const Home = ({ userId }) => {
 	const currentProblem = problems[puzzleIndex];
 
 	return (
-		<div className='flex-1 h-full flex justify-center items-center w-full'>
+		<div className='flex items-center justify-center flex-1 w-full h-full'>
 			{currentProblem ? (
 				<Math problem={currentProblem} onNext={handleNext} />
 			) : (
@@ -87,8 +87,8 @@ const Math = ({ problem, onNext }) => {
 
 	return (
 		<div className='flex flex-col items-center justify-center text-center'>
-			<h1 className='text-4xl mb-5'>
-				Prime Factorization of{' '}
+			<h1 className='mb-5 text-4xl'>
+				Factorization of{' '}
 				<span className='font-normal'>
 					<BlockMath math={`{${problem.expression}}`} />
 				</span>
@@ -103,7 +103,7 @@ const Math = ({ problem, onNext }) => {
 			<div className='flex space-x-4'>
 				<button
 					onClick={checkAnswer}
-					className='text-lg px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-700'>
+					className='px-6 py-2 text-lg text-white bg-blue-500 rounded hover:bg-blue-700'>
 					Check Answer
 				</button>
 				<button
