@@ -33,6 +33,19 @@ export const txoApiSlice = apiSlice.injectEndpoints({
             }
         }),
 
+        getTxoByUserId: builder.query({
+            query: (userId) => `/txo/${userId}`,
+            validStatus: (response, result) => {
+                return response.status === 200 && !result.isError;
+            },
+            transformResponse: (responseData) => {
+                let loadedTxo = responseData;
+                loadedTxo.id = loadedTxo._id;
+                return txoAdapter.setOne(initialState, loadedTxo);
+            },
+            providesTags: (result, error, arg) => [{ type: 'TxO', id: result.id }]
+        }),
+
         updateTxo: builder.mutation({
             query: txoData => ({
                 url: '/txo',
@@ -55,6 +68,7 @@ export const txoApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetTxosQuery,
+    useGetTxoByUserIdQuery,
     useUpdateTxoMutation,
     useDeleteTxoMutation
 } = txoApiSlice;
