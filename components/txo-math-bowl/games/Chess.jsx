@@ -55,32 +55,36 @@ export default function Chess({ userId }) {
 			}, 100);
 		}, 200);
 	};
-	if (puzzleIndex === boards.length - 1) {
+
+	if (puzzleIndex >= boards.length) {
 		return (
-			<section className='w-full h-full flex justify-center items-center overflow-hidden flex-col'>
+			<section className='flex flex-col items-center justify-center w-full h-full'>
 				<h1 className='text-4xl'>No more puzzles</h1>
 			</section>
 		);
 	}
 
 	return (
-		<section className='w-full h-full flex justify-center items-center overflow-hidden flex-col'>
-			<div className='lg:h-3/4 lg:w-auto w-3/4 h-auto aspect-square'>
-				{!reload && (
-					<ChessPuzzle.Root
-						puzzle={boards[puzzleIndex]}
-						onSolve={onSolveSubmit}>
-						<ChessPuzzle.Board />
-						<ChessPuzzle.Reset
-							showOn={['failed']}
-							asChild={true}
-							onReset={onFail}>
-							<button className='bg-red-600 rounded-md text-white px-4 py-2'>
-								RESET
-							</button>
-						</ChessPuzzle.Reset>
-					</ChessPuzzle.Root>
-				)}
+		<section className='flex flex-col items-center justify-center w-full h-full'>
+			<div className='flex items-center justify-center w-full'>
+				<div className='w-full max-w-lg'>
+					{!reload && (
+						<ChessPuzzle.Root
+							puzzle={boards[puzzleIndex]}
+							onSolve={onSolveSubmit}>
+							<ChessPuzzle.Board />
+							<ChessPuzzle.Reset
+								showOn={['failed']}
+								asChild={true}
+								onReset={onFail}>
+								<button className='px-4 py-2 text-white bg-red-600 rounded-md'>
+									RESET
+								</button>
+							</ChessPuzzle.Reset>
+						</ChessPuzzle.Root>
+					)}
+					{reload && <p className='text-center'>Reloading...</p>}
+				</div>
 			</div>
 		</section>
 	);

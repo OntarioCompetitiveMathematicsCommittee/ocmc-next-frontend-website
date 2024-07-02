@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 const GamesWrapper = ({ game, startDate, endDate, maxTimePerQuestion }) => {
 	const startDateObject = useRef(new Date(startDate));
 	const endDateObject = useRef(new Date(endDate));
-	let [currentDate, setCurrentDate] = useState(null);
+	const [currentDate, setCurrentDate] = useState(new Date());
 
 	const getTimeDifference = (startDate, endDate) => {
 		// Calculate the difference in milliseconds
@@ -32,14 +32,18 @@ const GamesWrapper = ({ game, startDate, endDate, maxTimePerQuestion }) => {
 		return () => clearInterval(interval);
 	}, []);
 
+	const isWithinTimeFrame = currentDate >= startDateObject.current && currentDate <= endDateObject.current;
+
 	return (
-		<div className='w-full h-full flex flex-col gap-8 flex-1'>
-			<h1 className='text-center text-3xl'>
-				{getTimeDifference(currentDate, endDateObject.current)}
-			</h1>
-			{startDateObject.current < currentDate &&
-				currentDate < endDateObject.current &&
-				game}
+		<div className='flex flex-col items-center justify-start w-full gap-8'>
+			{isWithinTimeFrame ? (
+				<>
+					<h1 className='text-3xl text-center'>
+						{getTimeDifference(currentDate, endDateObject.current)}
+					</h1>
+					{game}
+				</>
+			) : null}
 		</div>
 	);
 };
