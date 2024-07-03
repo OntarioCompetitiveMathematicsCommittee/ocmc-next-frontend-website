@@ -31,8 +31,8 @@ const TxOMathBowl = () => {
 		},
 		{
 			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-02T13:10',
-			endDate: '2024-07-02T13:16',
+			startDate: '2024-07-02T20:20',
+			endDate: '2024-07-02T20:25',
 		},
 		{
 			component: <Math key='math' userId={id} />,
