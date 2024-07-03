@@ -21,23 +21,23 @@ const TxOMathBowl = () => {
 	const games = [
 		{
 			component: <Chess key='chess' userId={id} />,
-			startDate: '2024-07-03T20:40:00Z', // UTC time for 12:30 PM EST
-			endDate: '2024-07-03T20:50:00Z', // UTC time for 12:35 PM EST
+			startDate: '2024-07-03T20:50:00Z',
+			endDate: '2024-07-03T21:00:00Z',
 		},
 		{
 			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-02T20:30:00Z', // UTC time for 12:36 PM EST
-			endDate: '2024-07-02T20:40:00Z', // UTC time for 12:41 PM EST
+			startDate: '2024-07-02T20:30:00Z',
+			endDate: '2024-07-02T20:40:00Z',
 		},
 		{
 			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-02T16:42:00Z', // UTC time for 12:42 PM EST
-			endDate: '2024-07-02T16:47:00Z', // UTC time for 12:47 PM EST
+			startDate: '2024-07-02T16:42:00Z',
+			endDate: '2024-07-02T16:47:00Z',
 		},
 		{
 			component: <Trivia key='trivia' userId={id} />,
-			startDate: '2024-07-02T16:48:00Z', // UTC time for 12:48 PM EST
-			endDate: '2024-07-02T16:53:00Z', // UTC time for 12:53 PM EST
+			startDate: '2024-07-02T16:48:00Z',
+			endDate: '2024-07-02T16:53:00Z',
 		},
 	];
 

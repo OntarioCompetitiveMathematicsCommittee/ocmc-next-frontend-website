@@ -10,6 +10,7 @@ const GamesWrapper = ({ game, startDate, endDate }) => {
 		const minutes = Math.floor(totalSeconds / 60);
 		const seconds = totalSeconds % 60;
 		const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+		return formattedTime < '0:00' ? '' : formattedTime;
 	};
 
 	useEffect(() => {
