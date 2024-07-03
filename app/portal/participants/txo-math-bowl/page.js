@@ -26,8 +26,8 @@ const TxOMathBowl = () => {
 	const games = [
 		{
 			component: <Chess key='chess' userId={id} />,
-			startDate: '2024-07-02T12:55',
-			endDate: '2024-07-02T13:10',
+			startDate: '2024-07-02T20:35',
+			endDate: '2024-07-02T20:40',
 		},
 		{
 			component: <Sudoku key='sudoku' userId={id} />,
