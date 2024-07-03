@@ -36,8 +36,8 @@ const TxOMathBowl = () => {
 		},
 		{
 			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-02T13:17',
-			endDate: '2024-07-02T13:22',
+			startDate: '2024-07-02T20:45',
+			endDate: '2024-07-02T20:50',
 		},
 		{
 			component: <Trivia key='trivia' userId={id} />,
