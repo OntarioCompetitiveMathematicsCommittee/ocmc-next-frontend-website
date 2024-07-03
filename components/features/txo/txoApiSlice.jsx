@@ -44,8 +44,9 @@ export const txoApiSlice = apiSlice.injectEndpoints({
                 return txoAdapter.setOne(initialState, loadedTxo);
             },
             providesTags: (result, error, arg) => {
-                if (result?._id) {
-                    return [{ type: 'TxO', id: result._id }]
+                console.log('getTxoByUserId providesTags', result);
+                if (result?.ids) {
+                    return [ { type: 'TxO', id: result.ids[0] } ]
                 }
             }
         }),
