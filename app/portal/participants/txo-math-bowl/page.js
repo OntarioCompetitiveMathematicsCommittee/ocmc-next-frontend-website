@@ -26,23 +26,23 @@ const TxOMathBowl = () => {
 	const games = [
 		{
 			component: <Chess key='chess' userId={id} />,
-			startDate: '2024-07-02T20:35',
-			endDate: '2024-07-02T20:40',
+			startDate: '2024-07-03T17:20',
+			endDate: '2024-07-03T17:45',
 		},
 		{
 			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-02T20:20',
-			endDate: '2024-07-02T20:25',
+			startDate: '2024-07-03T14:35',
+			endDate: '2024-07-03T15:00',
 		},
 		{
 			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-02T20:45',
-			endDate: '2024-07-02T20:50',
+			startDate: '2024-07-04T14:05',
+			endDate: '2024-07-04T14:25',
 		},
 		{
 			component: <Trivia key='trivia' userId={id} />,
-			startDate: '2024-07-02T20:55',
-			endDate: '2024-07-02T21:00',
+			startDate: '2024-07-04T17:05',
+			endDate: '2024-07-04T17:15',
 		},
 	];
 
