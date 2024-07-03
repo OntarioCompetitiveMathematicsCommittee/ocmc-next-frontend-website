@@ -19,15 +19,15 @@ const TxOMathBowl = () => {
 	const currUser = useSelector((state) => selectUserById(state, id));
 
 	const games = [
-		{
-			component: <Chess key='chess' userId={id} />,
-			startDate: '2024-07-03T21:20:00Z',
-			endDate: '2024-07-03T21:45:00Z',
-		},
+		// {
+		// 	component: <Chess key='chess' userId={id} />,
+		// 	startDate: '2024-07-03T20:50:00Z',
+		// 	endDate: '2024-07-03T21:00:00Z',
+		// },
 		{
 			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-02T20:30:00Z',
-			endDate: '2024-07-02T20:40:00Z',
+			startDate: '2024-07-04T00:05:00Z',
+			endDate: '2024-07-04T00:30:00Z',
 		},
 		{
 			component: <Math key='math' userId={id} />,
