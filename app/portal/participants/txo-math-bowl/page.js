@@ -24,15 +24,15 @@ const TxOMathBowl = () => {
 		// 	startDate: '2024-07-03T20:50:00Z',
 		// 	endDate: '2024-07-03T21:00:00Z',
 		// },
-		{
-			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-04T00:05:00Z',
-			endDate: '2024-07-04T00:30:00Z',
-		},
+		// {
+		// 	component: <Sudoku key='sudoku' userId={id} />,
+		// 	startDate: '2024-07-04T00:05:00Z',
+		// 	endDate: '2024-07-04T00:30:00Z',
+		// },
 		{
 			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-02T16:42:00Z',
-			endDate: '2024-07-02T16:47:00Z',
+			startDate: '2024-07-04T01:15:00Z',
+			endDate: '2024-07-04T01:30:00Z',
 		},
 		{
 			component: <Trivia key='trivia' userId={id} />,
