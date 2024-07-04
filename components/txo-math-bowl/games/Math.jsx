@@ -97,7 +97,7 @@ const Math = ({ problem, onNext }) => {
 				type='text'
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
-				placeholder='Enter factors in the format (x^2+3)(x^2-5)'
+				placeholder='Enter factors in the format (x^2+1)(x^3-2x+1)'
 				className={`text-black text-lg p-2 w-full max-w-md mb-4 border rounded font-sans ${inputBorderStyle}`}
 			/>
 			<div className='flex space-x-4'>
