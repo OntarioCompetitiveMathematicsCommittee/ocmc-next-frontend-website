@@ -29,16 +29,16 @@ const TxOMathBowl = () => {
 		// 	startDate: '2024-07-04T00:05:00Z',
 		// 	endDate: '2024-07-04T00:30:00Z',
 		// },
-		{
-			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-04T18:15:00Z',
-			endDate: '2024-07-04T18:20:00Z',
-		},
 		// {
-		// 	component: <Trivia key='trivia' userId={id} />,
-		// 	startDate: '2024-07-04T21:05:00Z',
-		// 	endDate: '2024-07-04T21:15:00Z',
+		// 	component: <Math key='math' userId={id} />,
+		// 	startDate: '2024-07-04T18:15:00Z',
+		// 	endDate: '2024-07-04T18:20:00Z',
 		// },
+		{
+			component: <Trivia key='trivia' userId={id} />,
+			startDate: '2024-07-04T21:05:00Z',
+			endDate: '2024-07-04T21:10:00Z',
+		},
 	];
 
 	if (isLoading) return <p>Loading...</p>;
