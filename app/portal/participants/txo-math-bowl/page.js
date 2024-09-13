@@ -19,25 +19,25 @@ const TxOMathBowl = () => {
 	const currUser = useSelector((state) => selectUserById(state, id));
 
 	const games = [
-		{
-			component: <Chess key='chess' userId={id} />,
-			startDate: '2024-07-03T20:50:00Z',
-			endDate: '2024-07-03T21:00:00Z',
-		},
-		{
-			component: <Sudoku key='sudoku' userId={id} />,
-			startDate: '2024-07-02T20:30:00Z',
-			endDate: '2024-07-02T20:40:00Z',
-		},
-		{
-			component: <Math key='math' userId={id} />,
-			startDate: '2024-07-02T16:42:00Z',
-			endDate: '2024-07-02T16:47:00Z',
-		},
+		// {
+		// 	component: <Chess key='chess' userId={id} />,
+		// 	startDate: '2024-07-03T20:50:00Z',
+		// 	endDate: '2024-07-03T21:00:00Z',
+		// },
+		// {
+		// 	component: <Sudoku key='sudoku' userId={id} />,
+		// 	startDate: '2024-07-04T00:05:00Z',
+		// 	endDate: '2024-07-04T00:30:00Z',
+		// },
+		// {
+		// 	component: <Math key='math' userId={id} />,
+		// 	startDate: '2024-07-04T18:15:00Z',
+		// 	endDate: '2024-07-04T18:20:00Z',
+		// },
 		{
 			component: <Trivia key='trivia' userId={id} />,
-			startDate: '2024-07-02T16:48:00Z',
-			endDate: '2024-07-02T16:53:00Z',
+			startDate: '2024-07-04T21:05:00Z',
+			endDate: '2024-07-04T21:10:00Z',
 		},
 	];
 
