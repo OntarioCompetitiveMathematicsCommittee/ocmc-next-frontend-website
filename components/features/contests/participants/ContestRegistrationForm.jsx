@@ -16,16 +16,16 @@ const ContestRegistrationForm = ({ userId, contestId, username }) => {
     const [updateUserContests, { isLoading: isUserLoading, isSuccess: isUserSuccess, isError: isUserError, error: userError }] = useUpdateUserContestsMutation();
 
     useEffect(() => {
-        if (isError) alert(error.error);
-    }, [isError, error]);
+        if (isError && isUserError) alert(error.error + " " + userError.error);
+    }, [isError, isUserError, error, userError]);
 
     useEffect(() => {
-        if (isSuccess) {
+        if (isSuccess && isUserSuccess) {
             setButtonText(isRegistered ? "Register" : "Unregister");
             setIsRegistered(!isRegistered);
             alert(`Successfully ${isRegistered ? "unregistered" : "registered"} for ${name}`);
         }
-    }, [isSuccess]);
+    }, [isSuccess, isUserSuccess]);
 
     const handleSignup = async (e) => {
         e.preventDefault();
