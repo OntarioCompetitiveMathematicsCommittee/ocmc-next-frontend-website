@@ -29,6 +29,7 @@ const ContestRegistrationForm = ({ userId, contestId, username }) => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
+        if (isLoading || isUserLoading) return;
         const type = isRegistered ? "remove" : "add";
         await updateContestSignups({ id: contestId, participant_id: userId, type });
         await updateUserContests({ username, contest_id: contestId, score:-1, type })
@@ -50,7 +51,7 @@ const ContestRegistrationForm = ({ userId, contestId, username }) => {
                 <p>{description}</p>
             </div>
             <button className={"w-auto px-8 h-full py-2 rounded-full text-white text-2xl " 
-                + (isRegistered ? "bg-emerald-800" : "bg-brandBlue-800")} type="submit">{buttonText}</button>
+                + (isRegistered ? "bg-emerald-800" : "bg-brandBlue-800")} type="submit" disabled={isLoading || isUserLoading}>{buttonText}</button>
         </form>
     );
 }
