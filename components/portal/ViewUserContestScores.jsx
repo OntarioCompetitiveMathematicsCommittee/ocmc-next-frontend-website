@@ -42,7 +42,7 @@ const ViewUserContestScores = ({ id }) => {
 				{isProctor &&
 					<BackButton path="/portal/proctors/school-users"/>}
 				<div className='text-center'>
-					<h1 className={"portalh2 font-normal"}>Past Contest Scores</h1>
+					<h1 className={"portalh2 font-normal"}>Contest Scores</h1>
 					<h2 className={"portalh2 text-brandBlue-900"}>{currUser.first_name} {currUser.last_name}</h2>
 				</div>
 				<div className='flex flex-col w-[90%] max-w-3xl gap-4'>
