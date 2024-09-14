@@ -35,7 +35,7 @@ const ContestDisplay = ({ id, score, maxScore, updateScore, isAdmin }) => {
                                 value={currScore} 
                                 onChange={changeCurrScore}
                             /> :
-                            <p className="inline w-12 text-right">{currScore}</p>
+                            <p className="inline w-12 text-right">{currScore == -1 ? "N/A" : currScore}</p>
                         }
                         /{maxScore}
                     </div>
