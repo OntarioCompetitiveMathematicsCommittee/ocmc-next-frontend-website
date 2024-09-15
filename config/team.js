@@ -1,134 +1,157 @@
+import Arnav from '@public/assets/directors/Arnav.png'
 import Atticus from '@public/assets/directors/Atticus.png'
+import Christopher from '@public/assets/directors/Christopher.png'
 import Daniel from '@public/assets/directors/Daniel.png'
-import Jia from '@public/assets/directors/Jia.png'
-import Oliver from '@public/assets/directors/Oliver.png'
 import Elaine from '@public/assets/directors/Elaine.png'
-import Jacob from '@public/assets/directors/Jacob.png'
-import Aidan from '@public/assets/directors/Aidan.png'
-import Michael from '@public/assets/directors/Michael.png'
-import Oscar from '@public/assets/directors/Oscar.png'
-import Jason from '@public/assets/directors/Jason.png'
-import Yanzi from '@public/assets/directors/Yanzi.png'
-import MichaelL from '@public/assets/directors/MichaelL.png'
-import Shanna from '@public/assets/directors/Shanna.png'
-import Claire from '@public/assets/directors/Claire.png'
-import Charles from '@public/assets/directors/Charles.png'
+import Emily from '@public/assets/directors/Emily.png'
+import Haruka from '@public/assets/directors/Haruka.png'
+import Heidi from '@public/assets/directors/Heidi.png'
+import Helen from '@public/assets/directors/Helen.png'
+import Leo from '@public/assets/directors/Leo.png'
 import Manasva from '@public/assets/directors/Manasva.png'
-import Minglun from '@public/assets/directors/Minglun.png'
+import Maryam from '@public/assets/directors/Maryam.png'
+import MichaelH from '@public/assets/directors/MichaelH.png'
+import MichaelL from '@public/assets/directors/MichaelL.png'
+import Oscar from '@public/assets/directors/Oscar.png'
+import Pavel from '@public/assets/directors/Pavel.png'
+import Phoebe from '@public/assets/directors/Phoebe.png'
+import Shanna from '@public/assets/directors/Shanna.png'
+import Sowmya from '@public/assets/directors/Sowmya.png'
+import Terry from '@public/assets/directors/Terry.png'
+import Yanzi from '@public/assets/directors/Yanzi.png'
 
 export const team = [
-    {
-        image: Elaine,
-        firstName: "Elaine",
-        lastName: "Li",
-        position: "CFO",
-        link: "https://www.linkedin.com/in/elaine-li-236a3a1b5/"
-    },
     {
         image: Atticus,
         firstName: "Atticus",
         lastName: "Zhang",
-        position: "Director of Operations",
+        position: "Chief Executive Officer",
         link: "https://www.linkedin.com/in/atticus-zhang-70708626a/"
     },
     {
-        image: Jia,
-        firstName: "Jia",
-        lastName: "Huang",
-        position: "Director of Marketing",
-        link: "https://www.linkedin.com/in/yi-jia-huang/"
+        image: Leo,
+        firstName: "Leo",
+        lastName: "Xie",
+        position: "Chief Finance Officer",
+        link: "https://www.linkedin.com/in/leo-xie-c1/"
     },
     {
-        image: Minglun,
-        firstName: "Minglun",
-        lastName: "Shao",
-        position: "Director of Technology",
-        link: "https://www.linkedin.com/in/minglun-shao"
-    },
-    {
-        image: Oliver,
-        firstName: "Oliver",
-        lastName: "Mao",
-        position: "Director of Mathematics",
-    },
-    {
-        image: Jacob,
-        firstName: "Jacob",
-        lastName: "Yan",
-        position: "Director of Mathematics",
-        link: "https://www.linkedin.com/in/jacob-yan-3a33b0230/"
+        image: MichaelH,
+        firstName: "Michael",
+        lastName: "Hollander",
+        position: "Executive of Operations",
     },
     {
         image: Daniel,
         firstName: "Daniel",
         lastName: "Chen",
         position: "Director of Mathematics",
-        link: "https://www.linkedin.com/in/daniel-chen-0b1b3a1b5/"
-    },
-    {
-        image: Aidan,
-        firstName: "Aidan",
-        lastName: "Zhang",
-        position: "Deputy Director of Mathematics",
-        link: "https://www.linkedin.com/in/aidanzhang06/"
-    },
-    {
-        image: Michael,
-        firstName: "Michael",
-        lastName: "Hollander",
-        position: "Executive of Operations",
-    },
-    {
-        image: Claire,
-        firstName: "Claire",
-        lastName: "Liu",
-        position: "Executive of Finance",
-        link: "https://www.linkedin.com/in/claire-liu-abb37228b"
     },
     {
         image: Manasva,
         firstName: "Manasva",
-        lastName: "Katyal",
-        position: "Executive of Technology",
-        link: "https://www.linkedin.com/in/manasva-katyal"
+        lastName: "Kaytal",
+        position: "Chief Technology Officer",
+        link: "linkedin.com/in/manasva-katyal"
     },
     {
-        image: Yanzi,
-        firstName: "Yanzi",
-        lastName: "Guo",
-        position: "Executive of Technology",
-        link: "https://www.linkedin.com/in/yanzig/"
+        image: Arnav,
+        firstName: "Arnav",
+        lastName: "Kotian",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        image: Haruka,
+        firstName: "Haruka",
+        lastName: "Kurishima",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        image: Maryam,
+        firstName: "Maryam",
+        lastName: "Abidi",
+        position: "Director of Mathematics"
+    },
+    {
+        image: Helen,
+        firstName: "Helen",
+        lastName: "Huang",
+        position: "Accountant"
+    },
+    {
+        image: Emily,
+        firstName: "Emily",
+        lastName: "Yan",
+        position: "Event Coordinator"
+    },
+    {
+        image: Phoebe,
+        firstName: "Phoebe",
+        lastName: "Huang",
+        position: "Event Coordinator",
+        link: "https://www.linkedin.com/in/phoebe-huang-9583702a3/"
+    },
+    {
+        image: Sowmya,
+        firstName: "Sowmya",
+        lastName: "Ramanan",
+        position: "Event Coordinator"
+    },
+    {
+        image: Heidi,
+        firstName: "Heidi",
+        lastName: "Huang",
+        position: "Marketing Coordinator",
+        link: "https://www.linkedin.com/in/heidi-huang-256862237?trk=contact-info"
     },
     {
         image: Oscar,
         firstName: "Oscar",
         lastName: "Zhou",
-        position: "Executive of Mathematics",
-    },
-    {
-        image: Jason,
-        firstName: "Jason",
-        lastName: "Sun",
-        position: "Executive of Mathematics",
-    },
-    {
-        image: MichaelL,
-        firstName: "Michael",
-        lastName: "Li",
-        position: "Executive of Mathematics",
+        position: "Problem Setter"
     },
     {
         image: Shanna,
         firstName: "Shanna",
         lastName: "Xiao",
-        position: "Executive of Mathematics",
+        position: "Problem Setter",
+        link: "https://www.linkedin.com/in/shanna-xiao-544822324/"
     },
     {
-        image: Charles,
-        firstName: "Charles",
-        lastName: "Ran",
-        position: "Executive of Mathematics",
-        link: "https://polarity.sh/"
+        image: MichaelL,
+        firstName: "Michael",
+        lastName: "Li",
+        position: "Problem Setter"
+    },
+    {
+        image: Christopher,
+        firstName: "Christopher",
+        lastName: "Li",
+        position: "Problem Setter"
+    },
+    {
+        image: Pavel,
+        firstName: "Pavel",
+        lastName: "MacKenzie",
+        position: "Problem Setter"
+    },
+    {
+        image: Elaine,
+        firstName: "Elaine",
+        lastName: "Li",
+        position: "Problem Setter"
+    },
+    {
+        image: Terry,
+        firstName: "Terry",
+        lastName: "Yang",
+        position: "Problem Setter"
+    },
+    {
+        image: Yanzi,
+        firstName: "Yanzi",
+        lastName: "Guo",
+        position: "Web Developer"
     }
 ]
 
