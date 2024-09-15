@@ -52,7 +52,7 @@ export const team = [
         firstName: "Manasva",
         lastName: "Kaytal",
         position: "Chief Technology Officer",
-        link: "linkedin.com/in/manasva-katyal"
+        link: "https://linkedin.com/in/manasva-katyal"
     },
     {
         image: Arnav,
@@ -70,7 +70,7 @@ export const team = [
         image: Maryam,
         firstName: "Maryam",
         lastName: "Abidi",
-        position: "Director of Mathematics"
+        position: "Sponsorship Coordinator"
     },
     {
         image: Helen,
