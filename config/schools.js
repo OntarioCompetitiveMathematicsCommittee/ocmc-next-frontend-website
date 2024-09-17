@@ -19,6 +19,7 @@ export const SCHOOLS = [
     'Saint John High School',
     'Thornlea Secondary School',
     'Rothesay Netherwood School',
+    'Math Attack Society',
     'N/A',
 ];
 
@@ -43,6 +44,7 @@ export const SCHOOL_REGION_LETTER = {
     'Saint John High School': 'O',
     'Thornlea Secondary School': 'O',
     'Rothesay Netherwood School': 'O',
+    'Math Attack Society': 'A',
     'N/A': 'N',
 };
 
@@ -68,4 +70,5 @@ export const SCHOOL_NUMBER = {
     'Saint John High School': '018',
     'Thornlea Secondary School': '019',
     'Rothesay Netherwood School': '020',
+    'Math Attack Society': '021',
 };
