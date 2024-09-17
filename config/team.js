@@ -39,7 +39,7 @@ export const team = [
         image: MichaelH,
         firstName: "Michael",
         lastName: "Hollander",
-        position: "Executive of Operations",
+        position: "Chief Operations Officer",
     },
     {
         image: Daniel,
