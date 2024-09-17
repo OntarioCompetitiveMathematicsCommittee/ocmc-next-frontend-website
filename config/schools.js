@@ -14,6 +14,11 @@ export const SCHOOLS = [
     'White Oaks Secondary School',
     'Bur Oak Secondary School',
     'Bluevale Collegiate Institute',
+    'Abbey Park High School',
+    'Martingrove Collegiate Institute',
+    'Saint John High School',
+    'Thornlea Secondary School',
+    'Rothesay Netherwood School',
     'N/A',
 ];
 
@@ -33,6 +38,11 @@ export const SCHOOL_REGION_LETTER = {
     'White Oaks Secondary School': 'O',
     'Bur Oak Secondary School': 'O',
     'Bluevale Collegiate Institute': 'O',
+    'Abbey Park High School': 'O',
+    'Martingrove Collegiate Institute': 'O',
+    'Saint John High School': 'O',
+    'Thornlea Secondary School': 'O',
+    'Rothesay Netherwood School': 'O',
     'N/A': 'N',
 };
 
@@ -53,4 +63,9 @@ export const SCHOOL_NUMBER = {
     'White Oaks Secondary School': '013',
     'Bur Oak Secondary School': '014',
     'Bluevale Collegiate Institute': '015',
+    'Abbey Park High School': '016',
+    'Martingrove Collegiate Institute': '017',
+    'Saint John High School': '018',
+    'Thornlea Secondary School': '019',
+    'Rothesay Netherwood School': '020',
 };
