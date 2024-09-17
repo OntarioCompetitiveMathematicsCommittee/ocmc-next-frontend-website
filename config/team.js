@@ -45,7 +45,7 @@ export const team = [
         image: Daniel,
         firstName: "Daniel",
         lastName: "Chen",
-        position: "Director of Mathematics",
+        position: "Chief Mathematics Officer",
     },
     {
         image: Manasva,
