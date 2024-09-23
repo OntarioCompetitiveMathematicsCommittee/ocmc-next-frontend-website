@@ -20,6 +20,7 @@ export const SCHOOLS = [
     'Thornlea Secondary School',
     'Rothesay Netherwood School',
     'Math Attack Society',
+    'Dr Norman Bethune Collegiate Institute',
     'N/A',
 ];
 
@@ -45,6 +46,7 @@ export const SCHOOL_REGION_LETTER = {
     'Thornlea Secondary School': 'O',
     'Rothesay Netherwood School': 'O',
     'Math Attack Society': 'A',
+    'Dr Norman Bethune Collegiate Institute': 'O',
     'N/A': 'N',
 };
 
@@ -71,4 +73,5 @@ export const SCHOOL_NUMBER = {
     'Thornlea Secondary School': '019',
     'Rothesay Netherwood School': '020',
     'Math Attack Society': '021',
+    'Dr Norman Bethune Collegiate Institute': '022',
 };
