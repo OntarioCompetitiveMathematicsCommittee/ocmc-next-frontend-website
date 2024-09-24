@@ -21,6 +21,8 @@ export const SCHOOLS = [
     'Rothesay Netherwood School',
     'Math Attack Society',
     'Dr Norman Bethune Collegiate Institute',
+    'Upper Canada College',
+    'Laurel Heights Secondary School',
     'N/A',
 ];
 
@@ -47,6 +49,8 @@ export const SCHOOL_REGION_LETTER = {
     'Rothesay Netherwood School': 'O',
     'Math Attack Society': 'A',
     'Dr Norman Bethune Collegiate Institute': 'O',
+    'Upper Canada College': 'O',
+    'Laurel Heights Secondary School': 'O',
     'N/A': 'N',
 };
 
@@ -74,4 +78,6 @@ export const SCHOOL_NUMBER = {
     'Rothesay Netherwood School': '020',
     'Math Attack Society': '021',
     'Dr Norman Bethune Collegiate Institute': '022',
+    'Upper Canada College': '023',
+    'Laurel Heights Secondary School': '024',
 };
