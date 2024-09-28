@@ -24,6 +24,8 @@ export const SCHOOLS = [
     'Upper Canada College',
     'Laurel Heights Secondary School',
     'Vincent Massey Secondary School',
+    'Bloor Collegiate Institute',
+    'Earl Haig Secondary School',
     'N/A',
 ];
 
@@ -53,6 +55,8 @@ export const SCHOOL_REGION_LETTER = {
     'Upper Canada College': 'O',
     'Laurel Heights Secondary School': 'O',
     'Vincent Massey Secondary School': 'O',
+    'Bloor Collegiate Institute': 'O',
+    'Earl Haig Secondary School': 'O',
     'N/A': 'N',
 };
 
@@ -83,4 +87,6 @@ export const SCHOOL_NUMBER = {
     'Upper Canada College': '023',
     'Laurel Heights Secondary School': '024',
     'Vincent Massey Secondary School': '025',
+    'Bloor Collegiate Institute': '026',
+    'Earl Haig Secondary School': '027',
 };
