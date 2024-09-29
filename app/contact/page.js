@@ -47,7 +47,7 @@ const Contact = () => {
             <Navbar/>
             <NavbarPlaceholder/>
             <section className='flex items-center justify-center w-full h-full'>
-                <div className=' h-[40rem] md:h-[28rem] lg:h-[25rem] flex flex-col bg-brandNeutral-200 border-4 border-4 rounded-lg border-brandNeutral-300 px-4'>
+                <div className=' h-[40rem] md:h-[28rem] lg:h-[25rem] flex flex-col bg-brandNeutral-200 border-4 rounded-lg border-brandNeutral-300 px-4'>
                     <div className='flex flex-col items-center lg:flex-row'>
                         <div className='mt-5 w-96 md:w-[50rem] lg:mt-11 lg:ml-14'>
                             <h1 className='text-2xl font-medium lg:text-4xl max-w-[60rem] text-black'>Contact Us</h1>
