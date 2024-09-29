@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { selectUserById, useUpdateUserMutation } from "../usersApiSlice"
+import { selectUserById, useUpdateUserMutation, useDeleteUserMutation } from "../usersApiSlice"
 
 import Link from "next/link"
 
@@ -30,6 +30,44 @@ const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
         }
     }, [isError]);
 
+    const [deleteUser, {
+        isLoading: isDeleting,
+        isSuccess: isDeleted,
+        isError: isDeleteError,
+        deleteError
+    }] = useDeleteUserMutation();
+
+    useEffect(() => {
+        if (isDeleted) {
+            alert(`${user.username} has been deleted.`);
+        }
+    }, [isDeleted]);
+
+    useEffect(() => {
+        if (isDeleteError) {
+            alert(`Error deleting ${user.username}: ${deleteError}!`);
+        }
+    }, [isDeleteError]);
+
+    const [updateUser2, {
+        isLoading: isActivating,
+        isSuccess: isActivated,
+        isError: isActivateError,
+        activateError
+    }] = useUpdateUserMutation();
+
+    useEffect(() => {
+        if (isActivated) {
+            alert(`${user.username} has been activated.`);
+        }
+    }, [isActivated]);
+
+    useEffect(() => {
+        if (isActivateError) {
+            alert(`Error activating ${user.username}: ${activateError}!`);
+        }
+    }, [isActivateError]);
+
     const handlePwdReset = async (e) => {
         e.preventDefault();
 
@@ -46,6 +84,39 @@ const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
                 school: user.school,
                 password: pwd,
                 roles: user.roles
+            });
+        }
+    }
+
+    const handleDelete = async (e) => {
+        e.preventDefault();
+    
+        if (window.confirm(`Are you sure you want to delete ${user.username}? This is an irreversible action.`)) {
+            try {
+                console.log("Attempting to delete user with ID: ", user.id);
+                const response = await deleteUser({ id: user.id });
+                console.log("Delete response: ", response);
+            } catch (err) {
+                console.error("Error occurred while deleting user: ", err);
+            }
+        }
+    }       
+
+    const handleActivate = async (e) => {
+        e.preventDefault();
+
+        if (window.confirm(`Are you sure you want to activate ${user.username}?`)) {
+            await updateUser2({
+                id: user.id,
+                username: user.username,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+                grade: user.grade,
+                school: user.school,
+                password: user.password,
+                roles: user.roles,
+                activate: true
             });
         }
     }
@@ -68,10 +139,21 @@ const ProctorUserDisplay = ({ userId, school, searchQuery }) => {
                 <td>{user.grade}</td>
                 <td>{user.email}</td>
                 <td>
+                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"school-users/view/" + userId}>View</Link>
+                </td>
+                <td>
+                    {user.active ?
+                        "Already Verified" :
+                        <button className="px-6 py-1 text-white bg-green-500 rounded-md" onClick={(e) => handleActivate(e)}>
+                            Activate
+                        </button>
+                    }
+                </td>
+                <td>
                     <button className="px-6 py-1 text-white bg-red-500 rounded-md" onClick={(e) => handlePwdReset(e)}>Reset</button>
                 </td>
                 <td>
-                    <Link className="px-6 py-2 text-white bg-green-500 rounded-md" href={"school-users/view/" + userId}>View</Link>
+                    <button className="px-6 py-1 text-white bg-red-500 rounded-md" onClick={(e) => handleDelete(e)}>Delete</button>
                 </td>
             </tr>
         );

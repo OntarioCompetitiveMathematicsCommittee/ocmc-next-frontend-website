@@ -73,7 +73,7 @@ const ProctorUsersList = () => {
 					/>
 					{/** table to display list of registered participants under the proctor */}
 					<TableWrapper className='table-auto border-spacing-10'>
-						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Password", "View"]} />
+						<TableHead headings={["Username", "Full Name", "Grade", "Email", "View", "Verify", "Password", "Delete"]} />
 						<tbody className='text-md'>{tableContent}</tbody>
 					</TableWrapper>
 				</div>
