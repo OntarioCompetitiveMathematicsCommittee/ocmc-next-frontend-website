@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useGetUsersQuery, selectUserById } from '@components/features/users/usersApiSlice'
+import Papa from 'papaparse';
 import ProctorUserDisplay from '@components/features/users/proctors/ProctorUserDisplay'
 import useAuth from '@hooks/useAuth'
 
@@ -39,7 +40,7 @@ const ProctorUsersList = () => {
 
 		// list of participants based on their ids
 		const tableContent = ids?.map(userId => <ProctorUserDisplay key={userId} userId={userId} school={proctor.school} searchQuery={searchQuery} />);
-	
+
 		content = (
 			<div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
 				{/** title with proctor school name */}
@@ -48,6 +49,20 @@ const ProctorUsersList = () => {
 					<h2 className={"portalh2 text-brandBlue-900"}>{proctor.school}</h2>
 				</div>
 				<div className='flex flex-col w-4/5 gap-4'>
+					<button
+						className="w-64 px-2 py-2 border-2 rounded-md bg-brandBlue-500 text-white"
+						onClick={() => {
+							const csv = Papa.unparse(users.ids.filter(userId => (users.entities[userId].school === proctor.school && users.entities[userId].roles.includes("Participant"))).map(userId => users.entities[userId]));
+							const blob = new Blob([csv], { type: 'text/csv' });
+							const url = URL.createObjectURL(blob);
+							const a = document.createElement('a');
+							a.href = url;
+							a.download = 'students.csv';
+							a.click();
+						}}
+					>
+						Download Student Data
+					</button>
 					{/** search query input field */}
 					<input
 						className="w-64 px-2 py-2 border-2 rounded-md "
@@ -58,7 +73,7 @@ const ProctorUsersList = () => {
 					/>
 					{/** table to display list of registered participants under the proctor */}
 					<TableWrapper className='table-auto border-spacing-10'>
-						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Password", "View"]}/>
+						<TableHead headings={["Username", "Full Name", "Grade", "Email", "Password", "View"]} />
 						<tbody className='text-md'>{tableContent}</tbody>
 					</TableWrapper>
 				</div>
