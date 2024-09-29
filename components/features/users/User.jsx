@@ -33,6 +33,19 @@ const User = ({ userId, searchQuery }) => {
         }
     }, [isError]);
 
+    const [updateUser2, {
+        isLoading: isActivating,
+        isSuccess: isActivated,
+        isError: isActivateError,
+        activateError
+    }] = useUpdateUserMutation();
+
+    useEffect(() => {
+        if (isActivated) {
+            alert(`${user.username} has been activated.`);
+        }
+    } , [isActivated]);
+
     const handlePwdReset = async (e) => {
         e.preventDefault();
 
@@ -49,6 +62,25 @@ const User = ({ userId, searchQuery }) => {
                 school: user.school,
                 password: pwd,
                 roles: user.roles
+            });
+        }
+    }
+
+    const handleActivate = async (e) => {
+        e.preventDefault();
+
+        if (window.confirm(`Are you sure you want to activate ${user.username}?`)) {
+            await updateUser2({
+                id: user.id,
+                username: user.username,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+                grade: user.grade,
+                school: user.school,
+                password: user.password,
+                roles: user.roles,
+                activate: true
             });
         }
     }
@@ -76,6 +108,11 @@ const User = ({ userId, searchQuery }) => {
                 <td>{userRolesString}</td>
                 <td>
                     <button onClick={handleEdit} className='px-6 py-1 text-white bg-blue-500 rounded-md'>Edit</button>
+                </td>
+                <td className="text-center">
+                    {user.active ? "Verified" :
+                        <button className="ml-2 mr-2 px-6 py-1 text-white bg-yellow-500 rounded-md" onClick={(e) => handleActivate(e)}>Activate</button>
+                    }
                 </td>
                 <td>
                     <button className="px-6 py-1 text-white bg-red-500 rounded-md" onClick={(e) => handlePwdReset(e)}>Reset</button>

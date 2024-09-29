@@ -132,7 +132,7 @@ const UsersList = () => {
             
                {/** table ot display list of users */}
                <TableWrapper>
-                  <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Password", "View"]}/>
+                  <TableHead headings={["Username", "Full Name", "School", "Email", "Roles", "Edit", "Verify", "Password", "View"]}/>
                   <tbody className='text-md'>{tableContent}</tbody>
                </TableWrapper>
             </div>
