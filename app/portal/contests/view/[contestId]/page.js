@@ -70,6 +70,7 @@ const Contests = () => {
 							const csv = users.map(user => {
 								return {
 									username: user.username,
+									code: user.code,
 									full_name: user.first_name + " " + user.last_name,
 									school: user.school,
 									grade: user.grade,
