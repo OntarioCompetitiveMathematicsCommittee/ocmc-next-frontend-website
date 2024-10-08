@@ -26,7 +26,7 @@ export const SCHOOLS = [
     'Vincent Massey Secondary School',
     'Bloor Collegiate Institute',
     'Earl Haig Secondary School',
-    'N/A',
+    'NA',
 ];
 
 export const SCHOOL_REGION_LETTER = {
@@ -57,11 +57,11 @@ export const SCHOOL_REGION_LETTER = {
     'Vincent Massey Secondary School': 'O',
     'Bloor Collegiate Institute': 'O',
     'Earl Haig Secondary School': 'O',
-    'N/A': 'N',
+    'NA': 'N',
 };
 
 export const SCHOOL_NUMBER = {
-    'N/A': '000',
+    'NA': '000',
     'Oakville Trafalgar High School': '001',
     'Marc Garneau Collegiate Institute': '002',
     'John Fraser Secondary School': '003',
