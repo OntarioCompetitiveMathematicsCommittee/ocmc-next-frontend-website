@@ -26,6 +26,7 @@ export const SCHOOLS = [
     'Vincent Massey Secondary School',
     'Bloor Collegiate Institute',
     'Earl Haig Secondary School',
+    'Leading Aces Academy',
     'NA',
 ];
 
@@ -47,9 +48,9 @@ export const SCHOOL_REGION_LETTER = {
     'Bluevale Collegiate Institute': 'O',
     'Abbey Park High School': 'O',
     'Martingrove Collegiate Institute': 'O',
-    'Saint John High School': 'O',
+    'Saint John High School': 'M',
     'Thornlea Secondary School': 'O',
-    'Rothesay Netherwood School': 'O',
+    'Rothesay Netherwood School': 'M',
     'Math Attack Society': 'A',
     'Dr Norman Bethune Collegiate Institute': 'O',
     'Upper Canada College': 'O',
@@ -57,6 +58,7 @@ export const SCHOOL_REGION_LETTER = {
     'Vincent Massey Secondary School': 'O',
     'Bloor Collegiate Institute': 'O',
     'Earl Haig Secondary School': 'O',
+    'Leading Aces Academy': 'O',
     'NA': 'N',
 };
 
@@ -89,4 +91,5 @@ export const SCHOOL_NUMBER = {
     'Vincent Massey Secondary School': '025',
     'Bloor Collegiate Institute': '026',
     'Earl Haig Secondary School': '027',
+    'Leading Aces Academy': '028',
 };

@@ -37,7 +37,7 @@ const ContestDisplay = ({ id, score, maxScore, updateScore, isAdmin }) => {
                             /> :
                             <p className="inline w-12 text-right">{currScore == -1 ? "N/A" : currScore}</p>
                         }
-                        /{maxScore}
+                        {currScore == -1 ? "" : `/${maxScore}`}
                     </div>
                     {
                         isAdmin &&
