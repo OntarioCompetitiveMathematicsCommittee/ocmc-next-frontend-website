@@ -39,25 +39,32 @@ const PastContests = () => {
 								</thead>
 								<tbody>
 									<PastContestRow
-										contestName='Spring &lsquo;23 I'
-										PDFName='2023-spring-omc-I'
+										contestName='OMC &lsquo;22 I'
+										PDFName='2022-omc-I'
 										hasContest={true}
 										hasSolutions={true}
 										hasResults={true}
 									/>
 									<PastContestRow
-										contestName='Spring &lsquo;23 II'
-										PDFName='2023-spring-omc-II'
+										contestName='OMC &lsquo;22 II'
+										PDFName='2022-omc-II'
 										hasContest={true}
 										hasSolutions={true}
 										hasResults={false}
 									/>
 									<PastContestRow
-										contestName='Fall &lsquo;23'
-										PDFName='2023-fall-omc'
+										contestName='OMC &lsquo;23'
+										PDFName='2023-omc'
 										hasContest={true}
 										hasSolutions={true}
 										hasResults={true}
+									/>
+									<PastContestRow
+										contestName='OMC &lsquo;24'
+										PDFName='2024-omc'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
 									/>
 								</tbody>
 							</table>
