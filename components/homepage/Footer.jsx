@@ -125,7 +125,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="mt-auto mb-2 ml-auto mr-auto lg:ml-14">
-                    <h1 className="text-sm text-brandNeutral-100">© 2023 Ontario Competitive Mathematics Committee.</h1>
+                    <h1 className="text-sm text-brandNeutral-100">© 2024 Ontario Competitive Mathematics Committee.</h1>
                 </div>
             </div>
             

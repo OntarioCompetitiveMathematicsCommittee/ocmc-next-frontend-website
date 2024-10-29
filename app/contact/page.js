@@ -104,7 +104,7 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="mt-8 ml-auto mr-auto lg:ml-14 lg:mt-8">
-                        <h1 className="text-sm text-black">© 2023 Ontario Competitive Mathematics Committee.</h1>
+                        <h1 className="text-sm text-black">© 2024 Ontario Competitive Mathematics Committee.</h1>
                     </div>
                 </div>
                 
