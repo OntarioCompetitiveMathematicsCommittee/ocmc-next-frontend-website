@@ -96,7 +96,7 @@ const Contact = () => {
                                 </div>
                                 <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] w-96'>
                                     <div className='flex flex-row'>
-                                        <h1 className='text-brandYellow-500'>Test Day Inquiries</h1>
+                                        <h1 className='text-brandYellow-500'>Urgent Inquiries</h1>
                                         <h1 className='text-black'>: (647)-936-1124</h1>
                                     </div>
                                 </div>
