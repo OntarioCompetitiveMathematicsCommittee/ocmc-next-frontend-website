@@ -91,7 +91,10 @@ const User = ({ userId, searchQuery }) => {
                 && !user.first_name.toLowerCase().includes(searchQuery.toLowerCase())
                 && !user.last_name.toLowerCase().includes(searchQuery.toLowerCase())
                 && !user.school.toLowerCase().includes(searchQuery.toLowerCase())
-                && !user.email.toLowerCase().includes(searchQuery.toLowerCase())) {
+                && !user.email.toLowerCase().includes(searchQuery.toLowerCase())
+                && !user.roles.join(', ').toLowerCase().includes(searchQuery.toLowerCase())
+                && !user.code.toLowerCase().includes(searchQuery.toLowerCase())
+            ) {
                 return null;
             }
         }
