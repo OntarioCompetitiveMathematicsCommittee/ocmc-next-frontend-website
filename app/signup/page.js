@@ -5,6 +5,7 @@ import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SCHOOLS, SCHOOL_NUMBER, SCHOOL_REGION_LETTER } from '@config/schools';
+import ReCAPTCHA from "react-google-recaptcha";
 
 import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from "@components/elements/NavbarPlaceholder"
@@ -45,6 +46,12 @@ const SignupPage = () => {
 	const [validMatchPassword, setValidMatchPassword] = useState(false);
 
 	const [stage, setStage] = useState(0);
+
+	const [recaptchaToken, setRecaptchaToken] = useState('');
+
+	const handleRecaptcha = (token) => {
+		setRecaptchaToken(token); // Save the reCAPTCHA token
+	};
 
 	const roles = ['Participant'];
 
@@ -108,6 +115,7 @@ const SignupPage = () => {
 			validSchool,
 			validEmail,
 			validGrade,
+			recaptchaToken !== '',
 		].every(Boolean) && !isLoading;
 
 	const onSaveUserClicked = async (e) => {
@@ -120,11 +128,12 @@ const SignupPage = () => {
 					roles: roles,
 					first_name: firstname,
 					last_name: lastname,
-					code: SCHOOL_REGION_LETTER[school]+'-'+SCHOOL_NUMBER[school]+'-',
+					code: SCHOOL_REGION_LETTER[school] + '-' + SCHOOL_NUMBER[school] + '-',
 					school: school,
 					email: email,
 					grade: grade,
-					active: false
+					active: false,
+					recaptchaToken: recaptchaToken,
 				});
 			}
 		} else {
@@ -138,12 +147,13 @@ const SignupPage = () => {
 	if (isError) {
 		window.scrollTo(0, 0);
 		if (error.status === 409) {
-			if (error.data.message.includes('Email')){
+			if (error.data.message.includes('Email')) {
 				errmsg = <>Email is already in use. Please choose another.</>;
-			} else if (error.data.message.includes('Username')){
+			} else if (error.data.message.includes('Username')) {
 				errmsg = <>Username is already taken. Please choose another.</>;
 			}
 		} else {
+			console.error(error);
 			errmsg = <>An error occurred. Please try again later.</>;
 		}
 	}
@@ -353,7 +363,7 @@ const SignupPage = () => {
 					required
 					aria-invalid={validSchool ? 'false' : 'true'}
 					aria-describedby='schoolnote'
-					>
+				>
 					<option value='' disabled hidden>
 						Select a school
 					</option>
@@ -397,6 +407,16 @@ const SignupPage = () => {
 				</p>
 			</div>
 
+			{/* reCAPTCHA */}
+			<div className='flex justify-center items-center'>
+				<ReCAPTCHA
+					sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+					onChange={handleRecaptcha}
+					size='normal'
+					theme='light'
+				/>
+			</div>
+
 			{/* error message if applicable */}
 			{errmsg && <p className='w-[90vw] md:w-[min(30rem,45vw)] text-red-600 text-regular'>{errmsg}</p>}
 
@@ -405,17 +425,21 @@ const SignupPage = () => {
 				<button
 					className='flex-1 h-14 border-2 rounded-sm font-medium font-[Montserrat]'
 					type='button'
-					onClick={() => {setStage(0)}}>
+					onClick={() => { setStage(0) }}>
 					Back
 				</button>
+
 				<button
-					className='flex-1 h-14 text-white rounded-sm font-medium font-[Montserrat]
-					bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
-					type='submit'>
+					className={`flex-1 h-14 text-white rounded-sm font-medium font-[Montserrat]
+        bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 
+        ${!canSave ? 'opacity-50 cursor-not-allowed' : 'hover:bg-pos-100'}`}
+					type='submit'
+					disabled={!canSave}
+				>
 					Sign Up
 				</button>
 			</div>
-			
+
 		</form>
 	);
 
@@ -462,7 +486,7 @@ const SignupPage = () => {
 	return (
 		<div className='flex flex-col min-h-screen'>
 			<Navbar />
-			<NavbarPlaceholder/>
+			<NavbarPlaceholder />
 			{content}
 		</div>
 	);
