@@ -45,7 +45,7 @@ const MathContests = () => {
                         <Section
                             image={tmc}
                             title="Tesseract Mathematics Challenge"
-                            text="The Tesseract Mathematics Challenge (TMC) is a one-hour contest featuring five pairs of mid-to-late Euclid-difficulty short- and long-answer questions to be completed in one hour. The TMC will be held between March 4th and March 8th and school registration closes February 16th."
+                            text="The Tesseract Mathematics Challenge (TMC) is a one-hour contest featuring five pairs of mid-to-late Euclid-difficulty short- and long-answer questions to be completed in one hour. The TMC will be held between March 3rd and March 7th and school registration closes February 16th."
                             isPadding={true}
                         />
                     </div>
