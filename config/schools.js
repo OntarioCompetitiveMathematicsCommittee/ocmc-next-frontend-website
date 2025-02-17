@@ -27,6 +27,7 @@ export const SCHOOLS = [
     'Bloor Collegiate Institute',
     'Earl Haig Secondary School',
     'Leading Aces Academy',
+    'Western Canada High School',
     'NA',
 ];
 
@@ -59,6 +60,7 @@ export const SCHOOL_REGION_LETTER = {
     'Bloor Collegiate Institute': 'O',
     'Earl Haig Secondary School': 'O',
     'Leading Aces Academy': 'O',
+    'Western Canada High School': 'A',
     'NA': 'N',
 };
 
@@ -92,4 +94,5 @@ export const SCHOOL_NUMBER = {
     'Bloor Collegiate Institute': '026',
     'Earl Haig Secondary School': '027',
     'Leading Aces Academy': '028',
+    'Western Canada High School': '029',
 };
