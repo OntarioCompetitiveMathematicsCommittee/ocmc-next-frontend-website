@@ -11,6 +11,8 @@ import janestreet from '@public/assets/sponsors/janestreet.png'
 import maplesoft from '@public/assets/sponsors/maplesoft.png'
 import stroberts from '@public/assets/sponsors/stroberts.png'
 import bayview from '@public/assets/sponsors/bayview.png'
+import laa from '@public/assets/sponsors/laa.png'
+import cms from '@public/assets/sponsors/cms.png'
 
 export const sponsorList = [
     // aops: aops,
@@ -25,11 +27,6 @@ export const sponsorList = [
         name: 'Jane Street',
         image: janestreet,
         link: 'https://www.janestreet.com/',
-    }, 
-    {
-        name: 'Maplesoft',
-        image: maplesoft,
-        link: 'https://www.maplesoft.com/',
     },
     {
         name: 'TTMath',
@@ -42,14 +39,19 @@ export const sponsorList = [
         link: 'https://www.wolframalpha.com/',
     },
     {
+        name: 'Leading Aces Academy',
+        image: laa,
+        link: 'https://www.leadingaces.com/',
+    },
+    {
+        name: 'CMS',
+        image: cms,
+        link: 'https://cms.math.ca/',
+    },
+    {
         name: 'Jane Street1',
         image: janestreet,
         link: 'https://www.janestreet.com/',
-    }, 
-    {
-        name: 'Maplesoft1',
-        image: maplesoft,
-        link: 'https://www.maplesoft.com/',
     },
     {
         name: 'TTMath1',
@@ -60,5 +62,15 @@ export const sponsorList = [
         name: 'wolfram1',
         image: wolfram,
         link: 'https://www.wolframalpha.com/',
+    },
+    {
+        name: 'Leading Aces Academy1',
+        image: laa,
+        link: 'https://www.leadingaces.com/',
+    },
+    {
+        name: 'CMS1',
+        image: cms,
+        link: 'https://cms.math.ca/',
     },
 ]
