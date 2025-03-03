@@ -119,6 +119,14 @@ const PortalNav = () => {
                             name={"Contests List"} 
                             path="/portal/contests"
                         />}
+                    {(isAdmin || isExecutive) &&
+                        <PortalElement
+                            selected={page === '/portal/create-online-contest'}
+                            setPage={setPage}
+                            icon={contests}
+                            name={"Online Contests"}
+                            path="/portal/online-contest"
+                        />}
                     {(isProctor) && 
                         <PortalElement 
                             selected={page === '/portal/proctors/contests'}
