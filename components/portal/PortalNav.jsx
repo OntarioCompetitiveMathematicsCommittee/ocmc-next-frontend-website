@@ -12,6 +12,7 @@ import PortalElement from '@components/portal/PortalElement';
 
 import contestRegistration from '@public/assets/dashboard-icons/contest-registration.svg'
 import txo from '@public/assets/dashboard-icons/txo.svg'
+import ocontest from '@public/assets/dashboard-icons/ocontest.svg'
 import contests from '@public/assets/dashboard-icons/contests.svg'
 import dashboard from '@public/assets/dashboard-icons/dashboard.svg'
 import logout from '@public/assets/dashboard-icons/logout.svg'
@@ -155,6 +156,15 @@ const PortalNav = () => {
                             icon={txo} 
                             name={"TxO Math Bowl"} 
                             path="/portal/participants/txo-math-bowl"
+                        />}
+
+                    {isParticipant && 
+                        <PortalElement 
+                            selected={page === '/portal/participants/online-contest'}
+                            setPage={setPage}
+                            icon={ocontest} 
+                            name={"Online Contests"} 
+                            path="/portal/participants/online-contest"
                         />}
 
 
