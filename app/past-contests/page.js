@@ -135,6 +135,13 @@ const PastContests = () => {
 										hasSolutions={true}
 										hasResults={false}
 									/>
+									<PastContestRow
+										contestName='TMC &lsquo;25'
+										PDFName='2025-tmc'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
+									/>
 								</tbody>
 							</table>
 						</div>
