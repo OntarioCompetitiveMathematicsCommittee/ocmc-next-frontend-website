@@ -121,7 +121,7 @@ const PortalNav = () => {
                         />}
                     {(isAdmin || isExecutive) &&
                         <PortalElement
-                            selected={page === '/portal/create-online-contest'}
+                            selected={page === '/portal/online-contest'}
                             setPage={setPage}
                             icon={contests}
                             name={"Online Contests"}

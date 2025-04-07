@@ -6,8 +6,7 @@ import ProblemList from "@components/features/problem-lists/ProblemList";
 import TableHead from "@components/portal/TableHead";
 import TableWrapper from "@components/portal/TableWrapper";
 
-// temp imports for testing
-import { useAddNewProblemListMutation } from "@components/features/problem-lists/problemListsApiSlice";
+import Link from "@node_modules/next/link";
 
 const CreateOnlineContest = () => {
     const {data: problemLists, isLoading, isSuccess, isError, error} = useGetProblemListsQuery(undefined, {
@@ -15,9 +14,6 @@ const CreateOnlineContest = () => {
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     });
-
-    // temp for testing
-    const [addNewProblemList, {isAddNewProblemListLoading}] = useAddNewProblemListMutation();
 
     let content;
 
@@ -31,31 +27,11 @@ const CreateOnlineContest = () => {
 
         content = (
             <div className='flex flex-col items-center w-full h-full gap-24 py-24 overflow-scroll'>
-                {/* Temp button for testing */}
-                <button onClick={async () => {
-                    if (isAddNewProblemListLoading) return;
-                    await addNewProblemList({
-                        name: "Test Contest",
-                        contestStart: Date.now(),
-                        contestEnd: Date.now(),
-                        mc_questions: [
-                            {
-                                question: "asdfasdfasdf",
-                                options: ["1", "2", "3", "4"],
-                                answer: "A"
-                            }
-                        ],
-                        short_answer_questions: [
-                            {
-                                question: "fsdasfd",
-                                answer: "2"
-                            }
-                        ]
-                    });
-                }}>Add test contest</button>
-                <div className='flex flex-col items-center gap-2 text-center'>
-					<h1 className="portalh2">Online Contest List</h1>
-                
+                <div className='flex flex-col items-center gap-2'>
+                    <h1 className="portalh2">Online Contest List</h1>
+                    <Link className='flex justify-center w-64 px-2 py-2 text-white transition-colors rounded-md bg-brandBlue-500 hover:bg-brandBlue-600' href="/portal/online-contest/new">
+                        <button>Create Online Contest</button>
+                    </Link>
                 </div>
                 <div className='flex flex-col w-4/5 gap-4'>
                     <TableWrapper>
