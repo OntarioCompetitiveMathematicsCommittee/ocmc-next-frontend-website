@@ -1,6 +1,6 @@
 import './globals.css'
+import 'katex/dist/katex.min.css'; // for math rendering
 import { Inter } from 'next/font/google'
-import { store } from '@components/app/store';
 import { ReduxWrapper } from '@components/ReduxWrapper';
 
 

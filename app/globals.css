@@ -30,7 +30,11 @@
     font-family: 'Syne', 'sans-serif';
     background-color: '#F9FAFB';
     color: black;
+}
 
+/* Fixes katex rendering issues */
+.katex * {
+    font-family: KaTeX_Main, 'Times New Roman', serif;
 }
 
 html {

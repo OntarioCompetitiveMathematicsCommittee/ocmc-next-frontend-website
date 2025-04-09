@@ -6,12 +6,13 @@ import { useRouter } from "next/navigation";
 
 import { useAddNewProblemListMutation } from "@components/features/problem-lists/problemListsApiSlice";
 
+import MathEditor from "@components/features/problem-lists/MathEditor";
+import Latex from "@node_modules/react-latex-next/dist";
+
 // conversion functions, maybe move to another file
 // conversion to work with html datetime strings
 const dateToLocalString = (date) => {
     if (!date) return null;
-
-    console.log(date);
 
     const year = String(date.getFullYear()).padStart(4, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -60,6 +61,7 @@ const NewOnlineContest = () => {
     const [contestEnd, setContestEnd] = useState(new Date(new Date(Date.now()).setSeconds(0, 0) + 60 * 60 * 1000)); // default end time to 1 hour later
     const [mc_questions, setMcQuestions] = useState([]);
     const [short_answer_questions, setShortAnswerQuestions] = useState([]);
+    const [mathEditorText, setMathEditorText] = useState("");
 
     // event handlers
     const onCreateContestClicked = async (e) => {
@@ -120,12 +122,24 @@ const NewOnlineContest = () => {
                             required
                         />
                         <button
-                            className="px-4 py-2 text-white transition-colors rounded-md bg-brandBlue-500 hover:bg-brandBlue-600"
+                            className="px-4 py-2 text-white transition-colors rounded-md bg-blue-500 hover:bg-blue-600"
                             onClick={() => setContestEnd(contestStart)}
                             type="button"
                         >Set to start time</button>
-                        <label className="text-md text-gray-500">Duration: {durationToString(contestEnd - contestStart)}</label>
+                        <label className="text-lg text-brandBlue-900">Duration: {durationToString(contestEnd - contestStart)}</label>
                     </div>
+                </div>
+                <div className='flex flex-col items-center gap-4 w-full'>
+                    {/* mc questions */}
+                    <h1 className="text-2xl">Multiple Choice Questions</h1>
+                    <ol>
+                        { mc_questions.map((question, index) => (
+                            <li key={index} className="flex flex-col items-center gap-2 w-full">
+                                <Latex>{question.question}</Latex>
+                            </li>
+                        ))}
+                    </ol>
+                    <MathEditor text={mathEditorText} setText={setMathEditorText} />
                 </div>
             </form>
         </div>
