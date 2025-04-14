@@ -1,7 +1,7 @@
 "use client";
 
-import { useGetProblemListsQuery } from "@components/features/problem-lists/problemListsApiSlice";
-import ProblemList from "@components/features/problem-lists/ProblemList";
+import { useGetProblemListsQuery } from "@components/features/online-contest/problemListsApiSlice";
+import ProblemList from "@components/features/online-contest/ProblemList";
 
 import TableHead from "@components/portal/TableHead";
 import TableWrapper from "@components/portal/TableWrapper";

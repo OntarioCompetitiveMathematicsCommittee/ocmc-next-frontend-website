@@ -1,6 +1,9 @@
+
+
 import { useSelector } from "react-redux";
 import { selectProblemListById } from "./problemListsApiSlice";
 
+// Basic display of problem list (online contest) to show in table
 const ProblemList = ({ problemListId }) => {
     const problemList = useSelector((state) => selectProblemListById(state, problemListId));
 
