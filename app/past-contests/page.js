@@ -140,7 +140,7 @@ const PastContests = () => {
 										PDFName='2025-tmc'
 										hasContest={true}
 										hasSolutions={true}
-										hasResults={false}
+										hasResults={true}
 									/>
 								</tbody>
 							</table>
