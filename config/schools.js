@@ -28,6 +28,7 @@ export const SCHOOLS = [
     'Earl Haig Secondary School',
     'Leading Aces Academy',
     'Western Canada High School',
+    'St Kateri Tekakwitha',
     'NA',
 ];
 
@@ -61,6 +62,7 @@ export const SCHOOL_REGION_LETTER = {
     'Earl Haig Secondary School': 'O',
     'Leading Aces Academy': 'O',
     'Western Canada High School': 'A',
+    'St Kateri Tekakwitha': 'A',
     'NA': 'N',
 };
 
@@ -95,4 +97,5 @@ export const SCHOOL_NUMBER = {
     'Earl Haig Secondary School': '027',
     'Leading Aces Academy': '028',
     'Western Canada High School': '029',
+    'St Kateri Tekakwitha': '030',
 };
