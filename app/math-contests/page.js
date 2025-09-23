@@ -28,10 +28,7 @@ const MathContests = () => {
                         <Section
                             image={omc}
                             title="Ontario Mathematics Competition"
-                            text="The Ontario Mathematics Competition (OMC) is the flagship annual contest of the Ontario Competitive Mathematics Committee (OCMC), 
-                            participated by hundreds of high school students across Ontario and beyond since the 2022 school year. Designed as a student-ran counterpart 
-                            to the CEMC PCF contests and the AMC, the OMC consists of 25 multiple-choice questions to be completed in 60 minutes. The contest takes place 
-                            between October 15-18, and school sign-up will end on Sept 30, so be sure to sign up before then if interested!"
+                            text="The Ontario Mathematics Competition (OMC) is the flagship annual contest of the Ontario Competitive Mathematics Committee (OCMC), participated by hundreds of high school students across Ontario and beyond since the 2022 school year. Designed as a student-ran counterpart to the CEMC PCF contests and the AMC, the OMC consists of 25 multiple-choice questions to be completed in 60 minutes. The contest takes place between October 14-17. Be sure to register before the end of your school sign-up period if interested!"
                             isPadding={true}
                         />
                         <div className="w-screen border-b-2"></div>
