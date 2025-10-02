@@ -94,20 +94,20 @@ const Contact = () => {
                                         <h1 className='text-black'>:&nbsp;general@ontariocmc.ca</h1>
                                     </div>
                                 </div>
-                                <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] w-96'>
+                                {/* <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] w-96'>
                                     <div className='flex flex-row'>
                                         <h1 className='text-brandYellow-500'>Urgent Inquiries</h1>
                                         <h1 className='text-black'>: (647)-936-1124</h1>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className='flex mt-0 md:mt-4'>
-                                <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] mx-auto'>
+                                {/* <div className='flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat] mx-auto'>
                                     <div className='flex flex-row'>
                                         <h1 className='text-brandYellow-500'>Admin Support</h1>
                                         <h1 className='text-black'>: (289)-772-7809</h1>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

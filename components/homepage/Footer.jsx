@@ -69,7 +69,7 @@ const Footer = () => {
                                         <h1 className="text-brandNeutral-100">:&nbsp;general@ontariocmc.ca</h1>
                                     </div>
                                 </div>
-                                <div className="flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat]">
+                                {/* <div className="flex justify-center text-lg md:text-xl leading-[3rem] font-[Montserrat]">
                                     <div className="flex flex-row">
                                         <h1 className="text-brandYellow-500">Urgent Inquiries</h1>
                                         <h1 className="text-brandNeutral-100">: (647)-936-1124</h1>
@@ -80,7 +80,7 @@ const Footer = () => {
                                         <h1 className="text-brandYellow-500">Admin Support</h1>
                                         <h1 className="text-brandNeutral-100">: (289)-772-7809</h1>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
