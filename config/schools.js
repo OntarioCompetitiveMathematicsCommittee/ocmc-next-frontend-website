@@ -29,6 +29,7 @@ export const SCHOOLS = [
     'Leading Aces Academy',
     'Western Canada High School',
     'St Kateri Tekakwitha',
+    'St. Anne CSS',
     'NA',
 ];
 
@@ -63,6 +64,7 @@ export const SCHOOL_REGION_LETTER = {
     'Leading Aces Academy': 'O',
     'Western Canada High School': 'A',
     'St Kateri Tekakwitha': 'A',
+    'St. Anne CSS': 'O',
     'NA': 'N',
 };
 
@@ -98,4 +100,5 @@ export const SCHOOL_NUMBER = {
     'Leading Aces Academy': '028',
     'Western Canada High School': '029',
     'St Kateri Tekakwitha': '030',
+    'St. Anne CSS': '031',
 };
