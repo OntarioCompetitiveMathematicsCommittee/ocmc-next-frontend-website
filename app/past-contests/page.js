@@ -66,6 +66,13 @@ const PastContests = () => {
 										hasSolutions={true}
 										hasResults={true}
 									/>
+									<PastContestRow
+										contestName='OMC &lsquo;25'
+										PDFName='2025-omc'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
+									/>
 								</tbody>
 							</table>
 						</div>
@@ -103,6 +110,13 @@ const PastContests = () => {
 										hasContest={true}
 										hasSolutions={true}
 										hasResults={true}
+									/>
+									<PastContestRow
+										contestName='OIME &lsquo;25'
+										PDFName='2025-oime'
+										hasContest={true}
+										hasSolutions={true}
+										hasResults={false}
 									/>
 								</tbody>
 							</table>
