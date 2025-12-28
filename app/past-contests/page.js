@@ -71,7 +71,7 @@ const PastContests = () => {
 										PDFName='2025-omc'
 										hasContest={true}
 										hasSolutions={true}
-										hasResults={false}
+										hasResults={true}
 									/>
 								</tbody>
 							</table>
@@ -116,7 +116,7 @@ const PastContests = () => {
 										PDFName='2025-oime'
 										hasContest={true}
 										hasSolutions={true}
-										hasResults={false}
+										hasResults={true}
 									/>
 								</tbody>
 							</table>

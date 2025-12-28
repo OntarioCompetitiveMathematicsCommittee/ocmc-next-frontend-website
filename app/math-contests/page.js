@@ -28,21 +28,21 @@ const MathContests = () => {
                         <Section
                             image={omc}
                             title="Ontario Mathematics Competition"
-                            text="The Ontario Mathematics Competition (OMC) is the flagship annual contest of the Ontario Competitive Mathematics Committee (OCMC), participated by hundreds of high school students across Ontario and beyond since the 2022 school year. Designed as a student-ran counterpart to the CEMC PCF contests and the AMC, the OMC consists of 25 multiple-choice questions to be completed in 60 minutes. The contest takes place between October 14-17. Be sure to register before the end of your school sign-up period if interested!"
+                            text="The Ontario Mathematics Competition (OMC) is the flagship annual contest of the Ontario Competitive Mathematics Committee (OCMC), participated by hundreds of high school students across Ontario and beyond since the 2022 school year. Designed as a student-ran counterpart to the CEMC PCF contests and the AMC, the OMC consists of 25 multiple-choice questions to be completed in 60 minutes. The contest takes place in mid-October each year. Be sure to register before the end of your school sign-up period if interested!"
                             isPadding={true}
                         />
                         <div className="w-screen border-b-2"></div>
                         <Section
                             image={oime}
                             title="Ontario Invitational Mathematics Examination"
-                            text="The Ontario Invitational Mathematics Examination (OIME) is an invitational full-solution contest inspired by similar invitational mathematics competitions. It has 10 questions, with difficulty ranging from early AIME questions to mid-level Canadian Mathematical Olympiad (CMO) questions."
+                            text="The Ontario Invitational Mathematics Examination (OIME) is an invitational full-solution contest inspired by similar invitational mathematics competitions. It has 10 questions, with difficulty ranging from early AIME questions to mid-level Canadian Mathematical Olympiad (CMO) questions. Typically, the OIME is hosted as an in-person event at the University of Waterloo."
                             isPadding={true}
                         />
                         <div className="w-screen border-b-2"></div>
                         <Section
                             image={tmc}
                             title="Tesseract Mathematics Challenge"
-                            text="The Tesseract Mathematics Challenge (TMC) is a one-hour contest featuring five pairs of mid-to-late Euclid-difficulty short- and long-answer questions to be completed in one hour. The TMC will be held between March 3rd and March 7th and school registration closes February 16th."
+                            text="The Tesseract Mathematics Challenge (TMC) is a one-hour contest featuring five pairs of mid-to-late Euclid-difficulty short- and long-answer questions to be completed in one hour. The TMC is held in early-March of each year."
                             isPadding={true}
                         />
                     </div>

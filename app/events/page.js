@@ -6,13 +6,7 @@ import Footer from "@components/homepage/Footer"
 
 const Events = () => {
 
-    const upcomingEvents = [
-        {
-            title: "Ontario Invitational Mathematics Examination 2023",
-            date: "December 4-8, 2023",
-            type: "In Person Contest",
-        },
-    ]
+    const upcomingEvents = [];
 
     return (
         <>
@@ -23,7 +17,8 @@ const Events = () => {
                     <section className="flex-1 w-full justify-start lg:justify-between max-w-[90rem] flex py-24 flex-col gap-8 lg:flex-row items-center lg:items-start text-center lg:text-left px-4">
                         <h1 className="homeh1 leading-[120%]">Upcoming <br /> Events</h1>
                         <div className="flex flex-col items-end gap-8 ">
-                            {upcomingEvents.map((event, index) => (
+                            {(Array.isArray(upcomingEvents) && upcomingEvents.length)
+                            ? (upcomingEvents.map((event, index) => (
                                 <div key={index} className="flex flex-col items-center justify-start gap-2 lg:flex-row lg:gap-6 lg:items-start">
                                     <h2 className="text-2xl lg:text-3xl font-bold lg:max-w-[11rem] text-right">{event.date}</h2>
                                     <div className="flex-col bg-white bg-opacity-60 border-4 rounded-md border-brandNeutral-100 py-4 px-8 w-[min(32rem,90vw)]">
@@ -34,7 +29,10 @@ const Events = () => {
                                     </div>
                                     
                                 </div>
-                            ))}
+                            )))
+                            : <div className="flex-col bg-white bg-opacity-60 border-4 rounded-md border-brandNeutral-100 py-4 px-8 w-[min(32rem,90vw)]">
+                                <h1 className="mb-4 text-2xl font-bold lg:text-3xl">No upcoming Events!</h1>
+                            </div>}
                         </div>
                     </section>
                 </div>
