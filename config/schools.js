@@ -30,6 +30,7 @@ export const SCHOOLS = [
     'Western Canada High School',
     'St Kateri Tekakwitha',
     'St. Anne CSS',
+    "Senator O'Connor College School",
     'NA',
 ];
 

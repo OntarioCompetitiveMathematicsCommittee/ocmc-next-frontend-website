@@ -13,6 +13,7 @@ import stroberts from '@public/assets/sponsors/stroberts.png'
 import bayview from '@public/assets/sponsors/bayview.png'
 import laa from '@public/assets/sponsors/laa.png'
 import cms from '@public/assets/sponsors/cms.png'
+import caims from '@public/assets/sponsors/caims.png'
 
 export const sponsorList = [
     // aops: aops,
@@ -49,6 +50,11 @@ export const sponsorList = [
         link: 'https://cms.math.ca/',
     },
     {
+        name: "CAIMS",
+        image: caims,
+        link: 'https://caims.ca/',
+    },
+    {
         name: 'Jane Street1',
         image: janestreet,
         link: 'https://www.janestreet.com/',
@@ -72,5 +78,10 @@ export const sponsorList = [
         name: 'CMS1',
         image: cms,
         link: 'https://cms.math.ca/',
+    },
+    {
+        name: "CAIMS1",
+        image: caims,
+        link: 'https://caims.ca/',
     },
 ]
