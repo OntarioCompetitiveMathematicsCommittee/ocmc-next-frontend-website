@@ -100,9 +100,12 @@ const Login = () => {
 		} catch (err) {
 			// handle different errors
 			if (!err.status) setErrMsg('No server response');
-			else if (err.status === 400) setErrMsg('Missing email');
+			else if (err.status === 400)
+				setErrMsg('Please enter a valid email address');
 			else if (err.status === 404)
 				setErrMsg('No account with that email');
+			else if (err.status === 500)
+				setErrMsg('Could not send the reset email, please try again later');
 			else setErrMsg(err.data?.message);
 			// focus on error message
 			errRef.current.focus();
@@ -126,7 +129,7 @@ const Login = () => {
 			<header className='flex items-center justify-center w-1/2'>
 				<div className='flex flex-col items-center'>
 					<h1 className='text-[max(5vw,3rem)] font-bold'>
-						{forgot ? 'Reset.' : 'Log in.'}
+						{forgot ? 'Reset Password.' : 'Log in.'}
 					</h1>
 					<Image
 						className='w-[max(20rem,25vw)] hidden md:block'

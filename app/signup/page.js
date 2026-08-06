@@ -5,16 +5,13 @@ import { useRegisterMutation } from '@components/features/auth/authApiSlice';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SCHOOLS, SCHOOL_NUMBER, SCHOOL_REGION_LETTER } from '@config/schools';
+import { USER_REGEX, PWD_REGEX, EMAIL_REGEX } from '@config/regex';
 import ReCAPTCHA from "react-google-recaptcha";
 
 import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from "@components/elements/NavbarPlaceholder"
 
 import loginLogo from '@public/assets/login-logo.svg';
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 const SignupPage = () => {
 	const userRef = useRef();

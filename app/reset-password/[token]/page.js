@@ -4,14 +4,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useResetPasswordMutation } from '@components/features/auth/authApiSlice';
+import { PWD_REGEX } from '@config/regex';
 
 import Link from 'next/link';
 
 import Navbar from '@components/elements/Navbar';
 import NavbarPlaceholder from '@components/elements/NavbarPlaceholder';
-
-// same password rules as the signup page
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const ResetPasswordPage = () => {
 	// get token from url
