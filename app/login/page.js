@@ -47,7 +47,8 @@ const Login = () => {
 		useLoginMutation();
 
 	// asks the server to email a reset link
-	const [forgotPassword] = useForgotPasswordMutation();
+	const [forgotPassword, { isLoading: isSending }] =
+		useForgotPasswordMutation();
 
 	// focuses on username input field when component loads
 	useEffect(() => {
@@ -102,8 +103,6 @@ const Login = () => {
 			if (!err.status) setErrMsg('No server response');
 			else if (err.status === 400)
 				setErrMsg('Please enter a valid email address');
-			else if (err.status === 404)
-				setErrMsg('No account with that email');
 			else if (err.status === 500)
 				setErrMsg('Could not send the reset email, please try again later');
 			else setErrMsg(err.data?.message);
@@ -178,10 +177,11 @@ const Login = () => {
 									* {errMsg}
 								</p>
 
-								{/* tell the user the email is on its way */}
+								{/* same message either way so the form does not reveal which emails have an account */}
 								{sent && (
 									<p className='text-brandGreen-700'>
-										Check your inbox for a reset link!
+										If an account is linked to this email, a
+										reset link will be sent!
 									</p>
 								)}
 
@@ -190,7 +190,7 @@ const Login = () => {
 									className='w-[90vw] md:w-[min(30rem,45vw)] h-14 text-white font-medium font-[Montserrat] rounded-sm
 									bg-gradient-to-br from-brandBlue-600 via-brandGreen-600 to-brandBlue-600 transition-all duration-500 bg-size-200 bg-pos-0 hover:bg-pos-100'
 									type='submit'
-									disabled={!email}>
+									disabled={!email || isSending}>
 									Send Reset Link
 								</button>
 							</form>
@@ -290,7 +290,7 @@ const Login = () => {
 							</button>
 							{/* link to signup page */}
 							<p className='mt-2'>
-								Dont have an account?{' '}
+								Don&apos;t have an account?{' '}
 								<Link
 									href='/signup'
 									className='text-blue-500 underline'>

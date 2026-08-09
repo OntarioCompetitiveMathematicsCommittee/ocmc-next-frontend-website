@@ -31,8 +31,13 @@ const ResetPasswordPage = () => {
 		setValidMatchPassword(password === matchPassword);
 	}, [password, matchPassword]);
 
+	// both fields must be filled in correctly to continue
+	const canReset = token && validPassword && validMatchPassword && !isLoading;
+
 	const handleReset = async (e) => {
 		e.preventDefault();
+
+		if (!canReset) return;
 
 		await resetPassword({ token, password });
 	};
@@ -49,9 +54,6 @@ const ResetPasswordPage = () => {
 		else if (error.status === 403) errMsg = 'Token Expired';
 		else errMsg = error.data?.message;
 	}
-
-	// both fields must be filled in correctly to continue
-	const canReset = validPassword && validMatchPassword && !isLoading;
 
 	let content;
 
@@ -152,7 +154,11 @@ const ResetPasswordPage = () => {
 						Reset Password
 					</button>
 				</form>
-				<h1 className={'text-red-500 text-xl mt-6'}>{errMsg}</h1>
+				<p
+					className={'text-red-500 text-xl mt-6'}
+					aria-live='assertive'>
+					{errMsg}
+				</p>
 			</div>
 		);
 	}
