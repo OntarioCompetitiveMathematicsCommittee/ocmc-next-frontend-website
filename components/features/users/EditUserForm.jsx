@@ -6,10 +6,8 @@ import { useRouter } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faInfoCircle, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { SCHOOLS } from '../../../config/schools';
+import { USER_REGEX, PWD_REGEX } from '../../../config/regex';
 import useAuth from '../../../hooks/useAuth';
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const EditUserForm = ({ user, editingAll }) => {
     const { isAdmin } = useAuth();
