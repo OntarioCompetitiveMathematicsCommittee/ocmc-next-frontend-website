@@ -155,6 +155,10 @@ export const team = [
     }
 ]
 
+// Past directors and staff, shown under the "Legacy" tab in Meet Our Team.
+// Same shape as `team` above: { image, firstName, lastName, position, link? }
+export const legacyTeam = []
+
 export const teamBg = [
     "bg-brandYellow-500",
     "bg-brandGreen-500",
