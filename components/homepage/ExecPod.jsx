@@ -3,7 +3,13 @@ import Image from 'next/image'
 const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, link }) => {
     return (
         <div className={`flex items-center gap-6 justify-start md:justify-center rounded-xl p-3 w-[90vw] max-w-md md:flex-col md:p-4 md:w-auto md:gap-2 ${bgColour}`} >
-            <Image className='w-32 rounded-xl md:w-64' src={image} alt="yes"/>
+            {
+                image
+                ?   <Image className='w-32 rounded-xl md:w-64' src={image} alt={`${firstName} ${lastName}`}/>
+                :   <div className={`flex items-center justify-center w-32 h-32 text-4xl font-bold rounded-xl bg-black/10 md:w-64 md:h-64 md:text-7xl ${textColour}`}>
+                        {firstName.charAt(0) + lastName.charAt(0)}
+                    </div>
+            }
             <div className='flex flex-col items-start justify-center gap-2 md:items-center'>
                 <h2 className={`text-2xl font-bold ${textColour} `}>
                     {firstName + " " + lastName}

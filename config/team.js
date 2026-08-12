@@ -20,7 +20,115 @@ import Sowmya from '@public/assets/directors/Sowmya.png'
 import Terry from '@public/assets/directors/Terry.png'
 import Yanzi from '@public/assets/directors/Yanzi.png'
 
+// Sourced from the OCMC Staff MasterList (Current Staff column).
+// Directors first, then the rest by department and position.
+// `image` is optional — ExecPod falls back to an initials placeholder without it.
 export const team = [
+    {
+        image: Arnav,
+        firstName: "Arnav",
+        lastName: "Kotian",
+        position: "Director of Finance"
+    },
+    {
+        image: Daniel,
+        firstName: "Daniel",
+        lastName: "Chen",
+        position: "Director of Operations & Technology"
+    },
+    {
+        image: Christopher,
+        firstName: "Christopher",
+        lastName: "Li",
+        position: "Director of Mathematics"
+    },
+    {
+        firstName: "Andrew",
+        lastName: "Dai",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        firstName: "Ethan",
+        lastName: "Cai",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        image: Helen,
+        firstName: "Helen",
+        lastName: "Huang",
+        position: "Accountant"
+    },
+    {
+        firstName: "Luna",
+        lastName: "Li",
+        position: "Operations Coordinator"
+    },
+    {
+        firstName: "Simone",
+        lastName: "Sun",
+        position: "Operations Coordinator"
+    },
+    {
+        firstName: "Nanxuan",
+        lastName: "Zhang",
+        position: "Operations Coordinator"
+    },
+    {
+        image: Terry,
+        firstName: "Terry",
+        lastName: "Yang",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Yixuan",
+        lastName: "Hou",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Jonathan",
+        lastName: "Wang",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Avneet",
+        lastName: "Prakash",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Wendy",
+        lastName: "Xia",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Prince",
+        lastName: "Zhang",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Lei",
+        lastName: "He",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Leo",
+        lastName: "Wu",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Jayden",
+        lastName: "Lee",
+        position: "Developer"
+    },
+    {
+        firstName: "Siddhant",
+        lastName: "Arora",
+        position: "Developer"
+    }
+]
+
+// Past directors and staff, shown under the "Legacy" tab in Meet Our Team.
+// Same shape as `team` above: { image?, firstName, lastName, position, link? }
+export const legacyTeam = [
     {
         image: Atticus,
         firstName: "Atticus",
@@ -42,23 +150,11 @@ export const team = [
         position: "Chief Operations Officer",
     },
     {
-        image: Daniel,
-        firstName: "Daniel",
-        lastName: "Chen",
-        position: "Chief Mathematics Officer",
-    },
-    {
         image: Manasva,
         firstName: "Manasva",
         lastName: "Kaytal",
         position: "Chief Technology Officer",
         link: "https://linkedin.com/in/manasva-katyal"
-    },
-    {
-        image: Arnav,
-        firstName: "Arnav",
-        lastName: "Kotian",
-        position: "Sponsorship Coordinator"
     },
     {
         image: Haruka,
@@ -71,12 +167,6 @@ export const team = [
         firstName: "Maryam",
         lastName: "Abidi",
         position: "Sponsorship Coordinator"
-    },
-    {
-        image: Helen,
-        firstName: "Helen",
-        lastName: "Huang",
-        position: "Accountant"
     },
     {
         image: Emily,
@@ -124,12 +214,6 @@ export const team = [
         position: "Problem Setter"
     },
     {
-        image: Christopher,
-        firstName: "Christopher",
-        lastName: "Li",
-        position: "Problem Setter"
-    },
-    {
         image: Pavel,
         firstName: "Pavel",
         lastName: "MacKenzie",
@@ -142,22 +226,12 @@ export const team = [
         position: "Problem Setter"
     },
     {
-        image: Terry,
-        firstName: "Terry",
-        lastName: "Yang",
-        position: "Problem Setter"
-    },
-    {
         image: Yanzi,
         firstName: "Yanzi",
         lastName: "Guo",
         position: "Web Developer"
     }
 ]
-
-// Past directors and staff, shown under the "Legacy" tab in Meet Our Team.
-// Same shape as `team` above: { image, firstName, lastName, position, link? }
-export const legacyTeam = []
 
 export const teamBg = [
     "bg-brandYellow-500",
