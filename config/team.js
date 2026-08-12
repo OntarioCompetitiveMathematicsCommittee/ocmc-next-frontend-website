@@ -126,8 +126,9 @@ export const team = [
     }
 ]
 
-// Past directors and staff, shown under the "Legacy" tab in Meet Our Team.
-// Same shape as `team` above: { image?, firstName, lastName, position, link? }
+// Sourced from the OCMC Staff MasterList (Retired Staff column), shown under
+// the "Legacy" tab. CEO first, then directors, then the rest by department
+// and position — the same ordering as `team` above.
 export const legacyTeam = [
     {
         image: Atticus,
@@ -137,29 +138,59 @@ export const legacyTeam = [
         link: "https://www.linkedin.com/in/atticus-zhang-70708626a/"
     },
     {
+        firstName: "Elaine",
+        lastName: "Li",
+        position: "Director of Finance"
+    },
+    {
         image: Leo,
         firstName: "Leo",
         lastName: "Xie",
-        position: "Chief Finance Officer",
+        position: "Director of Finance",
         link: "https://www.linkedin.com/in/leo-xie-c1/"
     },
     {
         image: MichaelH,
         firstName: "Michael",
         lastName: "Hollander",
-        position: "Chief Operations Officer",
+        position: "Director of Operations"
+    },
+    {
+        firstName: "Oliver",
+        lastName: "Mao",
+        position: "Director of Mathematics"
+    },
+    {
+        firstName: "Jacob",
+        lastName: "Yan",
+        position: "Director of Mathematics"
     },
     {
         image: Manasva,
         firstName: "Manasva",
         lastName: "Kaytal",
-        position: "Chief Technology Officer",
+        position: "Director of Technology",
         link: "https://linkedin.com/in/manasva-katyal"
+    },
+    {
+        firstName: "Claire",
+        lastName: "Liu",
+        position: "Sponsorship Coordinator"
     },
     {
         image: Haruka,
         firstName: "Haruka",
         lastName: "Kurishima",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        firstName: "James",
+        lastName: "Yang",
+        position: "Sponsorship Coordinator"
+    },
+    {
+        firstName: "Nabira",
+        lastName: "Rashid",
         position: "Sponsorship Coordinator"
     },
     {
@@ -169,23 +200,32 @@ export const legacyTeam = [
         position: "Sponsorship Coordinator"
     },
     {
-        image: Emily,
-        firstName: "Emily",
-        lastName: "Yan",
-        position: "Event Coordinator"
+        firstName: "Matthew",
+        lastName: "Li",
+        position: "Events Coordinator"
     },
     {
         image: Phoebe,
         firstName: "Phoebe",
         lastName: "Huang",
-        position: "Event Coordinator",
+        position: "Events Coordinator",
         link: "https://www.linkedin.com/in/phoebe-huang-9583702a3/"
     },
     {
-        image: Sowmya,
-        firstName: "Sowmya",
-        lastName: "Ramanan",
-        position: "Event Coordinator"
+        image: Emily,
+        firstName: "Emily",
+        lastName: "Yan",
+        position: "Administrative Coordinator"
+    },
+    {
+        firstName: "Peter",
+        lastName: "Lu",
+        position: "Administrative Coordinator"
+    },
+    {
+        firstName: "Ella",
+        lastName: "Zhang",
+        position: "Marketing Coordinator"
     },
     {
         image: Heidi,
@@ -193,6 +233,28 @@ export const legacyTeam = [
         lastName: "Huang",
         position: "Marketing Coordinator",
         link: "https://www.linkedin.com/in/heidi-huang-256862237?trk=contact-info"
+    },
+    {
+        image: Sowmya,
+        firstName: "Sowmya",
+        lastName: "Ramanan",
+        position: "Marketing Coordinator"
+    },
+    {
+        firstName: "Alexander",
+        lastName: "Ma",
+        position: "Regional Liaison"
+    },
+    {
+        firstName: "Jacob",
+        lastName: "Lu",
+        position: "Problem Setter"
+    },
+    {
+        image: MichaelL,
+        firstName: "Michael",
+        lastName: "Li",
+        position: "Problem Setter"
     },
     {
         image: Oscar,
@@ -208,9 +270,13 @@ export const legacyTeam = [
         link: "https://www.linkedin.com/in/shanna-xiao-544822324/"
     },
     {
-        image: MichaelL,
-        firstName: "Michael",
-        lastName: "Li",
+        firstName: "Alexander",
+        lastName: "Zhang",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Charles",
+        lastName: "Ran",
         position: "Problem Setter"
     },
     {
@@ -226,10 +292,31 @@ export const legacyTeam = [
         position: "Problem Setter"
     },
     {
+        firstName: "Zheng",
+        lastName: "Wang",
+        position: "Problem Setter"
+    },
+    {
+        firstName: "Jason",
+        lastName: "Sun",
+        position: "Problem Setter"
+    },
+    {
         image: Yanzi,
         firstName: "Yanzi",
         lastName: "Guo",
-        position: "Web Developer"
+        position: "Developer"
+    },
+    {
+        firstName: "Minglun",
+        lastName: "Shao",
+        position: "Developer"
+    },
+    // No department or position listed in the MasterList.
+    {
+        firstName: "Yi Jia",
+        lastName: "Huang",
+        link: "https://www.linkedin.com/in/yi-jia-huang/"
     }
 ]
 

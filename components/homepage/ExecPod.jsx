@@ -14,9 +14,12 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
                 <h2 className={`text-2xl font-bold ${textColour} `}>
                     {firstName + " " + lastName}
                 </h2>
-                <h3 className='text-md font-regular'>
-                    {position}
-                </h3>
+                {
+                    position &&
+                    <h3 className='text-md font-regular'>
+                        {position}
+                    </h3>
+                }
                 {
                     link &&
                     <a className={`underline ${textColour}`} href={link} target="_blank">
