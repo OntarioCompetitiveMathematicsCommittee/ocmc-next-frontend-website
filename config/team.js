@@ -23,6 +23,7 @@ import Yanzi from '@public/assets/directors/Yanzi.png'
 // Sourced from the OCMC Staff MasterList (Current Staff column).
 // Directors first, then the rest by department and position.
 // `image` is optional — ExecPod falls back to an initials placeholder without it.
+// `description` is optional — a pod that has one becomes clickable and opens a bio.
 export const team = [
     {
         image: Arnav,
@@ -66,12 +67,14 @@ export const team = [
     {
         firstName: "Simone",
         lastName: "Sun",
-        position: "Operations Coordinator"
+        position: "Operations Coordinator",
+        description: "My name is Simone Sun and I am a rising grade 12 at White Oaks Secondary School. In my free time, I enjoy math, physics, and listening to a wide range of music, especially hip-hop, EDM, and hyperpop."
     },
     {
         firstName: "Nanxuan",
         lastName: "Zhang",
-        position: "Operations Coordinator"
+        position: "Operations Coordinator",
+        description: "Jack Zhang is a competition math enthusiast from Quebec with experience founding and leading a school math club. He enjoys helping students explore their own passion for mathematics — creating opportunities to engage with the subject beyond the classroom, and beyond the territory."
     },
     {
         image: Terry,
@@ -314,9 +317,8 @@ export const legacyTeam = [
     },
     // No department or position listed in the MasterList.
     {
-        firstName: "Yi Jia",
-        lastName: "Huang",
-        link: "https://www.linkedin.com/in/yi-jia-huang/"
+        firstName: "Jia",
+        lastName: "Huang"
     }
 ]
 

@@ -67,6 +67,7 @@ const MeetOurTeam = () => {
                                     bgColour={teamBg[(index + 1) % 3]}
                                     textColour={teamText[(index + 1) % 3]}
                                     link={exec.link}
+                                    description={exec.description}
                                 />
                             ))
                         }

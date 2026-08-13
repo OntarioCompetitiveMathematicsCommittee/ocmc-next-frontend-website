@@ -48,3 +48,9 @@ html {
   .scrollbar-handle:active {
     @apply cursor-grabbing;
   }
+
+  /* Browsers cap custom cursors at 128x128, so this points at the 32x32
+     derivative of precision.png rather than the 512x512 original. */
+  .cursor-precision {
+    cursor: url('/assets/precision-cursor.png') 16 16, crosshair;
+  }
