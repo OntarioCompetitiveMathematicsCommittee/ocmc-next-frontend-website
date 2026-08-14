@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 
 const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, link, description }) => {
@@ -14,8 +15,14 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
             if (event.key === "Escape") setIsOpen(false)
         }
 
+        const { overflow } = document.body.style
+        document.body.style.overflow = "hidden"
         document.addEventListener('keydown', closeOnEscape)
-        return () => document.removeEventListener('keydown', closeOnEscape)
+
+        return () => {
+            document.body.style.overflow = overflow
+            document.removeEventListener('keydown', closeOnEscape)
+        }
     }, [isOpen])
 
     const moreLink = link &&
@@ -27,6 +34,48 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
         >
             More {firstName} &rarr;
         </a>
+
+    // Portalled to the body on purpose: the card scales on hover, and a
+    // transformed ancestor becomes the containing block for `position: fixed`,
+    // which would collapse this overlay into the card.
+    const renderBio = () => createPortal(
+        <div
+            className='fixed inset-0 z-[60] flex items-center justify-center p-4 cursor-default bg-black/60'
+            onClick={() => setIsOpen(false)}
+        >
+            <div
+                className={`relative flex flex-col w-full max-w-xl gap-4 p-8 overflow-y-auto rounded-xl max-h-[85vh] ${bgColour}`}
+                role='dialog'
+                aria-modal='true'
+                aria-label={`About ${fullName}`}
+                onClick={(event) => event.stopPropagation()}
+            >
+                <button
+                    className={`absolute text-3xl leading-none top-4 right-5 cursor-pointer ${textColour}`}
+                    onClick={() => setIsOpen(false)}
+                    aria-label={`Close ${fullName}'s bio`}
+                >
+                    &times;
+                </button>
+                <div className='flex flex-col gap-1 pr-8'>
+                    <h2 className={`text-2xl font-bold ${textColour}`}>
+                        {fullName}
+                    </h2>
+                    {
+                        position &&
+                        <h3 className='text-md font-regular'>
+                            {position}
+                        </h3>
+                    }
+                </div>
+                <p className='leading-relaxed text-md'>
+                    {description}
+                </p>
+                {moreLink}
+            </div>
+        </div>,
+        document.body
+    )
 
     return (
         <>
@@ -71,44 +120,7 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
                     {moreLink}
                 </div>
             </div>
-            {
-                isOpen &&
-                <div
-                    className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60'
-                    onClick={() => setIsOpen(false)}
-                >
-                    <div
-                        className={`relative flex flex-col w-full max-w-xl gap-4 p-8 rounded-xl ${bgColour}`}
-                        role='dialog'
-                        aria-modal='true'
-                        aria-label={`About ${fullName}`}
-                        onClick={(event) => event.stopPropagation()}
-                    >
-                        <button
-                            className={`absolute text-3xl leading-none top-4 right-5 ${textColour}`}
-                            onClick={() => setIsOpen(false)}
-                            aria-label={`Close ${fullName}'s bio`}
-                        >
-                            &times;
-                        </button>
-                        <div className='flex flex-col gap-1 pr-8'>
-                            <h2 className={`text-2xl font-bold ${textColour}`}>
-                                {fullName}
-                            </h2>
-                            {
-                                position &&
-                                <h3 className='text-md font-regular'>
-                                    {position}
-                                </h3>
-                            }
-                        </div>
-                        <p className='leading-relaxed text-md'>
-                            {description}
-                        </p>
-                        {moreLink}
-                    </div>
-                </div>
-            }
+            {isOpen && renderBio()}
         </>
     )
 }
