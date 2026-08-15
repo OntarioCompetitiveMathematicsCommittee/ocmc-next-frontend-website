@@ -30,6 +30,7 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
             className={`underline cursor-pointer ${textColour}`}
             href={link}
             target="_blank"
+            rel="noopener noreferrer"
             onClick={(event) => event.stopPropagation()}
         >
             More {firstName} &rarr;
