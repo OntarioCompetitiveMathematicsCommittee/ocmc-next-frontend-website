@@ -7,6 +7,7 @@ import Emily from '@public/assets/directors/Emily.png'
 import Haruka from '@public/assets/directors/Haruka.png'
 import Heidi from '@public/assets/directors/Heidi.png'
 import Helen from '@public/assets/directors/Helen.png'
+import Jack from '@public/assets/directors/Jack.png'
 import Leo from '@public/assets/directors/Leo.png'
 import Manasva from '@public/assets/directors/Manasva.png'
 import Maryam from '@public/assets/directors/Maryam.png'
@@ -15,7 +16,9 @@ import MichaelL from '@public/assets/directors/MichaelL.png'
 import Oscar from '@public/assets/directors/Oscar.png'
 import Pavel from '@public/assets/directors/Pavel.png'
 import Phoebe from '@public/assets/directors/Phoebe.png'
+import Prince from '@public/assets/directors/Prince.png'
 import Shanna from '@public/assets/directors/Shanna.png'
+import Simone from '@public/assets/directors/Simone.png'
 import Sowmya from '@public/assets/directors/Sowmya.png'
 import Terry from '@public/assets/directors/Terry.png'
 import Yanzi from '@public/assets/directors/Yanzi.png'
@@ -65,12 +68,14 @@ export const team = [
         position: "Operations Coordinator"
     },
     {
+        image: Simone,
         firstName: "Simone",
         lastName: "Sun",
         position: "Operations Coordinator",
         description: "My name is Simone Sun and I am a rising grade 12 at White Oaks Secondary School. In my free time, I enjoy math, physics, and listening to a wide range of music, especially hip-hop, EDM, and hyperpop."
     },
     {
+        image: Jack,
         firstName: "Nanxuan",
         lastName: "Zhang",
         position: "Operations Coordinator",
@@ -103,6 +108,7 @@ export const team = [
         position: "Problem Setter"
     },
     {
+        image: Prince,
         firstName: "Prince",
         lastName: "Zhang",
         position: "Problem Setter"

@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, link, description }) => {
     const [isOpen, setIsOpen] = useState(false)
+    const [cursor, setCursor] = useState(null)
     const fullName = `${firstName} ${lastName}`
 
     useEffect(() => {
@@ -35,6 +36,18 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
         >
             More {firstName} &rarr;
         </a>
+
+    // Portalled for the same reason as the bio below — and pinned to the
+    // viewport coordinates of the pointer so it trails the cursor.
+    const renderHint = () => createPortal(
+        <div
+            className='fixed z-[70] px-2 py-1 text-xs text-white rounded-md pointer-events-none whitespace-nowrap bg-black/80'
+            style={{ top: cursor.y + 20, left: cursor.x + 16 }}
+        >
+            Click to learn more
+        </div>,
+        document.body
+    )
 
     // Portalled to the body on purpose: the card scales on hover, and a
     // transformed ancestor becomes the containing block for `position: fixed`,
@@ -90,6 +103,16 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
                 tabIndex={description ? 0 : undefined}
                 aria-haspopup={description ? "dialog" : undefined}
                 onClick={description ? () => setIsOpen(true) : undefined}
+                onPointerMove={
+                    description
+                    ?   (event) => {
+                            // Touch and pen leave a stale hint behind, so only mice get one.
+                            if (event.pointerType !== "mouse") return
+                            setCursor({ x: event.clientX, y: event.clientY })
+                        }
+                    :   undefined
+                }
+                onPointerLeave={description ? () => setCursor(null) : undefined}
                 onKeyDown={
                     description
                     ?   (event) => {
@@ -121,6 +144,7 @@ const ExecPod = ({ image, firstName, lastName, bgColour, textColour, position, l
                     {moreLink}
                 </div>
             </div>
+            {cursor && !isOpen && renderHint()}
             {isOpen && renderBio()}
         </>
     )
