@@ -67,7 +67,8 @@ export const team = [
         image: Luna,
         firstName: "Luna",
         lastName: "Li",
-        position: "Operations Coordinator"
+        position: "Operations Coordinator",
+        description: "Incoming Grade 12 student at Iroquois Ridge High School who enjoys math and deep-diving into all interesting topics. Excited to help organize fun and innovative contests for OCMC this year."
     },
     {
         image: Simone,
