@@ -9,6 +9,7 @@ import Heidi from '@public/assets/directors/Heidi.png'
 import Helen from '@public/assets/directors/Helen.png'
 import Jack from '@public/assets/directors/Jack.png'
 import Leo from '@public/assets/directors/Leo.png'
+import Luna from '@public/assets/directors/Luna.jpg'
 import Manasva from '@public/assets/directors/Manasva.png'
 import Maryam from '@public/assets/directors/Maryam.png'
 import MichaelH from '@public/assets/directors/MichaelH.png'
@@ -20,7 +21,7 @@ import Prince from '@public/assets/directors/Prince.png'
 import Shanna from '@public/assets/directors/Shanna.png'
 import Simone from '@public/assets/directors/Simone.png'
 import Sowmya from '@public/assets/directors/Sowmya.png'
-import Terry from '@public/assets/directors/Terry.png'
+import Terry from '@public/assets/directors/Terry.jpg'
 import Yanzi from '@public/assets/directors/Yanzi.png'
 
 // Sourced from the OCMC Staff MasterList (Current Staff column).
@@ -63,6 +64,7 @@ export const team = [
         position: "Accountant"
     },
     {
+        image: Luna,
         firstName: "Luna",
         lastName: "Li",
         position: "Operations Coordinator"
