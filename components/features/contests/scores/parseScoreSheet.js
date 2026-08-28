@@ -9,7 +9,7 @@ export const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const XLSX_EXTENSIONS = ['xlsx', 'xlsm'];
 
 // used to guess which column is which when the sheet has a header row
-const IDENTIFIER_HEADER_PATTERN = /(code|username|user\s*name|student|participant)/i;
+const IDENTIFIER_HEADER_PATTERN = /\b(id|code|username|user\s*name|student|participant)\b/i;
 const SCORE_HEADER_PATTERN = /(score|points?|total|marks?|result)/i;
 
 const NUMERIC_PATTERN = /^-?\d+(\.\d+)?$/;
@@ -117,6 +117,46 @@ export const readScoreFile = async (file) => {
 
 	if (!sheets.length) throw new Error('That file has no rows in it.');
 	return sheets;
+};
+
+// A workbook exported from the autograder carries ~40 sheets — config, one tab per
+// grader, one per school — and only one of them holds the final "ID / Mark" pairs
+// meant for upload. Score each sheet so that one gets selected, rather than
+// whichever sheet happens to sit first in the file.
+const rateSheet = (rows) => {
+	if (!rows.length) return -Infinity;
+
+	const header = rows[0];
+	const identifierColumn = header.findIndex((cell) => IDENTIFIER_HEADER_PATTERN.test(cell));
+	const scoreColumn = header.findIndex((cell) => SCORE_HEADER_PATTERN.test(cell));
+
+	let rating = 0;
+	if (identifierColumn !== -1) rating += 40;
+	if (scoreColumn !== -1) rating += 40;
+	// an export sheet reads "ID, Mark" — the score sits directly beside the identifier
+	if (identifierColumn !== -1 && scoreColumn === identifierColumn + 1) rating += 10;
+	// a wide sheet is a working tab (one column per question), not an export
+	rating -= Math.min(header.length, 30);
+	// between similarly shaped sheets, prefer the one covering the most students
+	rating += Math.min(rows.length / 10, 30);
+
+	return rating;
+};
+
+// index of the sheet most likely to hold the scores meant for upload
+export const pickBestSheet = (sheets) => {
+	if (!sheets?.length) return 0;
+
+	let best = 0;
+	let bestRating = -Infinity;
+	sheets.forEach((sheet, index) => {
+		const rating = rateSheet(sheet.rows);
+		if (rating > bestRating) {
+			bestRating = rating;
+			best = index;
+		}
+	});
+	return best;
 };
 
 // pick sensible defaults for the column dropdowns

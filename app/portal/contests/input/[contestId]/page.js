@@ -8,7 +8,7 @@ import Papa from 'papaparse';
 import { useGetUsersQuery, useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice';
 import { useGetContestsQuery } from '@components/features/contests/contestsApiSlice';
 
-import { buildEntries, guessLayout, parseDelimitedText, readScoreFile } from '@components/features/contests/scores/parseScoreSheet';
+import { buildEntries, guessLayout, parseDelimitedText, pickBestSheet, readScoreFile } from '@components/features/contests/scores/parseScoreSheet';
 import ScoreFileInput from '@components/features/contests/scores/ScoreFileInput';
 import ScoreColumnMapper from '@components/features/contests/scores/ScoreColumnMapper';
 import ScorePreviewTable from '@components/features/contests/scores/ScorePreviewTable';
@@ -45,6 +45,10 @@ const InputScores = () => {
 	const contest = contests?.entities?.[id];
 	const maxScore = Number(contest?.max_score) || 0;
 
+	// codes are stored as "O-001-046", but some autograder sheets write the same code
+	// as "O001046", so identifiers are keyed a second time without their separators
+	const loosen = (value) => String(value).toLowerCase().replace(/[^a-z0-9]/g, '');
+
 	// students can be listed by their contest code or their username
 	const identifierLookup = useMemo(() => {
 		const lookup = new Map();
@@ -54,11 +58,22 @@ const InputScores = () => {
 			if (user.code) lookup.set(String(user.code).trim().toLowerCase(), user.username);
 			if (user.username) lookup.set(String(user.username).trim().toLowerCase(), user.username);
 		}
+		// added in a second pass so an exact code or username always beats a loose match
+		for (const user of Object.values(users.entities)) {
+			for (const value of [user.code, user.username]) {
+				if (!value) continue;
+				const key = loosen(value);
+				if (key && !lookup.has(key)) lookup.set(key, user.username);
+			}
+		}
 		return lookup;
 	}, [users, isUsersSuccess]);
 
 	const resolveIdentifier = useCallback(
-		(identifier) => identifierLookup.get(String(identifier).trim().toLowerCase()) ?? null,
+		(identifier) => {
+			const exact = String(identifier).trim().toLowerCase();
+			return identifierLookup.get(exact) ?? identifierLookup.get(loosen(exact)) ?? null;
+		},
 		[identifierLookup]
 	);
 
@@ -105,7 +120,7 @@ const InputScores = () => {
 		try {
 			const parsed = await readScoreFile(file);
 			setSheets(parsed);
-			setSheetIndex(0);
+			setSheetIndex(pickBestSheet(parsed));
 			setFileName(file.name);
 		} catch (err) {
 			setSheets([]);
@@ -177,8 +192,13 @@ const InputScores = () => {
 	const tabClass = (value) => 'px-6 py-2 text-xl transition-colors rounded-md '
 		+ (mode === value ? 'text-white bg-brandBlue-500' : 'border-2 bg-brandNeutral-100 hover:border-brandBlue-500');
 
+	// The portal shell gives this pane a fixed height and hides its overflow, so the page
+	// has to own its scrolling. min-h-full (not h-full) lets the column grow past the
+	// viewport once a preview is on screen — with h-full + justify-center the extra height
+	// spills out of both ends and the top of the form becomes unreachable.
 	const content = (
-		<div className='relative flex flex-col items-center justify-center w-full h-full gap-8 py-24'>
+		<div className='w-full h-full overflow-y-auto'>
+			<div className='relative flex flex-col items-center justify-center w-full min-h-full gap-8 py-24'>
 			<BackButton path='/portal/contests' />
 
 			<div className='text-center'>
@@ -274,6 +294,7 @@ const InputScores = () => {
 					</button>
 				</div>
 			</form>
+			</div>
 		</div>
 	);
 
