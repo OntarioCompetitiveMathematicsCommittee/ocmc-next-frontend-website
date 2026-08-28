@@ -8,7 +8,7 @@ import Papa from 'papaparse';
 import { useGetUsersQuery, useUpdateUserContestScoresMutation } from '@components/features/users/usersApiSlice';
 import { useGetContestsQuery } from '@components/features/contests/contestsApiSlice';
 
-import { buildEntries, guessLayout, parseDelimitedText, pickBestSheet, readScoreFile } from '@components/features/contests/scores/parseScoreSheet';
+import { buildEntries, findExportSheets, guessLayout, parseDelimitedText, pickBestSheet, readScoreFile } from '@components/features/contests/scores/parseScoreSheet';
 import ScoreFileInput from '@components/features/contests/scores/ScoreFileInput';
 import ScoreColumnMapper from '@components/features/contests/scores/ScoreColumnMapper';
 import ScorePreviewTable from '@components/features/contests/scores/ScorePreviewTable';
@@ -25,6 +25,8 @@ const InputScores = () => {
 
 	const [sheets, setSheets] = useState([]);
 	const [sheetIndex, setSheetIndex] = useState(0);
+	// worksheets left out because they are not shaped like a score export
+	const [ignoredCount, setIgnoredCount] = useState(0);
 	const [fileName, setFileName] = useState('');
 	const [isParsing, setIsParsing] = useState(false);
 	const [fileError, setFileError] = useState('');
@@ -119,11 +121,17 @@ const InputScores = () => {
 		setFileError('');
 		try {
 			const parsed = await readScoreFile(file);
-			setSheets(parsed);
-			setSheetIndex(pickBestSheet(parsed));
+
+			// only the export-shaped sheets are uploadable; a workbook straight from the
+			// autograder carries dozens of working tabs that would just be noise here
+			const uploadable = findExportSheets(parsed);
+			setSheets(uploadable.length ? uploadable : parsed);
+			setSheetIndex(uploadable.length ? 0 : pickBestSheet(parsed));
+			setIgnoredCount(uploadable.length ? parsed.length - uploadable.length : 0);
 			setFileName(file.name);
 		} catch (err) {
 			setSheets([]);
+			setIgnoredCount(0);
 			setFileName('');
 			setFileError(err.message ?? 'Could not read that file.');
 		} finally {
@@ -134,6 +142,7 @@ const InputScores = () => {
 	const handleClearFile = () => {
 		setSheets([]);
 		setSheetIndex(0);
+		setIgnoredCount(0);
 		setFileName('');
 		setFileError('');
 	};
@@ -221,6 +230,14 @@ const InputScores = () => {
 							onClear={handleClearFile}
 						/>
 						{fileError && <p className='text-lg text-red-600'>{fileError}</p>}
+						{ignoredCount > 0 && (
+							<p className='text-brandNeutral-600'>
+								Reading scores from <span className='text-brandBlue-900'>{sheets[sheetIndex]?.name}</span>.
+								{' '}{ignoredCount} other worksheet{ignoredCount === 1 ? '' : 's'} in this file
+								{ignoredCount === 1 ? ' is' : ' are'} not laid out as an ID/Mark export, so
+								{ignoredCount === 1 ? ' it was' : ' they were'} ignored.
+							</p>
+						)}
 						{sheets.length > 1 && (
 							<label className='flex flex-col gap-1'>
 								<span className='text-brandBlue-900'>Worksheet</span>

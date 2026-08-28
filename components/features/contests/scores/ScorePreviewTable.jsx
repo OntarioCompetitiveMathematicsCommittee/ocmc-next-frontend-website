@@ -62,7 +62,8 @@ const ScorePreviewTable = ({ entries }) => {
 
 			{visible.length < entries.length && (
 				<p className='text-brandNeutral-600'>
-					Showing {visible.length} of {entries.length} rows.
+					Showing the first {visible.length} of {entries.length} rows — the preview is
+					capped, but every row above is still uploaded.
 				</p>
 			)}
 		</div>

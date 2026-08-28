@@ -143,6 +143,25 @@ const rateSheet = (rows) => {
 	return rating;
 };
 
+// Scores are uploaded from a sheet shaped like the autograder's WebsiteExport tab:
+// an identifier column beside a score column, and nothing else. The rest of the
+// workbook — config, per-grader tabs, per-school breakdowns — is not uploadable.
+export const isExportSheet = (rows) => {
+	if (rows.length < 2) return false;
+
+	const header = rows[0];
+	if (header.length !== 2) return false;
+
+	const identifierColumn = header.findIndex((cell) => IDENTIFIER_HEADER_PATTERN.test(cell));
+	const scoreColumn = header.findIndex((cell) => SCORE_HEADER_PATTERN.test(cell));
+
+	return identifierColumn !== -1 && scoreColumn === identifierColumn + 1;
+};
+
+// the sheets worth offering, or [] when the workbook has none shaped that way
+export const findExportSheets = (sheets = []) =>
+	sheets.filter((sheet) => isExportSheet(sheet.rows));
+
 // index of the sheet most likely to hold the scores meant for upload
 export const pickBestSheet = (sheets) => {
 	if (!sheets?.length) return 0;
