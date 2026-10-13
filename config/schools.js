@@ -28,9 +28,11 @@ export const SCHOOLS = [
     'Earl Haig Secondary School',
     'Leading Aces Academy',
     'Western Canada High School',
-    'St Kateri Tekakwitha',
+    'St Kateri Tekakwitha CSS',
     'St. Anne CSS',
     "Senator O'Connor College School",
+    "Collingwood Collegiate Institute",
+    "Dawson College",
     'NA',
 ];
 
@@ -64,8 +66,11 @@ export const SCHOOL_REGION_LETTER = {
     'Earl Haig Secondary School': 'O',
     'Leading Aces Academy': 'O',
     'Western Canada High School': 'A',
-    'St Kateri Tekakwitha': 'A',
+    'St Kateri Tekakwitha CSS': 'A',
     'St. Anne CSS': 'O',
+    "Senator O'Connor College School": "O",
+    "Collingwood Collegiate Institute": "O",
+    "Dawson College": "Q",
     'NA': 'N',
 };
 
@@ -100,6 +105,9 @@ export const SCHOOL_NUMBER = {
     'Earl Haig Secondary School': '027',
     'Leading Aces Academy': '028',
     'Western Canada High School': '029',
-    'St Kateri Tekakwitha': '030',
+    'St Kateri Tekakwitha CSS': '030',
     'St. Anne CSS': '031',
+    "Senator O'Connor College School": "032",
+    "Collingwood Collegiate Institute": "033",
+    "Dawson College": "034",
 };
